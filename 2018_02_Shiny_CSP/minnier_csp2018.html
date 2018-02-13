@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Building Shiny Apps: With Great Power Comes Great Responsibility</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Jessica Minnier   Oregon Health &amp; Science University   Twitter: @datapointier   Slides available at http://bit.ly/shiny-csp18" />
+    <meta name="date" content="2018-02-16" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Building Shiny Apps: With Great Power Comes Great Responsibility
+## CSP 2018
+### Jessica Minnier <br> Oregon Health &amp; Science University <br> Twitter: <span class="citation">@datapointier</span> <br> Slides available at <a href="http://bit.ly/shiny-csp18" class="uri">http://bit.ly/shiny-csp18</a>
+### February 16, 2018
+
+---
+
+
+
+
+
+class: center, middle
+
+# Why Shiny?
+
+---
+
+background-image: url(spreadsheetcombo.png)
+background-position: center;
+
+class: middle, center
+
+# Motivation
+
+## Too many spreadsheets!
+
+---
+
+## Motivation
+
+&lt;font style="color: red;"&gt;"Can you make me this plot? Ok now this plot? Wait one more plot..."&lt;/font&gt;
+
+&lt;img src="heatmap_start.png"&gt;&lt;/img&gt;
+
+---
+
+background-image: url(toomanyplots.png)
+background-repeat: repeat-x;
+
+
+# Motivation
+
+## Too many plots!
+
+---
+
+# Enter Shiny
+
+![shinyhex](shinyhex.png)
+---
+
+# A history
+
+- Started with &lt;font style="color: red;"&gt;Tableau&lt;/font&gt;
+     + Tableau + R + Bioconductor = :-| (in 2013)
+     + Not easily shared
+- Realization: &lt;font style="color: red;"&gt;Shiny&lt;/font&gt; can do this!
+- Made one site with &lt;font style="color: red;"&gt;one data set&lt;/font&gt;
+- Created general site for &lt;font style="color: red;"&gt;input data set&lt;/font&gt;
+
+---
+class: middle, center, inverse
+
+# Motivation For All:
+
+## Distribute your hard work!
+
+---
+
+#  *Collaborator:* "How can I share my data?"
+
+&lt;img src="shinyapp_ht.png"&gt;&lt;/img&gt;
+&lt;https://kcvi.shinyapps.io/START_HT/&gt;
+
+---
+
+# *Developer/Statistician/Data Scientist*: &lt;br&gt;"How can I get people to use my new method/package?"
+
+&lt;img src="qvalue.png"&gt;&lt;/img&gt;
+&lt;http://qvalue.princeton.edu/&gt;
+
+---
+
+# *Developer/Statistician/Data Scientist*: &lt;br&gt; Look at this analysis I did!
+
+&lt;img src="phillyschools.png"&gt;&lt;/img&gt;
+&lt;https://gallery.shinyapps.io/TSupplyDemand/&gt;
+
+---
+
+# *Everyone:* Teach! (`learnr`)
+
+&lt;img src="learnr.png"&gt;&lt;/img&gt;
+&lt;https://minnier.shinyapps.io/ODSI_continuousData/&gt;
+
+---
+# Shiny basics
+
+
+```r
+# what you see, client side
+ui &lt;- fluidPage(
+  
+  
+  
+)
+```
+
+
+```r
+# computations here!
+server &lt;- function(input, output) {
+  
+  
+  
+  
+}
+```
+
+
+
+```r
+# run the app!
+shinyApp(ui = ui, server = server)
+```
+
+
+---
+# Shiny basics
+
+
+```r
+# what you see, client side
+ui &lt;- fluidPage(
+  # Title, panels
+  plotOutput("myplot"), #from output$myplot
+  selectInput("foo",choices=allthechoices)
+)
+```
+
+
+```r
+# computations here!
+server &lt;- function(input, output) {
+  
+  
+  
+  
+}
+```
+
+
+
+```r
+# run the app!
+shinyApp(ui = ui, server = server)
+```
+
+---
+# Shiny basics
+
+
+```r
+# what you see, client side
+ui &lt;- fluidPage(
+  # Title, panels
+  plotOutput("myplot"), #from output$myplot
+  selectInput("foo",choices=allthechoices)
+)
+```
+
+
+```r
+# computations here!
+server &lt;- function(input, output) {
+  # reactive plots
+  output$myplot &lt;- renderPlot({ ggplot(yay) + geom_point() })
+  # use input$foo here, maybe observe changes in UI
+  observe({ dostuff(input$foo) })
+}
+```
+
+
+
+```r
+# run the app!
+shinyApp(ui = ui, server = server)
+```
+
+---
+
+# An example: START
+
+
+&lt;font style="color: red;"&gt;S&lt;/font&gt;hiny 
+&lt;font style="color: red;"&gt;T&lt;/font&gt;ranscriptome
+&lt;font style="color: red;"&gt;A&lt;/font&gt;nalysis
+&lt;font style="color: red;"&gt;R&lt;/font&gt;esource
+&lt;font style="color: red;"&gt;T&lt;/font&gt;ool
+
+&lt;br&gt;
+Github: &lt;https://github.com/jminnier/STARTapp&gt;
+
+&lt;br&gt;
+&lt;font style="color: green;"&gt;DATA = **RNA-seq gene expression**&lt;/font&gt;
+
+&lt;img src="spreadsheet_annotated.png"/&gt;
+
+---
+
+# Very quick tour
+
+&lt;img src="screencast2_gif.png" /&gt;
+
+---
+
+# Very quick tour
+
+&lt;img src="screencast3.gif" /&gt;
+
+&lt;!--- https://gist.github.com/dergachev/4627207 for screencast to gif ---&gt;
+
+---
+class: inverse, middle, center
+
+# Considerations
+
+---
+
+# Who is your audience?
+
+## Example: START app
+
+- likely biologists
+- some not used to coding or large data sets
+
+&lt;img src="noun_1067136_cc.png" width="300px"&gt;&lt;/img&gt;
+---
+
+# Challenges: *User*
+
+&lt;font style="color: red;"&gt;Data is larger&lt;/font&gt; than they are used to + &lt;br&gt;&lt;font style="color: red;"&gt;Cannot query or share&lt;/font&gt; results easily
+&lt;br&gt;
+&lt;br&gt;
+Interactive &lt;font style="color: red;"&gt;search&lt;/font&gt; boxes/filtering + &lt;font style="color: red;"&gt;Reactive visualization&lt;/font&gt;
+
+&lt;img src="start_search.gif" /&gt;
+
+---
+
+# Challenges, Input/Ouput Data
+
+- Input data ~ multiple formats: &lt;font style="color: red;"&gt;Special input formats&lt;/font&gt;
+- Interface with other software? &lt;font style="color: red;"&gt;Export special formats&lt;/font&gt;
+
+&lt;img src="start_dropdown_analysis.png"&gt;&lt;/img&gt;
+
+---
+
+# Challenges, Input/Ouput Data
+
+- Input data ~ multiple formats: &lt;font style="color: red;"&gt;Special input formats&lt;/font&gt;
+
+&lt;img src="clustvis_inputdata1.png"&gt;&lt;/img&gt;
+&lt;https://biit.cs.ut.ee/clustvis/&gt;
+
+
+---
+
+# Challenges, Input/Ouput Data
+
+- Input data ~ multiple formats: &lt;font style="color: red;"&gt;Special input formats&lt;/font&gt;
+
+&lt;img src="clustvis_inputdata2.png"&gt;&lt;/img&gt;
+&lt;https://biit.cs.ut.ee/clustvis/&gt;
+---
+
+# Challenges, Analysis
+
+## Many possible ways to analyze data: 
+
+- Restrict analyses performed
+- Allow for uploading of analysis results
+
+&lt;img src="start_input_options.png"/&gt;
+
+---
+# Challenges, Analysis
+
+## QA/QC
+
+&lt;font style="color: red;"&gt;Present QA plots up front&lt;/font&gt;
+
+&lt;img src="start_qa.png" width="800px"&gt;
+
+---
+
+# Challenges, Analysis
+
+## QA/QC
+
+&lt;font style="color: red;"&gt;Present QA plots up front&lt;/font&gt;
+
+
+&lt;https://github.com/joey711/shiny-phyloseq&gt;
+&lt;img src="phyloseq_qa.png" width="800px"&gt;&lt;/img&gt;
+
+---
+
+# Responsibilities, Food for thought:
+
+- Is resulting analysis &lt;font style="color: red;"&gt;correct&lt;/font&gt;?
+- Are we encouraging &lt;font style="color: red;"&gt;"data fishing"&lt;/font&gt;?
+- Misuse of &lt;font style="color: red;"&gt;p-values&lt;/font&gt;?
+- Solutions? Use instructions and data inputs wisely.
+- Other solutions? Avoid H0s, Bayesian posterior probabilities?
+
+---
+
+# Landing page - Where am I?
+
+- &lt;font style="color: red;"&gt;Show&lt;/font&gt; what the app is for/can do
+- Point to &lt;font style="color: red;"&gt;instructions&lt;/font&gt; and &lt;font style="color: red;"&gt;guidelines&lt;/font&gt;
+
+Bonus: [Jasmine Dumas](https://jasdumas.github.io/) has a [`shinyLP`](https://github.com/jasdumas/shinyLP) package to help!
+&lt;img src="shinylp.jpg"&gt;&lt;/img&gt;
+
+---
+
+# Instructions, Please
+
+- &lt;font style="color: red;"&gt;Extremely difficult.&lt;/font&gt;
+- Not just a &lt;font style="color: red;"&gt;vignette&lt;/font&gt; of a package (users may not be coders)
+-	&lt;font style="color: red;"&gt;Written&lt;/font&gt; instructions vs. &lt;font style="color: red;"&gt;video&lt;/font&gt; demos
+-	&lt;font style="color: red;"&gt;Gif&lt;/font&gt; instructions
+
+No one will use it if they don't know  &lt;font style="color: red;"&gt;**how**&lt;/font&gt; to use it!
+---
+# Instructions
+
+Tauno Metsalu and Jaak Vilo: "Clustvis"
+&lt;img src="clustvis1.png"&gt;&lt;/img&gt;
+---
+
+# Instructions
+
+Tauno Metsalu and Jaak Vilo: "Clustvis"
+&lt;img src="clustvis_instruct.gif"&gt;&lt;/img&gt;
+
+---
+
+class: middle,center,inverse
+
+# But Does It work?
+
+---
+
+# Debugging Tips
+
+Debugging is notoriously a pain here
+
+&lt;img src="error1.png"&gt;&lt;/img&gt;
+
+---
+
+# Thanks, stack trace:
+
+&lt;img src="error2.png"&gt;&lt;/img&gt;
+
+---
+
+class: middle,center,inverse
+
+# Did you update a package?
+
+---
+
+# Old fashioned methods work best
+
+&lt;font style="color: red;"&gt;Breakpoints and tracing:&lt;/font&gt;
+
+- `browser()` - I didn't say it was fun
+- `print()` - every single function/observe statement gets a print
+
+&lt;img src="start_error.png"&gt;&lt;/img&gt;
+
+---
+
+# New methods are useful
+
+`runApp(..., display.mode="showcase")`
+
+But, doesn't show why something broke.
+
+&lt;img src="start_showcase.png"&gt;&lt;/img&gt;
+
+---
+
+# Final Tips
+
+- Test it first
+    + Unit testing can save you so much headache
+    + Run tests on example data
+    + Create .Md file of test plots
+- Security
+    + Are users uploading sensitive data?
+    + Security review of public apps vs commercial version
+- Speed: [Why so slow?](https://support.rstudio.com/hc/en-us/articles/115000171848-Why-are-my-Shiny-apps-are-running-slowly-)
+    + Rprofiler in Rstudio
+    + Reduce start up time
+
+---
+
+# Be Creative!
+
+[papr by Lucy D'Agostino McGowan, Nick Strayer, Jeff Leek](https://jhubiostatistics.shinyapps.io/papr/)
+&lt;img src="papr.png"&gt;&lt;/img&gt;
+
+---
+
+# Have fun!
+
+[homebrewR by David Stephens](https://davesteps.shinyapps.io/homebrewR/)
+&lt;img src="homebrewr.png"&gt;&lt;/img&gt;
+
+---
+
+# Thank you! Go forth and shiny!
+&lt;br&gt;
+
+Contact: @ [datapointier](https://twitter.com/datapointier)
+
+Github: &lt;https://github.com/jminnier/STARTapp&gt;
+
+Slides available at  &lt;font style="text-transform: lowercase;"&gt;&lt;http://bit.ly/shiny-csp18&gt;&lt;/font&gt; &lt;br&gt;
+
+Code for slides available at &lt;https://github.com/jminnier/talks&gt;
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
