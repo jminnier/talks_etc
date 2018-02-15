@@ -38,7 +38,7 @@ class: center, middle
 
 ---
 
-background-image: url(spreadsheetcombo.png)
+background-image: url(figs/spreadsheetcombo.png)
 background-position: center;
 
 class: middle, center
@@ -53,11 +53,11 @@ class: middle, center
 
 <font style="color: darkorange;">"Can you make me this plot? Ok now this plot? Wait one more plot..."</font>
 
-<img src="heatmap_start.png"></img>
+<img src="figs/heatmap_start.png"></img>
 
 ---
 
-background-image: url(toomanyplots.png)
+background-image: url(figs/toomanyplots.png)
 background-repeat: repeat-x;
 
 
@@ -66,7 +66,7 @@ background-repeat: repeat-x;
 ## Too many plots!
 
 ---
-background-image: url(shinyhex.png)
+background-image: url(figs/shinyhex.png)
 background-position: 50% 50%
 background-size: 50%
 
@@ -98,28 +98,28 @@ class: middle, center, inverse
 
 #  *Collaborator:* "How can I share my data?"
 
-<img src="shinyapp_ht.png"></img>
+<img src="figs/shinyapp_ht.png"></img>
 <https://kcvi.shinyapps.io/START_HT/>
 
 ---
 
 # *Developer/Statistician/Data Scientist*: <br>"How can I get people to use my new method/package?"
 
-<img src="qvalue.png"></img>
+<img src="figs/qvalue.png"></img>
 <http://qvalue.princeton.edu/>
 
 ---
 
 # *Developer/Statistician/Data Scientist*: <br> Look at this analysis I did!
 
-<img src="phillyschools.png"></img>
+<img src="figs/phillyschools.png"></img>
 <https://gallery.shinyapps.io/TSupplyDemand/>
 
 ---
 
 # *Everyone:* Teach! (`learnr`)
 
-<img src="learnr.png"></img>
+<img src="figs/learnr.png"></img>
 <https://minnier.shinyapps.io/ODSI_continuousData/>
 
 ---
@@ -226,19 +226,19 @@ Github: <https://github.com/jminnier/STARTapp>
 DATA = <em>RNA-seq gene expression</em>
 </font>
 
-<img src="spreadsheet_annotated.png"/>
+<img src="figs/spreadsheet_annotated.png"/>
 
 ---
 
 # Very quick tour
 
-<img src="screencast2_gif.png" />
+<img src="figs/screencast2_gif.png" />
 
 ---
 
 # Very quick tour
 
-<img src="screencast3.gif" />
+<img src="figs/screencast3.gif" />
 
 <!--- https://gist.github.com/dergachev/4627207 for screencast to gif --->
 
@@ -247,13 +247,13 @@ DATA = <em>RNA-seq gene expression</em>
 
 # Analysis results, interactive
 
-![start_volcano](start_volcano.png)
+![start_volcano](figs/start_volcano.png)
 
 ---
 
 # Data exploration, interactive
 
-![start_scatter](start_scatterplot.png)
+![start_scatter](figs/start_scatterplot.png)
 
 ---
 class: inverse, middle, center
@@ -269,7 +269,7 @@ class: inverse, middle, center
 - likely biologists
 - may not be used to coding or large data sets
 
-<img src="noun_1067136_cc.png" width="300px"></img>
+<img src="figs/noun_1067136_cc.png" width="300px"></img>
 ---
 
 # Challenges: *User*
@@ -279,7 +279,7 @@ class: inverse, middle, center
 <br>
 Interactive <font style="color: darkorange;">search</font> boxes/filtering + <font style="color: darkorange;">Reactive visualization</font>
 
-<img src="start_search.gif" />
+<img src="figs/start_search.gif" />
 
 ---
 
@@ -288,7 +288,7 @@ Interactive <font style="color: darkorange;">search</font> boxes/filtering + <fo
 - Input data ~ multiple formats: <font style="color: darkorange;">Special input formats</font>
 - Interface with other software? <font style="color: darkorange;">Export special formats</font>
 
-<img src="start_dropdown_analysis.png"></img>
+<img src="figs/start_dropdown_analysis.png"></img>
 
 ---
 
@@ -296,7 +296,7 @@ Interactive <font style="color: darkorange;">search</font> boxes/filtering + <fo
 
 - Input data ~ multiple formats: <font style="color: darkorange;">Special input formats</font>
 
-<img src="clustvis_inputdata1.png"></img>
+<img src="figs/clustvis_inputdata1.png"></img>
 <https://biit.cs.ut.ee/clustvis/>
 
 
@@ -306,7 +306,7 @@ Interactive <font style="color: darkorange;">search</font> boxes/filtering + <fo
 
 - Input data ~ multiple formats: <font style="color: darkorange;">Special input formats</font>
 
-<img src="clustvis_inputdata2.png"></img>
+<img src="figs/clustvis_inputdata2.png"></img>
 <https://biit.cs.ut.ee/clustvis/>
 ---
 
@@ -337,7 +337,7 @@ Interactive <font style="color: darkorange;">search</font> boxes/filtering + <fo
 - Restrict analyses performed
 - Allow for uploading of analysis results
 
-<img src="start_input_options.png"/>
+<img src="figs/start_input_options.png"/>
 
 ---
 class: center, middle
@@ -354,7 +354,7 @@ class: center, middle
 
 
 <https://github.com/joey711/shiny-phyloseq>
-<img src="phyloseq_qa.png" width="800px"></img>
+<img src="figs/phyloseq_qa.png" width="800px"></img>
 
 ---
 
@@ -362,7 +362,7 @@ class: center, middle
 
 ### Does this data look "weird"?
 
-<img src="start_qa.png" width="800px">
+<img src="figs/start_qa.png" width="800px">
 
 ---
 class: center, middle, inverse
@@ -416,7 +416,7 @@ http://visiphilia.github.io/assets/skittles-lineup1.png
 
 ---
 class: inverse
-background-image: url(start_heatmap.png)
+background-image: url(figs/start_heatmap.png)
 
 # Too many heatmaps?
 
@@ -438,7 +438,7 @@ background-image: url(start_heatmap.png)
 - Point to <font style="color: darkorange;">instructions</font> and <font style="color: darkorange;">guidelines</font>
 
 Bonus: [Jasmine Dumas](https://jasdumas.github.io/) has a [`shinyLP`](https://github.com/jasdumas/shinyLP) package to help!
-<img src="shinylp.jpg"></img>
+<img src="figs/shinylp.jpg"></img>
 
 ---
 
@@ -449,18 +449,18 @@ Bonus: [Jasmine Dumas](https://jasdumas.github.io/) has a [`shinyLP`](https://gi
 -	<font style="color: darkorange;">Written</font> instructions vs. <font style="color: darkorange;">video</font> demos, <font style="color: darkorange;">gif</font> instructions
 
 No one will use it if they don't know  <font style="color: darkorange;">**how**</font> to use it!
-<img src="start_instruct.png"></img>
+<img src="figs/start_instruct.png"></img>
 ---
 # Instructions
 
 Tauno Metsalu and Jaak Vilo: "Clustvis"
-<img src="clustvis1.png"></img>
+<img src="figs/clustvis1.png"></img>
 ---
 
 # Instructions
 
 Tauno Metsalu and Jaak Vilo: "Clustvis"
-<img src="clustvis_instruct.gif"></img>
+<img src="figs/clustvis_instruct.gif"></img>
 
 ---
 
@@ -474,13 +474,13 @@ class: middle,center,inverse
 
 Debugging is notoriously a pain here
 
-<img src="error1.png"></img>
+<img src="figs/error1.png"></img>
 
 ---
 
 # Thanks, stack trace:
 
-<img src="error2.png"></img>
+<img src="figs/error2.png"></img>
 
 ---
 
@@ -497,7 +497,7 @@ class: middle,center,inverse
 - `browser()` - I didn't say it was fun
 - `print()` - every single function/observe statement gets a print
 
-<img src="start_error.png"></img>
+<img src="figs/start_error.png"></img>
 
 ---
 
@@ -507,7 +507,7 @@ class: middle,center,inverse
 
 But, doesn't show why something broke.
 
-<img src="start_showcase.png"></img>
+<img src="figs/start_showcase.png"></img>
 
 ---
 
@@ -531,14 +531,14 @@ But, doesn't show why something broke.
 # Be Creative!
 
 [papr by Lucy D'Agostino McGowan, Nick Strayer, Jeff Leek](https://jhubiostatistics.shinyapps.io/papr/)
-<img src="papr.png"></img>
+<img src="figs/papr.png"></img>
 
 ---
 
 # Have fun!
 
 [homebrewR by David Stephens](https://davesteps.shinyapps.io/homebrewR/)
-<img src="homebrewr.png"></img>
+<img src="figs/homebrewr.png"></img>
 
 ---
 
