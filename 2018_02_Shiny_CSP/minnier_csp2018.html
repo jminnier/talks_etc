@@ -3,10 +3,11 @@
   <head>
     <title>Building Shiny Apps: With Great Power Comes Great Responsibility</title>
     <meta charset="utf-8">
-    <meta name="author" content="Jessica Minnier   Oregon Health &amp; Science University   Twitter: @datapointier   Slides available at http://bit.ly/shiny-csp18" />
+    <meta name="author" content="Jessica Minnier, PhD   Oregon Health &amp; Science University   Twitter: @datapointier   Slides available at http://bit.ly/shiny-csp18" />
     <meta name="date" content="2018-02-16" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
@@ -14,7 +15,7 @@ class: center, middle, inverse, title-slide
 
 # Building Shiny Apps: With Great Power Comes Great Responsibility
 ## CSP 2018
-### Jessica Minnier <br> Oregon Health &amp; Science University <br> Twitter: <span class="citation">@datapointier</span> <br> Slides available at <a href="http://bit.ly/shiny-csp18" class="uri">http://bit.ly/shiny-csp18</a>
+### Jessica Minnier, PhD <br> Oregon Health &amp; Science University <br> Twitter: <span class="citation">@datapointier</span> <br> Slides available at <a href="http://bit.ly/shiny-csp18" class="uri">http://bit.ly/shiny-csp18</a>
 ### February 16, 2018
 
 ---
@@ -42,7 +43,7 @@ class: middle, center
 
 ## Motivation
 
-&lt;font style="color: red;"&gt;"Can you make me this plot? Ok now this plot? Wait one more plot..."&lt;/font&gt;
+&lt;font style="color: darkorange;"&gt;"Can you make me this plot? Ok now this plot? Wait one more plot..."&lt;/font&gt;
 
 &lt;img src="heatmap_start.png"&gt;&lt;/img&gt;
 
@@ -57,20 +58,28 @@ background-repeat: repeat-x;
 ## Too many plots!
 
 ---
+background-image: url(shinyhex.png)
+background-position: 50% 50%
+background-size: 50%
 
-# Enter Shiny
+# Enter, Shiny!
 
-![shinyhex](shinyhex.png)
 ---
 
-# A history
+# First, a History
 
-- Started with &lt;font style="color: red;"&gt;Tableau&lt;/font&gt;
+- Started with &lt;font style="color: darkorange;"&gt;Tableau&lt;/font&gt;
      + Tableau + R + Bioconductor = :-| (in 2013)
      + Not easily shared
-- Realization: &lt;font style="color: red;"&gt;Shiny&lt;/font&gt; can do this!
-- Made one site with &lt;font style="color: red;"&gt;one data set&lt;/font&gt;
-- Created general site for &lt;font style="color: red;"&gt;input data set&lt;/font&gt;
+- Realization: &lt;font style="color: darkorange;"&gt;Shiny&lt;/font&gt; can do this!
+
+## Motivation: help my collaborator
+
+- Created one site with &lt;font style="color: darkorange;"&gt;one data set&lt;/font&gt;
+
+## Motivation: help everyone
+
+- Created general site for &lt;font style="color: darkorange;"&gt;input data set&lt;/font&gt;
 
 ---
 class: middle, center, inverse
@@ -206,17 +215,19 @@ shinyApp(ui = ui, server = server)
 # An example: START
 
 
-&lt;font style="color: red;"&gt;S&lt;/font&gt;hiny 
-&lt;font style="color: red;"&gt;T&lt;/font&gt;ranscriptome
-&lt;font style="color: red;"&gt;A&lt;/font&gt;nalysis
-&lt;font style="color: red;"&gt;R&lt;/font&gt;esource
-&lt;font style="color: red;"&gt;T&lt;/font&gt;ool
+&lt;font style="color: darkorange;"&gt;S&lt;/font&gt;hiny 
+&lt;font style="color: darkorange;"&gt;T&lt;/font&gt;ranscriptome
+&lt;font style="color: darkorange;"&gt;A&lt;/font&gt;nalysis
+&lt;font style="color: darkorange;"&gt;R&lt;/font&gt;esource
+&lt;font style="color: darkorange;"&gt;T&lt;/font&gt;ool
 
 &lt;br&gt;
 Github: &lt;https://github.com/jminnier/STARTapp&gt;
 
 &lt;br&gt;
-&lt;font style="color: green;"&gt;DATA = **RNA-seq gene expression**&lt;/font&gt;
+&lt;font style="color: green;"&gt;
+DATA = &lt;em&gt;RNA-seq gene expression&lt;/em&gt;
+&lt;/font&gt;
 
 &lt;img src="spreadsheet_annotated.png"/&gt;
 
@@ -234,6 +245,19 @@ Github: &lt;https://github.com/jminnier/STARTapp&gt;
 
 &lt;!--- https://gist.github.com/dergachev/4627207 for screencast to gif ---&gt;
 
+
+---
+
+# Analysis results, interactive
+
+![start_volcano](start_volcano.png)
+
+---
+
+# Data exploration, interactive
+
+![start_scatter](start_scatterplot.png)
+
 ---
 class: inverse, middle, center
 
@@ -246,17 +270,17 @@ class: inverse, middle, center
 ## Example: START app
 
 - likely biologists
-- some not used to coding or large data sets
+- may not be used to coding or large data sets
 
 &lt;img src="noun_1067136_cc.png" width="300px"&gt;&lt;/img&gt;
 ---
 
 # Challenges: *User*
 
-&lt;font style="color: red;"&gt;Data is larger&lt;/font&gt; than they are used to + &lt;br&gt;&lt;font style="color: red;"&gt;Cannot query or share&lt;/font&gt; results easily
+&lt;font style="color: darkorange;"&gt;Data is larger&lt;/font&gt; than they are used to + &lt;font style="color: darkorange;"&gt;Cannot query or share&lt;/font&gt; results easily
 &lt;br&gt;
 &lt;br&gt;
-Interactive &lt;font style="color: red;"&gt;search&lt;/font&gt; boxes/filtering + &lt;font style="color: red;"&gt;Reactive visualization&lt;/font&gt;
+Interactive &lt;font style="color: darkorange;"&gt;search&lt;/font&gt; boxes/filtering + &lt;font style="color: darkorange;"&gt;Reactive visualization&lt;/font&gt;
 
 &lt;img src="start_search.gif" /&gt;
 
@@ -264,8 +288,8 @@ Interactive &lt;font style="color: red;"&gt;search&lt;/font&gt; boxes/filtering 
 
 # Challenges, Input/Ouput Data
 
-- Input data ~ multiple formats: &lt;font style="color: red;"&gt;Special input formats&lt;/font&gt;
-- Interface with other software? &lt;font style="color: red;"&gt;Export special formats&lt;/font&gt;
+- Input data ~ multiple formats: &lt;font style="color: darkorange;"&gt;Special input formats&lt;/font&gt;
+- Interface with other software? &lt;font style="color: darkorange;"&gt;Export special formats&lt;/font&gt;
 
 &lt;img src="start_dropdown_analysis.png"&gt;&lt;/img&gt;
 
@@ -273,7 +297,7 @@ Interactive &lt;font style="color: red;"&gt;search&lt;/font&gt; boxes/filtering 
 
 # Challenges, Input/Ouput Data
 
-- Input data ~ multiple formats: &lt;font style="color: red;"&gt;Special input formats&lt;/font&gt;
+- Input data ~ multiple formats: &lt;font style="color: darkorange;"&gt;Special input formats&lt;/font&gt;
 
 &lt;img src="clustvis_inputdata1.png"&gt;&lt;/img&gt;
 &lt;https://biit.cs.ut.ee/clustvis/&gt;
@@ -283,7 +307,7 @@ Interactive &lt;font style="color: red;"&gt;search&lt;/font&gt; boxes/filtering 
 
 # Challenges, Input/Ouput Data
 
-- Input data ~ multiple formats: &lt;font style="color: red;"&gt;Special input formats&lt;/font&gt;
+- Input data ~ multiple formats: &lt;font style="color: darkorange;"&gt;Special input formats&lt;/font&gt;
 
 &lt;img src="clustvis_inputdata2.png"&gt;&lt;/img&gt;
 &lt;https://biit.cs.ut.ee/clustvis/&gt;
@@ -293,27 +317,43 @@ Interactive &lt;font style="color: red;"&gt;search&lt;/font&gt; boxes/filtering 
 
 ## Many possible ways to analyze data: 
 
+- RNA-seq data has &lt;font style="color: darkorange;"&gt;many analysis pipelines&lt;/font&gt; (edgeR, DESeq2, limma)
+- &lt;font style="color: darkorange;"&gt;Complex study designs&lt;/font&gt;
+    + repeated measures
+    + multiple pairwise comparisons vs overall group comparisons
+- How to allow for so many possibilities?
+
+--
+
+### Balance flexibility/simplicity/**CORRECT**ness
+
+- Too many options `\(\rightarrow\)` high likelihood of &lt;font style="color: darkorange;"&gt;incorrect use&lt;/font&gt; of analysis tools
+
+
+
+---
+
+# Challenges, Analysis
+
+### Many possible ways to analyze data: 
+
 - Restrict analyses performed
 - Allow for uploading of analysis results
 
 &lt;img src="start_input_options.png"/&gt;
 
 ---
+class: center, middle
+
 # Challenges, Analysis
 
-## QA/QC
-
-&lt;font style="color: red;"&gt;Present QA plots up front&lt;/font&gt;
-
-&lt;img src="start_qa.png" width="800px"&gt;
+## Look at the data! (QA/QC)
 
 ---
 
-# Challenges, Analysis
+# Challenges, Analysis: QA/QC
 
-## QA/QC
-
-&lt;font style="color: red;"&gt;Present QA plots up front&lt;/font&gt;
+### Present QA plots up front
 
 
 &lt;https://github.com/joey711/shiny-phyloseq&gt;
@@ -321,20 +361,84 @@ Interactive &lt;font style="color: red;"&gt;search&lt;/font&gt; boxes/filtering 
 
 ---
 
-# Responsibilities, Food for thought:
+# Challenges, Analysis: QA/QC
 
-- Is resulting analysis &lt;font style="color: red;"&gt;correct&lt;/font&gt;?
-- Are we encouraging &lt;font style="color: red;"&gt;"data fishing"&lt;/font&gt;?
-- Misuse of &lt;font style="color: red;"&gt;p-values&lt;/font&gt;?
-- Solutions? Use instructions and data inputs wisely.
-- Other solutions? Avoid H0s, Bayesian posterior probabilities?
+### Does this data look "weird"?
+
+&lt;img src="start_qa.png" width="800px"&gt;
+
+---
+class: center, middle, inverse
+
+# Responsibilities
+
+## How do we avoid "data fishing"?
+
+## (Food for thought)
+
+---
+
+# Responsibilities
+
+## - Are resulting analyses &lt;font style="color: darkorange;"&gt;correct&lt;/font&gt;?
+
+## - Are we encouraging &lt;font style="color: darkorange;"&gt;"torturing the data until it speaks"&lt;/font&gt;?
+
+
+## - Misuse of &lt;font style="color: darkorange;"&gt;p-values&lt;/font&gt;?
+
+
+---
+
+# Responsibilities: Visual inference
+
+### &lt;font style="color: darkorange;"&gt;Plots = statistics&lt;/font&gt;
+
+-- [Di Cook's](https://twitter.com/visnut) keynote at [rstudio::conf 2018](http://www.dicook.org/files/rstudio/#1)
+
+
+### Solution?: Rorschach image tests
+
+Generate &lt;font style="color: darkorange;"&gt;null data sets and null plots&lt;/font&gt; using permutation and simulation 
+
+Can you pick out your data from a line up?
+
+R package [`nullabor`](https://cran.r-project.org/web/packages/nullabor/vignettes/nullabor.html)
+
+---
+
+background-image: url(http://visiphilia.github.io/assets/skittles-lineup1.png)
+background-position: 50% 90%
+background-size: 80%
+
+# Visual inference: Apophenia
+
+http://visiphilia.github.io/assets/skittles-lineup1.png
+
+
+
+---
+class: inverse
+background-image: url(start_heatmap.png)
+
+# Too many heatmaps?
+
+---
+
+#  Room for misuse, possible solutions:
+
+### - Use &lt;font style="color: darkorange;"&gt;instructions&lt;/font&gt; and data &lt;font style="color: darkorange;"&gt;inputs&lt;/font&gt; wisely.
+### - Provide &lt;font style="color: darkorange;"&gt;examples&lt;/font&gt; of when advanced analyses are needed.
+### - Provide &lt;font style="color: darkorange;"&gt;examples&lt;/font&gt; of statistical write ups based on app's results.
+### - Avoid too many &lt;font style="color: darkorange;"&gt;H0s&lt;/font&gt;
+### - Avoid &lt;font style="color: darkorange;"&gt;p-values&lt;/font&gt; (Bayesian posterior probabilities?)
 
 ---
 
 # Landing page - Where am I?
 
-- &lt;font style="color: red;"&gt;Show&lt;/font&gt; what the app is for/can do
-- Point to &lt;font style="color: red;"&gt;instructions&lt;/font&gt; and &lt;font style="color: red;"&gt;guidelines&lt;/font&gt;
+- &lt;font style="color: darkorange;"&gt;Show&lt;/font&gt; what the app is for/can do
+- Point to &lt;font style="color: darkorange;"&gt;instructions&lt;/font&gt; and &lt;font style="color: darkorange;"&gt;guidelines&lt;/font&gt;
 
 Bonus: [Jasmine Dumas](https://jasdumas.github.io/) has a [`shinyLP`](https://github.com/jasdumas/shinyLP) package to help!
 &lt;img src="shinylp.jpg"&gt;&lt;/img&gt;
@@ -343,12 +447,12 @@ Bonus: [Jasmine Dumas](https://jasdumas.github.io/) has a [`shinyLP`](https://gi
 
 # Instructions, Please
 
-- &lt;font style="color: red;"&gt;Extremely difficult.&lt;/font&gt;
-- Not just a &lt;font style="color: red;"&gt;vignette&lt;/font&gt; of a package (users may not be coders)
--	&lt;font style="color: red;"&gt;Written&lt;/font&gt; instructions vs. &lt;font style="color: red;"&gt;video&lt;/font&gt; demos
--	&lt;font style="color: red;"&gt;Gif&lt;/font&gt; instructions
+- &lt;font style="color: darkorange;"&gt;Extremely difficult.&lt;/font&gt;
+- Not just a &lt;font style="color: darkorange;"&gt;vignette&lt;/font&gt; of a package (users may not be coders)
+-	&lt;font style="color: darkorange;"&gt;Written&lt;/font&gt; instructions vs. &lt;font style="color: darkorange;"&gt;video&lt;/font&gt; demos, &lt;font style="color: darkorange;"&gt;gif&lt;/font&gt; instructions
 
-No one will use it if they don't know  &lt;font style="color: red;"&gt;**how**&lt;/font&gt; to use it!
+No one will use it if they don't know  &lt;font style="color: darkorange;"&gt;**how**&lt;/font&gt; to use it!
+&lt;img src="start_instruct.png"&gt;&lt;/img&gt;
 ---
 # Instructions
 
@@ -391,7 +495,7 @@ class: middle,center,inverse
 
 # Old fashioned methods work best
 
-&lt;font style="color: red;"&gt;Breakpoints and tracing:&lt;/font&gt;
+&lt;font style="color: darkorange;"&gt;Breakpoints and tracing:&lt;/font&gt;
 
 - `browser()` - I didn't say it was fun
 - `print()` - every single function/observe statement gets a print
@@ -412,8 +516,10 @@ But, doesn't show why something broke.
 
 # Final Tips
 
+## Put on your Software Development Hat!
+
 - Test it first
-    + Unit testing can save you so much headache
+    + Unit testing can save you so much headache (packages: [`testthat`](http://testthat.r-lib.org/), [`shinytest`](https://rstudio.github.io/shinytest/))
     + Run tests on example data
     + Create .Md file of test plots
 - Security
@@ -442,7 +548,7 @@ But, doesn't show why something broke.
 # Thank you! Go forth and shiny!
 &lt;br&gt;
 
-Contact: @ [datapointier](https://twitter.com/datapointier)
+Contact: @ [datapointier](https://twitter.com/datapointier), email: minnier-[at]-ohsu.edu
 
 Github: &lt;https://github.com/jminnier/STARTapp&gt;
 
@@ -450,7 +556,7 @@ Slides available at  &lt;font style="text-transform: lowercase;"&gt;&lt;http://b
 
 Code for slides available at &lt;https://github.com/jminnier/talks&gt;
 
-Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by [Yihui Xie](https://twitter.com/xieyihui?lang=en) with the [Rladies](https://alison.rbind.io/post/r-ladies-slides/) theme by [Alison Hill](https://twitter.com/apreshill).
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

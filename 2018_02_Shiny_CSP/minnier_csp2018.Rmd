@@ -1,10 +1,11 @@
 ---
 title: "Building Shiny Apps: With Great Power Comes Great Responsibility"
 subtitle: "CSP 2018"
-author: "Jessica Minnier <br> Oregon Health & Science University <br> Twitter: @datapointier <br> Slides available at http://bit.ly/shiny-csp18"
+author: "Jessica Minnier, PhD <br> Oregon Health & Science University <br> Twitter: @datapointier <br> Slides available at http://bit.ly/shiny-csp18"
 date: "February 16, 2018"
 output:
   xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -36,7 +37,7 @@ class: middle, center
 
 ## Motivation
 
-<font style="color: red;">"Can you make me this plot? Ok now this plot? Wait one more plot..."</font>
+<font style="color: darkorange;">"Can you make me this plot? Ok now this plot? Wait one more plot..."</font>
 
 <img src="heatmap_start.png"></img>
 
@@ -51,20 +52,28 @@ background-repeat: repeat-x;
 ## Too many plots!
 
 ---
+background-image: url(shinyhex.png)
+background-position: 50% 50%
+background-size: 50%
 
-# Enter Shiny
+# Enter, Shiny!
 
-![shinyhex](shinyhex.png)
 ---
 
-# A history
+# First, a History
 
-- Started with <font style="color: red;">Tableau</font>
+- Started with <font style="color: darkorange;">Tableau</font>
      + Tableau + R + Bioconductor = :-| (in 2013)
      + Not easily shared
-- Realization: <font style="color: red;">Shiny</font> can do this!
-- Made one site with <font style="color: red;">one data set</font>
-- Created general site for <font style="color: red;">input data set</font>
+- Realization: <font style="color: darkorange;">Shiny</font> can do this!
+
+## Motivation: help my collaborator
+
+- Created one site with <font style="color: darkorange;">one data set</font>
+
+## Motivation: help everyone
+
+- Created general site for <font style="color: darkorange;">input data set</font>
 
 ---
 class: middle, center, inverse
@@ -191,17 +200,19 @@ shinyApp(ui = ui, server = server)
 # An example: START
 
 
-<font style="color: red;">S</font>hiny 
-<font style="color: red;">T</font>ranscriptome
-<font style="color: red;">A</font>nalysis
-<font style="color: red;">R</font>esource
-<font style="color: red;">T</font>ool
+<font style="color: darkorange;">S</font>hiny 
+<font style="color: darkorange;">T</font>ranscriptome
+<font style="color: darkorange;">A</font>nalysis
+<font style="color: darkorange;">R</font>esource
+<font style="color: darkorange;">T</font>ool
 
 <br>
 Github: <https://github.com/jminnier/STARTapp>
 
 <br>
-<font style="color: green;">DATA = **RNA-seq gene expression**</font>
+<font style="color: green;">
+DATA = <em>RNA-seq gene expression</em>
+</font>
 
 <img src="spreadsheet_annotated.png"/>
 
@@ -219,6 +230,19 @@ Github: <https://github.com/jminnier/STARTapp>
 
 <!--- https://gist.github.com/dergachev/4627207 for screencast to gif --->
 
+
+---
+
+# Analysis results, interactive
+
+![start_volcano](start_volcano.png)
+
+---
+
+# Data exploration, interactive
+
+![start_scatter](start_scatterplot.png)
+
 ---
 class: inverse, middle, center
 
@@ -231,17 +255,17 @@ class: inverse, middle, center
 ## Example: START app
 
 - likely biologists
-- some not used to coding or large data sets
+- may not be used to coding or large data sets
 
 <img src="noun_1067136_cc.png" width="300px"></img>
 ---
 
 # Challenges: *User*
 
-<font style="color: red;">Data is larger</font> than they are used to + <br><font style="color: red;">Cannot query or share</font> results easily
+<font style="color: darkorange;">Data is larger</font> than they are used to + <font style="color: darkorange;">Cannot query or share</font> results easily
 <br>
 <br>
-Interactive <font style="color: red;">search</font> boxes/filtering + <font style="color: red;">Reactive visualization</font>
+Interactive <font style="color: darkorange;">search</font> boxes/filtering + <font style="color: darkorange;">Reactive visualization</font>
 
 <img src="start_search.gif" />
 
@@ -249,8 +273,8 @@ Interactive <font style="color: red;">search</font> boxes/filtering + <font styl
 
 # Challenges, Input/Ouput Data
 
-- Input data ~ multiple formats: <font style="color: red;">Special input formats</font>
-- Interface with other software? <font style="color: red;">Export special formats</font>
+- Input data ~ multiple formats: <font style="color: darkorange;">Special input formats</font>
+- Interface with other software? <font style="color: darkorange;">Export special formats</font>
 
 <img src="start_dropdown_analysis.png"></img>
 
@@ -258,7 +282,7 @@ Interactive <font style="color: red;">search</font> boxes/filtering + <font styl
 
 # Challenges, Input/Ouput Data
 
-- Input data ~ multiple formats: <font style="color: red;">Special input formats</font>
+- Input data ~ multiple formats: <font style="color: darkorange;">Special input formats</font>
 
 <img src="clustvis_inputdata1.png"></img>
 <https://biit.cs.ut.ee/clustvis/>
@@ -268,7 +292,7 @@ Interactive <font style="color: red;">search</font> boxes/filtering + <font styl
 
 # Challenges, Input/Ouput Data
 
-- Input data ~ multiple formats: <font style="color: red;">Special input formats</font>
+- Input data ~ multiple formats: <font style="color: darkorange;">Special input formats</font>
 
 <img src="clustvis_inputdata2.png"></img>
 <https://biit.cs.ut.ee/clustvis/>
@@ -278,27 +302,43 @@ Interactive <font style="color: red;">search</font> boxes/filtering + <font styl
 
 ## Many possible ways to analyze data: 
 
+- RNA-seq data has <font style="color: darkorange;">many analysis pipelines</font> (edgeR, DESeq2, limma)
+- <font style="color: darkorange;">Complex study designs</font>
+    + repeated measures
+    + multiple pairwise comparisons vs overall group comparisons
+- How to allow for so many possibilities?
+
+--
+
+### Balance flexibility/simplicity/**CORRECT**ness
+
+- Too many options $\rightarrow$ high likelihood of <font style="color: darkorange;">incorrect use</font> of analysis tools
+
+
+
+---
+
+# Challenges, Analysis
+
+### Many possible ways to analyze data: 
+
 - Restrict analyses performed
 - Allow for uploading of analysis results
 
 <img src="start_input_options.png"/>
 
 ---
+class: center, middle
+
 # Challenges, Analysis
 
-## QA/QC
-
-<font style="color: red;">Present QA plots up front</font>
-
-<img src="start_qa.png" width="800px">
+## Look at the data! (QA/QC)
 
 ---
 
-# Challenges, Analysis
+# Challenges, Analysis: QA/QC
 
-## QA/QC
-
-<font style="color: red;">Present QA plots up front</font>
+### Present QA plots up front
 
 
 <https://github.com/joey711/shiny-phyloseq>
@@ -306,20 +346,84 @@ Interactive <font style="color: red;">search</font> boxes/filtering + <font styl
 
 ---
 
-# Responsibilities, Food for thought:
+# Challenges, Analysis: QA/QC
 
-- Is resulting analysis <font style="color: red;">correct</font>?
-- Are we encouraging <font style="color: red;">"data fishing"</font>?
-- Misuse of <font style="color: red;">p-values</font>?
-- Solutions? Use instructions and data inputs wisely.
-- Other solutions? Avoid H0s, Bayesian posterior probabilities?
+### Does this data look "weird"?
+
+<img src="start_qa.png" width="800px">
+
+---
+class: center, middle, inverse
+
+# Responsibilities
+
+## How do we avoid "data fishing"?
+
+## (Food for thought)
+
+---
+
+# Responsibilities
+
+## - Are resulting analyses <font style="color: darkorange;">correct</font>?
+
+## - Are we encouraging <font style="color: darkorange;">"torturing the data until it speaks"</font>?
+
+
+## - Misuse of <font style="color: darkorange;">p-values</font>?
+
+
+---
+
+# Responsibilities: Visual inference
+
+### <font style="color: darkorange;">Plots = statistics</font>
+
+-- [Di Cook's](https://twitter.com/visnut) keynote at [rstudio::conf 2018](http://www.dicook.org/files/rstudio/#1)
+
+
+### Solution?: Rorschach image tests
+
+Generate <font style="color: darkorange;">null data sets and null plots</font> using permutation and simulation 
+
+Can you pick out your data from a line up?
+
+R package [`nullabor`](https://cran.r-project.org/web/packages/nullabor/vignettes/nullabor.html)
+
+---
+
+background-image: url(http://visiphilia.github.io/assets/skittles-lineup1.png)
+background-position: 50% 90%
+background-size: 80%
+
+# Visual inference: Apophenia
+
+http://visiphilia.github.io/assets/skittles-lineup1.png
+
+
+
+---
+class: inverse
+background-image: url(start_heatmap.png)
+
+# Too many heatmaps?
+
+---
+
+#  Room for misuse, possible solutions:
+
+### - Use <font style="color: darkorange;">instructions</font> and data <font style="color: darkorange;">inputs</font> wisely.
+### - Provide <font style="color: darkorange;">examples</font> of when advanced analyses are needed.
+### - Provide <font style="color: darkorange;">examples</font> of statistical write ups based on app's results.
+### - Avoid too many <font style="color: darkorange;">H0s</font>
+### - Avoid <font style="color: darkorange;">p-values</font> (Bayesian posterior probabilities?)
 
 ---
 
 # Landing page - Where am I?
 
-- <font style="color: red;">Show</font> what the app is for/can do
-- Point to <font style="color: red;">instructions</font> and <font style="color: red;">guidelines</font>
+- <font style="color: darkorange;">Show</font> what the app is for/can do
+- Point to <font style="color: darkorange;">instructions</font> and <font style="color: darkorange;">guidelines</font>
 
 Bonus: [Jasmine Dumas](https://jasdumas.github.io/) has a [`shinyLP`](https://github.com/jasdumas/shinyLP) package to help!
 <img src="shinylp.jpg"></img>
@@ -328,12 +432,12 @@ Bonus: [Jasmine Dumas](https://jasdumas.github.io/) has a [`shinyLP`](https://gi
 
 # Instructions, Please
 
-- <font style="color: red;">Extremely difficult.</font>
-- Not just a <font style="color: red;">vignette</font> of a package (users may not be coders)
--	<font style="color: red;">Written</font> instructions vs. <font style="color: red;">video</font> demos
--	<font style="color: red;">Gif</font> instructions
+- <font style="color: darkorange;">Extremely difficult.</font>
+- Not just a <font style="color: darkorange;">vignette</font> of a package (users may not be coders)
+-	<font style="color: darkorange;">Written</font> instructions vs. <font style="color: darkorange;">video</font> demos, <font style="color: darkorange;">gif</font> instructions
 
-No one will use it if they don't know  <font style="color: red;">**how**</font> to use it!
+No one will use it if they don't know  <font style="color: darkorange;">**how**</font> to use it!
+<img src="start_instruct.png"></img>
 ---
 # Instructions
 
@@ -376,7 +480,7 @@ class: middle,center,inverse
 
 # Old fashioned methods work best
 
-<font style="color: red;">Breakpoints and tracing:</font>
+<font style="color: darkorange;">Breakpoints and tracing:</font>
 
 - `browser()` - I didn't say it was fun
 - `print()` - every single function/observe statement gets a print
@@ -397,8 +501,10 @@ But, doesn't show why something broke.
 
 # Final Tips
 
+## Put on your Software Development Hat!
+
 - Test it first
-    + Unit testing can save you so much headache
+    + Unit testing can save you so much headache (packages: [`testthat`](http://testthat.r-lib.org/), [`shinytest`](https://rstudio.github.io/shinytest/))
     + Run tests on example data
     + Create .Md file of test plots
 - Security
@@ -427,7 +533,7 @@ But, doesn't show why something broke.
 # Thank you! Go forth and shiny!
 <br>
 
-Contact: @ [datapointier](https://twitter.com/datapointier)
+Contact: @ [datapointier](https://twitter.com/datapointier), email: minnier-[at]-ohsu.edu
 
 Github: <https://github.com/jminnier/STARTapp>
 
@@ -435,4 +541,4 @@ Slides available at  <font style="text-transform: lowercase;"><http://bit.ly/shi
 
 Code for slides available at <https://github.com/jminnier/talks>
 
-Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by [Yihui Xie](https://twitter.com/xieyihui?lang=en) with the [Rladies](https://alison.rbind.io/post/r-ladies-slides/) theme by [Alison Hill](https://twitter.com/apreshill).
