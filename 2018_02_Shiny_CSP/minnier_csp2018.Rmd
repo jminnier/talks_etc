@@ -20,6 +20,20 @@ options(htmltools.dir.version = FALSE)
 
 class: center, middle
 
+# This talk:
+
+## 1. Motivation & Uses
+
+## 2. Considerations & Challenges
+
+## 3. Responsibilities
+
+## 4. Tips on Development
+
+---
+class: center, middle
+
+
 # Why Shiny?
 
 ---
@@ -60,20 +74,18 @@ background-size: 50%
 
 ---
 
-# First, a History
+# My motivation
 
-- Started with <font style="color: darkorange;">Tableau</font>
-     + Tableau + R + Bioconductor = :-| (in 2013)
-     + Not easily shared
-- Realization: <font style="color: darkorange;">Shiny</font> can do this!
+### (First step) Help collaborator: app to display <font style="color: darkorange;">one data set</font>
 
-## Motivation: help my collaborator
+- <font style="color: darkorange;">Explore, visualize, share</font> data
+- Generate <font style="color: darkorange;">hypotheses</font>
 
-- Created one site with <font style="color: darkorange;">one data set</font>
+### (Now) Help everyone: general app for <font style="color: darkorange;">uploading/analyzing data sets</font>
 
-## Motivation: help everyone
-
-- Created general site for <font style="color: darkorange;">input data set</font>
+- Implement <font style="color: darkorange;">existing R tools</font> to analyze data
+- <font style="color: darkorange;">Explore, visualize, share</font> data
+- Generate <font style="color: darkorange;">hypotheses</font>
 
 ---
 class: middle, center, inverse
