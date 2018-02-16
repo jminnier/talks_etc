@@ -219,7 +219,7 @@ shinyApp(ui = ui, server = server)
 <font style="color: darkorange;">T</font>ool
 
 <br>
-Github: <https://github.com/jminnier/STARTapp>
+Github: [https://github.com/jminnier/STARTapp](https://github.com/jminnier/STARTapp)
 
 <br>
 <font style="color: green;">
@@ -430,11 +430,15 @@ background-image: url(figs/start_heatmap.png)
 
 #  Room for misuse, possible solutions:
 
-### - Use <font style="color: darkorange;">instructions</font> and data <font style="color: darkorange;">inputs</font> wisely.
-### - Provide <font style="color: darkorange;">examples</font> of when advanced analyses are needed.
-### - Provide <font style="color: darkorange;">examples</font> of statistical write ups based on app's results.
-### - Avoid too many <font style="color: darkorange;">H0s</font>
-### - Avoid <font style="color: darkorange;">p-values</font> (Bayesian posterior probabilities?)
+### Documentation
+#### - Use <font style="color: darkorange;">instructions</font> and data <font style="color: darkorange;">inputs</font> wisely.
+#### - Provide <font style="color: darkorange;">examples</font> of when advanced analyses are needed.
+#### - Provide <font style="color: darkorange;">examples</font> of statistical write ups based on app's results.
+
+### Analysis
+#### - Avoid too many <font style="color: darkorange;">hypothesis tests</font>.
+#### - Avoid <font style="color: darkorange;">p-values</font> (Bayesian posterior probabilities?).
+#### - With collaborators: <font style="color: darkorange;">stay involved!</font>
 
 ---
 
