@@ -245,6 +245,12 @@ DATA = <em>RNA-seq gene expression</em>
 
 ---
 
+# Data distributions, interactive
+
+![start_boxplot](figs/start_boxplots.png)
+
+---
+
 # Analysis results, interactive
 
 ![start_volcano](figs/start_volcano.png)
