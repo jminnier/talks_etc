@@ -266,7 +266,7 @@ class: center
 - Acknowledge the ways the <font style="color: #EB811B;">data are SELECTED</font> prior to formal analyses
 - Do not use the <font style="color: #EB811B;">same data set to both generate and test hypotheses</font>
 - Relatedly, practice <font style="color: #EB811B;">safe EDA</font> (exploratory data analysis)
-    + Use EDA to visualize distributions and look for outliers or possible model misspecifications, but don't choose which hypotheses to test after EDA (unless your study is truly exploratory)
+    + Use EDA to visualize distributions and look for outliers or possible model misspecifications, but [don't choose which hypotheses to test after EDA](https://en.wikipedia.org/wiki/Testing_hypotheses_suggested_by_the_data) (unless your study is truly exploratory)
 - Use <font style="color: #EB811B;">dot plots</font> when you have small samples (not bar plots, or even just boxplots)
 
 ```{r}
