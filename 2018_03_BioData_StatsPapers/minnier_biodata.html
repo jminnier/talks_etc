@@ -67,26 +67,34 @@ class: center
 
 ### Statistical methods &lt;font style="color: #EB811B;"&gt; enable data &lt;/font&gt; to answer scientific Q's
 
-- We want to answer a scientific question, not *just* analyze the data because it looks a certain way (method should not be based on just data structure)
-- Not "Which test should I use?", but "How can the data provide answers?" (statistical test, different type of test, visualization, clustering), i.e. "Where are the differential genes?"
-- Statistical experts are collaborators that
+- We want to &lt;font style="color: #EB811B;"&gt;answer a scientific question&lt;/font&gt;, not *just* analyze the data because it &lt;font style="color: #EB811B;"&gt;looks a certain way&lt;/font&gt; (method should not be based on just data structure)
+
+- Not &lt;font style="color: #EB811B;"&gt;"Which test should I use?"&lt;/font&gt;, but &lt;font style="color: #EB811B;"&gt;"How can the data provide answers?"&lt;/font&gt; (statistical test, different type of test, visualization, clustering), i.e. "Where are the differential genes?"
+
+--
+
+- Statistical experts are &lt;font style="color: #EB811B;"&gt;collaborators&lt;/font&gt; that
     + identify potential sources of &lt;font style="color: #EB811B;"&gt;variability&lt;/font&gt;
     + look for &lt;font style="color: #EB811B;"&gt;"hidden realities"&lt;/font&gt; that might mean the data can't answer your question
     + then develop analytic goals and strategies
+    
 - Statistical planning and collaboration needs to start &lt;font style="color: #EB811B;"&gt;EARLY&lt;/font&gt; (see Rule 3)
+
+### &lt;font style="color: #EB811B;"&gt;Practice Team Science!&lt;/font&gt;
 
 ---
 
 # Example:
 
-2 groups, continuous variable; easy, right?
+### 2 groups, continuous variable; easy, right?
 
-- T-test!
+- &lt;font style="color: #EB811B;"&gt;T-test!(?)&lt;/font&gt;
 
 --
 
-- Not if there's correlation in the data, or confounder(s)
-- What if the data is matched and you want to know if the variables move in the same direction/correlate? 
+- Not if there's &lt;font style="color: #EB811B;"&gt;correlation&lt;/font&gt; in the data, or confounder(s), or mismeasured outcomes
+
+- What if the data are &lt;font style="color: #EB811B;"&gt;matched&lt;/font&gt; and you want to know if the variables move in the same direction/correlate? 
     + T-test is the wrong answer (just estimate correlation!)
 
 ---
@@ -94,17 +102,24 @@ class: center
 # Variability
 
 ### Rule 2: &lt;font style="color: #EB811B;"&gt;Signals always come with noise&lt;/font&gt;
+
 - Statisticians are trained to look for and deal with variability
+
 - Models simplify patterns to &lt;font style="color: #EB811B;"&gt;describe variability&lt;/font&gt; to be able to detect signal
+
 - Big data make these issues worse!
 
 --
 
 ### Rule 7: &lt;font style="color: #EB811B;"&gt;Provide Assessments of Variability&lt;/font&gt;
   - Almost all measurements have uncertainty
+  
   - We CAN estimate it!
+  
   - &lt;font style="color: #EB811B;"&gt;Careful!&lt;/font&gt; need to take into account &lt;font style="color: #EB811B;"&gt;dependencies in data&lt;/font&gt;, or else &lt;font style="color: #EB811B;"&gt;SEs are wrong&lt;/font&gt;
+  
   - Batch effects increase variability
+  
   - Big data is not a substitute for large `\(n\)` (careful when estimating SE and n)
 
 ---
@@ -114,9 +129,13 @@ class: center
 ### What's my `\(n\)`?
 
 - Sample size/power calculations &lt;font style="color: #EB811B;"&gt;depend on variability&lt;/font&gt; 
+
     + biological variability + technical variability + sampling variability
+    
     + but this is often unknown, so consider a range of values
+    
 - Dependence structure in the data `\(\rightarrow\)` this will change the `\(n\)`
+
     + i.e. repeated measures, clustering, family/relatedness, matching
 
 ---
@@ -125,20 +144,30 @@ class: center
 
 ### Rule 3: &lt;font style="color: #EB811B;"&gt;Plan Ahead, Really Ahead&lt;/font&gt;
   - Not just "what should my n be?"
+  
   - Statisticians are trained to look at the &lt;font style="color: #EB811B;"&gt;big picture&lt;/font&gt; and &lt;font style="color: #EB811B;"&gt;look for future problems&lt;/font&gt; in data collection, processing, analysis, inference (can we "design out" the problems?)
   
 ### Rule 4: &lt;font style="color: #EB811B;"&gt;Worry about Data Quality&lt;/font&gt;
   - Pre-processing, data cleaning, how did this data get here?
+  
   - &lt;font style="color: #EB811B;"&gt;Careful!&lt;/font&gt; Why is this data &lt;font style="color: #EB811B;"&gt;missing?&lt;/font&gt;
   
 ---
 
 # Ex: Problems you may not anticipate
 
+### Outcome troubles
+
 - Your outcome measure is &lt;font style="color: #EB811B;"&gt;too variable&lt;/font&gt; or measuring what you want in a biased way
 - &lt;font style="color: #EB811B;"&gt;Too many outcome measures&lt;/font&gt; to detect meaningful effects after multiple testing correction
+
+### Structure in your data
+
 - &lt;font style="color: #EB811B;"&gt;Batch effects&lt;/font&gt;
 - Sample size assuming &lt;font style="color: #EB811B;"&gt;independence&lt;/font&gt; could be incorrect
+
+### Design
+
 - Is your goal hypothesis testing, or is it actually &lt;font style="color: #EB811B;"&gt;estimation?&lt;/font&gt;
 - How to &lt;font style="color: #EB811B;"&gt;randomize, stratify&lt;/font&gt;, identify how to &lt;font style="color: #EB811B;"&gt;remove bias and confounding&lt;/font&gt;?
 
@@ -148,10 +177,12 @@ class: center
   
 ### Rule 5: &lt;font style="color: #EB811B;"&gt;Statistics `\(&gt;\)` Set of Computions&lt;/font&gt;
   - Always &lt;font style="color: #EB811B;"&gt;EXPLAIN&lt;/font&gt; how the methods help you answer the biological question (why did you pick that method?)
+  
   - Code knowlege `\(\neq\)` statistics knowledge
   
 ### Rule 6: &lt;font style="color: #EB811B;"&gt;Keep it Simple (KISS)&lt;/font&gt;
   - Often provide the strongest results, also interpretability
+  
   - &lt;font style="color: #EB811B;"&gt;Careful!&lt;/font&gt; curse of overfitting (not generalizable)
   
 
@@ -183,9 +214,11 @@ class: center
 
 - T-tests assume &lt;font style="color: #EB811B;"&gt;normality of the population&lt;/font&gt;, but in *large* samples the central limit theorem usually "kicks in" since distribution of means are usually normal (but again, unders assumptions! independence!)
     + &lt;font style="color: #EB811B;"&gt;Ratios&lt;/font&gt; or "fold changes" are not normally distributed
+    
 - Wilcoxon test or other common nonparametric tests do not assume normality, but you are font style="color: #EB811B;"&gt;no longer testing means (nor medians, unless specific assumptions are met)&lt;/font&gt;
       + outcome: ordinal or interval
       + can have lower power in small samples, but more conservative
+      
 - Common nonparametric tests often performed by replacing data with &lt;font style="color: #EB811B;"&gt;ranks&lt;/font&gt;
 
 ---
@@ -212,8 +245,11 @@ class: center
 ### Scary but real
 
 - Each test has a &lt;font style="color: #EB811B;"&gt;nonzero (likely 5%) probability of incorrectly claiming significance&lt;/font&gt;
+
 - Each test you make &lt;font style="color: #EB811B;"&gt;increases this error rate&lt;/font&gt;
+
 - Know what type I error and False Discovery Rate (FDR) and Family-Wise Error Rate (FWER) &lt;font style="color: #EB811B;"&gt;mean and what the differences are&lt;/font&gt;
+
 - If you want to relax the error rates, &lt;font style="color: #EB811B;"&gt;you are doing an *exploratory* study&lt;/font&gt;. No denial. Now, replicate!
 
 ---
@@ -286,12 +322,27 @@ CSEE Computer Sci/Electrical Engineering
 
 - [Modern Dive](http://moderndive.com/) An Introduction to Statistical and Data Sciences via R - Chester Ismay &amp; Albert Kim
 - [Biostatistics for Biomedical Research](http://www.fharrell.com/doc/bbr.pdf) - Frank E Harrell Jr &amp; James C Slaughter, from [ClinStat Class at Vanderbilt](http://biostat.mc.vanderbilt.edu/wiki/Main/ClinStat)
+
+
+---
+
+# Thank you!
+&lt;br&gt;
+
+Contact: &lt;i class="fa fa-envelope fa-fw"&gt;&lt;/i&gt; minnier-[at]-ohsu.edu, &lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt; [datapointier](https://twitter.com/datapointier), &lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt; [jminnier](https://github.com/jminnier/)
+
+Slides available at  &lt;font style="text-transform: lowercase;"&gt;&lt;http://bit.ly/biodata-stats&gt;&lt;/font&gt; &lt;br&gt;
+
+Code for slides available at &lt;https://github.com/jminnier/talks_etc&gt;
+
+Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by [Yihui Xie](https://twitter.com/xieyihui?lang=en) with the metropolis theme
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "tomorrow-night-bright",
 "highlightLines": true,
-"highlightLanguage": "r"
+"highlightLanguage": "r",
+"countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
