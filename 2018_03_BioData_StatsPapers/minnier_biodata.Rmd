@@ -209,12 +209,12 @@ class: center
 
 # Example: Parametric vs Non-parametric Tests?
 
-### <font style="color: #EB811B;">Often misunderstood</font>
+### Often <font style="color: #EB811B;">misunderstood</font>
 
 - T-tests assume <font style="color: #EB811B;">normality of the population</font>, but in *large* samples the central limit theorem usually "kicks in" since distribution of means are usually normal (but again, unders assumptions! independence!)
     + <font style="color: #EB811B;">Ratios</font> or "fold changes" are not normally distributed
     
-- Wilcoxon test or other common nonparametric tests do not assume normality, but you are font style="color: #EB811B;">no longer testing means (nor medians, unless specific assumptions are met)</font>
+- Wilcoxon test or other common nonparametric tests do not assume normality, but you are <font style="color: #EB811B;">no longer testing means (nor medians, unless specific assumptions are met)</font>
       + outcome: ordinal or interval
       + can have lower power in small samples, but more conservative
       
