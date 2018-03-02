@@ -213,7 +213,7 @@ class: center
 
 ---
 
-# Example: Parametric vs Non-parametric Tests?
+# Ex: Parametric vs Non-parametric Tests?
 
 ### Often <font style="color: #EB811B;">misunderstood</font>
 
@@ -284,10 +284,16 @@ iris %>%sample_n(40)%>% ggplot(aes(x=Species,y=Petal.Length))+
 
 - Harrel, Frank. [Manuscript Checklist](http://biostat.mc.vanderbilt.edu/wiki/Main/ManuscriptChecklist) on 
 Vanderbilt Biostatistics website.
-- Wicherts, Jelte M., et al. ["Degrees of freedom in planning, running, analyzing, and reporting psychological studies: A checklist to avoid p-hacking."](https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01832/full) Frontiers in Psychology 7 (2016): 1832.
+- Wicherts, Jelte M., et al. ["Degrees of freedom in planning, running, analyzing, and reporting psychological studies: A checklist to avoid p-hacking."](https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01832/full) Frontiers in Psychology 7 (2016): 1832. 
 - Marino, Miguel. ["Reflections from a statistical editor: elements of great manuscripts."](http://www.annfammed.org/content/15/6/504.short) (2017): 504-506.
 - Zinsmeister, Alan R., and Jason T. Connor. ["Ten common statistical errors and how to avoid them."](https://www.nature.com/articles/ajg20085055) The American journal of gastroenterology 103.2 (2008): 262.
 - Altman, Douglas G., and J. Martin Bland. ["Improving doctors' understanding of statistics."](http://www.jstor.org/stable/2983040) Journal of the Royal Statistical Society. Series A (Statistics in Society) (1991): 223-267.
+
+---
+
+background-image: url(phackingchecklist.png)
+
+# Checklist avoid p-hacking, Wicherts et al
 
 ---
 
