@@ -5,7 +5,7 @@ author: Jessica Minnier, PhD <br> Assistant Professor of Biostatistics, OHSU-PSU
 date: March 2, 2018<br><br> Slides available at http://bit.ly/biodata-stats
 output: 
   xaringan::moon_reader:
-    css: ["metropolis", "metropolis-fonts"]
+    css: [default, metropolis, metropolis-fonts]
     lib_dir: libs
     nature:
       highlightStyle: tomorrow-night-bright
