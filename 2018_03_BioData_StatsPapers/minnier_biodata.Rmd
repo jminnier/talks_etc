@@ -24,7 +24,7 @@ library(tidyverse)
 
 knitr::opts_chunk$set(warning=FALSE, message=FALSE, fig.width=10.5, fig.height=4, 
   comment=NA, rows.print=16,echo=FALSE)
-theme_set(theme_minimal(base_size = 24))
+theme_set(theme_bw(base_size = 24))
 ```
 
 
@@ -131,11 +131,17 @@ class: center
 
     + biological variability + technical variability + sampling variability
     
-    + but this is often unknown, so consider a range of values
+    + but this is often unknown, so consider a <font style="color: #EB811B;">range of values</font>
     
 - Dependence structure in the data $\rightarrow$ this will change the $n$
 
     + i.e. repeated measures, clustering, family/relatedness, matching
+
+```{r}
+
+```
+
+
 
 ---
 
@@ -265,7 +271,10 @@ class: center
 
 ```{r}
 iris %>%sample_n(40)%>% ggplot(aes(x=Species,y=Petal.Length))+
-  geom_boxplot(outlier.size = 0)+geom_jitter(width=0.1,aes(color=Species),size=2)
+  geom_boxplot(outlier.size = 0)+
+  #geom_jitter(width=0.1,aes(color=Species),size=2)+
+  ggbeeswarm::geom_quasirandom(aes(color=Species),width = 0.1)+
+  viridis::scale_color_viridis(discrete=TRUE)+ggtitle("Iris Petal Lengths")
 ```
 
 
@@ -324,7 +333,7 @@ CSEE Computer Sci/Electrical Engineering
 
 - [Modern Dive](http://moderndive.com/) An Introduction to Statistical and Data Sciences via R - Chester Ismay & Albert Kim
 - [Biostatistics for Biomedical Research](http://www.fharrell.com/doc/bbr.pdf) - Frank E Harrell Jr & James C Slaughter, from [ClinStat Class at Vanderbilt](http://biostat.mc.vanderbilt.edu/wiki/Main/ClinStat)
-
+- Coursera, edX, Data Camp
 
 ---
 
