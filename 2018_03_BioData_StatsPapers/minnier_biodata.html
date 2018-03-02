@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Statistics: Rules and Pitfalls</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Jessica Minnier, PhD   Assistant Professor of Biostatistics, OHSU-PSU SPH    @datapointier" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Statistics: Rules and Pitfalls
+## Biodata Club
+<div style='float:left'>
+<hr color='#EB811B' size=1px width=720px>
+</div>
+<p><br></p>
+### Jessica Minnier, PhD <br> Assistant Professor of Biostatistics, OHSU-PSU SPH <br> <i class="fa fa-twitter fa-fw"></i> <span class="citation">@datapointier</span>
+### March 2, 2018<br><br> Slides available at <a href="http://bit.ly/biodata-stats" class="uri">http://bit.ly/biodata-stats</a>
+
+---
+
+
+
+
+
+
+# Topics:
+
+## 1. Big Picture: ["Ten Simple Rules for Effective Statistical Practice"](https://doi.org/10.1371/journal.pcbi.1004961)
+Kass et al, 2016, PLOS Computational Biology
+
+## 2. Specific Details: ["Common Statistical Pitfalls in Basic Science Research"](http://europepmc.org/articles/PMC5121512)
+Sullivan et al, 2016, Journal of the American Heart Assocation 
+
+---
+
+class: center
+
+#  What is statistics?
+
+### Statistics is not a &lt;font style="color: #EB811B;"&gt;hurdle&lt;/font&gt; to overcome
+
+### It is not a &lt;font style="color: #EB811B;"&gt;recipe&lt;/font&gt;
+
+--
+
+
+
+###  It is a &lt;font style="color: #EB811B;"&gt; framework for doing science &lt;/font&gt;
+
+###  It is a &lt;font style="color: #EB811B;"&gt; language ("with probability its grammar") &lt;/font&gt;
+
+
+--
+
+### It informs:
+
+###&lt;font style="color: #EB811B;"&gt;design + data generation + model + analysis + inference + design next study&lt;/font&gt;
+
+---
+
+# Rule 1, Methods work *with* the data
+
+### Statistical methods &lt;font style="color: #EB811B;"&gt; enable data &lt;/font&gt; to answer scientific Q's
+
+- We want to answer a scientific question, not *just* analyze the data because it looks a certain way (method should not be based on just data structure)
+- Not "Which test should I use?", but "How can the data provide answers?" (statistical test, different type of test, visualization, clustering), i.e. "Where are the differential genes?"
+- Statistical experts are collaborators that
+    + identify potential sources of &lt;font style="color: #EB811B;"&gt;variability&lt;/font&gt;
+    + look for &lt;font style="color: #EB811B;"&gt;"hidden realities"&lt;/font&gt; that might mean the data can't answer your question
+    + then develop analytic goals and strategies
+- Statistical planning and collaboration needs to start &lt;font style="color: #EB811B;"&gt;EARLY&lt;/font&gt; (see Rule 3)
+
+---
+
+# Example:
+
+2 groups, continuous variable; easy, right?
+
+- T-test!
+
+--
+
+- Not if there's correlation in the data, or confounder(s)
+- What if the data is matched and you want to know if the variables move in the same direction/correlate? 
+    + T-test is the wrong answer (just estimate correlation!)
+
+---
+
+# Variability
+
+### Rule 2: &lt;font style="color: #EB811B;"&gt;Signals always come with noise&lt;/font&gt;
+- Statisticians are trained to look for and deal with variability
+- Models simplify patterns to &lt;font style="color: #EB811B;"&gt;describe variability&lt;/font&gt; to be able to detect signal
+- Big data make these issues worse!
+
+--
+
+### Rule 7: &lt;font style="color: #EB811B;"&gt;Provide Assessments of Variability&lt;/font&gt;
+  - Almost all measurements have uncertainty
+  - We CAN estimate it!
+  - &lt;font style="color: #EB811B;"&gt;Careful!&lt;/font&gt; need to take into account &lt;font style="color: #EB811B;"&gt;dependencies in data&lt;/font&gt;, or else &lt;font style="color: #EB811B;"&gt;SEs are wrong&lt;/font&gt;
+  - Batch effects increase variability
+  - Big data is not a substitute for large `\(n\)` (careful when estimating SE and n)
+
+---
+
+# Example: Sample Size
+
+### What's my `\(n\)`?
+
+- Sample size/power calculations &lt;font style="color: #EB811B;"&gt;depend on variability&lt;/font&gt; 
+    + biological variability + technical variability + sampling variability
+    + but this is often unknown, so consider a range of values
+- Dependence structure in the data `\(\rightarrow\)` this will change the `\(n\)`
+    + i.e. repeated measures, clustering, family/relatedness, matching
+
+---
+
+# Don't Waste Your Money
+
+### Rule 3: &lt;font style="color: #EB811B;"&gt;Plan Ahead, Really Ahead&lt;/font&gt;
+  - Not just "what should my n be?"
+  - Statisticians are trained to look at the &lt;font style="color: #EB811B;"&gt;big picture&lt;/font&gt; and &lt;font style="color: #EB811B;"&gt;look for future problems&lt;/font&gt; in data collection, processing, analysis, inference (can we "design out" the problems?)
+  
+### Rule 4: &lt;font style="color: #EB811B;"&gt;Worry about Data Quality&lt;/font&gt;
+  - Pre-processing, data cleaning, how did this data get here?
+  - &lt;font style="color: #EB811B;"&gt;Careful!&lt;/font&gt; Why is this data &lt;font style="color: #EB811B;"&gt;missing?&lt;/font&gt;
+  
+---
+
+# Ex: Problems you may not anticipate
+
+- Your outcome measure is &lt;font style="color: #EB811B;"&gt;too variable&lt;/font&gt; or measuring what you want in a biased way
+- &lt;font style="color: #EB811B;"&gt;Too many outcome measures&lt;/font&gt; to detect meaningful effects after multiple testing correction
+- &lt;font style="color: #EB811B;"&gt;Batch effects&lt;/font&gt;
+- Sample size assuming &lt;font style="color: #EB811B;"&gt;independence&lt;/font&gt; could be incorrect
+- Is your goal hypothesis testing, or is it actually &lt;font style="color: #EB811B;"&gt;estimation?&lt;/font&gt;
+- How to &lt;font style="color: #EB811B;"&gt;randomize, stratify&lt;/font&gt;, identify how to &lt;font style="color: #EB811B;"&gt;remove bias and confounding&lt;/font&gt;?
+
+---
+
+# Modeling
+  
+### Rule 5: &lt;font style="color: #EB811B;"&gt;Statistics `\(&gt;\)` Set of Computions&lt;/font&gt;
+  - Always &lt;font style="color: #EB811B;"&gt;EXPLAIN&lt;/font&gt; how the methods help you answer the biological question (why did you pick that method?)
+  - Code knowlege `\(\neq\)` statistics knowledge
+  
+### Rule 6: &lt;font style="color: #EB811B;"&gt;Keep it Simple (KISS)&lt;/font&gt;
+  - Often provide the strongest results, also interpretability
+  - &lt;font style="color: #EB811B;"&gt;Careful!&lt;/font&gt; curse of overfitting (not generalizable)
+  
+
+---
+
+# Rule 8: Check Assumptions
+
+### &lt;font style="color: #EB811B;"&gt;The Big Ones:&lt;/font&gt;
+
+- Normality
+- Independence
+- Missing Data (bias related to missingness not at random)
+
+--
+
+### &lt;font style="color: #EB811B;"&gt;Careful!&lt;/font&gt;
+
+- Some models/tests are more &lt;font style="color: #EB811B;"&gt;robust&lt;/font&gt; to deviations than others
+- &lt;font style="color: #EB811B;"&gt;Skewness&lt;/font&gt; can give you very weird results
+- Systematic &lt;font style="color: #EB811B;"&gt;bias&lt;/font&gt; (i.e. in sampling)
+- Visual checks (i.e. plot residuals from a regression)
+- You may need: &lt;font style="color: #EB811B;"&gt;nonparametric&lt;/font&gt; analysis, &lt;font style="color: #EB811B;"&gt;survival&lt;/font&gt; analysis, &lt;font style="color: #EB811B;"&gt;longitudinal&lt;/font&gt; analysis
+
+---
+
+# Example: Parametric vs Non-parametric Tests?
+
+### &lt;font style="color: #EB811B;"&gt;Often misunderstood&lt;/font&gt;
+
+- T-tests assume &lt;font style="color: #EB811B;"&gt;normality of the population&lt;/font&gt;, but in *large* samples the central limit theorem usually "kicks in" since distribution of means are usually normal (but again, unders assumptions! independence!)
+    + &lt;font style="color: #EB811B;"&gt;Ratios&lt;/font&gt; or "fold changes" are not normally distributed
+- Wilcoxon test or other common nonparametric tests do not assume normality, but you are font style="color: #EB811B;"&gt;no longer testing means (nor medians, unless specific assumptions are met)&lt;/font&gt;
+      + outcome: ordinal or interval
+      + can have lower power in small samples, but more conservative
+- Common nonparametric tests often performed by replacing data with &lt;font style="color: #EB811B;"&gt;ranks&lt;/font&gt;
+
+---
+
+# Practice Sound Science
+
+### Rule 9: &lt;font style="color: #EB811B;"&gt;When Possible, Replicate!&lt;/font&gt;
+
+- P-hacking, overtesting, overselecting, overfitting --&gt; results cannot stand the test of time (replication)
+- Replicate using &lt;font style="color: #EB811B;"&gt;new data&lt;/font&gt;
+- Know your &lt;font style="color: #EB811B;"&gt;limitations&lt;/font&gt; (small sample, biased sampling, unmeasured confounding) and remove those issues next time. Learn from your study!
+
+### Rule 10: &lt;font style="color: #EB811B;"&gt;Make Your Analysis Reproducible&lt;/font&gt;
+  
+- &lt;font style="color: #EB811B;"&gt;Minimum standard&lt;/font&gt;
+- Given same data, description of analysis --&gt; reproduce all results/tables/figures
+- Use reproducible code tools (i.e R Markdown), version control (i.e. git)
+
+---
+
+# Example: Multiple testing
+
+
+### Scary but real
+
+- Each test has a &lt;font style="color: #EB811B;"&gt;nonzero (likely 5%) probability of incorrectly claiming significance&lt;/font&gt;
+- Each test you make &lt;font style="color: #EB811B;"&gt;increases this error rate&lt;/font&gt;
+- Know what type I error and False Discovery Rate (FDR) and Family-Wise Error Rate (FWER) &lt;font style="color: #EB811B;"&gt;mean and what the differences are&lt;/font&gt;
+- If you want to relax the error rates, &lt;font style="color: #EB811B;"&gt;you are doing an *exploratory* study&lt;/font&gt;. No denial. Now, replicate!
+
+---
+
+# Misc. Errors to Avoid
+
+
+
+- Acknowledge the ways the &lt;font style="color: #EB811B;"&gt;data are SELECTED&lt;/font&gt; prior to formal analyses
+- Do not use the &lt;font style="color: #EB811B;"&gt;same data set to both generate and test hypotheses&lt;/font&gt;
+- Relatedly, practice &lt;font style="color: #EB811B;"&gt;safe EDA&lt;/font&gt; (exploratory data analysis)
+    + Use EDA to visualize distributions and look for outliers or possible model misspecifications, but don't choose which hypotheses to test after EDA (unless your study is truly exploratory)
+- Use &lt;font style="color: #EB811B;"&gt;dot plots&lt;/font&gt; when you have small samples (not bar plots, or even just boxplots)
+
+![](minnier_biodata_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+
+
+---
+
+# Similar Articles/References
+
+- Harrel, Frank. [Manuscript Checklist](http://biostat.mc.vanderbilt.edu/wiki/Main/ManuscriptChecklist) on 
+Vanderbilt Biostatistics website.
+- Wicherts, Jelte M., et al. ["Degrees of freedom in planning, running, analyzing, and reporting psychological studies: A checklist to avoid p-hacking."](https://www.frontiersin.org/articles/10.3389/fpsyg.2016.01832/full) Frontiers in Psychology 7 (2016): 1832.
+- Marino, Miguel. ["Reflections from a statistical editor: elements of great manuscripts."](http://www.annfammed.org/content/15/6/504.short) (2017): 504-506.
+- Zinsmeister, Alan R., and Jason T. Connor. ["Ten common statistical errors and how to avoid them."](https://www.nature.com/articles/ajg20085055) The American journal of gastroenterology 103.2 (2008): 262.
+- Altman, Douglas G., and J. Martin Bland. ["Improving doctors' understanding of statistics."](http://www.jstor.org/stable/2983040) Journal of the Royal Statistical Society. Series A (Statistics in Society) (1991): 223-267.
+
+---
+
+# Resources on Campus
+
+Biostatistics and Design Program (BDP)
+- Email bdp@ohsu.edu
+- Campus-wide (University Shared Resource)
+- Drop in hours on Tuesday
+- Can use Dean’s award or USR awards to pay for core services for grants
+- https://www.ohsu.edu/xd/research/research-cores/bdp.cfm
+
+Knight Cancer Institute Biostatistics Shared Resource (BSR)
+- For Knight Cancer Institute members/investigators
+- Pre-award help is subsidized
+- Submit project request: https://bridge.ohsu.edu/research/knight/resources/BSR/SitePages/Project%20Requests.aspx
+
+West Campus: BBU Biostatistics and Bioinformatics Unit
+- Email Suzi Fei
+- http://www.ohsu.edu/xd/research/centers-institutes/onprc/research-services/research-support/Biostatistics-a-Bioinformatics.cfm
+
+---
+
+# Courses at OHSU
+
+School of Public Health Courses
+- BSTA 523 Design of Experiments
+    + Statistical principles of research design and analysis
+- PHPM 524 Introduction to Biostatistics
+- PHPM 525/BSTA 511 Biostatistics I: Estimation and Hypothesis Testing in Applied Biostatistics
+
+Human Investigations Program (HIP)
+- HIP 528 and 529: Applied Biostatistics I and II
+
+CSEE Computer Sci/Electrical Engineering
+- Data Science classes
+- MATH 530/630 Probability &amp; Statistical Inference for Scientists and Engineers
+
+
+---
+
+# Learn Statistics
+
+- [Modern Dive](http://moderndive.com/) An Introduction to Statistical and Data Sciences via R - Chester Ismay &amp; Albert Kim
+- [Biostatistics for Biomedical Research](http://www.fharrell.com/doc/bbr.pdf) - Frank E Harrell Jr &amp; James C Slaughter, from [ClinStat Class at Vanderbilt](http://biostat.mc.vanderbilt.edu/wiki/Main/ClinStat)
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "tomorrow-night-bright",
+"highlightLines": true,
+"highlightLanguage": "r"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
