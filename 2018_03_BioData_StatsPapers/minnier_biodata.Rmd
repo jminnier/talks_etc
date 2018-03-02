@@ -113,9 +113,7 @@ class: center
 --
 
 ### Rule 7: <font style="color: #EB811B;">Provide Assessments of Variability</font>
-  - Almost all measurements have uncertainty
-  
-  - We CAN estimate it!
+  - Almost all measurements have uncertainty (estimate it!)
   
   - <font style="color: #EB811B;">Careful!</font> need to take into account <font style="color: #EB811B;">dependencies in data</font>, or else <font style="color: #EB811B;">SEs are wrong</font>
   
