@@ -75,14 +75,14 @@ theme_set(theme_bw(base_size = 24))
 
 ## Approach
 
-- Implement as a <font style="color: #EB811B;">`LearnR` Tutorial</font>, but used with didactic teaching
-- `LearnR`: uses <font style="color: #EB811B;">Shiny</font> to build interactive R Markdown style workbooks
+- Implement as a <font style="color: #EB811B;">LearnR Tutorial</font>, but used with didactic teaching
+- LearnR: uses <font style="color: #EB811B;">Shiny</font> to build interactive R Markdown style workbooks
 - Can be deployed as a website, or on student’s computer (requires R/Rstudio)
 
 ## Practicalities
 
 - <font style="color: #EB811B;">Categorical data</font> session and <font style="color: #EB811B;">continuous data</font> session
-- Hosted on github as a package on Github `laderast/DSIExplore` (https://github.com/laderast/dsiexplore)
+- Hosted on github as a package on Github <font style="color: #EB811B;">laderast/DSIExplore</font> (https://github.com/laderast/dsiexplore)
 - Hosted workbooks on shinyapps.io for real time interactivity
 
 ---
@@ -160,7 +160,7 @@ class: clear
 
 # Survey Results
 
-```{r}
+```{r, fig.height=3.5}
 res_data <- read_csv(here::here("2018_07_JSM_InteractiveLearning","odsi_post_clean.csv")) %>% 
   janitor::clean_names() %>% 
   rename(eda_score_pre = please_rate_your_level_of_ability_for_eda_prior_to_this_session,
