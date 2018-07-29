@@ -215,7 +215,7 @@ ggplot(res_data_long,aes(value,fill=factor(value)))+
 # Future Work and Adaptations
 
 - Expand materials with more advanced statistical concepts
-- Longer workshops -> more interactive material, more topics
+- Longer workshops $\longrightarrow$ more interactive material, more topics
 - Determine which interactive explorations are most effective
 
 ## Introduction to Visualization/Data Literacy
