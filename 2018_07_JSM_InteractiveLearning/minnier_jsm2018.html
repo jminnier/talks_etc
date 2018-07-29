@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mixing Active Learning and Lecturing: Using Interactive Visualization as a Teaching Tool</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Jessica Minnier, PhD &amp; Ted Laderas, PhD  Oregon Health &amp; Science University    @datapointier" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Mixing Active Learning and Lecturing: Using Interactive Visualization as a Teaching Tool
+## JSM 2018
+<div style='float:left'>
+<hr color='#EB811B' size=1px width=720px>
+</div>
+<p><br></p>
+### Jessica Minnier, PhD &amp; Ted Laderas, PhD <br>Oregon Health &amp; Science University <br> <i class="fa fa-twitter fa-fw"></i> <span class="citation">@datapointier</span>
+### July 29, 2018<br><br> Slides available at <a href="http://bit.ly/jsm-minnier" class="uri">http://bit.ly/jsm-minnier</a>
+
+---
+
+
+
+
+
+# Setting
+
+## &lt;font style="color: #EB811B;"&gt;OHSU Data Science Institute&lt;/font&gt; 
+
+- 2 Day workshop
+- 3 Hours for &lt;font style="color: #EB811B;"&gt;"Introduction to Statistics and Data Exploration"&lt;/font&gt;
+- Aim of DSI: "bring together researchers, librarians, and information specialists for formal training on key topics in data science"
+
+## Audience
+
+- Librarians, information scientists, researchers
+- Very little mathematical/programming background
+- &lt;font style="color: #EB811B;"&gt;Heterogeneous background&lt;/font&gt; in science and research
+
+---
+
+# Goals
+
+
+## Statistical Concepts
+
+- Start with the &lt;font style="color: #EB811B;"&gt;didactics&lt;/font&gt;
+- Use &lt;font style="color: #EB811B;"&gt;interactive visualizations&lt;/font&gt; to illustrate statistical concepts
+
+## Data Exploration
+
+- Empower students to &lt;font style="color: #EB811B;"&gt;explore data (no fear!)&lt;/font&gt;
+- Encourage understanding of relationships of data
+
+## Interactivity
+
+- Interactive plots for exploration of &lt;font style="color: #EB811B;"&gt;multi-variable relationships&lt;/font&gt;
+- Include some &lt;font style="color: #EB811B;"&gt;coding exercises&lt;/font&gt; (as bonus material)
+
+
+---
+
+# Methods
+
+## Approach
+
+- Implement as a &lt;font style="color: #EB811B;"&gt;`LearnR` Tutorial&lt;/font&gt;, but used with didactic teaching
+- `LearnR`: uses &lt;font style="color: #EB811B;"&gt;Shiny&lt;/font&gt; to build interactive R Markdown style workbooks
+- Can be deployed as a website, or on student’s computer (requires R/Rstudio)
+
+## Practicalities
+
+- &lt;font style="color: #EB811B;"&gt;Categorical data&lt;/font&gt; session and &lt;font style="color: #EB811B;"&gt;continuous data&lt;/font&gt; session
+- Hosted on github as a package on Github `laderast/DSIExplore` (https://github.com/laderast/dsiexplore)
+- Hosted workbooks on shinyapps.io for real time interactivity
+
+---
+
+# Interactivity
+
+
+- Didactic lessons embedded in workbooks with interactive components
+- &lt;font style="color: #EB811B;"&gt;Interactive sliders, dropdown options&lt;/font&gt; allow interaction with data filtering and analysis
+- Interactive code teaches &lt;font style="color: #EB811B;"&gt;effect of changing code components&lt;/font&gt; on visualizations/analyses
+
+
+
+
+
+---
+class: clear
+
+![](ss_learningobj.png)
+
+---
+class: clear
+
+![](ss_simpsonsparadox.png)
+
+---
+class:clear
+
+![](ss_chisquare.png)
+
+---
+class: clear
+
+![](continuous_data.gif)
+
+
+
+
+---
+
+# Conclusions &amp; Results
+
+
+- LearnR package + Shiny in R → interactive workbooks
+- Students were &lt;font style="color: #EB811B;"&gt;empowered to learn&lt;/font&gt;
+- Students liked the visualizations
+    + “Very well done and methodical treatment - the sliders were great!”
+- Students felt engaged with the subject
+    + “Explanation of key statistical concepts was effective and really made me want to learn more.”
+- Pre/Post-workshop survey: &lt;font style="color: #EB811B;"&gt;95% of learners felt they gained practical knowledge (n=22)&lt;/font&gt;
+
+---
+
+# Survey Results
+
+![](minnier_jsm2018_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;![](minnier_jsm2018_files/figure-html/unnamed-chunk-1-2.png)&lt;!-- --&gt;
+
+
+
+
+
+---
+
+# Impact
+
+## Pros:
+
+- &lt;font style="color: #EB811B;"&gt;Accessible&lt;/font&gt; to beginners
+- Mathematical concepts are more &lt;font style="color: #EB811B;"&gt;memorable&lt;/font&gt;
+- Sparks &lt;font style="color: #EB811B;"&gt;discussions&lt;/font&gt;
+- Empowers and engages students in &lt;font style="color: #EB811B;"&gt;scientific discovery/analysis&lt;/font&gt;
+
+## Cons:
+
+- &lt;font style="color: #EB811B;"&gt;Advanced&lt;/font&gt; students may require more challenging activities
+- Visualizations must be tested for &lt;font style="color: #EB811B;"&gt;effectiveness&lt;/font&gt;
+- Requires &lt;font style="color: #EB811B;"&gt;programming&lt;/font&gt; skills to implement
+
+---
+
+# Future Work and Adaptations
+
+- Expand materials with more advanced statistical concepts
+- Longer workshops -&gt; more interactive material, more topics
+- Determine which interactive explorations are most effective
+
+## Introduction to Visualization/Data Literacy
+
+- Extension of this work: https://tladeras.shinyapps.io/dataLiteracy/
+- [HMSP410, Health Informatics](https://laderast.github.io/HSMP410/) for OHSU-PSU School of Public Health (co-taught by Ted Laderas and Bill Hersh)
+
+---
+
+# Further Information
+
+
+- eCOTS e-poster: https://www.causeweb.org/cause/ecots/ecots18/posters/3-03
+- Categorical Data: https://tladeras.shinyapps.io/categoricalData/
+- Continuous Data: https://minnier.shinyapps.io/ODSI_continuousData/ 
+- LearnR package: https://rstudio.github.io/learnr/ 
+- DSIexplore LearnR package: https://github.com/laderast/DSIExplore 
+
+
+
+---
+
+# Thank you!
+&lt;br&gt;
+
+Ted Laderas, PhD &lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt; [laderas](https://twitter.com/laderas), &lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt; [laderast](https://github.com/laderast/) &lt;i class="fa fa-globe fa-fw"&gt;&lt;/i&gt; https://laderast.github.io/ 
+
+Contact me: &lt;i class="fa fa-envelope fa-fw"&gt;&lt;/i&gt; minnier-[at]-ohsu.edu, &lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt; [datapointier](https://twitter.com/datapointier), &lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt; [jminnier](https://github.com/jminnier/)
+
+Slides available at  &lt;font style="text-transform: lowercase;"&gt;&lt;http://bit.ly/jsm-minnier&gt;&lt;/font&gt; &lt;br&gt;
+
+Code for slides available at &lt;https://github.com/jminnier/talks_etc&gt;
+
+Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by [Yihui Xie](https://twitter.com/xieyihui?lang=en) with the metropolis theme
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "tomorrow-night-bright",
+"highlightLines": true,
+"highlightLanguage": "r",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
