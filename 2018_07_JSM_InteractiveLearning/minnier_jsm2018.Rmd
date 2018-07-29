@@ -101,26 +101,43 @@ theme_set(theme_bw(base_size = 24))
 ---
 class: clear
 
-![](ss_learningobj.png)
+![](ss1_learningobj.png)
 
 ---
 class: clear
 
-![](ss_simpsonsparadox.png)
+![](ss2_simpsonsparadox.png)
 
 ---
 class:clear
 
-![](ss_chisquare.png)
+![](ss3_chisquare.png)
+
 
 ---
 class: clear
 
-![](continuous_data.gif)
+![](ss4_correlation.png)
 
+---
+class: clear
 
+![](ss5_correlation2.png)
 
+---
+class: clear
 
+![](ss6_correlation3.png)
+
+---
+class: clear
+
+![](ss7_coding.png)
+
+---
+class: clear
+
+![](ss8_ttest_sample.png)
 ---
 
 # Conclusions & Results
