@@ -100,8 +100,11 @@ theme_set(theme_bw(base_size = 24))
 
 ---
 class: clear
+.font70[https://tladeras.shinyapps.io/categoricalData/]
 
 ![](ss1_learningobj.png)
+
+
 
 ---
 class: clear
@@ -116,6 +119,8 @@ class:clear
 
 ---
 class: clear
+
+.font70[https://minnier.shinyapps.io/ODSI_continuousData/]
 
 ![](ss4_correlation.png)
 
@@ -149,7 +154,7 @@ class: clear
     + “Very well done and methodical treatment - the sliders were great!”
 - Students felt engaged with the subject
     + “Explanation of key statistical concepts was effective and really made me want to learn more.”
-- Pre/Post-workshop survey: <font style="color: #EB811B;">95% of learners felt they gained practical knowledge (n=22)</font>
+- Pre/Post-workshop survey: <font style="color: #EB811B;">95% of learners (survey responders) felt they gained practical knowledge (n=22)</font>
 
 ---
 
