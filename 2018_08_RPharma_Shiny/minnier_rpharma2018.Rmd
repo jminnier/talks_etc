@@ -143,10 +143,10 @@ DATA = <em>RNA-seq gene expression</em>
 ![](figs/combo1.png)
 
 
----
-class: clear
+<!-- --- -->
+<!-- class: clear -->
 
-![](figs/combo3.png)
+<!-- ![](figs/combo3.png) -->
 
 ---
 class: clear
@@ -218,7 +218,7 @@ class: inverse, middle, center
 - R Shiny can be a tool to creatively interact with data
 - Improve collaboration and promote your methods
 - Avoid repetitive analyses and visualizations
-- Instructions are vital
+- Instructions, data checks/QA are vital
 
 ## START
 
