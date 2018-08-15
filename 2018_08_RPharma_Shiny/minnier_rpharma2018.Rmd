@@ -45,7 +45,7 @@ theme_set(theme_bw(base_size = 24))
 <img src="figs/BSRteam2016.jpg" width="40%" height="40%"><img src="figs/BSRteam2017.jpg" width="55%" height="55%">
 
 
----
+<!---
 
 # Some Examples
 
@@ -60,7 +60,7 @@ Drug development
 ## Adaptive Bayesian Design
 
 Clinical Trials Design
-
+--->
 ---
 
 class: inverse, center, middle
@@ -76,24 +76,6 @@ background-position: center
 # Motivation
 
 ## Too many spreadsheets!
-
----
-
-# Motivation
-
-<font style="color: darkorange;">"Can you make me this plot? Ok now this plot? Wait one more plot..."</font>
-
-<img src="figs/heatmap_start.png" width="60%" height="60%"></img>
-
----
-
-background-image: url(figs/toomanyplots.png)
-background-repeat: repeat-x
-
-
-# Motivation
-
-## Too many plots!
 
 ---
 
@@ -120,13 +102,13 @@ DATA = <em>RNA-seq gene expression</em>
 
 
 
----
+<!---
 
 # Very quick tour
 
 <img src="figs/screencast2_gif.png" />
 
----
+--->
 
 # Very quick tour
 
@@ -146,7 +128,7 @@ DATA = <em>RNA-seq gene expression</em>
 
 ---
 
-# Data exploration, interactive
+# Data Exploration: Interactive
 
 ![](figs/start_scatterplot.png)
 ---
@@ -242,7 +224,8 @@ class: inverse, middle, center
 ## START
 
 - working on extensions to single-cell and proteomics specific analyses and visualizations
-- welcome collaboration!
+- (one day) switch to use modules
+- we welcome collaboration!
 
 ---
 
@@ -251,9 +234,7 @@ class: inverse, middle, center
 
 Contact me: <i class="fa fa-envelope fa-fw"></i> minnier-[at]-ohsu.edu, <i class="fa fa-twitter fa-fw"></i> [datapointier](https://twitter.com/datapointier), <i class="fa fa-github fa-fw"></i> [jminnier](https://github.com/jminnier/)
 
-START:
-- Github: [https://github.com/jminnier/STARTapp](https://github.com/jminnier/STARTapp)
-- Shinyapps.io: [https://kcvi.shinyapps.io/START/](https://kcvi.shinyapps.io/START/)
+START: http://jessicaminnier.com/STARTapp/
 
 RELATED SLIDES ON SHINY (Challenges/Responsibilities):
 - Data Day Texas <http://bit.ly/shiny-ddtx>
