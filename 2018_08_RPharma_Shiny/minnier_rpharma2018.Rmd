@@ -72,10 +72,9 @@ class: inverse, center, middle
 
 background-image: url(figs/spreadsheetcombo.png)
 background-position: center
+background-size: 120%
 
-# Motivation
-
-## Too many spreadsheets!
+# Motivation: Too many spreadsheets!
 
 ---
 
@@ -100,7 +99,7 @@ DATA = <em>RNA-seq gene expression</em>
 
 <img src="figs/spreadsheet_annotated.png"/>
 
-
+---
 
 <!---
 
