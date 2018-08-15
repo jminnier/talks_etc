@@ -1,0 +1,267 @@
+---
+title: "Shiny Apps in Genomics and Trials"
+subtitle: R/Pharma 2018<div style='float:left'><hr color='#EB811B' size=1px width=720px></div><br>
+author: Jessica Minnier, PhD <br>Oregon Health & Science University <br> <i class="fa fa-twitter fa-fw"></i> @datapointier
+date: August 16, 2018<br><br> Slides available at http://bit.ly/rpharma-minnier
+output: 
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: tomorrow-night-bright
+      highlightLines: true
+      highlightLanguage: r
+      countIncrementalSlides: false
+    includes:
+      in_header: ../header.html      
+    #css: ../jminnier.css
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+library(tidyverse)
+
+knitr::opts_chunk$set(
+  warning=FALSE, 
+  message=FALSE, 
+  fig.width=10.5, 
+  fig.height=4, 
+  comment=NA, 
+  rows.print=16,
+  echo=FALSE)
+theme_set(theme_bw(base_size = 24))
+```
+
+
+
+
+# Our Team
+
+## Biostatistics Shared Resoure
+
+
+<img src="figs/knightlogo.jpg" width="40%" height="40%"><br>
+<img src="figs/BSRteam2016.jpg" width="40%" height="40%"><img src="figs/BSRteam2017.jpg" width="55%" height="55%">
+
+
+---
+
+# Some Examples
+
+## START: <font style="color: darkorange;">S</font>hiny <font style="color: darkorange;">T</font>ranscriptome<font style="color: darkorange;"> A</font>nalysis<font style="color: darkorange;"> R</font>esource<font style="color: darkorange;"> T</font>ool
+
+RNA-seq/Microarray analysis and visualization
+
+## Drug Combination in Cancer
+
+Drug development
+
+## Adaptive Bayesian Design
+
+Clinical Trials Design
+
+---
+
+class: inverse, center, middle
+
+
+# Why Shiny?
+
+---
+
+background-image: url(figs/spreadsheetcombo.png)
+background-position: center
+
+# Motivation
+
+## Too many spreadsheets!
+
+---
+
+# Motivation
+
+<font style="color: darkorange;">"Can you make me this plot? Ok now this plot? Wait one more plot..."</font>
+
+<img src="figs/heatmap_start.png" width="60%" height="60%"></img>
+
+---
+
+background-image: url(figs/toomanyplots.png)
+background-repeat: repeat-x
+
+
+# Motivation
+
+## Too many plots!
+
+---
+
+# An example: START
+
+
+<font style="color: darkorange;">S</font>hiny 
+<font style="color: darkorange;">T</font>ranscriptome
+<font style="color: darkorange;">A</font>nalysis
+<font style="color: darkorange;">R</font>esource
+<font style="color: darkorange;">T</font>ool
+
+<br>
+
+Github: <font style="color: darkorange;">https://github.com/jminnier/STARTapp/</font>
+<br>
+Shinyapps.io: <font style="color: darkorange;"> https://kcvi.shinyapps.io/START/</font>
+<br>
+<font style="color: green;">
+DATA = <em>RNA-seq gene expression</em>
+</font>
+
+<img src="figs/spreadsheet_annotated.png"/>
+
+
+
+---
+
+# Very quick tour
+
+<img src="figs/screencast2_gif.png" />
+
+---
+
+# Very quick tour
+
+<img src="figs/screencast2.gif" />
+
+<!--- https://gist.github.com/dergachev/4627207 for screencast to gif --->
+
+---
+
+# Data Input
+
+- Input data ~ multiple formats: <font style="color: darkorange;">Special input formats</font>
+- Interface with other software? <font style="color: darkorange;">Export special formats</font>
+
+<img src="figs/start_input_options.png"></img>
+<img src="figs/start_dropdown_analysis.png" height="35%" width="35%"></img>
+
+---
+
+# Data exploration, interactive
+
+![](figs/start_scatterplot.png)
+---
+
+# Drug Development
+
+## Combination Therapy $\rightarrow$ Visualize drug synergy
+
+*BSR*: Andy Kaempf, MS & Tomi Mori, PhD<br>
+*Knight Cancer Leukemia Team*:  Steve Kurtz, PhD & Chris Eide, B.A.
+
+
+![](figs/combo1.png)
+
+
+---
+class: clear
+
+![](figs/combo3.png)
+
+---
+class: clear
+
+![](figs/combo4.png)
+
+
+---
+
+# Clinical Trials Methods
+
+## Bayesian Adaptive Design
+
+$\rightarrow$ An Adaptive Bayesian Sequential Design for Determining the Subject-Specific Optimal Treatment Length
+(manuscript in progress)
+
+https://bayesiantrial.shinyapps.io/Bayesian12/
+
+*BSR*: Yiyi Chen, PhD; Lina Gao, PhD<br>
+*OHSU*: Zunqiu Chen, MS; Matthew F Halsey, PhD; Jodi Lapidus, PhD
+
+- Select directions and weights of various outcomes
+- Determine potential length of treatment to be evaluated
+- Upload data
+- Potential actions: Escalate; De-escalate; Stay
+
+![](figs/bayes0.png)
+---
+
+# General App & Trial Specific
+
+![](figs/bayes2.png)
+
+---
+
+class:clear
+
+![](figs/bayes1.png)
+
+
+
+---
+class: inverse, middle, center
+# Tips/Lessons Learned
+
+---
+
+# Present QA plots up front
+
+<img src="figs/start_qa.png" width="800px">
+
+---
+
+# Provide Instructions!
+
+
+<img src="figs/start_instruct.png" width="800px">
+
+---
+
+# Old fasioned debugging/logging works
+
+![](figs/start_error.png)
+
+---
+
+# Conclusions
+
+- R Shiny can be a tool to creatively interact with data
+- Improve collaboration and promote your methods
+- Avoid repetitive analyses and visualizations
+- Instructions are vital
+
+## START
+
+- working on extensions to single-cell and proteomics specific analyses and visualizations
+- welcome collaboration!
+
+---
+
+# Thank you!
+<br>
+
+Contact me: <i class="fa fa-envelope fa-fw"></i> minnier-[at]-ohsu.edu, <i class="fa fa-twitter fa-fw"></i> [datapointier](https://twitter.com/datapointier), <i class="fa fa-github fa-fw"></i> [jminnier](https://github.com/jminnier/)
+
+START:
+- Github: [https://github.com/jminnier/STARTapp](https://github.com/jminnier/STARTapp)
+- Shinyapps.io: [https://kcvi.shinyapps.io/START/](https://kcvi.shinyapps.io/START/)
+
+RELATED SLIDES ON SHINY (Challenges/Responsibilities):
+- Data Day Texas <http://bit.ly/shiny-ddtx>
+- CSP: <http://bit.ly/shiny-csp18>
+
+Slides available at  <font style="text-transform: lowercase;"><http://bit.ly/rpharma-minnier></font> <br>
+
+Code for slides available at <https://github.com/jminnier/talks_etc>
+
+Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by [Yihui Xie](https://twitter.com/xieyihui?lang=en) with the metropolis theme
+

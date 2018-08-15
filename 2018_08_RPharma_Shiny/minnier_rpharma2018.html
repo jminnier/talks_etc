@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shiny Apps in Genomics and Trials</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Jessica Minnier, PhD  Oregon Health &amp; Science University    @datapointier" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Shiny Apps in Genomics and Trials
+## R/Pharma 2018
+<div style='float:left'>
+<hr color='#EB811B' size=1px width=720px>
+</div>
+<p><br></p>
+### Jessica Minnier, PhD <br>Oregon Health &amp; Science University <br> <i class="fa fa-twitter fa-fw"></i> <span class="citation">@datapointier</span>
+### August 16, 2018<br><br> Slides available at <a href="http://bit.ly/rpharma-minnier" class="uri">http://bit.ly/rpharma-minnier</a>
+
+---
+
+
+
+
+
+
+
+# Our Team
+
+## Biostatistics Shared Resoure
+
+
+&lt;img src="figs/knightlogo.jpg" width="40%" height="40%"&gt;&lt;br&gt;
+&lt;img src="figs/BSRteam2016.jpg" width="40%" height="40%"&gt;&lt;img src="figs/BSRteam2017.jpg" width="55%" height="55%"&gt;
+
+
+---
+
+# Some Examples
+
+## START: &lt;font style="color: darkorange;"&gt;S&lt;/font&gt;hiny &lt;font style="color: darkorange;"&gt;T&lt;/font&gt;ranscriptome&lt;font style="color: darkorange;"&gt; A&lt;/font&gt;nalysis&lt;font style="color: darkorange;"&gt; R&lt;/font&gt;esource&lt;font style="color: darkorange;"&gt; T&lt;/font&gt;ool
+
+RNA-seq/Microarray analysis and visualization
+
+## Drug Combination in Cancer
+
+Drug development
+
+## Adaptive Bayesian Design
+
+Clinical Trials Design
+
+---
+
+class: inverse, center, middle
+
+
+# Why Shiny?
+
+---
+
+background-image: url(figs/spreadsheetcombo.png)
+background-position: center
+
+# Motivation
+
+## Too many spreadsheets!
+
+---
+
+# Motivation
+
+&lt;font style="color: darkorange;"&gt;"Can you make me this plot? Ok now this plot? Wait one more plot..."&lt;/font&gt;
+
+&lt;img src="figs/heatmap_start.png" width="60%" height="60%"&gt;&lt;/img&gt;
+
+---
+
+background-image: url(figs/toomanyplots.png)
+background-repeat: repeat-x
+
+
+# Motivation
+
+## Too many plots!
+
+---
+
+# An example: START
+
+
+&lt;font style="color: darkorange;"&gt;S&lt;/font&gt;hiny 
+&lt;font style="color: darkorange;"&gt;T&lt;/font&gt;ranscriptome
+&lt;font style="color: darkorange;"&gt;A&lt;/font&gt;nalysis
+&lt;font style="color: darkorange;"&gt;R&lt;/font&gt;esource
+&lt;font style="color: darkorange;"&gt;T&lt;/font&gt;ool
+
+&lt;br&gt;
+
+Github: &lt;font style="color: darkorange;"&gt;https://github.com/jminnier/STARTapp/&lt;/font&gt;
+&lt;br&gt;
+Shinyapps.io: &lt;font style="color: darkorange;"&gt; https://kcvi.shinyapps.io/START/&lt;/font&gt;
+&lt;br&gt;
+&lt;font style="color: green;"&gt;
+DATA = &lt;em&gt;RNA-seq gene expression&lt;/em&gt;
+&lt;/font&gt;
+
+&lt;img src="figs/spreadsheet_annotated.png"/&gt;
+
+
+
+---
+
+# Very quick tour
+
+&lt;img src="figs/screencast2_gif.png" /&gt;
+
+---
+
+# Very quick tour
+
+&lt;img src="figs/screencast2.gif" /&gt;
+
+&lt;!--- https://gist.github.com/dergachev/4627207 for screencast to gif ---&gt;
+
+---
+
+# Data Input
+
+- Input data ~ multiple formats: &lt;font style="color: darkorange;"&gt;Special input formats&lt;/font&gt;
+- Interface with other software? &lt;font style="color: darkorange;"&gt;Export special formats&lt;/font&gt;
+
+&lt;img src="figs/start_input_options.png"&gt;&lt;/img&gt;
+&lt;img src="figs/start_dropdown_analysis.png" height="35%" width="35%"&gt;&lt;/img&gt;
+
+---
+
+# Data exploration, interactive
+
+![](figs/start_scatterplot.png)
+---
+
+# Drug Development
+
+## Combination Therapy `\(\rightarrow\)` Visualize drug synergy
+
+*BSR*: Andy Kaempf, MS &amp; Tomi Mori, PhD&lt;br&gt;
+*Knight Cancer Leukemia Team*:  Steve Kurtz, PhD &amp; Chris Eide, B.A.
+
+
+![](figs/combo1.png)
+
+
+---
+class: clear
+
+![](figs/combo3.png)
+
+---
+class: clear
+
+![](figs/combo4.png)
+
+
+---
+
+# Clinical Trials Methods
+
+## Bayesian Adaptive Design
+
+`\(\rightarrow\)` An Adaptive Bayesian Sequential Design for Determining the Subject-Specific Optimal Treatment Length
+(manuscript in progress)
+
+https://bayesiantrial.shinyapps.io/Bayesian12/
+
+*BSR*: Yiyi Chen, PhD; Lina Gao, PhD&lt;br&gt;
+*OHSU*: Zunqiu Chen, MS; Matthew F Halsey, PhD; Jodi Lapidus, PhD
+
+- Select directions and weights of various outcomes
+- Determine potential length of treatment to be evaluated
+- Upload data
+- Potential actions: Escalate; De-escalate; Stay
+
+![](figs/bayes0.png)
+---
+
+# General App &amp; Trial Specific
+
+![](figs/bayes2.png)
+
+---
+
+class:clear
+
+![](figs/bayes1.png)
+
+
+
+---
+class: inverse, middle, center
+# Tips/Lessons Learned
+
+---
+
+# Present QA plots up front
+
+&lt;img src="figs/start_qa.png" width="800px"&gt;
+
+---
+
+# Provide Instructions!
+
+
+&lt;img src="figs/start_instruct.png" width="800px"&gt;
+
+---
+
+# Old fasioned debugging/logging works
+
+![](figs/start_error.png)
+
+---
+
+# Conclusions
+
+- R Shiny can be a tool to creatively interact with data
+- Improve collaboration and promote your methods
+- Avoid repetitive analyses and visualizations
+- Instructions are vital
+
+## START
+
+- working on extensions to single-cell and proteomics specific analyses and visualizations
+- welcome collaboration!
+
+---
+
+# Thank you!
+&lt;br&gt;
+
+Contact me: &lt;i class="fa fa-envelope fa-fw"&gt;&lt;/i&gt; minnier-[at]-ohsu.edu, &lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt; [datapointier](https://twitter.com/datapointier), &lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt; [jminnier](https://github.com/jminnier/)
+
+START:
+- Github: [https://github.com/jminnier/STARTapp](https://github.com/jminnier/STARTapp)
+- Shinyapps.io: [https://kcvi.shinyapps.io/START/](https://kcvi.shinyapps.io/START/)
+
+RELATED SLIDES ON SHINY (Challenges/Responsibilities):
+- Data Day Texas &lt;http://bit.ly/shiny-ddtx&gt;
+- CSP: &lt;http://bit.ly/shiny-csp18&gt;
+
+Slides available at  &lt;font style="text-transform: lowercase;"&gt;&lt;http://bit.ly/rpharma-minnier&gt;&lt;/font&gt; &lt;br&gt;
+
+Code for slides available at &lt;https://github.com/jminnier/talks_etc&gt;
+
+Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by [Yihui Xie](https://twitter.com/xieyihui?lang=en) with the metropolis theme
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "tomorrow-night-bright",
+"highlightLines": true,
+"highlightLanguage": "r",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
