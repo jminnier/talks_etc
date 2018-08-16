@@ -180,12 +180,6 @@ https://bayesiantrial.shinyapps.io/Bayesian12/
 
 # General App & Trial Specific
 
-![](figs/bayes2.png)
-
----
-
-class:clear
-
 ![](figs/bayes1.png)
 
 
