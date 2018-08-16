@@ -88,7 +88,9 @@ background-size: 120%
 <font style="color: darkorange;">T</font>ool
 
 <br>
-
+BSR: Jessica Minnier, PhD;
+OHSU KCVI: J Sklenar, PhD, A.P. Barnes, PhD, J. Nelson, PhD
+<br>
 Github: <font style="color: darkorange;">https://github.com/jminnier/STARTapp/</font>
 <br>
 Shinyapps.io: <font style="color: darkorange;"> https://kcvi.shinyapps.io/START/</font>
