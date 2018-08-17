@@ -1,0 +1,380 @@
+---
+title: '<font style="color: red;">Building Shiny Apps</font> <br> Challenges and Responsibilities'
+author: "<br> Jessica Minnier <br> email: minnier@ohsu.edu <br> @datapointier" 
+date: 'Saturday, January 27, 2018, Data/R Day Texas <br> <br> Slides available at  <font style="text-transform: lowercase;"><http://bit.ly/shiny-ddtx></font> <br>'
+output: 
+  revealjs::revealjs_presentation:
+    theme: simple
+    highlight: tango
+    center: true
+    smart: true
+    fig_width: 9.5
+    fig_height: 4.5
+    fig.align: center
+    transition: fade
+    background_transition: zoom
+    slide_level: 2
+    reveal_plugins: ["notes"]
+    self_contained: false
+    reveal_options:
+      slideNumber: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+## Why Shiny?
+
+## Motivation
+
+<span style="font-weight:bold">Spreadsheets =(</span>
+
+
+<section data-background-image="spreadsheetcombo.png">
+
+<p class="fragment fade-in"><img src="http://i.giphy.com/QnbnVPVWhzbCE.gif"></img>
+</p>
+</section>
+
+## Motivation
+
+<font style="color: red;">"Can you make me this plot? Ok now this plot? Wait one more plot..."</font>
+
+<img src="heatmap_start.png"></img>
+
+## <span style="font-weight:bold">Plot Monkey?</span>
+
+<section data-background="toomanyplots.png" data-background-repeat="repeat" data-background-size="500px">
+</section>
+
+## Enter Shiny
+
+<img src="shinyhex.png"/>
+
+## My history
+
+- Started with <font style="color: red;">Tableau</font>
+     + Tableau + R + Bioconductor = :-| (in 2013)
+     + (Now you can [host a shiny app in Tableau??](https://www.mandsconsulting.com/hosting-a-shiny-app-in-tableau))
+- Realization: <font style="color: red;">Shiny</font> can do this!
+- Made one site with <font style="color: red;">one data set</font>
+- Created general site for <font style="color: red;">input data set</font>
+
+## Motivation For All <br> <br> **Distribute your hard work!**
+
+
+##  *Collaborator:* <br>"How can I share my data?"
+
+<img src="shinyapp_ht.png"></img>
+<https://kcvi.shinyapps.io/START_HT/>
+
+## *Developer/Statistician/Data Scientist*: <br>"How can I get people to use my new method/package?"
+
+<img src="qvalue.png"></img>
+<http://qvalue.princeton.edu/>
+
+## *Developer/Statistician/Data Scientist*: <br> Look at this analysis I did!
+
+<img src="phillyschools.png"></img>
+<https://gallery.shinyapps.io/TSupplyDemand/>
+
+## *Everyone:* Teach Some things! (`learnr`)
+
+<img src="learnr.png"></img>
+<https://minnier.shinyapps.io/ODSI_continuousData/>
+
+## Shiny basics
+
+```{r, eval=FALSE}
+# what you see, client side
+ui <- fluidPage(
+  
+  
+  
+)
+```
+
+```{r, eval=FALSE}
+# computations here!
+server <- function(input, output) {
+  
+  
+  
+  
+}
+```
+
+
+```{r, eval=FALSE}
+# run the app!
+shinyApp(ui = ui, server = server)
+```
+
+
+
+## Shiny basics
+
+```{r, eval=FALSE}
+# what you see, client side
+ui <- fluidPage(
+  # Title, panels
+  plotOutput("myplot"), #from output$myplot
+  selectInput("foo",choices=allthechoices)
+)
+```
+
+```{r, eval=FALSE}
+# computations here!
+server <- function(input, output) {
+  
+  
+  
+  
+}
+```
+
+
+```{r, eval=FALSE}
+# run the app!
+shinyApp(ui = ui, server = server)
+```
+
+
+## Shiny basics
+
+```{r, eval=FALSE}
+# what you see, client side
+ui <- fluidPage(
+  # Title, panels
+  plotOutput("myplot"), #from output$myplot
+  selectInput("foo",choices=allthechoices)
+)
+```
+
+```{r, eval=FALSE}
+# computations here!
+server <- function(input, output) {
+  # reactive plots
+  output$myplot <- renderPlot({ ggplot(yay) + geom_point() })
+  # use input$foo here, maybe observe changes in UI
+  observe({ dostuff(input$foo) })
+}
+```
+
+
+```{r, eval=FALSE}
+# run the app!
+shinyApp(ui = ui, server = server)
+```
+
+
+
+## An example: START
+
+
+<font style="color: red;">S</font>hiny 
+<font style="color: red;">T</font>ranscriptome
+<font style="color: red;">A</font>nalysis
+<font style="color: red;">R</font>esource
+<font style="color: red;">T</font>ool
+
+Github: <https://github.com/jminnier/STARTapp>
+
+<font style="color: green;">DATA = **RNA-seq gene expression**</font>
+
+<img src="spreadsheet_annotated.png"/>
+
+## Very quick tour
+
+<img src="screencast2_gif.png" />
+
+## Very quick tour
+
+<img src="screencast3.gif" />
+
+<!--- https://gist.github.com/dergachev/4627207 for screencast to gif --->
+
+## Who is your audience?
+
+Example: START app
+
+- likely biologists
+- some not used to coding or large data sets
+
+<img src="noun_1067136_cc.png" width="300px"></img>
+
+## Challenges: *User*
+
+<font style="color: red;">Data is larger</font> than they are used to + <font style="color: red;">Cannot query or share</font> results easily
+
+
+Interactive <font style="color: red;">search</font> boxes/filtering + <font style="color: red;">Reactive visualization</font>
+
+<img src="start_search.gif" />
+
+## Challenges, Input/Ouput Data
+
+- Input data ~ multiple formats: <font style="color: red;">Special input formats</font>
+- Interface with other software? <font style="color: red;">Export special formats</font>
+
+<img src="start_dropdown_analysis.png"></img>
+
+## Challenges, Input/Ouput Data
+
+- Input data ~ multiple formats: <font style="color: red;">Special input formats</font>
+
+<img src="clustvis_inputdata1.png"></img>
+<https://biit.cs.ut.ee/clustvis/>
+
+
+## Challenges, Input/Ouput Data
+
+- Input data ~ multiple formats: <font style="color: red;">Special input formats</font>
+
+<img src="clustvis_inputdata2.png"></img>
+<https://biit.cs.ut.ee/clustvis/>
+
+## Challenges, Analysis
+
+Many possible ways to analyze data: 
+
+<font style="color: red;">
+
+- Restrict analyses performed
+- Allow for uploading of analysis results
+
+</font>
+
+<img src="start_input_options.png"/>
+
+## Challenges, Analysis
+
+QA/QC
+
+<font style="color: red;">Present QA plots up front</font>
+
+<img src="start_qa.png" width="800px">
+
+## Challenges, Analysis
+
+QA/QC
+
+<font style="color: red;">Present QA plots up front</font>
+
+
+<https://github.com/joey711/shiny-phyloseq>
+<img src="phyloseq_qa.png" width="800px"></img>
+
+
+
+
+## Responsibilities, Food for thought:
+
+<br>
+
+> - Is resulting analysis <font style="color: red;">correct</font>?
+> - Are we encouraging <font style="color: red;">"data fishing"</font>?
+> - Misuse of <font style="color: red;">p-values</font>?
+> - Solutions? Use instructions and data inputs wisely.
+> - Other solutions? Avoid H0s, Bayesian posterior probabilities?
+
+## Landing page - Where am I?
+
+- <font style="color: red;">Show</font> what the app is for/can do
+- Point to <font style="color: red;">instructions</font> and <font style="color: red;">guidelines</font>
+
+Bonus: [Jasmine Dumas](https://jasdumas.github.io/) has a [`shinyLP`](https://github.com/jasdumas/shinyLP) package to help!
+<img src="shinylp.jpg"></img>
+
+## Instructions, Please
+
+- <font style="color: red;">So hard.</font>
+- Not just a <font style="color: red;">vignette</font> of a package (users may not be coders)
+-	<font style="color: red;">Written</font> instructions vs. <font style="color: red;">video</font> demos
+-	<font style="color: red;">Gif</font> instructions
+
+No one will use it if they don't know  <font style="color: red;">**how**</font> to use it!
+
+## Instructions
+
+Tauno Metsalu and Jaak Vilo: "Clustvis"
+<img src="clustvis1.png"></img>
+
+## Instructions
+
+Tauno Metsalu and Jaak Vilo: "Clustvis"
+<img src="clustvis_instruct.gif"></img>
+
+
+## But Does It work?
+
+## Debugging Tips
+
+Debugging is notoriously a pain here
+
+<img src="error1.png"></img>
+
+## Thanks, stack trace:
+
+<img src="error2.png"></img>
+
+## Did you update a package?
+
+Good luck with that.
+
+## Old fashioned methods work best
+
+<font style="color: red;">Breakpoints and tracing:</font>
+
+- `browser()` - I didn't say it was fun
+- `print()` - every single function/observe statement gets a print
+
+<img src="start_error.png"></img>
+
+
+## New methods are also nice
+
+`runApp(..., display.mode="showcase")`
+
+But, doesn't show why something broke.
+
+<img src="start_showcase.png"></img>
+
+
+## Random final tips:
+
+- Test it first
+    + Unit testing can save you so much headache
+    + Run tests on example data
+    + Create .Md file of test plots
+- Security
+    + Are users uploading sensitive data?
+    + Security review of public apps vs commercial version
+- Speed: [Why so slow?](https://support.rstudio.com/hc/en-us/articles/115000171848-Why-are-my-Shiny-apps-are-running-slowly-)
+    + Rprofiler in Rstudio
+    + Reduce start up time
+
+
+## Be Creative!
+
+[papr by Lucy D'Agostino McGowan, Nick Strayer, Jeff Leek](https://jhubiostatistics.shinyapps.io/papr/)
+<img src="papr.png"></img>
+
+
+## Have fun!
+
+[homebrewR by David Stephens](https://davesteps.shinyapps.io/homebrewR/)
+<img src="homebrewr.png"></img>
+
+## Thank you! Go forth and shiny!
+<br>
+
+Contact: @ [datapointier](https://twitter.com/datapointier)
+
+Github: <https://github.com/jminnier/STARTapp>
+
+Slides available at  <font style="text-transform: lowercase;"><http://bit.ly/shiny-ddtx></font> <br>
+
+Code for slides available at <https://github.com/jminnier/presentation_austin_dataday2018>
+

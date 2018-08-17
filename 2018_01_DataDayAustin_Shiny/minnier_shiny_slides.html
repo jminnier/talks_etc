@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="  Jessica Minnier   email: minnier@ohsu.edu   @datapointier" />
+  <title>Building Shiny Apps   Challenges and Responsibilities</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="minnier_shiny_slides_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="minnier_shiny_slides_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title"><font style="color: red;">Building Shiny Apps</font> <br> Challenges and Responsibilities</h1>
+    <h2 class="author"><br> Jessica Minnier <br> email: <a href="mailto:minnier@ohsu.edu">minnier@ohsu.edu</a> <br> <span class="citation" data-cites="datapointier">@datapointier</span></h2>
+    <h3 class="date">Saturday, January 27, 2018, Data/R Day Texas <br> <br> Slides available at <font style="text-transform: lowercase;"><a href="http://bit.ly/shiny-ddtx" class="uri">http://bit.ly/shiny-ddtx</a></font> <br></h3>
+</section>
+
+<section id="why-shiny" class="slide level2">
+<h2>Why Shiny?</h2>
+</section>
+<section id="motivation" class="slide level2">
+<h2>Motivation</h2>
+<p><span style="font-weight:bold">Spreadsheets =(</span></p>
+<section data-background-image="spreadsheetcombo.png">
+<p class="fragment fade-in">
+<img src="http://i.giphy.com/QnbnVPVWhzbCE.gif"></img>
+</p>
+</section>
+</section>
+<section id="motivation-1" class="slide level2">
+<h2>Motivation</h2>
+<p><font style="color: red;">“Can you make me this plot? Ok now this plot? Wait one more plot…”</font></p>
+<p><img src="heatmap_start.png"></img></p>
+</section>
+<section id="plot-monkey" class="slide level2">
+<h2><span style="font-weight:bold">Plot Monkey?</span></h2>
+<section data-background="toomanyplots.png" data-background-repeat="repeat" data-background-size="500px">
+</section>
+</section>
+<section id="enter-shiny" class="slide level2">
+<h2>Enter Shiny</h2>
+<p><img src="shinyhex.png"/></p>
+</section>
+<section id="my-history" class="slide level2">
+<h2>My history</h2>
+<ul>
+<li>Started with <font style="color: red;">Tableau</font>
+<ul>
+<li>Tableau + R + Bioconductor = :-| (in 2013)</li>
+<li>(Now you can <a href="https://www.mandsconsulting.com/hosting-a-shiny-app-in-tableau">host a shiny app in Tableau??</a>)</li>
+</ul></li>
+<li>Realization: <font style="color: red;">Shiny</font> can do this!</li>
+<li>Made one site with <font style="color: red;">one data set</font></li>
+<li>Created general site for <font style="color: red;">input data set</font></li>
+</ul>
+</section>
+<section id="motivation-for-all-distribute-your-hard-work" class="slide level2">
+<h2>Motivation For All <br> <br> <strong>Distribute your hard work!</strong></h2>
+</section>
+<section id="collaborator-how-can-i-share-my-data" class="slide level2">
+<h2><em>Collaborator:</em> <br>“How can I share my data?”</h2>
+<p><img src="shinyapp_ht.png"></img> <a href="https://kcvi.shinyapps.io/START_HT/" class="uri">https://kcvi.shinyapps.io/START_HT/</a></p>
+</section>
+<section id="developerstatisticiandata-scientist-how-can-i-get-people-to-use-my-new-methodpackage" class="slide level2">
+<h2><em>Developer/Statistician/Data Scientist</em>: <br>“How can I get people to use my new method/package?”</h2>
+<p><img src="qvalue.png"></img> <a href="http://qvalue.princeton.edu/" class="uri">http://qvalue.princeton.edu/</a></p>
+</section>
+<section id="developerstatisticiandata-scientist-look-at-this-analysis-i-did" class="slide level2">
+<h2><em>Developer/Statistician/Data Scientist</em>: <br> Look at this analysis I did!</h2>
+<p><img src="phillyschools.png"></img> <a href="https://gallery.shinyapps.io/TSupplyDemand/" class="uri">https://gallery.shinyapps.io/TSupplyDemand/</a></p>
+</section>
+<section id="everyone-teach-some-things-learnr" class="slide level2">
+<h2><em>Everyone:</em> Teach Some things! (<code>learnr</code>)</h2>
+<p><img src="learnr.png"></img> <a href="https://minnier.shinyapps.io/ODSI_continuousData/" class="uri">https://minnier.shinyapps.io/ODSI_continuousData/</a></p>
+</section>
+<section id="shiny-basics" class="slide level2">
+<h2>Shiny basics</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># what you see, client side</span>
+ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
+  
+  
+  
+)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># computations here!</span>
+server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
+  
+  
+  
+  
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># run the app!</span>
+<span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre></div>
+</section>
+<section id="shiny-basics-1" class="slide level2">
+<h2>Shiny basics</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># what you see, client side</span>
+ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
+  <span class="co"># Title, panels</span>
+  <span class="kw">plotOutput</span>(<span class="st">&quot;myplot&quot;</span>), <span class="co">#from output$myplot</span>
+  <span class="kw">selectInput</span>(<span class="st">&quot;foo&quot;</span>,<span class="dt">choices=</span>allthechoices)
+)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># computations here!</span>
+server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
+  
+  
+  
+  
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># run the app!</span>
+<span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre></div>
+</section>
+<section id="shiny-basics-2" class="slide level2">
+<h2>Shiny basics</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># what you see, client side</span>
+ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(
+  <span class="co"># Title, panels</span>
+  <span class="kw">plotOutput</span>(<span class="st">&quot;myplot&quot;</span>), <span class="co">#from output$myplot</span>
+  <span class="kw">selectInput</span>(<span class="st">&quot;foo&quot;</span>,<span class="dt">choices=</span>allthechoices)
+)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># computations here!</span>
+server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
+  <span class="co"># reactive plots</span>
+  output<span class="op">$</span>myplot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({ <span class="kw">ggplot</span>(yay) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() })
+  <span class="co"># use input$foo here, maybe observe changes in UI</span>
+  <span class="kw">observe</span>({ <span class="kw">dostuff</span>(input<span class="op">$</span>foo) })
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># run the app!</span>
+<span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</code></pre></div>
+</section>
+<section id="an-example-start" class="slide level2">
+<h2>An example: START</h2>
+<p><font style="color: red;">S</font>hiny <font style="color: red;">T</font>ranscriptome <font style="color: red;">A</font>nalysis <font style="color: red;">R</font>esource <font style="color: red;">T</font>ool</p>
+<p>Github: <a href="https://github.com/jminnier/STARTapp" class="uri">https://github.com/jminnier/STARTapp</a></p>
+<p><font style="color: green;">DATA = <strong>RNA-seq gene expression</strong></font></p>
+<p><img src="spreadsheet_annotated.png"/></p>
+</section>
+<section id="very-quick-tour" class="slide level2">
+<h2>Very quick tour</h2>
+<p><img src="screencast2_gif.png" /></p>
+</section>
+<section id="very-quick-tour-1" class="slide level2">
+<h2>Very quick tour</h2>
+<p><img src="screencast3.gif" /></p>
+<!--- https://gist.github.com/dergachev/4627207 for screencast to gif --->
+</section>
+<section id="who-is-your-audience" class="slide level2">
+<h2>Who is your audience?</h2>
+<p>Example: START app</p>
+<ul>
+<li>likely biologists</li>
+<li>some not used to coding or large data sets</li>
+</ul>
+<p><img src="noun_1067136_cc.png" width="300px"></img></p>
+</section>
+<section id="challenges-user" class="slide level2">
+<h2>Challenges: <em>User</em></h2>
+<p><font style="color: red;">Data is larger</font> than they are used to + <font style="color: red;">Cannot query or share</font> results easily</p>
+<p>Interactive <font style="color: red;">search</font> boxes/filtering + <font style="color: red;">Reactive visualization</font></p>
+<p><img src="start_search.gif" /></p>
+</section>
+<section id="challenges-inputouput-data" class="slide level2">
+<h2>Challenges, Input/Ouput Data</h2>
+<ul>
+<li>Input data ~ multiple formats: <font style="color: red;">Special input formats</font></li>
+<li>Interface with other software? <font style="color: red;">Export special formats</font></li>
+</ul>
+<p><img src="start_dropdown_analysis.png"></img></p>
+</section>
+<section id="challenges-inputouput-data-1" class="slide level2">
+<h2>Challenges, Input/Ouput Data</h2>
+<ul>
+<li>Input data ~ multiple formats: <font style="color: red;">Special input formats</font></li>
+</ul>
+<p><img src="clustvis_inputdata1.png"></img> <a href="https://biit.cs.ut.ee/clustvis/" class="uri">https://biit.cs.ut.ee/clustvis/</a></p>
+</section>
+<section id="challenges-inputouput-data-2" class="slide level2">
+<h2>Challenges, Input/Ouput Data</h2>
+<ul>
+<li>Input data ~ multiple formats: <font style="color: red;">Special input formats</font></li>
+</ul>
+<p><img src="clustvis_inputdata2.png"></img> <a href="https://biit.cs.ut.ee/clustvis/" class="uri">https://biit.cs.ut.ee/clustvis/</a></p>
+</section>
+<section id="challenges-analysis" class="slide level2">
+<h2>Challenges, Analysis</h2>
+<p>Many possible ways to analyze data:</p>
+<p><font style="color: red;"></p>
+<ul>
+<li>Restrict analyses performed</li>
+<li>Allow for uploading of analysis results</li>
+</ul>
+<p></font></p>
+<p><img src="start_input_options.png"/></p>
+</section>
+<section id="challenges-analysis-1" class="slide level2">
+<h2>Challenges, Analysis</h2>
+<p>QA/QC</p>
+<p><font style="color: red;">Present QA plots up front</font></p>
+<p><img src="start_qa.png" width="800px"></p>
+</section>
+<section id="challenges-analysis-2" class="slide level2">
+<h2>Challenges, Analysis</h2>
+<p>QA/QC</p>
+<p><font style="color: red;">Present QA plots up front</font></p>
+<p><a href="https://github.com/joey711/shiny-phyloseq" class="uri">https://github.com/joey711/shiny-phyloseq</a> <img src="phyloseq_qa.png" width="800px"></img></p>
+</section>
+<section id="responsibilities-food-for-thought" class="slide level2">
+<h2>Responsibilities, Food for thought:</h2>
+<p><br></p>
+<ul>
+<li class="fragment">Is resulting analysis <font style="color: red;">correct</font>?</li>
+<li class="fragment">Are we encouraging <font style="color: red;">“data fishing”</font>?</li>
+<li class="fragment">Misuse of <font style="color: red;">p-values</font>?</li>
+<li class="fragment">Solutions? Use instructions and data inputs wisely.</li>
+<li class="fragment">Other solutions? Avoid H0s, Bayesian posterior probabilities?</li>
+</ul>
+</section>
+<section id="landing-page---where-am-i" class="slide level2">
+<h2>Landing page - Where am I?</h2>
+<ul>
+<li><font style="color: red;">Show</font> what the app is for/can do</li>
+<li>Point to <font style="color: red;">instructions</font> and <font style="color: red;">guidelines</font></li>
+</ul>
+<p>Bonus: <a href="https://jasdumas.github.io/">Jasmine Dumas</a> has a <a href="https://github.com/jasdumas/shinyLP"><code>shinyLP</code></a> package to help! <img src="shinylp.jpg"></img></p>
+</section>
+<section id="instructions-please" class="slide level2">
+<h2>Instructions, Please</h2>
+<ul>
+<li><font style="color: red;">So hard.</font></li>
+<li>Not just a <font style="color: red;">vignette</font> of a package (users may not be coders)</li>
+<li><font style="color: red;">Written</font> instructions vs. <font style="color: red;">video</font> demos</li>
+<li><font style="color: red;">Gif</font> instructions</li>
+</ul>
+<p>No one will use it if they don’t know <font style="color: red;"><strong>how</strong></font> to use it!</p>
+</section>
+<section id="instructions" class="slide level2">
+<h2>Instructions</h2>
+<p>Tauno Metsalu and Jaak Vilo: “Clustvis” <img src="clustvis1.png"></img></p>
+</section>
+<section id="instructions-1" class="slide level2">
+<h2>Instructions</h2>
+<p>Tauno Metsalu and Jaak Vilo: “Clustvis” <img src="clustvis_instruct.gif"></img></p>
+</section>
+<section id="but-does-it-work" class="slide level2">
+<h2>But Does It work?</h2>
+</section>
+<section id="debugging-tips" class="slide level2">
+<h2>Debugging Tips</h2>
+<p>Debugging is notoriously a pain here</p>
+<p><img src="error1.png"></img></p>
+</section>
+<section id="thanks-stack-trace" class="slide level2">
+<h2>Thanks, stack trace:</h2>
+<p><img src="error2.png"></img></p>
+</section>
+<section id="did-you-update-a-package" class="slide level2">
+<h2>Did you update a package?</h2>
+<p>Good luck with that.</p>
+</section>
+<section id="old-fashioned-methods-work-best" class="slide level2">
+<h2>Old fashioned methods work best</h2>
+<p><font style="color: red;">Breakpoints and tracing:</font></p>
+<ul>
+<li><code>browser()</code> - I didn’t say it was fun</li>
+<li><code>print()</code> - every single function/observe statement gets a print</li>
+</ul>
+<p><img src="start_error.png"></img></p>
+</section>
+<section id="new-methods-are-also-nice" class="slide level2">
+<h2>New methods are also nice</h2>
+<p><code>runApp(..., display.mode=&quot;showcase&quot;)</code></p>
+<p>But, doesn’t show why something broke.</p>
+<p><img src="start_showcase.png"></img></p>
+</section>
+<section id="random-final-tips" class="slide level2">
+<h2>Random final tips:</h2>
+<ul>
+<li>Test it first
+<ul>
+<li>Unit testing can save you so much headache</li>
+<li>Run tests on example data</li>
+<li>Create .Md file of test plots</li>
+</ul></li>
+<li>Security
+<ul>
+<li>Are users uploading sensitive data?</li>
+<li>Security review of public apps vs commercial version</li>
+</ul></li>
+<li>Speed: <a href="https://support.rstudio.com/hc/en-us/articles/115000171848-Why-are-my-Shiny-apps-are-running-slowly-">Why so slow?</a>
+<ul>
+<li>Rprofiler in Rstudio</li>
+<li>Reduce start up time</li>
+</ul></li>
+</ul>
+</section>
+<section id="be-creative" class="slide level2">
+<h2>Be Creative!</h2>
+<p><a href="https://jhubiostatistics.shinyapps.io/papr/">papr by Lucy D’Agostino McGowan, Nick Strayer, Jeff Leek</a> <img src="papr.png"></img></p>
+</section>
+<section id="have-fun" class="slide level2">
+<h2>Have fun!</h2>
+<p><a href="https://davesteps.shinyapps.io/homebrewR/">homebrewR by David Stephens</a> <img src="homebrewr.png"></img></p>
+</section>
+<section id="thank-you-go-forth-and-shiny" class="slide level2">
+<h2>Thank you! Go forth and shiny!</h2>
+<p><br></p>
+<p>Contact: @ <a href="https://twitter.com/datapointier">datapointier</a></p>
+<p>Github: <a href="https://github.com/jminnier/STARTapp" class="uri">https://github.com/jminnier/STARTapp</a></p>
+<p>Slides available at <font style="text-transform: lowercase;"><a href="http://bit.ly/shiny-ddtx" class="uri">http://bit.ly/shiny-ddtx</a></font> <br></p>
+<p>Code for slides available at <a href="https://github.com/jminnier/presentation_austin_dataday2018" class="uri">https://github.com/jminnier/presentation_austin_dataday2018</a></p>
+</section>
+    </div>
+  </div>
+
+  <script src="minnier_shiny_slides_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="minnier_shiny_slides_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'zoom', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'minnier_shiny_slides_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
