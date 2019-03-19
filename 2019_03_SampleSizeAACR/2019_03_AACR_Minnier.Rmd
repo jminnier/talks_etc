@@ -1,0 +1,50 @@
+---
+title: "Is n=3 enough? How to approach sample size and power calculations"
+subtitle: AACR 2019 [Sample Size and Power Workshop for Basic, Translational, and Clinical Studies](https://www.abstractsonline.com/pp8/#!/6812/session/153)<div style='float:left'><hr color='#EB811B' size=1px width=720px></div><br>
+author: Jessica Minnier, PhD <br>Knight Cancer Institute Biostatistics Shared Resource <br> OHSU-PSU School of Public Health<br>Oregon Health & Science University <br> <i class="fa fa-twitter fa-fw"></i> @datapointier
+date: March 30, 2019<br><br> Slides available at http://bit.ly/aacr-minnier
+output: 
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: tomorrow-night-bright
+      highlightLines: true
+      highlightLanguage: r
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: ../header.html      
+    #css: ../jminnier.css
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+library(tidyverse)
+
+knitr::opts_chunk$set(
+  warning=FALSE, 
+  message=FALSE, 
+  fig.width=10.5, 
+  fig.height=4, 
+  comment=NA, 
+  rows.print=16,
+  echo=FALSE)
+theme_set(theme_bw(base_size = 24))
+```
+
+# Outline
+
+---
+
+# Slide
+
+---
+
+class: inverse, center, middle
+
+
+# Yes?
+
+---
