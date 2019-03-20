@@ -33,7 +33,7 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 
 <section data-background-image="spreadsheetcombo.png">
 
-<p class="fragment fade-in"><img src="http://i.giphy.com/QnbnVPVWhzbCE.gif"></img>
+<p class="fragment fade-in"><img src="https://i.giphy.com/QnbnVPVWhzbCE.gif"></img>
 </p>
 </section>
 
