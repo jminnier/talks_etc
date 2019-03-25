@@ -3,66 +3,351 @@
   <head>
     <title>Is n=3 enough? How to approach sample size and power calculations</title>
     <meta charset="utf-8">
-    <meta name="author" content="Jessica Minnier, PhD  Knight Cancer Institute Biostatistics Shared Resource   OHSU-PSU School of Public Health Oregon Health &amp; Science University    @datapointier" />
-    <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
-    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <meta name="author" content="Jessica Minnier, PhD Knight Cancer Institute Biostatistics Shared Resource Oregon Health &amp; Science University" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="my-theme.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
+class: left, middle, inverse, title-slide
 
 # Is n=3 enough? How to approach sample size and power calculations
-## AACR 2019 <a href="https://www.abstractsonline.com/pp8/#!/6812/session/153">Sample Size and Power Workshop for Basic, Translational, and Clinical Studies</a>
-<div style='float:left'>
-<hr color='#EB811B' size=1px width=720px>
-</div>
-<br>
-### Jessica Minnier, PhD <br>Knight Cancer Institute Biostatistics Shared Resource <br> OHSU-PSU School of Public Health<br>Oregon Health &amp; Science University <br> <i class="fa fa-twitter fa-fw"></i> <span class="citation">@datapointier</span>
-### March 30, 2019<br><br> Slides available at <a href="http://bit.ly/aacr-minnier" class="uri">http://bit.ly/aacr-minnier</a>
+### Jessica Minnier, PhD<br><span style="font-size: 50%;">Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health &amp; Science University</span>
+### <a href="https://www.abstractsonline.com/pp8/#!/6812/session/153">AACR</a>, March 30, 2019<br><br> <a href="https://bit.ly/aacr-power">bit.ly/aacr-power</a><br> <a href="https://twitter.com/datapointier">datapointier</a>
 
 ---
+
+
+layout: true
+  
+&lt;div class="my-footer"&gt;&lt;span&gt;bit.ly/aacr-power&lt;/span&gt;&lt;/div&gt; 
+
+---
+
+
+
+&lt;!-- Xaringan/css themes stolen from Jennifer Thompson: https://github.com/jenniferthompson/RMedicine2018 Thanks, Jennifer! --&gt;
 
 
 
 
 # Outline
 
+- Why calculate sample size?
+- What are the important components?
+- Examples
+- Software
+
 ---
 
-# Slide
+# Goals of sample size and power calculations
+
+- Design a study that will have enough information about underlying population to reject a hypothesis with high confidence.
+- Calculate the number of sampling units (e.g. people, animals) you need to estimate statistics with a certain level of precision.
+
+---
+
+class: middle, center, inverse
+
+# Design your study
+
+---
+
+# Step 1: State your research hypothesis
+
+- Define your:
+    + Population
+    + Outcome variables/measurements
+    + Predictor variables (i.e. treatment, age, genetic mutation)
+- Be specific!
+- Example: Among *women* (population you sample from), the *BRCA1* mutation
+(predictor) is associated with an increased risk of developing *breast cancer* (outcome).
+- **Question**: How many women do we need to sample/study to determine that BRCA1 is associated with breast cancer?
+
+---
+
+# Step 2: Choose your analysis and test(s)
+
+- You can't calculate sample size without knowing which test and model you will use.
+- How will you measure your outcome? Continuous? Categorical? Binary (yes/no)?
+    + choose outcomes with high sensitivity and low measurement error
+- How many groups/experimental conditions/predictors?
+    + the more you have the more samples you will need
+- What test? t-test? Linear regression? Random effects model? Chi-square test?
+
 
 ---
 
 class: inverse, center, middle
 
-
-# Yes?
+# Calculate power and sample size
 
 ---
+
+# Need to know (/tell your statistician!):
+
+- Overall design (outcome, endpoint, hypothesis)
+- Size/magnitude of effect of interest
+    + What do you *hope* to detect
+- Variability of measurements
+    + Precision of your measurement, biological variability within population
+- Level of type I error (significance level, `\(\alpha\)`)
+- Level of power
+- Other design details (number of groups, clustering, repeated measures)
+
+---
+
+# Components of Sample Size
+
+Need to know 3 of the 4 to determine the 4th:
+
+Measure | Definition
+---|---
+Effect Size | Magnitude of difference or assocation; &lt;br&gt;i.e. (difference in means)/(population standard deviation) = `\(\frac{\mu_1 - \mu_0}{\sigma}\)` = `\(\Delta\)`
+Sample Size | N
+Type I Error / Significance level | `\(\alpha\)` = probability of rejecting null hypothesis when it is true
+Power  | 1 - `\(\beta\)` = 1 - Type II error = probability of rejecting null hypothesis when it is false
+
+---
+
+# Components of Sample Size
+
+Need to know 3 of the 4 to determine the 4th:
+
+Do We Know? | Measure | Definition
+---|---|---
+?? | Effect Size | Magnitude of difference or assocation; &lt;br&gt;i.e. (difference in means)/(population standard deviation) = `\(\frac{\mu_1 - \mu_0}{\sigma}\)` = `\(\Delta\)`
+?? | Sample Size | N
+0.05, 0.01 | Type I Error / Significance level | `\(\alpha\)` = probability of rejecting null hypothesis when it is true
+0.9, 0.8 | Power  | 1 - `\(\beta\)` = 1 - Type II error = probability of rejecting null hypothesis when it is false
+
+---
+
+# What is **effect size**?
+
+- Summarizes the outcome of interest
+- Magnitude of difference or assocation
+- Specification depends on study design and statistical model/test
+
+--
+
+## Examples:
+
+- Difference in treatment and control mean outcomes, relative to variance (standard deviation)
+- Correlation coefficient of
+- Risk ratio of breast cancer comparing BRCA carriers to non-carriers
+- Magnitude of regression coefficient
+
+
+---
+
+# Effect size must be
+
+- **pre-specified**
+- based on what is meaningful biologically or clinically (not statistical significance)
+- based on pilot data or literature review if available
+
+---
+
+# Simple example
+
+Outcome = Continuous measurement
+
+Predictor = Treatment yes/no (treatment vs control group)
+
+Test: two sample T-test, equal variance
+
+Effect Size: difference in means divided by standard deviation of population `\(\frac{\mu_{trt} - \mu_{ctrl}}{\sigma}\)`
+
+Null Hypothesis: Difference in means = 0
+
+Alternative Hypothesis: Difference in means `\(\neq\)` 0
+
+"Given a desired effect size (difference in means relative to the variance), what sample size gives us enough information to reject the null hypothesis with power 90%?"
+
+---
+
+# Underlying data distributions
+
+&lt;img src="2019_03_AACR_Minnier_files/figure-html/normal_true-1.png" style="display: block; margin: auto;" /&gt;
+---
+
+# n=25, effect size = 1
+
+
+```r
+power.t.test(n = 25, delta = 1, sd = 1, sig.level = 0.05)$power
+```
+
+```
+[1] 0.9337076
+```
+
+
+![](hist_errorbars_nn25_sd1_mu00_mu11_nsims10.gif)
+
+
+&lt;br&gt;(Significance based on two sample t-test for difference in means)
+
+---
+
+# n=25, effect size = 0.33
+
+Increase standard deviation from 1 to 3, divides effect size by 3
+
+![](hist_errorbars_nn25_sd3_mu00_mu11_nsims10.gif)
+---
+
+# n=10, effect size = 1
+
+Decrease sample size
+
+![](hist_errorbars_nn10_sd1_mu00_mu11_nsims10.gif)
+
+---
+
+# n=3, effect size = 1
+
+Decrease sample size even more
+
+![](hist_errorbars_nn3_sd1_mu00_mu11_nsims10.gif)
+
+---
+
+# Other reasons to calculate sample size
+
+## Precision of statistics
+
+- Sample sizes can also be calculated for a specific maxmimum width in confidence interval around an estimate
+- i.e. we will estimate the proportion with a 95% confidence interval of width 0.1 such as [0.2, 0.3]
+
+## Prediction models
+
+- Large sample sizes are needed for complex prediction models.
+- Stability of prediction model accuracy measures depends on sample size.
+
+---
+
+# Important to remember:
+
+## Sample size estimates are ESTIMATES.
+
+- based on assumptions that could be incorrect
+- based on pilot data that could be a poor sample or too small
+- the more you don't know, the more conservative you should be (inflate your `\(n\)`)
+- good to provide multiple estimates for a variety of scenarios/effects
+
+---
+
+class: inverse, center, middle
+
+# Free online software
+
+---
+
+
+# [G*power](http://www.gpower.hhu.de/)
+
+(examples of how to use it: http://www.ats.ucla.edu/stat/gpower/)
+
+![](img/gpower.png)
+
+---
+
+# [Shiny Dashboard for Sample Size and Power Calculations](https://mfpartridge.shinyapps.io/shinysamplesizesdashboard/)
+
+![](img/software1.png)
+
+---
+
+# Others
+
+- [TrialDesign.org](http://www.trialdesign.org/index.html)
+- [GLIMMPSE](https://glimmpse.samplesizeshop.org/#/)
+- [CRAB Stat tools](https://stattools.crab.org/)
+- [The Shiny CRT Calculator: Power and Sample size for Cluster Randomised Trials](https://clusterrcts.shinyapps.io/rshinyapp/)
+- [Cal Poly Stats Dept Apps](https://statistics.calpoly.edu/shiny)
+- Statistical software such as R, SAS, STATA
+
+---
+
+class: inverse, center, middle
+
+# Take home message:
+
+## Do your research before you do your research!
+
+
+---
+
+# Refs
+
+- Some of this talk adapted from: [David Yanez's Sample Size](https://www.ohsu.edu/xd/research/centers-institutes/octri/education-training/upload/PowerAndSampleSize.pdf) talk at [OCTRI Research Forum (OHSU)](https://www.ohsu.edu/xd/research/centers-institutes/octri/education-training/octri-research-forum.cfm)
+- [Statistical Rules of Thumb, Chapter 2](http://www.vanbelle.org/)
     </textarea>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "tomorrow-night-bright",
-"highlightLines": true,
-"highlightLanguage": "r",
 "countIncrementalSlides": false,
+"highlightLines": true,
+"highlightStyle": "solarized-dark",
 "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
   if (!r) return;
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
 })();</script>
 
 <script>
 (function() {
-  var i, text, code, codes = document.getElementsByTagName('code');
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
   for (i = 0; i < codes.length;) {
     code = codes[i];
     if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
@@ -76,7 +361,8 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     i++;
   }
-})();
+};
+slideshow._releaseMath(document);
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

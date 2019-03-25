@@ -1,0 +1,222 @@
+---
+title: "Sample Size and Power"
+author: "Jessica Minnier"
+date: "3/24/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(broom)
+library(patchwork)
+library(magick)
+library(gganimate)
+knitr::opts_chunk$set(echo = TRUE)
+ggplot2::theme_set(theme_bw())
+```
+
+
+# Samples
+
+When we sample from an underlying distribution, a larger $n$ gives us a better picture of the true distributiona nd true underlying difference:
+
+
+## True distributions
+
+Normal distributions:
+
+- Control: N(0,1)
+- Treatment: N(2,1)
+
+
+```{r}
+
+mu_0 = 0
+mu_1 = 1
+
+true_data <- data_frame(x=seq(-6,6,by=.005)) %>%
+  mutate(ctrl = dnorm(x,mean=mu_0, sd=1),
+         trt = dnorm(x, mean=mu_1, sd=1))%>%
+  gather(key="group",value="distribution",-x)
+```
+
+```{r normal_true, fig.width=7, fig.height=4, fig.path="figs/"}
+ggplot(true_data, aes(fill=group,
+                      x=x,
+                      y=distribution))+
+  geom_line()+
+  geom_area(data=true_data%>%filter(group=="ctrl"),alpha=.5)+
+  geom_area(data=true_data%>%filter(group=="trt"),alpha=.5)+
+  geom_vline(xintercept=mu_0, color="darkred")+
+  geom_vline(xintercept=mu_1, color="darkblue")+
+  #ylim(0,.5)+
+  ylab("distribution = f(x)")+
+  annotate(x = -3.5, y=.3,geom="label", label="Effect size = (1 - 0)/1 = 1",size=5)+
+  ggtitle("Normal Distributions: N(0,1) vs N(2,1)")
+```
+
+```{r}
+plot_sample_data <- function(nn, mu_0 = 0, mu_1 = 1, sd = 1, seed=1) {
+  set.seed(seed)
+  sampdata <- tibble(ctrl = rnorm(nn, mu_0, sd), trt = rnorm(nn, mu_1, sd))
+  sampdata_long <- sampdata %>% gather(key="group",value="value")
+  sampdata_summary <- sampdata_long %>% 
+    group_by(group) %>% 
+    summarize(xbar = mean(value), 
+              sd_hat = sd(value), 
+              se_hat = sd_hat/sqrt(nn), 
+              ci_low = xbar - 1.96*se_hat, ci_high = xbar + 1.96*se_hat)
+  #with(sampdata_long, t.test(value ~ group)) %>% tidy()
+  
+  p1 <- ggplot(sampdata_long, aes(x=value,fill=group))+
+    geom_histogram(alpha = .7)+
+    geom_vline(data=sampdata_summary, aes(xintercept=xbar,color=group))+
+    scale_fill_discrete(guide=FALSE)+
+    scale_color_discrete(guide=FALSE)+
+    ggtitle(glue::glue("N({mu_0},{sd}) vs N({mu_1},{sd}); Effect Size = {signif((mu_1-mu_0)/sd,2)}\nHistogram of Sample Data, n = {nn}"))
+  
+  p2 <- ggplot(sampdata_long, aes(y=value, color=group, x=group))+
+    geom_jitter(width=.2)+
+    geom_errorbar(data=sampdata_summary, aes(ymin=ci_low,ymax=ci_high,x=group), inherit.aes = FALSE, width=.5)+
+    geom_point(data=sampdata_summary, aes(x=group,y=xbar),color="black",shape=2)+
+    ggtitle("Mean and 95% CIs")+
+    ylim(c(min(mu_0-3*sd, mu_1-3*sd),max(mu_0+3*sd, mu_1+3*sd)))+
+    geom_hline(yintercept=mu_0,color="grey",lty=2)+
+    geom_hline(yintercept=mu_1,color="grey",lty=2)
+  
+  return(p1+p2)
+}
+```
+
+```{r}
+plot_sample_data(nn=20, mu_0 = 0, mu_1 = 2, sd = 1, seed=20)
+plot_sample_data(nn=20, mu_0 = 0, mu_1 = 2, sd = 1, seed=33)
+plot_sample_data(nn=20, mu_0 = 0, mu_1 = 2, sd = 1, seed=36)
+
+plot_sample_data(nn=20, mu_0 = 0, mu_1 = 2, sd = 2, seed=20)
+plot_sample_data(nn=20, mu_0 = 0, mu_1 = 2, sd = 2, seed=33)
+plot_sample_data(nn=20, mu_0 = 0, mu_1 = 2, sd = 2, seed=36)
+
+
+plot_sample_data(nn=20, mu_0 = 0, mu_1 = 2, sd = 3, seed=20)
+plot_sample_data(nn=20, mu_0 = 0, mu_1 = 2, sd = 3, seed=33)
+plot_sample_data(nn=20, mu_0 = 0, mu_1 = 2, sd = 3, seed=36)
+```
+
+```{r}
+plot_sample_data(nn=3, mu_0 = 0, mu_1 = 2, sd = 1, seed=3)
+plot_sample_data(nn=3, mu_0 = 0, mu_1 = 2, sd = 1, seed=4)
+plot_sample_data(nn=3, mu_0 = 0, mu_1 = 2, sd = 1, seed=5)
+
+
+plot_sample_data(nn=3, mu_0 = 0, mu_1 = 2, sd = 2, seed=3)
+plot_sample_data(nn=3, mu_0 = 0, mu_1 = 2, sd = 2, seed=4)
+plot_sample_data(nn=3, mu_0 = 0, mu_1 = 2, sd = 2, seed=5)
+```
+
+
+```{r make_gif_fun}
+# adapted from https://github.com/dariyasydykova/opencode/blob/master/animate_ROC.r
+nsims = 5
+nn = 3
+mu_0 = 0
+mu_1 = 1
+sd_0 = 1
+seed = 1
+
+make_gif <- function(nn=3, mu_0=0, mu_1=1, sd_0=1, nsims=10, seed=1, save_file=FALSE) {
+  set.seed(seed)
+  sampdata <- tibble(samplenum = rep(1:nsims, each=nn), 
+                     ctrl = rnorm(nn*nsims, mu_0, sd_0), 
+                     trt = rnorm(nn*nsims, mu_1, sd_0))
+  
+  sampdata_long <- sampdata %>% gather(key="group",value="value",-samplenum)
+  sampdata_summary <- sampdata_long %>% 
+    group_by(samplenum,group) %>% 
+    summarize(xbar = mean(value), 
+              sd_hat = sd(value), 
+              se_hat = sd_hat/sqrt(nn), 
+              ci_low = xbar - qt(.975,df = nn-1)*se_hat, ci_high = xbar + qt(.975,df = nn-1)*se_hat)
+  
+  sampdata_ttest <- sampdata_long %>% split(.$samplenum) %>% 
+    map(~tidy(t.test(.x$value ~ .x$group),.id="id"))
+  sampdata_ttest <- bind_rows(sampdata_ttest,.id="samplenum") # map_df(~tidy...,.id="samplenum") wasn't working
+  sampdata_summary <- left_join(sampdata_summary,sampdata_ttest%>%select(samplenum,p.value)%>%mutate(samplenum = as.numeric(samplenum)))
+  sampdata_summary <- sampdata_summary %>% mutate(signif = ifelse(p.value < 0.05, "signif", "not signif"),
+                                                  signif = factor(signif, levels=c("signif","not signif")))
+  
+  p_hist <- ggplot(sampdata_long, aes(x=value,fill=group))+
+    geom_histogram(alpha = .7)+
+    geom_vline(data=sampdata_summary, aes(xintercept=xbar,color=group))+
+    scale_fill_discrete(guide=FALSE)+
+    scale_color_discrete(guide=FALSE)+
+    ggtitle(glue::glue("N({mu_0},{sd_0}) vs N({mu_1},{sd_0}); Effect Size = {signif((mu_1-mu_0)/sd_0,2)}\nHistogram of Sample Data, n = {nn}"))+
+    transition_states(samplenum)+
+    ease_aes('cubic-in-out')
+  
+  p_errorbars <- ggplot(sampdata_long, aes(y=value, fill=group, x=group))+
+    geom_jitter(width=.2,pch=21,color="black")+
+    geom_errorbar(data=sampdata_summary, aes(ymin=ci_low,ymax=ci_high,x=group,color=signif), 
+                  inherit.aes = FALSE, width=.5)+
+    geom_point(data=sampdata_summary, aes(x=group,y=xbar),color="black",shape=2,size=3)+
+    #ylim(c(min(mu_0-3*sd_0, mu_1-3*sd_0),max(mu_0+3*sd_0, mu_1+3*sd_0)))+
+    geom_hline(yintercept=mu_0,color="grey",lty=2)+
+    geom_hline(yintercept=mu_1,color="grey",lty=2)+
+    transition_states(samplenum, state_length=2)+
+    ease_aes('cubic-in-out')+
+    ggtitle(glue::glue("Mean and 95% CIs, Sample"))
+  
+  # save each animation as individual frames
+  # each frame will be saved as a PNG image
+  p_hist_gif <- animate(p_hist, 
+                        device = "png",
+                        width = 400, 
+                        height = 400, 
+                        renderer = file_renderer("./gganim", prefix = "p_hist", overwrite = TRUE))
+  p_errorbars_gif <- animate(p_errorbars, 
+                             device = "png",
+                             width = 400, 
+                             height = 400,
+                             renderer = file_renderer("./gganim", prefix = "p_errorbars", overwrite = TRUE))
+  
+  # stitch two animations together
+  # read the first image (frame) of each animation
+  a <- image_read(p_hist_gif[[1]])
+  b <- image_read(p_errorbars_gif[[1]])
+  
+  # combine the two images into a single image
+  combined <- image_append(c(a,b))
+  new_gif <- c(combined)
+  for(i in 2:100){ # combine images frame by frame
+    a <- image_read(p_hist_gif[[i]])
+    b <- image_read(p_errorbars_gif[[i]])
+    combined <- image_append(c(a,b))
+    new_gif <- c(new_gif,combined)
+  }
+  
+  # make an animation of the combined images
+  combined_gif <- image_animate(new_gif)
+  if(save_file) {
+  # save as gif
+  image_write(combined_gif, 
+              here::here("2019_03_SampleSizeAACR",
+                         glue::glue("hist_errorbars_nn{nn}_sd{sd_0}_mu0{mu_0}_mu1{mu_1}_nsims{nsims}.gif")))
+  }
+  combined_gif
+}
+```
+
+```{r save_all_gifs, eval=FALSE}
+# run interactively to save gifs
+make_gif(nn = 3, mu_0 = 0, mu_1 = 3, sd_0 = 1, nsims = 20, seed = 1, save_file = TRUE)
+make_gif(nn = 3, mu_0 = 0, mu_1 = 1, sd_0 = 1, nsims = 10, seed = 1, save_file = TRUE)
+make_gif(nn = 10, mu_0 = 0, mu_1 = 1, sd_0 = 1, nsims = 10, seed = 1, save_file = TRUE)
+make_gif(nn = 25, mu_0 = 0, mu_1 = 1, sd_0 = 1, nsims = 10, seed = 1, save_file = TRUE)
+make_gif(nn = 25, mu_0 = 0, mu_1 = 1, sd_0 = 3, nsims = 10, seed = 1, save_file = TRUE)
+```
+
+```{r}
+make_gif(nn = 25, mu_0 = 0, mu_1 = 1, sd_0 = 3, nsims = 10, seed = 1, save_file = FALSE)
+```
+
+
