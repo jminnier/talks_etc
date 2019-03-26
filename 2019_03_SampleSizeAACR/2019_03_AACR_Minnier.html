@@ -4,6 +4,7 @@
     <title>Is n=3 enough? How to approach sample size and power calculations</title>
     <meta charset="utf-8">
     <meta name="author" content="Jessica Minnier, PhD Knight Cancer Institute Biostatistics Shared Resource Oregon Health &amp; Science University" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="my-theme.css" type="text/css" />
@@ -14,7 +15,7 @@ class: left, middle, inverse, title-slide
 
 # Is n=3 enough? How to approach sample size and power calculations
 ### Jessica Minnier, PhD<br><span style="font-size: 50%;">Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health &amp; Science University</span>
-### <a href="https://www.abstractsonline.com/pp8/#!/6812/session/153">AACR</a>, March 30, 2019<br><br> <a href="https://bit.ly/aacr-power">bit.ly/aacr-power</a><br> <a href="https://twitter.com/datapointier">datapointier</a>
+### <a href="https://www.abstractsonline.com/pp8/#!/6812/session/153">AACR</a>, March 30, 2019<br><br><i class="fas  fa-link "></i> <a href="https://bit.ly/aacr-power">bit.ly/aacr-power</a><br><i class="fab  fa-twitter "></i> <a href="https://twitter.com/datapointier">datapointier</a>
 
 ---
 
@@ -65,6 +66,8 @@ class: middle, center, inverse
 (predictor) is associated with an increased risk of developing *breast cancer* (outcome).
 - **Question**: How many women do we need to sample/study to determine that BRCA1 is associated with breast cancer?
 
+## Your hypothesis and design inform your analysis method.
+
 ---
 
 # Step 2: Choose your analysis and test(s)
@@ -76,6 +79,7 @@ class: middle, center, inverse
     + the more you have the more samples you will need
 - What test? t-test? Linear regression? Random effects model? Chi-square test?
 
+## Calculate sample size based on analysis method you will use.
 
 ---
 
@@ -135,7 +139,7 @@ Do We Know? | Measure | Definition
 ## Examples:
 
 - Difference in treatment and control mean outcomes, relative to variance (standard deviation)
-- Correlation coefficient of
+- Correlation coefficient of two biomarkers
 - Risk ratio of breast cancer comparing BRCA carriers to non-carriers
 - Magnitude of regression coefficient
 
@@ -175,14 +179,7 @@ Alternative Hypothesis: Difference in means `\(\neq\)` 0
 
 # n=25, effect size = 1
 
-
-```r
-power.t.test(n = 25, delta = 1, sd = 1, sig.level = 0.05)$power
-```
-
-```
-[1] 0.9337076
-```
+Power = 0.93
 
 
 ![](hist_errorbars_nn25_sd1_mu00_mu11_nsims10.gif)
@@ -195,13 +192,15 @@ power.t.test(n = 25, delta = 1, sd = 1, sig.level = 0.05)$power
 # n=25, effect size = 0.33
 
 Increase standard deviation from 1 to 3, divides effect size by 3
+&lt;br&gt;Power = 0.21
 
 ![](hist_errorbars_nn25_sd3_mu00_mu11_nsims10.gif)
 ---
 
 # n=10, effect size = 1
 
-Decrease sample size
+Decrease sample size&lt;br&gt;
+Power = 0.56
 
 ![](hist_errorbars_nn10_sd1_mu00_mu11_nsims10.gif)
 
@@ -209,9 +208,41 @@ Decrease sample size
 
 # n=3, effect size = 1
 
-Decrease sample size even more
+Decrease sample size even more&lt;br&gt;Power = 0.16
 
 ![](hist_errorbars_nn3_sd1_mu00_mu11_nsims10.gif)
+
+---
+
+# n = 3, power = 0.9, effect size = ?
+
+
+
+In the `R` output below, the effect size is delta/sd = 3.59/1 = 3.59.
+
+
+```r
+power.t.test(n=3, sd=1, sig.level=0.05, power=0.9)
+```
+
+```
+
+     Two-sample t test power calculation 
+
+              n = 3
+          delta = 3.589209
+             sd = 1
+      sig.level = 0.05
+          power = 0.9
+    alternative = two.sided
+
+NOTE: n is number in *each* group
+```
+
+
+
+
+
 
 ---
 
@@ -281,7 +312,17 @@ class: inverse, center, middle
 
 ---
 
-# Refs
+# Thank you!
+
+
+Contact me: <i class="fas  fa-envelope "></i> minnier-[at]-ohsu.edu, <i class="fab  fa-twitter "></i> [datapointier](https://twitter.com/datapointier), <i class="fab  fa-github "></i> [jminnier](https://github.com/jminnier/)
+
+Slides available: [bit.ly/aacr-power](https://bit.ly/aacr-power)
+
+Slide code available at: [github.com/jminnier/talks-etc](https://github.com/jminnier/talks_etc)
+
+
+# References
 
 - Some of this talk adapted from: [David Yanez's Sample Size](https://www.ohsu.edu/xd/research/centers-institutes/octri/education-training/upload/PowerAndSampleSize.pdf) talk at [OCTRI Research Forum (OHSU)](https://www.ohsu.edu/xd/research/centers-institutes/octri/education-training/octri-research-forum.cfm)
 - [Statistical Rules of Thumb, Chapter 2](http://www.vanbelle.org/)

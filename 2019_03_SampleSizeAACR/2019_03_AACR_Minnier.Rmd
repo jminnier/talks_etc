@@ -88,6 +88,8 @@ class: middle, center, inverse
 (predictor) is associated with an increased risk of developing *breast cancer* (outcome).
 - **Question**: How many women do we need to sample/study to determine that BRCA1 is associated with breast cancer?
 
+## Your hypothesis and design inform your analysis method.
+
 ---
 
 # Step 2: Choose your analysis and test(s)
@@ -99,6 +101,7 @@ class: middle, center, inverse
     + the more you have the more samples you will need
 - What test? t-test? Linear regression? Random effects model? Chi-square test?
 
+## Calculate sample size based on analysis method you will use.
 
 ---
 
@@ -158,7 +161,7 @@ Do We Know? | Measure | Definition
 ## Examples:
 
 - Difference in treatment and control mean outcomes, relative to variance (standard deviation)
-- Correlation coefficient of
+- Correlation coefficient of two biomarkers
 - Risk ratio of breast cancer comparing BRCA carriers to non-carriers
 - Magnitude of regression coefficient
 
@@ -197,7 +200,7 @@ Alternative Hypothesis: Difference in means $\neq$ 0
 mu_0 = 0
 mu_1 = 1
 
-true_data <- data_frame(x=seq(-6,6,by=.005)) %>%
+true_data <- tibble(x=seq(-6,6,by=.005)) %>%
   mutate(ctrl = dnorm(x,mean=mu_0, sd=1),
          trt = dnorm(x, mean=mu_1, sd=1))%>%
   gather(key="group",value="distribution",-x)
@@ -219,9 +222,7 @@ ggplot(true_data, aes(fill=group,
 
 # n=25, effect size = 1
 
-```{r, echo=TRUE, eval=TRUE, tidy=TRUE}
-power.t.test(n=25, delta=1, sd = 1, sig.level = 0.05)$power
-```
+Power = `r signif(power.t.test(n=25, delta=1, sd = 1, sig.level = 0.05)$power,2)`
 
 
 ![](hist_errorbars_nn25_sd1_mu00_mu11_nsims10.gif)
@@ -234,13 +235,15 @@ power.t.test(n=25, delta=1, sd = 1, sig.level = 0.05)$power
 # n=25, effect size = 0.33
 
 Increase standard deviation from 1 to 3, divides effect size by 3
+<br>Power = `r signif(power.t.test(n=25, delta=1, sd = 3, sig.level = 0.05)$power,2)`
 
 ![](hist_errorbars_nn25_sd3_mu00_mu11_nsims10.gif)
 ---
 
 # n=10, effect size = 1
 
-Decrease sample size
+Decrease sample size<br>
+Power = `r signif(power.t.test(n=10, delta=1, sd = 1, sig.level = 0.05)$power,2)`
 
 ![](hist_errorbars_nn10_sd1_mu00_mu11_nsims10.gif)
 
@@ -248,9 +251,29 @@ Decrease sample size
 
 # n=3, effect size = 1
 
-Decrease sample size even more
+Decrease sample size even more<br>Power = `r signif(power.t.test(n=3, delta=1, sd = 1, sig.level = 0.05)$power,2)`
 
 ![](hist_errorbars_nn3_sd1_mu00_mu11_nsims10.gif)
+
+---
+
+# n = 3, power = 0.9, effect size = ?
+
+```{r}
+eff_size <- power.t.test(n=3, sd=1, sig.level=0.05, power=0.9)$delta/1
+glue::glue("")
+```
+
+In the `R` output below, the effect size is delta/sd = `r signif(eff_size,3)`/1 = `r signif(eff_size,3)`.
+
+```{r, echo=TRUE}
+power.t.test(n=3, sd=1, sig.level=0.05, power=0.9)
+```
+
+
+
+
+
 
 ---
 
@@ -320,7 +343,17 @@ class: inverse, center, middle
 
 ---
 
-# Refs
+# Thank you!
+
+
+Contact me: `r icon::fa("envelope")` minnier-[at]-ohsu.edu, `r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier), `r icon::fa("github")` [jminnier](https://github.com/jminnier/)
+
+Slides available: [bit.ly/aacr-power](https://bit.ly/aacr-power)
+
+Slide code available at: [github.com/jminnier/talks-etc](https://github.com/jminnier/talks_etc)
+
+
+# References
 
 - Some of this talk adapted from: [David Yanez's Sample Size](https://www.ohsu.edu/xd/research/centers-institutes/octri/education-training/upload/PowerAndSampleSize.pdf) talk at [OCTRI Research Forum (OHSU)](https://www.ohsu.edu/xd/research/centers-institutes/octri/education-training/octri-research-forum.cfm)
 - [Statistical Rules of Thumb, Chapter 2](http://www.vanbelle.org/)
