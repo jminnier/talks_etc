@@ -222,13 +222,13 @@ ggplot(true_data, aes(fill=group,
 
 # n=25, effect size = 1
 
-Power = `r signif(power.t.test(n=25, delta=1, sd = 1, sig.level = 0.05)$power,2)`
+Power = `r signif(power.t.test(n=25, delta=1, sd = 1, sig.level = 0.05)$power,2)`<br>
+(Significance based on two sample t-test for difference in means)
 
 
 ![](hist_errorbars_nn25_sd1_mu00_mu11_nsims10.gif)
 
 
-<br>(Significance based on two sample t-test for difference in means)
 
 ---
 
@@ -238,6 +238,15 @@ Increase standard deviation from 1 to 3, divides effect size by 3
 <br>Power = `r signif(power.t.test(n=25, delta=1, sd = 3, sig.level = 0.05)$power,2)`
 
 ![](hist_errorbars_nn25_sd3_mu00_mu11_nsims10.gif)
+---
+
+To detect an effect size of 0.33 with power = 0.9 and type I error = 0.05, what sample size would we need? n=194 in each group!
+
+```{r, echo = TRUE}
+power.t.test(delta = 0.33, sd = 1, sig.level = 0.05, power = 0.9)
+```
+
+
 ---
 
 # n=10, effect size = 1
