@@ -1,6 +1,12 @@
 .title-slide a, a > code {
     color: #aadff2;
     text-decoration: none;
+}
+
+.title-slide {
+    background-image: url(img/CAN-RGB-4C-REV.png);
+    background-position: 80% 65%;
+    background-size: 400px;
   }
 
 div.my-footer {

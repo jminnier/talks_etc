@@ -45,7 +45,7 @@ theme_set(theme_bw(base_size = 24))
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
 mono_light(
-  base_color = "#125972", ## picked to coordinate with rOpenSci logo
+  base_color =  "#3A6185", #5e97c9" ## OHSU Marquam, #"#125972" ## picked to coordinate with rOpenSci logo 
   code_highlight_color = "#c0e8f5",
   link_color = "#38BDDE",
   header_font_google = google_font("Josefin Sans"),
@@ -118,8 +118,8 @@ class: inverse, center, middle
     + What do you *hope* to detect
 - Variability of measurements
     + Precision of your measurement, biological variability within population
-- Level of type I error (significance level, $\alpha$)
-- Level of power
+- Level of type I error (false positive rate, significance level, $\alpha$)
+- Level of power (true positive rate)
 - Other design details (number of groups, clustering, repeated measures)
 
 ---
@@ -130,7 +130,7 @@ Need to know 3 of the 4 to determine the 4th:
 
 Measure | Definition
 ---|---
-Effect Size | Magnitude of difference or assocation; <br>i.e. (difference in means)/(population standard deviation) = $\frac{\mu_1 - \mu_0}{\sigma}$ = $\Delta$
+Effect Size | Magnitude of difference or assocation; <br>i.e. (difference in means)/(population standard deviation) = $\frac{\mu_1 - \mu_0}{\sigma}$ = $\frac{\delta}{\sigma}$
 Sample Size | N
 Type I Error / Significance level | $\alpha$ = probability of rejecting null hypothesis when it is true
 Power  | 1 - $\beta$ = 1 - Type II error = probability of rejecting null hypothesis when it is false
@@ -143,7 +143,7 @@ Need to know 3 of the 4 to determine the 4th:
 
 Do We Know? | Measure | Definition
 ---|---|---
-?? | Effect Size | Magnitude of difference or assocation; <br>i.e. (difference in means)/(population standard deviation) = $\frac{\mu_1 - \mu_0}{\sigma}$ = $\Delta$
+?? | Effect Size | Magnitude of difference or assocation; <br>i.e. (difference in means)/(population standard deviation) = $\frac{\mu_1 - \mu_0}{\sigma}$ = $\frac{\delta}{\sigma}$
 ?? | Sample Size | N
 0.05, 0.01 | Type I Error / Significance level | $\alpha$ = probability of rejecting null hypothesis when it is true
 0.9, 0.8 | Power  | 1 - $\beta$ = 1 - Type II error = probability of rejecting null hypothesis when it is false
@@ -176,9 +176,9 @@ Do We Know? | Measure | Definition
 
 ---
 
-# Simple example
+# Simple example: T-test
 
-Outcome = Continuous measurement
+Outcome = Continuous measurement, normal distribution
 
 Predictor = Treatment yes/no (treatment vs control group)
 
@@ -190,7 +190,7 @@ Null Hypothesis: Difference in means = 0
 
 Alternative Hypothesis: Difference in means $\neq$ 0
 
-"Given a desired effect size (difference in means relative to the variance), what sample size gives us enough information to reject the null hypothesis with power 90%?"
+**"Given a desired effect size, what sample size gives us enough information to reject the null hypothesis with power 90%, type I error 5?"**
 
 ---
 
@@ -225,8 +225,9 @@ ggplot(true_data, aes(fill=group,
 Power = `r signif(power.t.test(n=25, delta=1, sd = 1, sig.level = 0.05)$power,2)`<br>
 (Significance based on two sample t-test for difference in means)
 
-
-![](hist_errorbars_nn25_sd1_mu00_mu11_nsims10.gif)
+<a href = "https://jminnier-talks.netlify.com/2019_03_samplesizeaacr/img/hist_errorbars_nn25_sd1_mu00_mu11_nsims10.gif">
+<img src="img/hist_errorbars_nn25_sd1_mu00_mu11_nsims10.gif">
+</a>
 
 
 
@@ -237,7 +238,10 @@ Power = `r signif(power.t.test(n=25, delta=1, sd = 1, sig.level = 0.05)$power,2)
 Increase standard deviation from 1 to 3, divides effect size by 3
 <br>Power = `r signif(power.t.test(n=25, delta=1, sd = 3, sig.level = 0.05)$power,2)`
 
-![](hist_errorbars_nn25_sd3_mu00_mu11_nsims10.gif)
+<a href = "https://jminnier-talks.netlify.com/2019_03_samplesizeaacr/img/hist_errorbars_nn25_sd3_mu00_mu11_nsims10.gif">
+<img src="img/hist_errorbars_nn25_sd3_mu00_mu11_nsims10.gif">
+</a>
+
 ---
 
 To detect an effect size of 0.33 with power = 0.9 and type I error = 0.05, what sample size would we need? n=194 in each group!
@@ -254,7 +258,9 @@ power.t.test(delta = 0.33, sd = 1, sig.level = 0.05, power = 0.9)
 Decrease sample size<br>
 Power = `r signif(power.t.test(n=10, delta=1, sd = 1, sig.level = 0.05)$power,2)`
 
-![](hist_errorbars_nn10_sd1_mu00_mu11_nsims10.gif)
+<a href = "https://jminnier-talks.netlify.com/2019_03_samplesizeaacr/img/hist_errorbars_nn10_sd1_mu00_mu11_nsims10.gif">
+<img src="img/hist_errorbars_nn10_sd1_mu00_mu11_nsims10.gif">
+</a>
 
 ---
 
@@ -262,7 +268,9 @@ Power = `r signif(power.t.test(n=10, delta=1, sd = 1, sig.level = 0.05)$power,2)
 
 Decrease sample size even more<br>Power = `r signif(power.t.test(n=3, delta=1, sd = 1, sig.level = 0.05)$power,2)`
 
-![](hist_errorbars_nn3_sd1_mu00_mu11_nsims10.gif)
+<a href = "https://jminnier-talks.netlify.com/2019_03_samplesizeaacr/img/hist_errorbars_nn3_sd1_mu00_mu11_nsims10.gif">
+<img src="img/hist_errorbars_nn3_sd1_mu00_mu11_nsims10.gif">
+</a>
 
 ---
 
@@ -280,8 +288,32 @@ power.t.test(n=3, sd=1, sig.level=0.05, power=0.9)
 ```
 
 
+---
 
+# Underlying data distributions
 
+```{r normal_true3, fig.width=10, fig.height=6, fig.align='center'}
+mu_0 = 0
+mu_1 = 3.59
+
+true_data <- tibble(x=seq(-6,6,by=.005)) %>%
+  mutate(ctrl = dnorm(x,mean=mu_0, sd=1),
+         trt = dnorm(x, mean=mu_1, sd=1))%>%
+  gather(key="group",value="distribution",-x)
+
+ggplot(true_data, aes(fill=group,
+                      x=x,
+                      y=distribution))+
+  geom_line()+
+  geom_area(data=true_data%>%filter(group=="ctrl"),alpha=.5)+
+  geom_area(data=true_data%>%filter(group=="trt"),alpha=.5)+
+  geom_vline(xintercept=mu_0, color="darkred")+
+  geom_vline(xintercept=mu_1, color="darkblue")+
+  #ylim(0,.5)+
+  ylab("distribution = f(x)")+
+  annotate(x = -3.5, y=.3,geom="label", label="Effect size = (3.59 - 0)/1 = 3.59",size=5)+
+  ggtitle("Normal Distributions: N(0,1) vs N(3.59,1)")
+```
 
 
 ---

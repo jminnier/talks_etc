@@ -8,3 +8,10 @@ system("decktape remark 2018_07_JSM_InteractiveLearning/minnier_jsm2018.html 201
 webshot(here::here("2018_07_JSM_InteractiveLearning","minnier_jsm2018.html"),
           file = here::here("2018_07_JSM_InteractiveLearning","minnier_jsm2018.pdf"))
 # notes, did not like the `` text, images or plots that were cut off on the html slides did not show up on pdf, neither with Chrome print to pdf
+
+
+
+#system("decktape remark 2019_03_SampleSizeAACR/2019_03_AACR_Minnier.html 2019_03_SampleSizeAACR/2019_03_AACR_Minnier.pdf")
+webshot(here::here("2019_03_SampleSizeAACR","2019_03_AACR_Minnier.html"),
+        file = here::here("2019_03_SampleSizeAACR","2019_03_AACR_Minnier.pdf"))
+# notes, did not like the `` text, images or plots that were cut off on the html slides did not show up on pdf, neither with Chrome print to pdf

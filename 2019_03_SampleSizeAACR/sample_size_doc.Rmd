@@ -199,7 +199,7 @@ make_gif <- function(nn=3, mu_0=0, mu_1=1, sd_0=1, nsims=10, seed=1, save_file=F
   if(save_file) {
   # save as gif
   image_write(combined_gif, 
-              here::here("2019_03_SampleSizeAACR",
+              here::here("2019_03_SampleSizeAACR","img",
                          glue::glue("hist_errorbars_nn{nn}_sd{sd_0}_mu0{mu_0}_mu1{mu_1}_nsims{nsims}.gif")))
   }
   combined_gif
@@ -213,6 +213,7 @@ make_gif(nn = 3, mu_0 = 0, mu_1 = 1, sd_0 = 1, nsims = 10, seed = 1, save_file =
 make_gif(nn = 10, mu_0 = 0, mu_1 = 1, sd_0 = 1, nsims = 10, seed = 1, save_file = TRUE)
 make_gif(nn = 25, mu_0 = 0, mu_1 = 1, sd_0 = 1, nsims = 10, seed = 1, save_file = TRUE)
 make_gif(nn = 25, mu_0 = 0, mu_1 = 1, sd_0 = 3, nsims = 10, seed = 1, save_file = TRUE)
+make_gif(nn = 3, mu_0 = 0, mu_1 = 3.6, sd_0 = 1, nsims = 10, seed = 2, save_file = TRUE)
 ```
 
 ```{r}
