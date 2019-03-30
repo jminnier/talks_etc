@@ -190,7 +190,7 @@ Null Hypothesis: Difference in means = 0
 
 Alternative Hypothesis: Difference in means $\neq$ 0
 
-**"Given a desired effect size, what sample size gives us enough information to reject the null hypothesis with power 90%, type I error 5?"**
+**"Given a desired effect size, what sample size gives us enough information to reject the null hypothesis with power 90%, type I error 5%?"**
 
 ---
 
