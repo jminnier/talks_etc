@@ -55,14 +55,7 @@ mono_light(
 )
 ```
 
-# Outline
 
-- Why calculate sample size?
-- What are the important components?
-- Examples
-- Software
-
----
 
 # Goals of sample size and power calculations
 
@@ -128,22 +121,9 @@ class: inverse, center, middle
 
 Need to know 3 of the 4 to determine the 4th:
 
-Measure | Definition
----|---
-Effect Size | Magnitude of difference or assocation; <br>i.e. (difference in means)/(population standard deviation) = $\frac{\mu_1 - \mu_0}{\sigma}$ = $\frac{\delta}{\sigma}$
-Sample Size | N
-Type I Error / Significance level | $\alpha$ = probability of rejecting null hypothesis when it is true
-Power  | 1 - $\beta$ = 1 - Type II error = probability of rejecting null hypothesis when it is false
-
----
-
-# Components of Sample Size
-
-Need to know 3 of the 4 to determine the 4th:
-
 Do We Know? | Measure | Definition
 ---|---|---
-?? | Effect Size | Magnitude of difference or assocation; <br>i.e. (difference in means)/(population standard deviation) = $\frac{\mu_1 - \mu_0}{\sigma}$ = $\frac{\delta}{\sigma}$
+?? | Effect Size | Magnitude of difference or association; <br>i.e. (difference in means)/(population standard deviation) = $\frac{\mu_1 - \mu_0}{\sigma}$ = $\frac{\delta}{\sigma}$
 ?? | Sample Size | N
 0.05, 0.01 | Type I Error / Significance level | $\alpha$ = probability of rejecting null hypothesis when it is true
 0.9, 0.8 | Power  | 1 - $\beta$ = 1 - Type II error = probability of rejecting null hypothesis when it is false
@@ -153,7 +133,7 @@ Do We Know? | Measure | Definition
 # What is **effect size**?
 
 - Summarizes the outcome of interest
-- Magnitude of difference or assocation
+- Magnitude of difference or association
 - Specification depends on study design and statistical model/test
 
 --
@@ -194,7 +174,7 @@ Alternative Hypothesis: Difference in means $\neq$ 0
 
 ---
 
-# Underlying data distributions
+# Simulations: underlying data distributions
 
 ```{r normal_true, fig.width=10, fig.height=6, fig.align='center'}
 mu_0 = 0
@@ -322,7 +302,7 @@ ggplot(true_data, aes(fill=group,
 
 ## Precision of statistics
 
-- Sample sizes can also be calculated for a specific maxmimum width in confidence interval around an estimate
+- Sample sizes can also be calculated for a specific maximum width in confidence interval around an estimate
 - i.e. we will estimate the proportion with a 95% confidence interval of width 0.1 such as [0.2, 0.3]
 
 ## Prediction models
