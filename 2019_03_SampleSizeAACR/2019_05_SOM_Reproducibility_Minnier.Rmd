@@ -1,7 +1,7 @@
 ---
 title: "Is n=3 enough? How to approach sample size and power calculations"
-author: "Jessica Minnier, PhD<br><span style = 'font-size: 50%;'>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span>"
-date: '[AACR](https://www.abstractsonline.com/pp8/#!/6812/session/153), March 30, 2019<br><br>`r icon::fa("link")` [bit.ly/aacr-power](https://bit.ly/aacr-power)<br>`r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier)'
+author: "Jessica Minnier, PhD<br><span style = 'font-size: 50%;'>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span>"
+date: 'SOM Rigor & Reproducibility<br>May 3, 2019<br><br>`r icon::fa("link")` [bit.ly/som-power](https://bit.ly/som-power)<br>`r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier)'
 output:
   xaringan::moon_reader:
     chakra: libs/remark-latest.min.js
@@ -18,8 +18,7 @@ output:
 ---
 
 layout: true
-  
-<div class="my-footer"><span>bit.ly/aacr-power</span></div> 
+
 
 ---
 
@@ -324,34 +323,15 @@ ggplot(true_data, aes(fill=group,
 
 ---
 
-class: inverse, center, middle
+# Power Analysis Software
 
-# Free online software
-
----
-
-
-# [G*power](http://www.gpower.hhu.de/)
-
-(examples of how to use it: http://www.ats.ucla.edu/stat/gpower/)
-
-![](img/gpower.png)
-
----
-
-# [Shiny Dashboard for Sample Size and Power Calculations](https://mfpartridge.shinyapps.io/shinysamplesizesdashboard/)
-
-![](img/software1.png)
-
----
-
-# Others
-
+- [G*power](http://www.gpower.hhu.de/), examples of how to use it: http://www.ats.ucla.edu/stat/gpower/
 - [TrialDesign.org](http://www.trialdesign.org/index.html)
 - [GLIMMPSE](https://glimmpse.samplesizeshop.org/#/)
 - [CRAB Stat tools](https://stattools.crab.org/)
 - [The Shiny CRT Calculator: Power and Sample size for Cluster Randomised Trials](https://clusterrcts.shinyapps.io/rshinyapp/)
 - [Cal Poly Stats Dept Apps](https://statistics.calpoly.edu/shiny)
+- [Shiny Dashboard for Sample Size and Power Calculations](https://mfpartridge.shinyapps.io/shinysamplesizesdashboard/)
 - Statistical software such as R, SAS, STATA
 
 ---
@@ -370,7 +350,7 @@ class: inverse, center, middle
 
 Contact me: `r icon::fa("envelope")` minnier-[at]-ohsu.edu, `r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier), `r icon::fa("github")` [jminnier](https://github.com/jminnier/)
 
-Slides available: [bit.ly/aacr-power](https://bit.ly/aacr-power)
+Slides available: [bit.ly/som-power](https://bit.ly/som-power)
 
 Slide code available at: [github.com/jminnier/talks-etc](https://github.com/jminnier/talks_etc)
 
