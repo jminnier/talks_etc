@@ -1,0 +1,82 @@
+---
+title: "Sharpening the Tools in Your Data Science Toolbox"
+author: "Jessica Minnier, PhD<br><span style = 'font-size: 50%;'>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span>"
+date: '[Joint Statistical Meetings](https://ww2.amstat.org/meetings/jsm/2019/onlineprogram/ActivityDetails.cfm?sessionid=218337), July 29, 2019<br><br>`r icon::fa("link")` [bit.ly/jsm19](https://bit.ly/jsm19)<br>`r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier)'
+output:
+  xaringan::moon_reader:
+    css: [xaringan-themer.css, ../libs/my-theme.css]
+    lib_dir: libs
+    nature:
+      countIncrementalSlides: false
+      titleSlideClass: ["left", "middle", "inverse"]
+      highlightLines: true
+      highlightStyle: solarized-dark
+      ratio: "16:9"
+    includes:
+      in_header: ../libs/header.html
+---
+
+layout: true
+  
+<div class="my-footer"><span>bit.ly/aacr-power</span></div> 
+
+
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+library(tidyverse)
+
+knitr::opts_chunk$set(
+  warning=FALSE, 
+  message=FALSE, 
+  fig.width=10.5, 
+  fig.height=4, 
+  comment=NA, 
+  rows.print=16,
+  echo=FALSE)
+theme_set(theme_bw(base_size = 24))
+```
+
+
+```{r xaringan-themer, include = FALSE}
+# devtools::install_github("gadenbuie/xaringanthemer")
+library(xaringanthemer)
+mono_light(
+  base_color =  "#3A6185", #5e97c9" ## OHSU Marquam, #"#125972" ## picked to coordinate with rOpenSci logo 
+  code_highlight_color = "#c0e8f5",
+  link_color = "#38BDDE",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Droid Mono"),
+  text_font_size = "26px"
+)
+```
+
+
+
+# Outline
+
+---
+
+
+# Programming has changed
+
+- Data Science is programming intensive
+- R is easier to learn than ever before (see: tidyverse)
+- R packages are easier to make
+- Python is most common
+
+# Software Development
+
+- Version control (git/github/gitlab, bitbucket)
+- Unit Testing (does your code work?)
+- Collaborative coding
+
+# How to learn software development?
+
+- Software Carpentries (2 day intensive workshops)
+
+
+---
