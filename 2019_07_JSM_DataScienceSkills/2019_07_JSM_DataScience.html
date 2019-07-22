@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
-    <title>Sharpening the Tools in Your Data Science Toolbox</title>
-    <meta charset="utf-8">
+    <title>Sharpening the Tools in Your Data Science Toolbox <i class="fas  fa-toolbox "></i></title>
+    <meta charset="utf-8" />
     <meta name="author" content="Jessica Minnier, PhD OHSU-PSU School of Public Health Knight Cancer Institute Biostatistics Shared Resource Oregon Health &amp; Science University" />
     <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/5235085b15.js"></script>
-    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
-    <link rel="stylesheet" href="libs/my-theme-nologo.css" type="text/css" />
+    <link rel="stylesheet" href="css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-theme.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 class: left, middle, inverse, title-slide
 
-# Sharpening the Tools in Your Data Science Toolbox
+# Sharpening the Tools in Your Data Science Toolbox <i class="fas  fa-toolbox "></i>
 ### Jessica Minnier, PhD<br><span style="font-size: 50%;">OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health &amp; Science University</span>
 ### <a href="https://ww2.amstat.org/meetings/jsm/2019/onlineprogram/ActivityDetails.cfm?sessionid=218337">Joint Statistical Meetings</a>, July 29, 2019<br><br><i class="fas  fa-link "></i> <a href="https://bit.ly/jmin-jsm19">bit.ly/jmin-jsm19</a><br><i class="fab  fa-twitter "></i> <a href="https://twitter.com/datapointier">datapointier</a>
 
@@ -32,54 +32,143 @@ layout: true
 
 
 
-class: inverse, center, middle
 
-[DRAFT SLIDES]
+class: inverse, middle
 
----
+# Who am I?
 
-# Outline
+- Use R every day, git often, unix sometimes, python rarely
+- Teach intro to R, R markdown, intro to stats for data science, R Shiny (and Math/Stats)
+- Collaborative statistician (mostly applied work, no PhD students, no Postdocs, some MS students and staff)
+- Involved in: organizing Cascadia R conf, PDX R Meetup, R Ladies, BioData Club
 
 ---
 
 # Statistics is changing
 
+A non-random sample of buzzwords:
 
-[How does data science differ from statistics? Is it the same? Many different opinions,
-depends on industry/career]
+- Big Data
+- Data Science
+- Machine Learning
+- Reproducible Coding
+- Version Control
+- Interactive Dashboards
+
+
 
 ---
 
-# Programming has definitely changed
+&lt;center&gt;&lt;img src="img/asa_statement_datasci.png" width="80%"/&gt;&lt;/center&gt;
+
+&gt; Sustained and substantial collaborative effort with researchers with expertise in data organization and in the flow and distribution of computation. &lt;font color="red"&gt;Statisticians must engage them, learn from them&lt;/font&gt;, teach them, and work with them.
+
+&gt; Statistical &lt;font color="red"&gt;education and training must continue to evolve&lt;/font&gt;—the next generation of statistical professionals needs a &lt;font color="red"&gt;broader skill set&lt;/font&gt; and must be more able to engage with database and distributed systems experts. 
+
+&gt; The next generation must include more researchers with skills that &lt;font color="red"&gt;cross the traditional boundaries of statistics&lt;/font&gt;, databases, and distributed systems; there will be an ever-increasing demand for such “multi-lingual” experts.
+
+---
+
+# Programming itself is changing
 
 - Data Science is programming intensive
-  + Big data and complex models (machine learning)
+  + Big data and complex models (machine learning beyond regression)
 - Beyond SAS
   + R is easier to learn than ever before (see: tidyverse)
-  + R packages are easier to make
+  + R packages are easier to make and distribute
   + R is not "slow" anymore
 - Python is most common in data science
   + but not statistics!
 
 ---
 
-# Improve your coding skills
+## Data Science Jobs: Python, SQL, .... R
 
-[Online resources/courses]
-
----
-
-# Coding in R is more fun
-
-- knitr `\(\to\)` reproducible documents
-  + these slides are made with knitr/r markdown
-  + make textbooks, webpages, much more
-- Shiny `\(\to\)` webpages to show off methodology/analyses
+.pull-left[
+&lt;center&gt;&lt;img src="img/r4stats_popularity_jobs.png" width="100%"/&gt;&lt;/center&gt;
+[R4stats - Robert A. Muenchen](http://r4stats.com/articles/popularity/)
+]
+.pull-right[
+&lt;center&gt;&lt;img src="img/r4stats_popularity_jobs_pct.png" width="100%"/&gt;&lt;/center&gt;
+]
 
 ---
 
-# Software Development
+## By contrast, scholarly articles: SPSS, R, SAS
 
+.pull-left[
+&lt;center&gt;&lt;img src="img/r4stats_popularity_articles.png" width="90%"/&gt;&lt;/center&gt;
+]
+.pull-right[
+&lt;center&gt;&lt;img src="img/r4stats_popularity_articles_trend.png" width="98%"/&gt;&lt;/center&gt;
+[R4stats - Robert A. Muenchen](http://r4stats.com/articles/popularity/)
+]
+
+---
+
+# Data Science/Kaggle: Python, R, SQL
+
+.pull-left[
+&lt;center&gt;&lt;img src="img/kaggle_languages.png" width="100%"/&gt;&lt;/center&gt;
+]
+.pull-right[
+&lt;center&gt;&lt;img src="img/kaggle_languages_most_often.png" width="100%"/&gt;&lt;/center&gt;
+]
+[Business Over Broadway - Bob Hayes](https://businessoverbroadway.com/2019/01/13/programming-languages-most-used-and-recommended-by-data-scientists/)
+---
+
+
+
+.pull-left-40[
+
+## How to keep up?
+Learning takes time, dedication, courage.
+]
+
+.pull-right-60[
+&lt;center&gt;&lt;img src="img/draw_owl.png" width="100%"/&gt;&lt;/center&gt;
+]
+
+
+---
+## Highlights of my education in programming
+.pull-left[
+CS courses in college (C, Java):
+&lt;img src="img/college_cs2.png" width="100%"align="top"/&gt;
+My PhD advisor wrote a *ton* of code and functions, shared it all with me.
+&lt;img src="img/library_gradschool.png" width="100%"align="top"/&gt;
+]
+.pull-right[
+Postdoc (learned git/github):
+&lt;img src="img/softwarecarp.png" width="100%"align="top"/&gt;
+
+First year Assistant Professor (R Markdown, Shiny were all new &amp; exciting!)
+&lt;img src="img/user2014.png" width="100%"align="top"/&gt;
+]
+
+---
+
+## Learning while teaching
+
+&lt;img src="img/pres1.png" width="35%"align="top"/&gt;&lt;img src="img/pres2.png" width="30%"align="top"/&gt;&lt;img src="img/pres3.png" width="35%"align="top"/&gt;
+&lt;img src="img/pres4.png" width="28%"align="top"/&gt;&lt;img src="img/pres5.png" width="36%"align="top"/&gt;&lt;img src="img/pres6.png" width="36%"align="top"/&gt;
+[github.com/jminnier/talks_etc](https://github.com/jminnier/talks_etc)
+
+---
+
+## Learning while teaching with new tools
+
+(also: find collaborators better than you at all this - thanks [Ted Laderas!]())
+
+&lt;img src="img/teach1.png" width="27%"align="top"/&gt;&lt;img src="img/teach2.png" width="33%"align="top"/&gt;&lt;img src="img/teach3.png" width="33%"align="top"/&gt; 
+
+###### [r-bootcamp.netlify.com](https://r-bootcamp.netlify.com/); [minnier.shinyapps.io/ODSI_categoricalData/](https://minnier.shinyapps.io/ODSI_categoricalData); [minnier.shinyapps.io/ODSI_continuousData](https://minnier.shinyapps.io/ODSI_continuousData/)
+
+---
+
+# Software development
+
+.pull-left[
 - Unix/shell
 - Programming
 - Version control (git/github/gitlab, bitbucket)
@@ -87,54 +176,129 @@ depends on industry/career]
 - Collaborative coding
 - Using databases (SQL)
 - Automation (make)
+]
+.pull-right[
+&lt;img src="img/softwarecarp.png" width="100%" align="top"/&gt;
+https://software-carpentry.org/
+
+&lt;img src="img/whattheyforgot.png" width="100%" align="top"/&gt;
+https://whattheyforgot.org/
+]
 
 ---
 
+# Improve your coding skills
 
-# How to learn software development?
+- Difficult to do when busy, unless you set aside time (make a deadline) or find an immersive experience
+- Learn more R? SAS/STATA? Find workshops! (JSM, CSP, SDSS, Rstudio::conf, UseR!, local R meetups and conferences)
+- Learn git/github/software development? Host a [Software Carpentry](https://software-carpentry.org/) workshop
 
-- Software Carpentries (2 day intensive workshops)
+&lt;img src="img/sdss2020.png" width="25%"align="top"/&gt;&lt;img src="img/rstudioconf2020.png" width="35%"align="top"/&gt;
+&lt;img src="img/rstudioconfworkshop.png" width="35%"align="top"/&gt;
+
+
+---
+layout: false
+
+## Coding in R is more fun these days
+
+- R Markdown `\(\to\)` reproducible documents
+  + transformative for collaborative statistical analyses
+  + these slides are made with knitr/r markdown
+  + make textbooks, webpages, much more
+- Shiny `\(\to\)` webpages to show off methodology/analyses
+
+&lt;center&gt;&lt;img src="img/horst_rmarkdown_wizards.png" width="47%" height="50%" align="top"&gt;&lt;img src="img/horst_ggplot2_masterpiece.png" width="41%" height="50%" align="top"&gt;&lt;a href="https://github.com/allisonhorst/stats-illustrations"&gt;&lt;br&gt;Allison Horst&lt;/a&gt;&lt;/center&gt;
 
 
 ---
 
-# Learn together
-
-- Hackweeks 
-- Data Science Workshops
-- Data competitions (DataFest)
-- Workshops at conferences (SDSS, Rstudio::conf, local R conferences)
-
----
-
-# Find a community
+# Find a community &amp; learn together
+.pull-left[
 
 We all have something to learn!
 
-[R conferences, meetup groups, students or employees who are also learning, twitter]
+- Meetup groups (R Users, R Ladies, Women Who Code)
+- Hackweeks 
+- Data Science Workshops
+- Data competitions (DataFest)
+- Workshops at conferences
+- Online: [#rstats Twitter](https://twitter.com/hashtag/rstats?src=hash), [Rstudio community](https://community.rstudio.com/), 
+[R 4 Data Science Learning community](https://www.rfordatasci.com/), [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday)
+- Start your own club!
+]
+.pull-right[
+&lt;img src="img/biodataclub1.png" width="70%" align="top"&gt;
+
+https://biodata-club.github.io/
+]
 
 ---
+## It takes time to learn how to learn
 
-# Practice, practice, practice
+.pull-left[
+
+#### R specific learning checks from Alison Hill's [Big Magic with R: Creative Learning Beyond Fear](https://alison.rbind.io/talk/2018-cascadia-bigmagic/)
+
+&lt;img src="img/hill_magic.png" width="95%" align="top"&gt;
+
+]
+.pull-right[
+&lt;img src="img/hill_learn.png" width="100%"&gt;
+]
+---
+class:inverse
+&lt;center&gt;&lt;img src="img/horst_r_first_then.png" width="54%" height="50%"&gt;&lt;a href="https://github.com/allisonhorst/stats-illustrations"&gt;&lt;br&gt;Allison Horst&lt;/a&gt;&lt;/center&gt;
+---
+
+## Practice, practice, practice
 
 - Learning a tool and then forgetting to use it is the best way to unlearn it
+- Write down what you've learned (make a list of commands, write a blog post)
 
----
-
-# Give talks
+## Give talks
 
 - Sign up to give talks at local meetups
 - Teach workshops to students/fellow faculty/coworkers
+- Journal/book clubs with your co-workers/team
 
 ---
 
+.pull-left[
+
+## Resources `\(\rightarrow\)`
+
+- Interactive lessons
+- Online courses
+- Blog posts
+
+## Ask for help
+
+- Stack Overflow
+- Rstudio Community
+
+]
+.pull-right[
+&lt;center&gt;&lt;a href="https://github.com/jminnier/awesome-rstats/"&gt;&lt;img src="img/jminnier_learnr.png" width="100%" height="50%"&gt;github.com/jminnier&lt;/a&gt;&lt;/center&gt;
+]
+---
+
+.pull-left[
 # We don't want to be left behind
 
 - Work on projects outside of your comfort zone
 - Grow as statisticians, grow as a field
 - Be open to other fields collaborating on "data science"
+]
+.pull-right[
+# Don't forget to have fun!
+
+&lt;center&gt;&lt;img src="img/horst_welcome_to_rstats_twitter.png" width="95%" height="50%"&gt;&lt;a href="https://github.com/allisonhorst/stats-illustrations"&gt;&lt;br&gt;Allison Horst&lt;/a&gt;&lt;/center&gt;
+
+]
 
 ---
+class: inverse
 
 # Thank you!
 
@@ -143,7 +307,10 @@ Contact me: <i class="fas  fa-envelope "></i> minnier-[at]-ohsu.edu, <i class="f
 
 Slides available: [bit.ly/jmin-jsm19](https://bit.ly/jmin-jsm19)
 
-Slide code available at: [github.com/jminnier/talks-etc](https://github.com/jminnier/talks_etc)
+Slide code and files available at: [github.com/jminnier/talks-etc](https://github.com/jminnier/talks_etc)
+
+
+Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by [Yihui Xie](https://twitter.com/xieyihui?lang=en) with the [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package by [Garrick Aden-Buie](https://github.com/gadenbuie), inspired by slides and slide formatting by [Alison Hill](https://alison.rbind.io/), [Jennifer Thompson](https://jenthompson.me/), and [Chester Ismay](https://ismayc.github.io/)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
