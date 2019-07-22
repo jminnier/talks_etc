@@ -1,0 +1,8 @@
+name: Publish Document
+title:
+account: rpubs
+server: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/240925/81d90cafc6f3447689493d10ae6bbab7
+bundleId: https://api.rpubs.com/api/v1/document/240925/81d90cafc6f3447689493d10ae6bbab7
+url: http://rpubs.com/minnier/240925
+when: 1484161006.30474
