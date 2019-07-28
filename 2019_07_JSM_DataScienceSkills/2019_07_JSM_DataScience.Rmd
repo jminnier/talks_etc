@@ -52,6 +52,9 @@ mono_light(
   code_font_google   = google_font("Droid Mono"),
   text_font_size = "26px",
   outfile = "css/xaringan-themer.css"
+  # title_slide_background_image = "img/CAN-RGB-4C-REV.png",
+  # title_slide_background_position = "80% 60%",
+  # title_slide_background_size = "400px" #"40%"
 )
 ```
 
@@ -100,6 +103,7 @@ A non-random sample of buzzwords:
   + R is easier to learn than ever before (see: tidyverse)
   + R packages are easier to make and distribute
   + R is not "slow" anymore
+  + [FDA allows R](https://blog.revolutionanalytics.com/2012/06/fda-r-ok.html) for clinical trials
 - Python is most common in data science
   + but not statistics!
 
@@ -128,18 +132,6 @@ A non-random sample of buzzwords:
 ]
 
 ---
-
-# Data Science/Kaggle: Python, R, SQL
-
-.pull-left[
-<center><img src="img/kaggle_languages.png" width="100%"/></center>
-]
-.pull-right[
-<center><img src="img/kaggle_languages_most_often.png" width="100%"/></center>
-]
-[Business Over Broadway - Bob Hayes](https://businessoverbroadway.com/2019/01/13/programming-languages-most-used-and-recommended-by-data-scientists/)
----
-
 
 
 .pull-left-40[
@@ -192,13 +184,13 @@ First year Assistant Professor (R Markdown, Shiny were all new & exciting!)
 # Software development
 
 .pull-left[
-- Unix/shell
-- Programming
-- Version control (git/github/gitlab, bitbucket)
+- Unix/shell (i.e. for cluster computing)
+- Programming skills
+- Version control (i.e. git/github/gitlab, bitbucket)
 - Unit Testing (does your code work?)
 - Collaborative coding
-- Using databases (SQL)
-- Automation (make)
+- Using databases (i.e. SQL)
+- Automation (i.e. make)
 ]
 .pull-right[
 <img src="img/softwarecarp.png" width="100%" align="top"/>
@@ -212,7 +204,9 @@ https://whattheyforgot.org/
 
 # Improve your coding skills
 
-- Difficult to do when busy, unless you set aside time (make a deadline) or find an immersive experience
+### Similar to learning a new language
+
+- Difficult to do when busy/sporadically, unless you set aside time (make a deadline) or find an immersive experience
 - Learn more R? SAS/STATA? Find workshops! (JSM, CSP, SDSS, Rstudio::conf, UseR!, local R meetups and conferences)
 - Learn git/github/software development? Host a [Software Carpentry](https://software-carpentry.org/) workshop
 
@@ -261,17 +255,15 @@ https://biodata-club.github.io/
 
 .pull-left[
 
-#### R specific learning checks from Alison Hill's [Big Magic with R: Creative Learning Beyond Fear](https://alison.rbind.io/talk/2018-cascadia-bigmagic/)
-
+#### R specific learning checks from Alison Hill's [Big Magic with R: Creative Learning Beyond Fear](https://alison.rbind.io/talk/2018-cascadia-bigmagic/) - watch the [video](https://www.youtube.com/watch?v=seERGgG6uVs&list=PLxHlPKedTUbL7ckoP5Elrdrw64V7o5_h6&index=3&t=0s)!
 <img src="img/hill_magic.png" width="95%" align="top">
 
 ]
 .pull-right[
 <img src="img/hill_learn.png" width="100%">
 ]
----
-class:inverse
-<center><img src="img/horst_r_first_then.png" width="54%" height="50%"><a href="https://github.com/allisonhorst/stats-illustrations"><br>Allison Horst</a></center>
+
+
 ---
 
 ## Practice, practice, practice
@@ -306,6 +298,7 @@ class:inverse
 ]
 ---
 
+
 .pull-left[
 # We don't want to be left behind
 
@@ -325,6 +318,7 @@ class: inverse
 
 # Thank you!
 
+.pull-left-60[
 
 Contact me: `r icon::fa("envelope")` minnier-[at]-ohsu.edu, `r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier), `r icon::fa("github")` [jminnier](https://github.com/jminnier/)
 
@@ -334,4 +328,7 @@ Slide code and files available at: [github.com/jminnier/talks-etc](https://githu
 
 
 Slides created via the R package [xaringan](https://github.com/yihui/xaringan) by [Yihui Xie](https://twitter.com/xieyihui?lang=en) with the [xaringanthemer](https://github.com/gadenbuie/xaringanthemer) package by [Garrick Aden-Buie](https://github.com/gadenbuie), inspired by slides and slide formatting by [Alison Hill](https://alison.rbind.io/), [Jennifer Thompson](https://jenthompson.me/), and [Chester Ismay](https://ismayc.github.io/)
-
+]
+.pull-right-40[
+<center><img src="img/horst_r_first_then.png" width="100%" height="50%"><a href="https://github.com/allisonhorst/stats-illustrations"><br>Allison Horst</a></center>
+]
