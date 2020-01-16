@@ -13,6 +13,7 @@ Date | Conference | Title | Slide Code | Slides Rendered
 8/14/18 | R in Pharma | Shiny Apps in Genomics and Clinical Trials | [2018_08_RPharma_Shiny](2018_08_RPharma_Shiny) | [slides](https://jminnier-talks.netlify.com/2018_08_rpharma_shiny/minnier_rpharma2018.html)
 3/30/19 | AACR Methods Workshop: Sample Size and Power Workshop for Basic, Translational, and Clinical Studies | Is n=3 enough? How to approach sample size and power calculations | [2019_03_SampleSizeAACR](2019_03_SampleSizeAACR)  | [slides](https://jminnier-talks.netlify.com/2019_03_SampleSizeAACR/2019_03_AACR_Minnier.html)
 7/29/19 | Joint Statistical Meetings | Sharpening the Tools in Your Data Science Toolbox | [2019_07_JSM_DataScienceSkills](2019_07_JSM_DataScienceSkills) | [slides](https://jminnier-talks.netlify.com/2019_07_JSM_DataScienceSkills/2019_07_JSM_DataScience.html)
+1/17/20 | OHSU Knight Cancer Institute, Cancer Clinical Trial Methods Training Workshop | Evaluation of Diagnostic Tests | [2020_01_Knight_DiagnosticTests](2020_01_Knight_DiagnosticTests) | [slides](https://jminnier-talks.netlify.com/2020_01_Knight_DiagnosticTests/2020_01_Knight_Diagnostic.html)
 
 ## Workshops
 

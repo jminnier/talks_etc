@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Evaluation of Diagnostic Tests <i class="fas  fa-user-md "></i></title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jessica Minnier, PhD OHSU-PSU School of Public Health Knight Cancer Institute Biostatistics Shared Resource Oregon Health &amp; Science University" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: left, middle, inverse, title-slide
+
+# Evaluation of Diagnostic Tests <i class="fas  fa-user-md "></i>
+### Jessica Minnier, PhD<br><span style="font-size: 50%;">OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health &amp; Science University</span>
+### <a href="https://bridge.ohsu.edu/research/knight/resources/BSR/SitePages/Training%20Workshop%20Program%20Schedule.aspx">OHSU Knight Cancer Institute Cancer Clinical Training Workshop</a>, January 17, 2020<br><br><i class="fas  fa-link "></i> slides: <a href="https://bit.ly/jmin-test">bit.ly/jmin-test</a>
+
+---
+
+
+layout: true
+  
+&lt;!-- &lt;div class="my-footer"&gt;&lt;span&gt;bit.ly/jmin-test&lt;/span&gt;&lt;/div&gt;  --&gt;
+
+
+---
+
+
+
+
+
+
+
+
+class: inverse, middle
+
+# What is a "Diagnostic Test"?
+
+---
+
+## A diagnostic test is a medical test that determines a *target condition*:
+
+- nature or severity of disease (i.e. disease stage)
+- risk of future disease condition or event
+- response to treatment (actually *"prognostic" test*)
+
+
+.pull-left-60[
+## The medical test may be a
+
+- biomarker
+- imaging procedure
+- laboratory test
+- health history or physical examination
+- a combination of the above
+- any other method collecting current health information
+]
+.pull-right-40[
+&lt;center&gt;&lt;a href="https://pixabay.com/vectors/graphic-mri-scan-test-medical-3455046/"&gt;&lt;img src="img/mri.png" width="100%"/&gt;&lt;/center&gt;
+]
+---
+
+# Goals of a diagnostic study may be to determine
+
+- Accuracy of the test to assess disease
+- Accuracy of test to predict disease in the future (i.e. within 3 years)
+- Reliability or reproducibility of test
+- Technical variability of test
+
+We will focus on the first two goals: *accuracy of the test to determine a binary (yes/no) condition in the present or in the future*
+
+---
+
+# Evaluate accuracy, compared to ...?
+
+We need to compare our "index test" of interest to a "reference standard" a.k.a. the "gold standard."
+
+How do we diagnose the disease? The reference standard is the best available method(s).
+
+Example:
+
+- blood sample biomarker (index text) compared to biopsy or imaging (reference standard)
+- pregnancy urine test (index test) compared to highly accurate blood test (or ultrasound)
+
+---
+
+# Evaluate accuracy: Statistics 
+.pull-left-40[
+
+Continuous (numerical) test `\(\rightarrow\)` must select test positivity cut-off
+
+Or, How to classify disease based on a range of possible test results?
+
+]
+&lt;!-- add picture of continuous cut off from distribution --&gt;
+.pull-right-60[
+&lt;center&gt;&lt;a href="http://www.stomponstep1.com/negative-positive-predictive-value-equation-calculation/"&gt;&lt;img src="img/cutoff.png" width="100%"/&gt;&lt;/center&gt;
+&lt;small&gt;http://www.stomponstep1.com/negative-positive-predictive-value-equation-calculation/&lt;/small&gt;
+]
+---
+
+# Evaluate accuracy: Statistics 
+
+For all possible cut-off values (entire operating characteristic)
+- ROC (Receiver Operating Characteristic) curve and AUC (Area Under the Curve)
+
+For a specific cutoff:
+- Sensitivity and specificity
+- PPV (Positive Predictive Value) and NPV (Negative Predictive Value)
+
+&lt;!-- add picture of continuous cut off from distribution --&gt;
+
+
+
+
+---
+
+## Evaluate accuracy: Statistics 
+
+&lt;center&gt;&lt;a href="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values"&gt;&lt;img src="img/twobytwo.png" width="95%"/&gt;&lt;/center&gt;
+
+---
+
+.pull-left-60[
+## Sensitivity and Specificity
+
+- How does the test perform in people with or without the disease?
+- Sensitivity = True Positive Rate (TPR) 
+    + Probability someone with the disease tests positive
+    + Are we finding the cases?
+    + Also called "recall"
+- Specificity = True Negative Rate (TNR) in people without the disease
+    + Probability someone without the disease tests negative
+    + Are we not scaring the healthy people?
+- Should be reported together
+- Online calculator: [www.medcalc.org/calc/diagnostic_test.php](https://www.medcalc.org/calc/diagnostic_test.php)
+
+]
+.pull-right-40[
+&lt;center&gt;&lt;a href="https://commons.wikimedia.org/wiki/File:Sensitivity_and_specificity.svg"&gt;&lt;img src="img/sens_spec.png" width="95%"/&gt;&lt;/center&gt;
+]
+
+
+---
+
+## Positive &amp; Negative Predictive Values: PPV, NPV
+
+- How does the test perform in people with positive or negative test values?
+- PPV = Probability someone has the disease if they test positive
+  + If positive test how likely do I have the disease? (Should I be worried?)
+- NPV = Probability someone does not have the disease if they test negative
+  + If negative test how likely am I healthy? (Am I reassured?)
+- Depends on *prevalence* of disease (if very rare, PPV might be very low)
+
+&lt;center&gt;&lt;a href="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values"&gt;&lt;img src="img/ppv.png" width="75%"/&gt;
+&lt;small&gt;https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values&lt;/small&gt;&lt;/center&gt;
+
+  
+---
+
+# ROC Curve
+
+.pull-left[
+
+- Combination of sensitivity &amp; specificity for each possible test positivity cut-off
+    + Sensitivity `\(\approx\)` "power"
+    + FPR (1-specificity) `\(\approx\)` "significance level" of a test
+    + `\(\to\)` ROC plots power vs significance level of a test.
+- Useful for comparing multiple tests, but often we only care about the edges (high sensitivity or high specificity)
+]
+.pull-right[
+&lt;center&gt;&lt;a href="https://commons.wikimedia.org/wiki/File:ROC_curves_colors.svg"&gt;&lt;img src="img/roc_curve.png" width="100%"/&gt;&lt;/center&gt;
+]
+
+---
+
+# AUC (Area Under the Curve)
+
+.pull-left[
+- Area under the ROC Curve
+- Single numerical value represents overall accuracy
+- *Not* for a specific sensitivity/specificity or cut-off value
+- Probability a "case" has a higher test value than a "control" (Can we even sort them?)
+- 0.5 is the AUC of a coin flip
+]
+.pull-right[
+&lt;!-- add picture of AUC values --&gt;
+&lt;center&gt;&lt;a href="https://commons.wikimedia.org/wiki/File:Roc-draft-xkcd-style.svg"&gt;&lt;img src="img/auc.png" width="100%"/&gt;&lt;/center&gt;
+]
+
+---
+
+# Other measures
+
+&lt;center&gt;&lt;a href="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values"&gt;&lt;img src="img/twobytwo.png" width="95%"/&gt;&lt;/center&gt;
+
+&lt;!-- 2x2 table with other values --&gt;
+
+
+---
+
+# Accuracy vs. Reproducibility
+
+Does the test accurately diagnose the disease?
+
+vs.
+
+Is the test reproducible over time or over testing system?
+
+- variation in reading imaging
+- technical variability in the assay
+- limits of detection
+- highly variable throughout the day (influenced by fasting, or environment)
+
+---
+
+class: inverse, center, middle
+
+# Designing Studies
+
+---
+
+## Phases in the assessment of diagnostic accuracy
+
+- Phase I (Discovery)
+    + Establish technical parameters, algorithms, diagnostic critera
+- Phase II (Introductory)
+    + Early quantification of performance in clinical settings
+- Phase III (Mature)
+    + Comparison to other testing modalities in prospective, typically multi-institutional studies (*efficacy*)
+- Phase IV (Disseminated)
+    + Assessment of the procedure as utilized in the community at large (*effectiveness*)
+
+from [PCORI's "Standards in the Design, Conduct and Evaluation of Diagnostic Testing
+For Use in Patient Centered Outcomes Research" (2012)](https://www.pcori.org/assets/Standards-in-the-Design-Conduct-and-Evaluation-of-Diagnostic-Testing-for-Use-in-Patient-Centered-Outcomes-Research.pdf)
+
+---
+
+## Diagnostic studies
+
+- Observational trials to determine accuracy
+  + less costly
+  + may have unidentified biases, may lack all information to inform test
+- Randomized trials to assess accuracy and/or efficacy
+  + minimizes selection bias/confounding, prospective design minimizes temporal ambiguity
+  + expensive, homogeneous population
+- Randomized trials to incorporate an intervention
+  + Who receives the intervention?
+  
+Pepe, M. S., et al (2008). [Pivotal evaluation of the accuracy of a biomarker used for classification or prediction: standards for study design.](https://academic.oup.com/jnci/article/100/20/1432/900265) Journal of the National Cancer Institute, 100(20), 1432-1438.
+---
+
+
+
+.pull-left[
+# Randomized Studies
+
+- Example of randomizing to test vs randomizing to treatment:
+- Paired (B) design more efficient
+
+&lt;small&gt;Lu B, Gatsonis C. Efficiency of study designs in diagnostic randomized clinical trials. Stat Med. 2013;32(9):1451–1466. doi:10.1002/sim.5655&lt;/small&gt;
+]
+.pull-right[
+&lt;center&gt;&lt;a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3600406/"&gt;&lt;img src="img/randomized.png" width="100%"/&gt;&lt;/center&gt;
+]
+
+---
+
+# Sample Size and Power
+
+What is the outcome/effect size measure?
+
+- Compare AUC to gold standard - new test and reference standard on same population
+    + Need to know AUC of gold standard, proposed test's AUC, prevalence, correlation of two tests within case and control patients
+- Compare sensitivity and specificity of a binary test = binomial proportion calculator
+    
+Software: [PASS](https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/PASS/Tests_for_Two_ROC_Curves.pdf), R package [pROC](https://www.rdocumentation.org/packages/pROC/versions/1.15.3/topics/power.roc.test)
+
+&lt;small&gt;Moskowitz, C. S., &amp; Pepe, M. S. (2006). Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs. Clinical Trials, 3(3), 272–279. https://doi.org/10.1191/1740774506cn147oa&lt;/small&gt;
+---
+
+class: inverse, center, middle
+
+# Reporting results
+
+---
+
+# Reporting standards
+
+.pull-left-40[
+- Standards for Reporting of Diagnostic Accuracy (STARD) https://www.equator-network.org/reporting-guidelines/stard/
+- Confidence intervals around AUC, sensitivity, specificity, etc. to quantify statistical precision of measurements.
+]
+.pull-right-60[
+&lt;center&gt;&lt;a href="https://www.equator-network.org/reporting-guidelines/stard/"&gt;&lt;img src="img/stard.png" width="100%"/&gt;&lt;/center&gt;
+]
+
+
+---
+
+### References and Resources
+
+- Carlos, R., et al (2012). Standards in the Design, Conduct and Evaluation of Diagnostic Testing for Use in Patient Centered Outcomes Research. PCORI.
+https://www.pcori.org/assets/Standards-in-the-Design-Conduct-and-Evaluation-of-Diagnostic-Testing-for-Use-in-Patient-Centered-Outcomes-Research.pdf
+- Lu B, Gatsonis C. Efficiency of study designs in diagnostic randomized clinical trials. Stat Med. 2013;32(9):1451–1466. [doi:10.1002/sim.5655](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3600406/)
+Moskowitz, C. S., &amp; Pepe, M. S. (2006). Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs. Clinical Trials, 3(3), 272–279. [doi.org/10.1191/1740774506cn147oa](https://doi.org/10.1191/1740774506cn147oa)
+- Pepe, M. S., et al (2008). [Pivotal evaluation of the accuracy of a biomarker used for classification or prediction: standards for study design.](https://academic.oup.com/jnci/article/100/20/1432/900265) JNCI, 100(20), 1432-1438.
+- PCORI's Standards for Studies of Diagnostic Tests curriculum:
+https://www.pcori.org/research-results/about-our-research/research-methodology/methodology-standards-academic-curriculum-7
+
+---
+class: inverse
+
+# Thank you!
+
+.pull-left-40[
+Contact me: 
+<i class="fas  fa-envelope "></i> minnier-[at]-ohsu.edu, <i class="fab  fa-twitter "></i> [datapointier](https://twitter.com/datapointier), <i class="fab  fa-github "></i> [jminnier](https://github.com/jminnier/)
+
+Slides available: [bit.ly/jmin-test](https://bit.ly/jmin-test)
+
+Slide code and files available at: [github.com/jminnier/talks-etc](https://github.com/jminnier/talks_etc)
+
+]
+.pull-right-60[
+&lt;center&gt;&lt;img src="img/tests.png" width="100%" height="50%"&gt;&lt;a href="https://www.empr.com/slideshow/slides/cartoons-3-10-2013/"&gt;&lt;br&gt;&lt;/a&gt;&lt;/center&gt;
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"countIncrementalSlides": false,
+"highlightLines": true,
+"highlightStyle": "solarized-dark",
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
