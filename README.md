@@ -14,6 +14,7 @@ Date | Conference | Title | Slide Code | Slides Rendered
 3/30/19 | AACR Methods Workshop: Sample Size and Power Workshop for Basic, Translational, and Clinical Studies | Is n=3 enough? How to approach sample size and power calculations | [2019_03_SampleSizeAACR](2019_03_SampleSizeAACR)  | [slides](https://jminnier-talks.netlify.com/2019_03_SampleSizeAACR/2019_03_AACR_Minnier.html)
 7/29/19 | Joint Statistical Meetings | Sharpening the Tools in Your Data Science Toolbox | [2019_07_JSM_DataScienceSkills](2019_07_JSM_DataScienceSkills) | [slides](https://jminnier-talks.netlify.com/2019_07_JSM_DataScienceSkills/2019_07_JSM_DataScience.html)
 1/17/20 | OHSU Knight Cancer Institute, Cancer Clinical Trial Methods Training Workshop | Evaluation of Diagnostic Tests | [2020_01_Knight_DiagnosticTests](2020_01_Knight_DiagnosticTests) | [slides](https://jminnier-talks.netlify.com/2020_01_Knight_DiagnosticTests/2020_01_Knight_Diagnostic.html)
+5/19/20 | OHSU HIP 523 Computerized Data Management, Guest Lecture | Reproducibility in Data Science | [2020_05_Reproducibility_HIP](2020_05_Reproducibility_HIP)
 
 ## Workshops
 
