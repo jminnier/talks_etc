@@ -21,8 +21,6 @@ class: left, middle, inverse, title-slide
 
 
 layout: true
-  
-&lt;div class="my-footer"&gt;&lt;span&gt;bit.ly/jmin-jsm19&lt;/span&gt;&lt;/div&gt; 
 
 
 ---
@@ -32,17 +30,705 @@ layout: true
 
 
 
+# Introduction
 
-class: inverse, middle
-
-# Who am I?
-
-- Use R every day, git often, unix sometimes, python rarely
-- Teach intro to R, R markdown, intro to stats for data science, R Shiny (and Math/Stats)
-- Collaborative statistician (mostly applied work, no PhD students, no Postdocs, some MS students and staff)
-- Involved in: organizing Cascadia R conf, PDX R Meetup, R Ladies, BioData Club
+&lt;center&gt;&lt;img src="ReproducibleJourney.jpg" width="65%" height="65%"&gt;&lt;a href="https://zenodo.org/record/3695300#.XsRP6BNKgqI"&gt;&lt;br&gt;Illustrations from the Turing Way book dashes; This image was created by Scriberia for The Turing Way community and is used under a CC-BY licence&lt;/a&gt;&lt;/center&gt;
 
 ---
+
+# Goals
+
+- Define reproducible research
+- Important components of reproducibility
+- Relevance to data science and analysis
+- Introduction to version control
+- Introduction to literate programming in R
+
+---
+
+# What is Reproducible Research?
+
+
+.pull-left[
+&lt;center&gt;&lt;img src="visual_repro_patil_leek.png" width="80%" height="80%"&gt;&lt;a href="https://www.biorxiv.org/content/10.1101/066803v1.full"&gt;&lt;br&gt;Patil, Peng, &amp; Leek 2016&lt;/a&gt;&lt;/center&gt;
+]
+.pull-right[
+**Reproducibility:** ability to recompute data analytic results given the dataset and knowledge of the data analysis pipeline
+
+**Replicability:** the chance that an independent experiment targeting the same scientific question will produce a consistent result
+
+-- Peng (2011) "Reproducible research in computational science" and Leek and Peng (2015) "Opinion: Reproducible research can still be wrong: Adopting a prevention approach"
+]
+
+---
+&lt;center&gt;&lt;img src="ReproducibleDefinitionGrid.jpg" width="75%" height="75%"&gt;&lt;a href="https://zenodo.org/record/3695300#.XsRP6BNKgqI"&gt;&lt;br&gt;Illustrations from the Turing Way book dashes; This image was created by Scriberia for The Turing Way community and is used under a CC-BY licence&lt;/a&gt;&lt;/center&gt;
+
+---
+
+# Reproducible = Replicable + Transparant
+
+&gt; Research results are **replicable** if there is sufficient information available for independent researchers to make the same findings using the same procedures.
+&gt;
+&gt; In **computational sciences this means**: the data and code used to make a finding are available and they are sufficient for an independent researcher to recreate the finding.
+&gt;
+&gt; In practice, research needs to be **easy for independent researchers to reproduce**.
+&gt;
+
+-- Ball and Medeiros (2012); King (1995) from Gandrud (2013)
+
+&gt; **Replicability** has been a key part of scientific inquiry from perhaps the 1200s. It has even been called the "demarcation between science and non-science."
+&gt;
+
+-- Gandrud (2013) book "Reproducible Research with R and R Studio" and references therein, including [Roger Bacon's "Opera quaedam hactenus inedita Vol. 1" from 1267](https://books.google.com/books?id=wMUKAAAAYAAJ)
+
+
+
+---
+
+# What are the different kinds of reproducibile research?
+
+&gt; Victoria Stodden, a prominent scholar on this topic, has identified some useful distinctions in reproducible research:
+
+&gt; **Computational reproducibility**: when detailed information is provided about code, software, hardware and implementation details.
+&gt;
+&gt; **Empirical reproducibility**: when detailed information is provided about non-computational empirical scientific experiments and observations. In practise this is enabled by making data freely available, as well as details of how the data was collected.
+&gt;
+&gt; **Statistical reproducibility**: when detailed information is provided about the choice of statistical tests, model parameters, threshold values, etc. This mostly relates to pre-registration of study design to prevent p-value hacking and other manipulations.
+
+[ROpenSci Reproducibility Guide](http://ropensci.github.io/reproducibility-guide/sections/introduction/)
+
+---
+
+# Spectrum of Research
+
+&gt; [Stodden et al. (2013)](http://stodden.net/icerm_report.pdf) place computational reproducibility on a spectrum with five categories that account for many typical research contexts:
+&gt;
+&gt; - Reviewable research: The descriptions of the research methods can be independently assessed and the results judged credible. (This includes both traditional peer review and community review, and does not necessarily imply reproducibility.)
+&gt; - Replicable research: Tools are made available that would allow one to duplicate the results of the research...
+&gt; - Confirmable research: ... main conclusions of the research can be attained independently without the use of software provided by the author ...
+&gt; - Auditable research: Sufficient records (including data and software) have been archived ...
+&gt; - Open or Reproducible research: Auditable research made openly available. This comprised well-documented and fully open code and data that are publicly available that would allow one to (a) fully audit the computational procedure, (b) replicate and also independently reproduce the results of the research, and (c) extend the results or apply the method to new problems.
+
+[ROpenSci Reproducibility Guide](http://ropensci.github.io/reproducibility-guide/sections/introduction/)
+
+---
+
+# Reproducibility in Data Science
+
+&gt; "Reproducibility is important because it is the **only thing that an investigator can guarantee about a study.**"
+&gt; 
+&gt; "**a study can be reproducible and still be wrong**"
+&gt;
+&gt; "These days, with the complexity of data analysis and the subtlety of many claims (particularly about complex diseases), reproducibility is pretty much the only thing we can hope for. Time will tell whether we are ultimately right or wrong about any claims, but **reproducibility is something we can know right now**."
+&gt; 
+&gt; "By using the word reproducible, I mean that the **original data (and original computer code) can be analyzed (by an independent investigator) to obtain the same results of the original study**. In essence, it is the notion that the data analysis can be successfully repeated. Reproducibility is particularly important in large computational studies where the data analysis can often play an outsized role in supporting the ultimate conclusions."
+
+-- Roger Peng's 2014 blog post on Simply Statistics ["The Real Reason Reproducible Research is Important"](http://simplystatistics.org/2014/06/06/the-real-reason-reproducible-research-is-important/)
+also see Peng (2011) "Reproducible research in computational science"
+
+---
+
+# Early notions of reproducibility: "Claerbout's Principle"
+
+&gt;  An article about computational science in a scientific publication is not the scholarship itself, it is merely advertising of the scholarship. The actual scholarship is the complete software development environment and the complete set of instructions which generate the figures.
+
+
+&gt; It takes **some effort to organize your research to be reproducible**.
+&gt;
+&gt;We found that although the effort seems to be directed to helping other people stand up on your shoulders, the principal beneficiary is generally the author herself.
+&gt;
+&gt;This is because time turns each one of us into another person, and by making effort to communicate with strangers, we help ourselves to communicate with our **future selves**.
+
+
+- Claerbout and Karrenbach (1992) "Electronic documents give reproducible research a new meaning"
+- Buckheit and Donoho (1995) "Wavelab and reproducible research"
+- Schwab, Karrenbach, and Claerbout (2000) "Making scientific computations reproducible"
+- De Leeuw (2001) "Reproducible research. the bottom line"
+
+
+&gt; (Jon F. Claerbout is the Cecil Green Professor Emeritus of Geophysics at Stanford University. He was one of the first scientists to emphasize that computational methods threaten the reproducibility of research unless open access is provided to both the data and the software underlying a publication.) 
+
+
+
+---
+class: middle, center, inverse
+
+# Current Issues and Discussion
+
+---
+
+
+# How to Make More Published Research True
+
+Ioannidis (2014) "How to Make More Published Research True" in PLOS Medicine, the author writes a follow up to Ioannidis (2005) "Why most published research findings are false."
+
+He suggests reproducibility as one key component to the cause:
+
+&gt; "To make more published research true, practices that have improved credibility
+and efficiency in specific fields may be transplanted to others which would
+benefit from them—possibilities include
+&gt; 
+&gt; - the adoption of large-scale collaborative
+research;
+&gt; - **replication culture**;
+&gt; - registration; sharing; **reproducibility practices**;
+&gt; - better statistical methods;
+&gt; - standardization of definitions and analyses;
+&gt; - more appropriate (usually more stringent) statistical thresholds; and
+&gt; - improvement in study design standards, peer review, *reporting and dissemination of
+research*, and training of the scientific workforce."
+
+
+---
+
+
+# Availability of code in peer-reviewed journals
+
+Stodden, Guo, and Ma (2013) "Toward Reproducible Computational Research: An
+Empirical Analysis of Data and Code Policy Adoption by
+Journals"
+
+![](jasa_repro_img.png)
+
+
+- studied change in policies between 2011-2012
+- open data and code policy adoption ~  impact factor and publisher
+- higher impact journals more likely to have open data and code policies
+- scientific societies more likely to have open data and code policies than commercial publishers.
+
+---
+
+# Data sharing requirements
+
+Vasilevsky, Minnier, Haendel, and Champieux (2017) ["Reproducible and reusable research: are journal data sharing policies meeting the mark?"](https://peerj.com/articles/3208/)
+
+&lt;center&gt;&lt;img src="peerj1.png" width="100%" height="100%"&gt;&lt;/center&gt;
+---
+
+# Data sharing requirements
+
+Vasilevsky, Minnier, Haendel, et al. (2017) ["Reproducible and reusable research: are journal data sharing policies meeting the mark?"](https://peerj.com/articles/3208/)
+
+.pull-left[
+&lt;center&gt;&lt;img src="peerj2.png" width="100%" height="100%"&gt;&lt;/center&gt;
+]
+.pull-right[
+&lt;center&gt;&lt;img src="peerj3.png" width="100%" height="100%"&gt;&lt;/center&gt;
+]
+
+---
+
+# Data management: FAIR principles (Findable, Accessible, Interoperable, Reusable)
+
+.pull-left[
+- Make data available in trusted data repository
+- Include comprehensive metadata
+- Store in open (non-proprietary) formats
+- Attach a permanent identifier (i.e. DOI)
+
+In Biomedical research, open access can be difficult/unethical.
+
+Wilkinson, Dumontier, Aalbersberg, Appleton, Axton, Baak, Blomberg, Boiten, da
+Silva Santos, Bourne, and et
+al. (2016) 
+
+]
+.pull-right[
+&lt;center&gt;&lt;img src="FAIRPrinciples.jpg" width="100%" height="100%"&gt;&lt;br&gt;&lt;a href="https://zenodo.org/record/3695300#.XsRP6BNKgqI"&gt;&lt;br&gt;Illustrations from the Turing Way book dashes; This image was created by Scriberia for The Turing Way community and is used under a CC-BY licence&lt;/a&gt;&lt;/center&gt;
+]
+
+---
+
+
+# NIH requirements (beginning Jan 2016, updated Jan 2019)
+
+["Enhancing Reproducibility through Rigor and Transparency"](http://grants.nih.gov/grants/guide/notice-files/NOT-OD-15-103.html)
+
+1. *Rigor of the Prior Research*
+    + "describe the general strengths and weaknesses of the prior research being cited by the investigator as crucial to support the application." 
+    + experimental design/power of prior studies used for hypothesis generation, weaknesses include different populations/species, unblinded, not adjusting for confounders
+2. *Rigorous Experimental Design*
+3. *Consideration of Sex and Other Relevant Biological Variables*
+    + "sex is a biological variable that is frequently ignored in animal study designs and analyses"
+4. *Authentication of Key Biological and/or Chemical Resources*
+5. *Implementation*
+
+[NIH "Rigor and Reproducibility" Policy](http://grants.nih.gov/reproducibility/index.htm)
+
+*Note:* Most of this is in regards to the science, design of experiment, chemical and biological methods. Essentially no language describing reproducibility of analyses or data management for data or results generated by the grant.
+
+
+---
+
+# Journals unite with NIH to encourage reproducibility
+
+- [Principles and Guidelines for Reporting Preclinical Research](http://www.nih.gov/research-training/rigor-reproducibility/principles-guidelines-reporting-preclinical-research)
+- NIH held a joint workshop in June 2014 with the Nature Publishing Group and Science on the issue of reproducibility and rigor of research findings
+- A video/slide presentation about this topic and how it applies to grant applications and peer review can be found here:
+[NIH Policy Rigor for Reviewers Presentation](http://grants.nih.gov/grants/policy/rigor/NIH_Policy_Rigor_For_Reviewers/presentation.html)
+
+---
+
+# NIH [Principles and Guidelines for Reporting Preclinical Research](http://www.nih.gov/research-training/rigor-reproducibility/principles-guidelines-reporting-preclinical-research)
+
+Journals should aim to facilitate the interpretation and repetition of experiments as they have been conducted in the published study.
+
+- include policies for statistical reporting in information to authors
+- no limits or generous limits for methods sections
+- should use a **checklist** during editorial processing to ensure the reporting of key methodological and analytical information to reviewers and readers
+- Data and material sharing
+    + at the minimum, data sets on which the conclusions of the paper rely must be made available upon request (where ethically appropriate) during consideration of the manuscript (by editors and reviewers) and upon reasonable request immediately upon publication.
+    + Recommend deposition of data sets in public repositories, where available
+    + Encourage presentation of all other data values in machine readable format 
+    + Encourage sharing of software and require at the minimum a statement in the manuscript describing if software is available and how it can be obtained.
+- journal assumes responsibility to consider publication of refutations of that paper
+- best practice guidelines for image based data and a description of biological material with enough information to uniquely identify the reagents
+- do not obviate need for biological replication/validation
+
+
+ 
+---
+ 
+# Checklist: authors required to report
+
+from [NIH Guidelines](http://www.nih.gov/research-training/rigor-reproducibility/principles-guidelines-reporting-preclinical-research) &amp; Landis, Amara, Asadullah, Austin, Blumenstein, Bradley, Crystal, Darnell, Ferrante, Fillit, and et
+al. (2012) ["A call for transparent reporting to optimize the predictive value of preclinical research"](https://www.nature.com/articles/nature11556)
+
+- *Standards:* community-based standards (nomenclature etc) where applicable
+- *Replicates:* report how often each experiment was performed, whether results were substantiated by repetition under a range of conditions. Sufficient information about sample collection must be provided to distinguish between independent biological data points &amp; technical replicates.
+- *Statistics:* Require statistics to be fully reported in the paper, including statistical test used, exact value of N, definition of center, dispersion &amp; precision measures
+- *Randomization:*  (yes/no) &amp; method, at a minimum for all animal experiments
+- *Blinding:* were experimenters blind to group assignment &amp; outcome assessment, at a minimum for all animal experiments.
+- *Sample-size (SS) estimation:* was an appropriate SS computed during study design &amp; include method; if no power analysis, how was SS determined?
+- *Inclusion and exclusion criteria:* criteria used for exclusion of any data or subjects. Include any similar experimental results that were omitted from reporting for any reason, esp. if results don't support main findings of study; describe any outcomes/conditions that are measured/used &amp; not reported in results section.
+
+
+---
+# Reproducible research and Biostatistics (the journal)
+
+&gt; Authors should submit the following:
+&gt; 
+&gt; 1. A “main” script which directs the overall analysis. This script may load data, other software, and call the necessary functions for conducting the analysis described in the article.
+&gt; 2. Other required code files, presumably called from the “main” script file.
+&gt; 3. External data or auxiliary files containing the analytic data sets or other required information.
+&gt; 4. A “target” file (or files) containing the results which are to be reproduced. Such a file could consist
+of an ASCII text file containing numerical results or a PDF file containing a figure. This will aid in the comparison of computed results with published results.
+&gt;
+&gt; Although not required, authors are encouraged to use literate programming tools [...]
+
+-- Peng (2009) "Reproducible research and *Biostatistics*"
+
+&gt;Our reproducible research policy is for papers in the journal to be kite-marked D if the data on which they are based are freely available, C if the authors' code is freely available, and R if both data and code are available, and our Associate Editor for Reproducibility is able to use these to reproduce the results in the paper. Data and code are published electronically on the journal's website as Supplementary Materials.
+
+---
+
+
+
+# Nature series on "Challenges in Irreproducible Research"
+
+Nature has a website containing editorials, features, news, and articles on various topics related to reproducibile research:
+[Nature special: Challenges in Irreproducible Research](http://www.nature.com/news/reproducibility-1.17552)
+
+Including
+
+- [a checklist for authors of Nature papers](http://www.nature.com/authors/policies/checklist.pdf)
+described in the 2013 announcement ["Announcement: Reducing our irreproducibility"](http://www.nature.com/news/announcement-reducing-our-irreproducibility-1.12852) 
+- R Nuzzo (2014) Nature News Feature ["Scientific method: Statistical errors"](http://www.nature.com/news/scientific-method-statistical-errors-1.14700) on
+"P values, the 'gold standard' of statistical validity, are not as reliable as many scientists assume." 
+
+---
+
+# Nature series on "Challenges in Irreproducible Research"
+
+- May 25, 2016 Editorial ["Reality check on reproducibility"](http://www.nature.com/news/reality-check-on-reproducibility-1.19961)
+
+.pull-left-40[
+![](reproducibility-graphic-online1.jpg)
+]
+.pull-right-60[
+&gt; One-third of survey respondents report that they have taken the initiative to improve reproducibility. The simple presence of another person ready to **question** whether a data point or a sample should really be excluded from analysis can help to cut down on cherry-picking, conscious or not. A couple of senior scientists have set up **workflows** that avoid having a single researcher in charge of preparing images or collecting results. Dozens of respondents reported steps to make **better use of statistics, randomization or blinding**. One described an institution-level initiative to **teach scientists computer tools so they could share and analyse data collaboratively**. Key to success was making sure that their **data-management system also saved time**.
+]
+---
+class: inverse, middle, center
+
+# Reproducibility in Practice
+
+---
+
+# Data management
+
+- Write a data management plan prior to research, should cover entire project lifestyle
+- Follow the FAIR principles when possible
+- Document, document, document! (metadata, create Readme file)
+- For open data, attach a licence or rights waiver
+- DOI or Zenodo identifiers to capture open data at specific time points
+- For private/patient data, access should be granted based on data sharing agreement; version control and data storage principles should still be followed for internal reproducibility and traceability; code can still be shared
+
+&gt;"The basics of RDM [Research Data Managment] that should be applied to every research project include: i) storing data carefully and securely (according to the appropriate standards in the case of sensitive data), ii) backing up frequently and in at least two separate locations, and iii) using a file naming convention so that others within and outside a project can understand a file’s content."
+
+Kunzmann et al (PeerJ as preprint soon) "Realistic and Robust Reproducible Research for Biostatistics"
+
+Resources:
+- [DMPonline](https://dmponline.dcc.ac.uk/) by the Digital Curation Centre for writing data management plans
+- [FAQs for Enabling FAIR Data](http://www.copdess.org/enabling-fair-data-project/enabling-fair-data-faqs/)
+- LabKey, open-source specimen and data managment platform
+
+---
+
+# Software, workflow, and dependency management
+
+Problems:
+
+- Software changes, new versions are released and older code breaks.
+- Files are removed or moved and all the code breaks.
+- One file is updated but the rest of the code/files are not updated.
+- You forgot which files depend on which other files, or what has been changed.
+
+Solutions for Workflow:
+
+- **Automation** streamlined automation and documentation of the research process, e.g. editing files, moving input and output between different parts of your workflow, and compiling documents for publication (shell programs, `make`); in python: snakemake, in R: drake
+
+Solutions for Dependency:
+
+- **Preservation** of the environment (code, data, software) with virtualisation, i.e. Docker, VMware, VirtualBox, packrat for R package management
+
+[ROpenSci Reproducibility Guide](http://ropensci.github.io/reproducibility-guide/sections/introduction/)
+
+---
+
+# Archiving and citability
+
+- Long-term availability of code and data
+- Popular repositories for data: Zenodo, Dryad, Genbank, GEO
+- Popular repositories for code: GitHub, bitbucket, Bioconductor, CRAN PyPI
+- Citability: Digital Object Identifier (DOI) for code and data
+
+&lt;center&gt;&lt;img src="kunzmann_table_repos.png" width="65%" height="100%"&gt;&lt;br&gt;Kunzmann et al (PeerJ as preprint soon) "Realistic and Robust Reproducible Research for Biostatistics"&lt;/center&gt;
+
+
+---
+
+
+# Literate Programming
+
+.pull-left[
+&gt; Literate programming is an approach to programming introduced by Donald Knuth in which a program is given as an explanation of the program logic in a natural language, such as English, interspersed with snippets of macros and traditional source code, from which a compilable source code can be generated. (Knuth, 1984) 
+
+Examples: [knitr](http://yihui.name/knitr/) (for R), Sweave; Jupyter notebooks (for python) [SASweave](http://homepage.cs.uiowa.edu/~rlenth/SASweave/), Statrep (for SAS); [StatWeave](http://homepage.stat.uiowa.edu/~rlenth/StatWeave/) (for STATA)
+]
+.pull-right[
+This is knitr (presentation made with knitr+RStudio):
+
+
+```r
+library(survival)
+leukemia.surv &lt;- survfit(Surv(time, status) ~ x, data = aml) 
+plot(leukemia.surv, lty = 2:3) 
+legend(100, .9, c("Maintenance", "No Maintenance"), lty = 2:3) 
+title("Kaplan-Meier Curves\nfor AML Maintenance Study")
+```
+
+![](2020_05_reproducibility_hip_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+]
+
+---
+
+# Version Control
+
+.pull-left[
+
+- A system that tracks and records changes to file(s)
+- Allows for collaborative work on code
+- i.e. **git**: "a lightweight yet
+robust framework that is ideal for managing the full suite of research outputs such as datasets, statistical code, figures, lab notes, and manuscripts." Ram (2013) "Git can facilitate greater reproducibility and increased transparency in science."
+- online git respositories include: GitHub, bitbucket, GitLab
+- more sophisticated/lightweight than track changes in Word/google docs
+
+Resources:
+- [Software Carpentry "Version Control w/Git"](https://swcarpentry.github.io/git-novice/)
+- [Github tutorials](https://try.github.io/)
+- [Happy Git and GitHub for the useR - Jenny Bryan, Jim Hester](https://happygitwithr.com/)
+]
+.pull-right[
+&lt;center&gt;&lt;img src="VersionControl.jpg" width="100%" height="100%"&gt;&lt;a href="https://zenodo.org/record/3695300#.XsRP6BNKgqI"&gt;&lt;br&gt;Illustrations from the Turing Way book dashes; This image was created by Scriberia for The Turing Way community and is used under a CC-BY licence&lt;/a&gt;&lt;/center&gt;
+]
+---
+
+
+.pull-left-60[
+# Why Use Version Control?
+&lt;center&gt;&lt;img src="ProjectHistory.jpg" width="100%" height="100%"&gt;&lt;a href="https://zenodo.org/record/3695300#.XsRP6BNKgqI"&gt;&lt;br&gt;Illustrations from the Turing Way book dashes; This image was created by Scriberia for The Turing Way community and is used under a CC-BY licence&lt;/a&gt;&lt;/center&gt;
+]
+.pull-right-40[
+&lt;br&gt;&lt;center&gt;&lt;img src="phdcomic_version.png" width="95%" height="100%"&gt;&lt;a href="http://www.phdcomics.com"&gt;&lt;br&gt;PhD Comics by Jorge Cham&lt;/a&gt;&lt;/center&gt;
+]
+
+---
+
+# Why Use Version Control?
+
+&gt; Have you ever:
+&gt;
+&gt; - Made a change to code, realised it was a mistake and wanted to revert back?
+&gt; - Lost code or had a backup that was too old?
+&gt; - Had to maintain multiple versions of a product?
+&gt; - Wanted to see the difference between two (or more) versions of your code?
+&gt; - Wanted to prove that a particular change broke or fixed a piece of code?
+&gt; - Wanted to review the history of some code?
+&gt; - Wanted to submit a change to someone else's code?
+&gt; - Wanted to share your code, or let other people work on your code?
+&gt; - Wanted to see how much work is being done, and where, when and by whom?
+&gt; - Wanted to experiment with a new feature without interfering with working code?
+&gt; 
+&gt; In these cases, and no doubt others, **a version control system should make your life easier.**
+
+[Stack Overflow question: Why should I use version control?](http://stackoverflow.com/questions/1408450/why-should-i-use-version-control)
+
+---
+class: center, middle, inverse
+
+# Make a Plan
+
+---
+
+# Checklists for Reproducibility
+
+- ["Checklists work to improve science"](https://www.nature.com/articles/d41586-018-04590-7) - Nature editorial, April 2018
+- In 2013, *Nature* announced that authors submitting manuscripts to *Nature* journals would need to complete a checklist addressing key factors underlying irreproducibility for reviewers and editors to assess during peer review
+- Survey of researchers who had published in a Nature journal between July 2016 and march 2017
+
+&gt; Of the 480 who responded, 49% thought that the checklist had improved the quality of research published in Nature (15% disagreed); 37% thought the checklist had improved quality in their field overall (20% disagreed).
+
+Checklists can be useful for computational research in general.
+
+An excellent example: [ROpenSci's Reproducibility Checklist](http://ropensci.github.io/reproducibility-guide/sections/checklist/)
+
+---
+.pull-left[
+## Barriers to Reproducibility/Replicability
+
+- Selective reporting of results
+- Pressure to publish
+- Not robust results
+- Protocols, computer code, or reagent info insufficient or not available
+
+## Barriers to implementing R&amp;R
+
+- insufficient funding/time
+- insufficient training (and funding for training)
+- journals/funders do not have clear guidelines or priorities
+- open access not encouraged or funded
+
+]
+.pull-right[
+&lt;br&gt;
+&lt;center&gt;&lt;img src="survey_nature.png" width="100%" height="100%"&gt;&lt;a href="https://media.nature.com/original/magazine-assets/d41586-018-04590-7/15675426"&gt;&lt;br&gt;Nature Survey 2017 results&lt;/a&gt;&lt;/center&gt;
+]
+
+---
+
+# Example ideals for a computational group
+
+- Literate programming
+- Best practices for writing code (i.e. [ROpenSci's Reproducibility &amp; Writing Code Guide](http://ropensci.github.io/reproducibility-guide/sections/writingCode/) and "Best Practices for Scientific Computing" Wilson, Aruliah, Brown, Hong, Davis, Guy, Haddock, Huff, Mitchell, Plumbley, and others (2014) 
+- use html web-based output
+    + [see Matthew Shotwell's slides](http://biostatmatt.com/uploads/shotwell-interface-2011.pdf)
+    + nearly universal compatibility
+    + persistent
+    + images handled more naturally
+- use `make` files to rerun analyses when certain files change
+- version/revision control systems such as git for all files
+- version control of data
+- Software/package versions need to be maintained (i.e. packrat for R)
+
+
+
+---
+
+# "Ten Simple Rules for Reproducible Computational Research"
+
+- Rule 1: For Every Result, Keep Track of How It Was Produced
+- Rule 2: Avoid Manual Data Manipulation Steps
+- Rule 3: Archive the Exact Versions of All External Programs Used
+- Rule 4: Version Control All Custom Scripts
+- Rule 5: Record All Intermediate Results, When Possible in Standardized Formats
+- Rule 6: For Analyses That Include Randomness, Note Underlying Random Seeds
+- Rule 7: Always Store Raw Data behind Plots
+- Rule 8: Generate Hierarchical Analysis Output, Allowing Layers of Increasing Detail to Be Inspected
+- Rule 9: Connect Textual Statements to Underlying Results
+- Rule 10: Provide Public Access to Scripts, Runs, and Results
+
+Sandve, Nekrutenko, Taylor, and Hovig (2013) 
+
+---
+class:center, middle, inverse
+
+# Brief Tutorials
+
+---
+
+# R Markdown/Knitr (literate programming)
+
+- BERD workshop "Reproducible Reports with R Markdown" slides: [bit.ly/berd_rmd](http://bit.ly/berd_rmd)
+and recording [link](https://echo360.org/section/aefe4e1c-c635-4a3b-bf99-ce6439184f5f/public) and other info is found on [github](https://github.com/jminnier/berd_r_courses)
+- Example, new git project in Rstudio
+- Example, cloning a github repo
+
+---
+
+# Git/github (version control)
+
+- Using git in Rstudio (for more instruction, highly recommend [happygitwithr.com](https://happygitwithr.com/))
+- Explore an example GitHub repo [OHSU-Library/Biomedical_Journal_Data_Sharing_Policies](https://github.com/OHSU-Library/Biomedical_Journal_Data_Sharing_Policies)
+
+---
+class:center, middle, inverse
+
+# Resources
+
+---
+
+## Recommended Books
+
+- [Stodden, Victoria, Friedrich Leisch, and Roger D. Peng, eds. Implementing reproducible research. CRC Press, 2014.](https://www.crcpress.com/Implementing-Reproducible-Research/Stodden-Leisch-Peng/9781466561595)
+- [Gandrud, Christopher. Reproducible Research with R and R Studio. CRC Press, 2013.](https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio/Gandrud/9781466572843)
+- [Xie, Yihui. Dynamic Documents with R and knitr. Vol. 29. CRC Press, 2013.](https://www.crcpress.com/Dynamic-Documents-with-R-and-knitr/Xie/9781482203530)
+
+## Online classes
+
+- Karl Broman's class "Tools for Reproducible Research" at UWisconsin-Madison &lt;http://kbroman.org/Tools4RR/&gt;
+- "Reproducible Research" by Johns Hopkins on Coursera (Peng, Leek, Caffo)
+&lt;https://www.coursera.org/learn/reproducible-research&gt;
+- Learn git: &lt;https://try.github.io/levels/1/challenges/1&gt;
+
+## NIH Rigor &amp; Reproducibility Resources
+
+- Website: &lt;http://grants.nih.gov/reproducibility/index.htm&gt;
+- FAQs: &lt;http://grants.nih.gov/reproducibility/faqs.htm&gt;
+- NIH Training Module: &lt;https://grants.nih.gov/reproducibility/module_1/presentation.html&gt;
+
+---
+
+## Websites/slides/blogs
+
+- ROpenSci's "Reproducibility in Science" [guide](http://ropensci.github.io/reproducibility-guide/)
+including the [reproducibility checklist](http://ropensci.github.io/reproducibility-guide/sections/checklist)
+- Victoria Stodden's [list of talks](http://web.stanford.edu/~vcs/Talks.html) on various topics from "Reproducibility: Breakin' it Down" to "Legal Issues in Reproducible Research" 
+- Matthew Shotwell's slides (2011) ["Approaches and Barriers to Reproducible Practices in Biostatistics"](http://biostatmatt.com/uploads/shotwell-interface-2011.pdf)
+- M Shotwell and JM Álvarez' slides ["Approaches and Barriers to Reproducible Practices in Biostatistics"](http://biostatmatt.com/uploads/shotwell-interface-2011.pdf) and ["Barriers to Reproducible Research and a
+Web-Based Solution"](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/MattShotwell/MSRetreat2013Slides.pdf)
+- ROpenSci's blog post ["Reproducible research is still a challenge"](https://ropensci.org/blog/2014/06/09/reproducibility/) by R. FitzJohn, M. Pennell, A. Zanne, W. Cornwell, June 9, 2014, describes the experience of running an example analysis
+- Stodden (2014) ["What scientific idea is ready for retirement?"](https://www.edge.org/response-detail/25340)
+- StackOverflow question ["Why should I use version control?"](http://stackoverflow.com/questions/1408450/why-should-i-use-version-control)
+- Karl Broman's class ["Tools for Reproducible Research" resource page](http://kbroman.org/Tools4RR/pages/resources.html)
+and ["Why Reproducibility is Hard"](https://kbroman.wordpress.com/2015/09/09/reproducibility-is-hard/)
+- [CRAN's task view on Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html)
+- Frank Harrell's [wiki on statistical reporting](http://biostat.mc.vanderbilt.edu/wiki/Main/StatReport)
+
+---
+
+# References 1
+
+Ball, R. and N. Medeiros (2012). "Teaching Integrity in Empirical
+Research: A Protocol for Documenting Data Management and Analysis". In:
+_The Journal of Economic Education_ 43.2, pp. 182-189.
+
+Buckheit, J. B. and D. L. Donoho (1995). _Wavelab and reproducible
+research_. Springer.
+
+Claerbout, J. and M. Karrenbach (1992). "Electronic documents give
+reproducible research a new meaning". In: _Proc. 62nd Ann. Int. Meeting
+of the Soc. of Exploration Geophysics_. , pp. 601-604.
+
+De Leeuw, J. (2001). "Reproducible research. the bottom line". In:
+_Department of Statistics, UCLA_.
+
+Gandrud, C. (2013). _Reproducible Research with R and R Studio_. CRC
+Press.
+
+Ioannidis, J. (2005). "Why most published research findings are false".
+In: _PLoS Med_ 2.8, p. e124.
+
+Ioannidis, J. P. (2014). "How to make more published research true".
+
+King, G. (1995). "Replication, replication". In: _PS: Political Science
+&amp; Politics_ 28.03, pp. 444-452.
+
+Knuth, D. E. (1984). "Literate programming". In: _The Computer Journal_
+27.2, pp. 97-111.
+
+---
+
+# References 2
+
+Landis, S. C, S. G. Amara, K. Asadullah, et al. (2012). "A call for
+transparent reporting to optimize the predictive value of preclinical
+research". In: _Nature_ 490.7419, pp. 187-191. ISSN: 1476-4687. DOI:
+[10.1038/nature11556](https://doi.org/10.1038%2Fnature11556). URL:
+[http://dx.doi.org/10.1038/nature11556](http://dx.doi.org/10.1038/nature11556).
+
+Leek, +. and +. Peng (2015). "Opinion: Reproducible research can still
+be wrong: Adopting a prevention approach". In: _PNAS; Proceedings of
+the National Academy of Sciences_ 112.6, pp. 1645-1646.
+
+Peng, R. D. (2009). "Reproducible research and Biostatistics". In:
+_Biostatistics_ 10.3, pp. 405-408.
+
+Peng, R. D. (2011). "Reproducible research in computational science".
+In: _Science (New York, Ny)_ 334.6060, p. 1226.
+
+Ram, K. (2013). "Git can facilitate greater reproducibility and
+increased transparency in science." In: _Source code for biology and
+medicine_ 8.1, p. 7.
+
+Sandve, G. K, A. Nekrutenko, J. Taylor, et al. (2013). "Ten simple
+rules for reproducible computational research".
+
+Schwab, M, M. Karrenbach, and J. Claerbout (2000). "Making scientific
+computations reproducible". In: _Computing in Science &amp; Engineering_
+2.6, pp. 61-67.
+---
+
+# References 3
+
+Stodden, V, P. Guo, and Z. Ma (2013). "Toward reproducible
+computational research: an empirical analysis of data and code policy
+adoption by journals". In: _PloS one_ 8.6, p. e67111.
+
+Vasilevsky, N. A, J. Minnier, M. A. Haendel, et al. (2017).
+"Reproducible and reusable research: are journal data sharing policies
+meeting the mark?" In: _PeerJ_ 5, p. e3208. ISSN: 2167-8359. DOI:
+[10.7717/peerj.3208](https://doi.org/10.7717%2Fpeerj.3208). URL:
+[http://dx.doi.org/10.7717/peerj.3208](http://dx.doi.org/10.7717/peerj.3208).
+
+Wilkinson, M. D, M. Dumontier, I. J. Aalbersberg, et al. (2016). "The
+FAIR Guiding Principles for scientific data management and
+stewardship". In: _Scientific Data_ 3.1. ISSN: 2052-4463. DOI:
+[10.1038/sdata.2016.18](https://doi.org/10.1038%2Fsdata.2016.18). URL:
+[http://dx.doi.org/10.1038/sdata.2016.18](http://dx.doi.org/10.1038/sdata.2016.18).
+
+Wilson, G, D. Aruliah, C. T. Brown, et al. (2014). "Best practices for
+scientific computing". In: _PLoS Biol_ 12.1, p. e1001745.
+
+---
+class: left
+
+# Thank you!
+
+## Contact info:
+
+- Jessica Minnier: _minnier@ohsu.edu_
+
+## This workshop info:
+
+- Code for these slides are on github, with links to other talks and course materials: [jminnier/talks_etc](https://github.com/jminnier/talks_etc)
+- The `.Rmd` file that generated the slides is on [github](https://github.com/jminnier/talks_etc/blob/master/2020_05_Reproducibility_HIP/2020_05_reproducibility_hip.Rmd), though you need to download the whole [R project](https://github.com/jminnier/talks_etc/archive/master.zip) to knit the file.
+
+## This presentation is made with Knitr + RStudio
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;http://rmarkdown.rstudio.com&gt;.
+
+This is a document written in plain text (.Rmd file) with text and R code embedded with the special syntax. Within RStudio when you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -18,9 +18,9 @@
  *  Version: 0.3.0
  *
  * ------------------------------------------------------- */
-@import url(https://fonts.googleapis.com/css?family=Montserrat:300,300i&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:300,300i,400i,700&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap);
-@import url(https://fonts.googleapis.com/css?family=Droid+Mono&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap);
 
 
 :root {
@@ -31,15 +31,15 @@
   --text-font-base: sans-serif;
   --header-font-family: 'Josefin Sans';
   --header-font-is-google: 1;
-  --code-font-family: 'Droid Mono';
+  --code-font-family: 'Source Code Pro';
   --code-font-is-google: 1;
   --base-font-size: 20px;
-  --text-font-size: 26px;
-  --code-font-size: 0.9rem;
+  --text-font-size: 22px;
+  --code-font-size: 18px;
   --code-inline-font-size: 1em;
-  --header-h1-font-size: 2.75rem;
-  --header-h2-font-size: 2.25rem;
-  --header-h3-font-size: 1.75rem;
+  --header-h1-font-size: 45px;
+  --header-h2-font-size: 40px;
+  --header-h3-font-size: 35px;
 
   /* Colors */
   --text-color: #28435D;
@@ -47,7 +47,7 @@
   --background-color: #EBEFF2;
   --link-color: #38BDDE;
   --text-bold-color: #3A6185;
-  --code-highlight-color: #c0e8f5;
+  --code-highlight-color: #cbdded;
   --inverse-text-color: #EBEFF2;
   --inverse-background-color: #3A6185;
   --inverse-header-color: #EBEFF2;
@@ -76,8 +76,8 @@ h1, h2, h3 {
 }
 .remark-slide-content {
   background-color: var(--background-color);
-  font-size: 26px;
-  padding: 16px 64px 16px 64px;
+  font-size: 22px;
+  padding: 0em 2em 1em 2em;
   width: 100%;
   height: 100%;
 }
@@ -214,7 +214,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   width: 100%;
   background: var(--header-background-color);
   color: var(--header-background-text-color);
-  padding: 2rem 64px 1.5rem 64px;
+  padding: 2rem 2em 1.5rem 2em;
   margin-top: 0;
   box-sizing: border-box;
 }
