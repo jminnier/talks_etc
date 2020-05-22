@@ -1,7 +1,7 @@
 ---
 title: 'Reproducibility in Data Science'
 author: "Jessica Minnier, PhD<br><span style = 'font-size: 50%;'>Assistant Professor of Biostatistics<br>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span>"
-date: 'HIP 523 Computerized Data Management<br><br>`r icon::fa("link")` [bit.ly/hip-repro](https://bit.ly/jmin-jsm19)<br>`r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier)'
+date: 'HIP 523 Computerized Data Management<br><br>`r icon::fa("link")` [bit.ly/hip-repro](https://bit.ly/hip-repro)<br>`r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier)'
 output:
   xaringan::moon_reader:
     css: [css/xaringan-themer.css, css/my-theme.css]
