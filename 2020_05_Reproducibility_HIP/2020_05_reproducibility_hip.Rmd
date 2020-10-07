@@ -1,7 +1,7 @@
 ---
 title: 'Reproducibility in Data Science'
-author: "Jessica Minnier, PhD<br><span style = 'font-size: 50%;'>Assistant Professor of Biostatistics<br>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span>"
-date: 'HIP 523 Computerized Data Management<br><br>`r icon::fa("link")` [bit.ly/hip-repro](https://bit.ly/hip-repro)<br>`r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier)'
+author: "Jessica Minnier, PhD<br><span style = 'font-size: 50%;'>Associate Professor of Biostatistics<br>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span>"
+date: 'HIP 523 Data Science for Research<br><br>`r icon::fa("link")` [bit.ly/hip-repro](https://bit.ly/hip-repro)<br>`r icon::fa("twitter")` [datapointier](https://twitter.com/datapointier)'
 output:
   xaringan::moon_reader:
     css: [css/xaringan-themer.css, css/my-theme.css]
@@ -666,6 +666,73 @@ class:center, middle, inverse
 and recording [link](https://echo360.org/section/aefe4e1c-c635-4a3b-bf99-ce6439184f5f/public) and other info is found on [github](https://github.com/jminnier/berd_r_courses)
 - Example, new git project in Rstudio
 - Example, cloning a github repo
+
+---
+
+# R Markdown = `.Rmd` file = Code + text
+
+`knitr` is a package that converts `.Rmd` files containing code + markdown syntax to a plain text `.md` markdown file, and then to other formats (html, pdf, Word, etc)
+
+
+<img src="img/ex_rmd.png" width="45%" align="top"> $\Rightarrow$
+<img src="img/ex_html.png" width="45%" align="top">
+
+---
+
+# Compare the .Rmd file with its html output 
+
+<center><img src="img/screenshot_default_rmd2html_markedup.png" width="87%" height="70%"></center>
+
+
+
+---
+
+# knitr converts `.Rmd` -> `.md` (behind the scenes)
+
+.pull-left[
+<img src="img/ex_rmd.png" width="100%" height="60%">
+]
+
+.pull-right[
+<img src="img/ex_md.png" width="100%" height="60%">
+]
+
+---
+
+# knitr converts `.Rmd` -> `.md` -> `.html`
+
+.pull-left[
+<img src="img/ex_rmd_html.png" width="100%" height="60%">
+]
+
+.pull-right[
+<img src="img/ex_html.png" width="100%" height="60%">
+]
+
+---
+
+# knitr converts `.Rmd` -> `.md` -> `.pdf`
+
+.pull-left-40[
+<img src="img/ex_rmd_pdf.png" width="100%" height="60%">
+]
+
+.pull-right-60[
+<img src="img/ex_pdf2.png" width="100%" height="60%">
+]
+
+---
+
+# knitr converts `.Rmd` -> `.md` -> `.doc`
+
+.pull-left[
+<img src="img/ex_rmd_word.png" width="100%" height="60%">
+]
+
+.pull-right[
+<img src="img/ex_word.png" width="50%" height="60%">
+]
+
 
 ---
 
