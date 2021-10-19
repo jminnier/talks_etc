@@ -169,6 +169,31 @@ Power = 0.93&lt;br&gt;
 
 ---
 
+# R code for t-test, effect size = 1:
+
+
+```r
+power.t.test(delta = 1, sd = 1, sig.level = 0.05, power = 0.9)
+```
+
+```
+
+     Two-sample t test power calculation 
+
+              n = 22.0211
+          delta = 1
+             sd = 1
+      sig.level = 0.05
+          power = 0.9
+    alternative = two.sided
+
+NOTE: n is number in *each* group
+```
+
+---
+
+---
+
 # n=25, effect size = 0.33
 
 Increase standard deviation from 1 to 3, divides effect size by 3

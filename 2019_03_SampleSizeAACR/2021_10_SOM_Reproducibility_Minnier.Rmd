@@ -213,6 +213,16 @@ Power = `r signif(power.t.test(n=25, delta=1, sd = 1, sig.level = 0.05)$power,2)
 
 ---
 
+# R code for t-test, effect size = 1:
+
+```{r, echo = TRUE}
+power.t.test(delta = 1, sd = 1, sig.level = 0.05, power = 0.9)
+```
+
+---
+
+---
+
 # n=25, effect size = 0.33
 
 Increase standard deviation from 1 to 3, divides effect size by 3
