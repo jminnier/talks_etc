@@ -125,8 +125,8 @@ Do We Know? | Measure | Definition
 ---|---|---
 ?? | Effect Size | Magnitude of difference or association; <br>i.e. (difference in means)/(population standard deviation) = $\frac{\mu_1 - \mu_0}{\sigma}$ = $\frac{\delta}{\sigma}$
 ?? | Sample Size | N
-0.05, 0.01 | Type I Error / Significance level | $\alpha$ = probability of rejecting null hypothesis when it is true
-0.9, 0.8 | Power  | 1 - $\beta$ = 1 - Type II error = probability of rejecting null hypothesis when it is false
+0.05, 0.01 | Type I Error / Significance level | $\alpha$ = probability of rejecting null hypothesis when it is true; false positive
+0.9, 0.8 | Power  | 1 - $\beta$ = 1 - Type II error = probability of rejecting null hypothesis when it is false; true negative
 
 ---
 
@@ -363,5 +363,5 @@ Slide code available at: [github.com/jminnier/talks-etc](https://github.com/jmin
 
 # References
 
-- Some of this talk adapted from: [David Yanez's Sample Size](https://www.ohsu.edu/xd/research/centers-institutes/octri/education-training/upload/PowerAndSampleSize.pdf) talk at [OCTRI Research Forum (OHSU)](https://www.ohsu.edu/xd/research/centers-institutes/octri/education-training/octri-research-forum.cfm)
+- Some of this talk adapted from: [David Yanez's Sample Size](https://www.ohsu.edu/sites/default/files/2019-12/PowerAndSampleSize_29MAY2019.pdf) talk at [OCTRI BERD Research Forum](https://www.ohsu.edu/octri/octri-research-forum-your-monthly-clinical-and-translational-research-event)
 - [Statistical Rules of Thumb, Chapter 2](http://www.vanbelle.org/)
