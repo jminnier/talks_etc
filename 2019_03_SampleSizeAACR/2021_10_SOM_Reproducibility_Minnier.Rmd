@@ -1,7 +1,7 @@
 ---
 title: "Is n=3 enough? How to approach sample size and power calculations"
 author: "Jessica Minnier, PhD<br><span style = 'font-size: 50%;'>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span>"
-date: 'SOM Rigor & Reproducibility<br>October 19, 2021<br><br>`r icons::fontawesome("link")` [bit.ly/som-power](https://bit.ly/som-power)<br>`r icons::fontawesome("twitter")` [datapointier](https://twitter.com/datapointier)'
+date: 'SOM Rigor & Reproducibility<br>October 19, 2021<br><br>`r icons::fontawesome("link")` [bit.ly/som-power](https://bit.ly/som-power21)<br>`r icons::fontawesome("twitter")` [datapointier](https://twitter.com/datapointier)'
 output:
   xaringan::moon_reader:
     chakra: libs/remark-latest.min.js
