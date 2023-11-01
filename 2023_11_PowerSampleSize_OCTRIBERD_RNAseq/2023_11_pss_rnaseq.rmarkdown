@@ -24,6 +24,7 @@ format:
 highlight-style: a11y
 ---
 
+
 ## Goals
 
 -   Review power and sample size statistical definitions
@@ -321,6 +322,7 @@ Arguments for `ssize_single()` function, assuming all genes have the same charac
 -   Dispersion parameter for each gene: `disp = 0.1`
 -   Fold change for each gene: `fc = 2`
 
+
 ```{r}
 ## Install ssizeRNA package if needed
 # install.packages("ssizeRNA")
@@ -343,6 +345,7 @@ size_out$ssize
 # power: power calculations with corresponding sample sizes.
 size_out$power
 ```
+
 
 ## Typical inputs
 
@@ -372,6 +375,7 @@ size_out$power
 -   Ideally, pilot data specific to the experiment would be used to determine expected variability/dispersion and effect sizes
 -   `ssizeRNA` gives examples on using existing data to estimate `mu` and `disp` across all the genes, then use `ssizeRNA_vary()` function, and see below from Suppl Material S1 @jeon2023statistical for R code
 -   `RnaSeqSampleSize` has TCGA data examples, see [vignette](https://www.bioconductor.org/packages/devel/bioc/vignettes/RnaSeqSampleSize/inst/doc/RnaSeqSampleSize.pdf), and also [web app](https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/)
+
 
 ```{r}
 ## Install other packages if needed.
@@ -421,6 +425,7 @@ size_out$ssize
 # power: power calculations with corresponding sample sizes.
 size_out$power
 ```
+
 
 ## More complex studies
 
@@ -498,3 +503,4 @@ Even more complex to calculate power with simulations and many assumptions
 
 ::: {#refs}
 :::
+
