@@ -739,8 +739,8 @@ Jessica Minnier
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co"># ssize: sample sizes (for each treatment) at which desired power is first reached. size$ssize</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     pi0 ssize     power
-[1,] 0.8    14 0.8368389</code></pre>
+<pre><code>     pi0 ssize    power
+[1,] 0.8    14 0.840499</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -748,37 +748,37 @@ Jessica Minnier
 <pre><code>       n       0.8
  [1,]  3 0.0000000
  [2,]  4 0.0000000
- [3,]  5 0.0059516
- [4,]  6 0.0971614
- [5,]  7 0.2360246
- [6,]  8 0.3730270
- [7,]  9 0.4930094
- [8,] 10 0.5932630
- [9,] 11 0.6751886
-[10,] 12 0.7413703
-[11,] 13 0.7944454
-[12,] 14 0.8368389
-[13,] 15 0.8706152
-[14,] 16 0.8974796
-[15,] 17 0.9188044
-[16,] 18 0.9357252
-[17,] 19 0.9491345
-[18,] 20 0.9597533
-[19,] 21 0.9681630
-[20,] 22 0.9748164
-[21,] 23 0.9800804
-[22,] 24 0.9842438
-[23,] 25 0.9875332
-[24,] 26 0.9901348
-[25,] 27 0.9921901
-[26,] 28 0.9938155
-[27,] 29 0.9951005
-[28,] 30 0.9961158
-[29,] 31 0.9969194
-[30,] 32 0.9975551
-[31,] 33 0.9980580
-[32,] 34 0.9984566
-[33,] 35 0.9987720</code></pre>
+ [3,]  5 0.0065169
+ [4,]  6 0.1001484
+ [5,]  7 0.2405554
+ [6,]  8 0.3782711
+ [7,]  9 0.4984273
+ [8,] 10 0.5985494
+ [9,] 11 0.6801520
+[10,] 12 0.7459187
+[11,] 13 0.7985458
+[12,] 14 0.8404990
+[13,] 15 0.8738396
+[14,] 16 0.9002887
+[15,] 17 0.9212481
+[16,] 18 0.9378310
+[17,] 19 0.9509405
+[18,] 20 0.9613011
+[19,] 21 0.9694784
+[20,] 22 0.9759332
+[21,] 23 0.9810230
+[22,] 24 0.9850373
+[23,] 25 0.9882012
+[24,] 26 0.9906942
+[25,] 27 0.9926587
+[26,] 28 0.9942068
+[27,] 29 0.9954266
+[28,] 30 0.9963877
+[29,] 31 0.9971456
+[30,] 32 0.9977429
+[31,] 33 0.9982141
+[32,] 34 0.9985859
+[33,] 35 0.9988793</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
@@ -868,45 +868,45 @@ Jessica Minnier
 <span id="cb13-3"><a href="#cb13-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pi0 ssize     power
-[1,] 0.8     8 0.8008723</code></pre>
+[1,] 0.8     8 0.8148689</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       n       0.8
  [1,]  3 0.0000000
- [2,]  4 0.1542642
- [3,]  5 0.4355973
- [4,]  6 0.6145024
- [5,]  7 0.7271522
- [6,]  8 0.8008723
- [7,]  9 0.8509023
- [8,] 10 0.8859233
- [9,] 11 0.9110785
-[10,] 12 0.9295591
-[11,] 13 0.9433935
-[12,] 14 0.9539340
-[13,] 15 0.9620815
-[14,] 16 0.9684647
-[15,] 17 0.9735264
-[16,] 18 0.9775836
-[17,] 19 0.9808705
-[18,] 20 0.9835559
-[19,] 21 0.9857692
-[20,] 22 0.9876086
-[21,] 23 0.9891476
-[22,] 24 0.9904439
-[23,] 25 0.9915432
-[24,] 26 0.9924802
-[25,] 27 0.9932837
-[26,] 28 0.9939767
-[27,] 29 0.9945768
-[28,] 30 0.9950990
-[29,] 31 0.9955553
-[30,] 32 0.9959561
-[31,] 33 0.9963093
-[32,] 34 0.9966214
-[33,] 35 0.9968984</code></pre>
+ [2,]  4 0.1667266
+ [3,]  5 0.4531508
+ [4,]  6 0.6319245
+ [5,]  7 0.7430296
+ [6,]  8 0.8148689
+ [7,]  9 0.8630853
+ [8,] 10 0.8964735
+ [9,] 11 0.9202121
+[10,] 12 0.9374733
+[11,] 13 0.9502780
+[12,] 14 0.9599351
+[13,] 15 0.9673338
+[14,] 16 0.9730819
+[15,] 17 0.9775998
+[16,] 18 0.9811929
+[17,] 19 0.9840799
+[18,] 20 0.9864216
+[19,] 21 0.9883375
+[20,] 22 0.9899180
+[21,] 23 0.9912311
+[22,] 24 0.9923306
+[23,] 25 0.9932561
+[24,] 26 0.9940407
+[25,] 27 0.9947097
+[26,] 28 0.9952829
+[27,] 29 0.9957764
+[28,] 30 0.9962040
+[29,] 31 0.9965755
+[30,] 32 0.9969000
+[31,] 33 0.9971845
+[32,] 34 0.9974350
+[33,] 35 0.9976562</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
