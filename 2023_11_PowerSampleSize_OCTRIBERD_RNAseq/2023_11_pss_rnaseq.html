@@ -9,7 +9,7 @@
 <link href="2023_11_pss_rnaseq_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.256">
 
-  <meta name="author" content="Jessica Minnier, Associate Professor of Biostatistics">
+  <meta name="author" content="Jessica Minnier">
   <title>Power and Sample Size for RNA-seq Experiments</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -414,7 +414,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Jessica Minnier, Associate Professor of Biostatistics 
+Jessica Minnier 
 </div>
         <p class="quarto-title-affiliation">
             OHSU
@@ -740,7 +740,7 @@ Jessica Minnier, Associate Professor of Biostatistics
 <span id="cb2-3"><a href="#cb2-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pi0 ssize     power
-[1,] 0.8    14 0.8393099</code></pre>
+[1,] 0.8    14 0.8368389</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -748,37 +748,37 @@ Jessica Minnier, Associate Professor of Biostatistics
 <pre><code>       n       0.8
  [1,]  3 0.0000000
  [2,]  4 0.0000000
- [3,]  5 0.0061645
- [4,]  6 0.0984413
- [5,]  7 0.2381532
- [6,]  8 0.3756802
- [7,]  9 0.4959341
- [8,] 10 0.5962760
- [9,] 11 0.6781612
-[10,] 12 0.7442056
-[11,] 13 0.7971129
-[12,] 14 0.8393099
-[13,] 15 0.8728672
-[14,] 16 0.8995036
-[15,] 17 0.9206182
-[16,] 18 0.9373283
-[17,] 19 0.9505492
-[18,] 20 0.9609931
-[19,] 21 0.9692400
-[20,] 22 0.9757500
-[21,] 23 0.9808852
-[22,] 24 0.9849333
-[23,] 25 0.9881243
-[24,] 26 0.9906379
-[25,] 27 0.9926184
-[26,] 28 0.9941786
-[27,] 29 0.9954073
-[28,] 30 0.9963752
-[29,] 31 0.9971380
-[30,] 32 0.9977389
-[31,] 33 0.9982126
-[32,] 34 0.9985861
-[33,] 35 0.9988806</code></pre>
+ [3,]  5 0.0059516
+ [4,]  6 0.0971614
+ [5,]  7 0.2360246
+ [6,]  8 0.3730270
+ [7,]  9 0.4930094
+ [8,] 10 0.5932630
+ [9,] 11 0.6751886
+[10,] 12 0.7413703
+[11,] 13 0.7944454
+[12,] 14 0.8368389
+[13,] 15 0.8706152
+[14,] 16 0.8974796
+[15,] 17 0.9188044
+[16,] 18 0.9357252
+[17,] 19 0.9491345
+[18,] 20 0.9597533
+[19,] 21 0.9681630
+[20,] 22 0.9748164
+[21,] 23 0.9800804
+[22,] 24 0.9842438
+[23,] 25 0.9875332
+[24,] 26 0.9901348
+[25,] 27 0.9921901
+[26,] 28 0.9938155
+[27,] 29 0.9951005
+[28,] 30 0.9961158
+[29,] 31 0.9969194
+[30,] 32 0.9975551
+[31,] 33 0.9980580
+[32,] 34 0.9984566
+[33,] 35 0.9987720</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
@@ -868,45 +868,45 @@ Jessica Minnier, Associate Professor of Biostatistics
 <span id="cb13-3"><a href="#cb13-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pi0 ssize     power
-[1,] 0.8     8 0.8068609</code></pre>
+[1,] 0.8     8 0.8008723</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       n       0.8
  [1,]  3 0.0000000
- [2,]  4 0.1584711
- [3,]  5 0.4421728
- [4,]  6 0.6214126
- [5,]  7 0.7337198
- [6,]  8 0.8068609
- [7,]  9 0.8562598
- [8,] 10 0.8906682
- [9,] 11 0.9152706
-[10,] 12 0.9332618
-[11,] 13 0.9466712
-[12,] 14 0.9568361
-[13,] 15 0.9646599
-[14,] 16 0.9707612
-[15,] 17 0.9755790
-[16,] 18 0.9794242
-[17,] 19 0.9825252
-[18,] 20 0.9850497
-[19,] 21 0.9871208
-[20,] 22 0.9888359
-[21,] 23 0.9902645
-[22,] 24 0.9914644
-[23,] 25 0.9924768
-[24,] 26 0.9933376
-[25,] 27 0.9940732
-[26,] 28 0.9947049
-[27,] 29 0.9952501
-[28,] 30 0.9957233
-[29,] 31 0.9961354
-[30,] 32 0.9964963
-[31,] 33 0.9968129
-[32,] 34 0.9970923
-[33,] 35 0.9973394</code></pre>
+ [2,]  4 0.1542642
+ [3,]  5 0.4355973
+ [4,]  6 0.6145024
+ [5,]  7 0.7271522
+ [6,]  8 0.8008723
+ [7,]  9 0.8509023
+ [8,] 10 0.8859233
+ [9,] 11 0.9110785
+[10,] 12 0.9295591
+[11,] 13 0.9433935
+[12,] 14 0.9539340
+[13,] 15 0.9620815
+[14,] 16 0.9684647
+[15,] 17 0.9735264
+[16,] 18 0.9775836
+[17,] 19 0.9808705
+[18,] 20 0.9835559
+[19,] 21 0.9857692
+[20,] 22 0.9876086
+[21,] 23 0.9891476
+[22,] 24 0.9904439
+[23,] 25 0.9915432
+[24,] 26 0.9924802
+[25,] 27 0.9932837
+[26,] 28 0.9939767
+[27,] 29 0.9945768
+[28,] 30 0.9950990
+[29,] 31 0.9955553
+[30,] 32 0.9959561
+[31,] 33 0.9963093
+[32,] 34 0.9966214
+[33,] 35 0.9968984</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
