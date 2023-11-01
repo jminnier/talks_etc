@@ -299,13 +299,21 @@ In a two group comparison, effect size is usually ***fold change*** (or logFC) f
 
 -   [RNASeqPower](https://bioconductor.org/packages/release/bioc/html/RNASeqPower.html) Bioconductor/R package
 
+    -   closed form equation based on Score statistic, NB model
+
 -   [RnaSeqSampleSize](https://www.bioconductor.org/packages/release/bioc/html/RnaSeqSampleSize.html) Bioconductor/R package and [web/Shiny app](https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/)
 
--   [ssizeRNA](https://cran.r-project.org/web/packages/ssizeRNA/index.html) R package (based on voom/limma)
+    -   NB model, gene-specific power function, can overestimate sample size
 
--   [PROPER](https://bioconductor.org/packages/devel/bioc/vignettes/PROPER/inst/doc/PROPER.pdf) simulation based tool
+-   [ssizeRNA](https://cran.r-project.org/web/packages/ssizeRNA/index.html) R package
 
-Based on above reviews, ssizeRNA and PROPER were most recommended
+    -   NB model with normal-based test statistic via voom
+
+-   [PROPER](https://bioconductor.org/packages/devel/bioc/vignettes/PROPER/inst/doc/PROPER.pdf) R package
+
+    -   NB model simulation based
+
+Based on above reviews and simulation studies, ssizeRNA and PROPER were most recommended
 
 ## Example R code, ssizeRNA
 

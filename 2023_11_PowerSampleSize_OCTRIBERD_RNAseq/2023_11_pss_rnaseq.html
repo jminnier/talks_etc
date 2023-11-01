@@ -700,12 +700,24 @@ Jessica Minnier
 <h2>Power calculation software/tools</h2>
 <ul>
 <li><p>See review in <span class="citation" data-cites="jeon2023statistical">Jeon et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2023</a>)</span> and comparisons in <span class="citation" data-cites="poplawski2018feasibility">Poplawski and Binder (<a href="#/thank-you" role="doc-biblioref" onclick="">2018</a>)</span></p></li>
-<li><p><a href="https://bioconductor.org/packages/release/bioc/html/RNASeqPower.html">RNASeqPower</a> Bioconductor/R package</p></li>
-<li><p><a href="https://www.bioconductor.org/packages/release/bioc/html/RnaSeqSampleSize.html">RnaSeqSampleSize</a> Bioconductor/R package and <a href="https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/">web/Shiny app</a></p></li>
-<li><p><a href="https://cran.r-project.org/web/packages/ssizeRNA/index.html">ssizeRNA</a> R package (based on voom/limma)</p></li>
-<li><p><a href="https://bioconductor.org/packages/devel/bioc/vignettes/PROPER/inst/doc/PROPER.pdf">PROPER</a> simulation based tool</p></li>
+<li><p><a href="https://bioconductor.org/packages/release/bioc/html/RNASeqPower.html">RNASeqPower</a> Bioconductor/R package</p>
+<ul>
+<li>closed form equation based on Score statistic, NB model</li>
+</ul></li>
+<li><p><a href="https://www.bioconductor.org/packages/release/bioc/html/RnaSeqSampleSize.html">RnaSeqSampleSize</a> Bioconductor/R package and <a href="https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/">web/Shiny app</a></p>
+<ul>
+<li>NB model, gene-specific power function, can overestimate sample size</li>
+</ul></li>
+<li><p><a href="https://cran.r-project.org/web/packages/ssizeRNA/index.html">ssizeRNA</a> R package</p>
+<ul>
+<li>NB model with normal-based test statistic via voom</li>
+</ul></li>
+<li><p><a href="https://bioconductor.org/packages/devel/bioc/vignettes/PROPER/inst/doc/PROPER.pdf">PROPER</a> R package</p>
+<ul>
+<li>NB model simulation based</li>
+</ul></li>
 </ul>
-<p>Based on above reviews, ssizeRNA and PROPER were most recommended</p>
+<p>Based on above reviews and simulation studies, ssizeRNA and PROPER were most recommended</p>
 </section>
 <section id="example-r-code-ssizerna" class="slide level2">
 <h2>Example R code, ssizeRNA</h2>
@@ -740,7 +752,7 @@ Jessica Minnier
 <span id="cb2-3"><a href="#cb2-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pi0 ssize     power
-[1,] 0.8    14 0.8407246</code></pre>
+[1,] 0.8    14 0.8343262</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -748,37 +760,37 @@ Jessica Minnier
 <pre><code>       n       0.8
  [1,]  3 0.0000000
  [2,]  4 0.0000000
- [3,]  5 0.0066638
- [4,]  6 0.1008077
- [5,]  7 0.2414440
- [6,]  8 0.3791711
- [7,]  9 0.4992278
- [8,] 10 0.5992249
- [9,] 11 0.6807064
-[10,] 12 0.7463414
-[11,] 13 0.7988696
-[12,] 14 0.8407246
-[13,] 15 0.8739927
-[14,] 16 0.9003838
-[15,] 17 0.9212977
-[16,] 18 0.9378446
-[17,] 19 0.9509310
-[18,] 20 0.9612750
-[19,] 21 0.9694410
-[20,] 22 0.9758892
-[21,] 23 0.9809756
-[22,] 24 0.9849896
-[23,] 25 0.9881545
-[24,] 26 0.9906497
-[25,] 27 0.9926173
-[26,] 28 0.9941688
-[27,] 29 0.9953921
-[28,] 30 0.9963568
-[29,] 31 0.9971181
-[30,] 32 0.9977187
-[31,] 33 0.9981928
-[32,] 34 0.9985673
-[33,] 35 0.9988632</code></pre>
+ [3,]  5 0.0056349
+ [4,]  6 0.0953837
+ [5,]  7 0.2332468
+ [6,]  8 0.3697507
+ [7,]  9 0.4895573
+ [8,] 10 0.5898277
+ [9,] 11 0.6719140
+[10,] 12 0.7383110
+[11,] 13 0.7916434
+[12,] 14 0.8343262
+[13,] 15 0.8683667
+[14,] 16 0.8954845
+[15,] 17 0.9170581
+[16,] 18 0.9341977
+[17,] 19 0.9478082
+[18,] 20 0.9586136
+[19,] 21 0.9671815
+[20,] 22 0.9739771
+[21,] 23 0.9793624
+[22,] 24 0.9836318
+[23,] 25 0.9870162
+[24,] 26 0.9896963
+[25,] 27 0.9918202
+[26,] 28 0.9935033
+[27,] 29 0.9948379
+[28,] 30 0.9958952
+[29,] 31 0.9967344
+[30,] 32 0.9974001
+[31,] 33 0.9979283
+[32,] 34 0.9983481
+[33,] 35 0.9986814</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
@@ -868,45 +880,45 @@ Jessica Minnier
 <span id="cb13-3"><a href="#cb13-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pi0 ssize     power
-[1,] 0.8     9 0.8490149</code></pre>
+[1,] 0.8     9 0.8434739</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       n       0.8
  [1,]  3 0.0000000
- [2,]  4 0.1545945
- [3,]  5 0.4350254
- [4,]  6 0.6132421
- [5,]  7 0.7255009
- [6,]  8 0.7990424
- [7,]  9 0.8490149
- [8,] 10 0.8840596
- [9,] 11 0.9092821
-[10,] 12 0.9278497
-[11,] 13 0.9417900
-[12,] 14 0.9524310
-[13,] 15 0.9606823
-[14,] 16 0.9671624
-[15,] 17 0.9723155
-[16,] 18 0.9764605
-[17,] 19 0.9798263
-[18,] 20 0.9825853
-[19,] 21 0.9848669
-[20,] 22 0.9867673
-[21,] 23 0.9883619
-[22,] 24 0.9897103
-[23,] 25 0.9908561
-[24,] 26 0.9918371
-[25,] 27 0.9926804
-[26,] 28 0.9934098
-[27,] 29 0.9940432
-[28,] 30 0.9945966
-[29,] 31 0.9950812
-[30,] 32 0.9955081
-[31,] 33 0.9958852
-[32,] 34 0.9962199
-[33,] 35 0.9965175</code></pre>
+ [2,]  4 0.1495363
+ [3,]  5 0.4275414
+ [4,]  6 0.6056247
+ [5,]  7 0.7184589
+ [6,]  8 0.7927465
+ [7,]  9 0.8434739
+ [8,] 10 0.8792088
+ [9,] 11 0.9050462
+[10,] 12 0.9241417
+[11,] 13 0.9385395
+[12,] 14 0.9495731
+[13,] 15 0.9581587
+[14,] 16 0.9649286
+[15,] 17 0.9703306
+[16,] 18 0.9746886
+[17,] 19 0.9782380
+[18,] 20 0.9811584
+[19,] 21 0.9835790
+[20,] 22 0.9856014
+[21,] 23 0.9873035
+[22,] 24 0.9887461
+[23,] 25 0.9899756
+[24,] 26 0.9910298
+[25,] 27 0.9919385
+[26,] 28 0.9927263
+[27,] 29 0.9934120
+[28,] 30 0.9940121
+[29,] 31 0.9945390
+[30,] 32 0.9950036
+[31,] 33 0.9954149
+[32,] 34 0.9957807
+[33,] 35 0.9961065</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
