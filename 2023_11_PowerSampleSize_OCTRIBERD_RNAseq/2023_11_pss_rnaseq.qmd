@@ -59,15 +59,25 @@ highlight-style: a11y
 
 -   "Bulk RNA-seq" to distinguish from single cell RNA-seq, large populations of cells, mixed cell types
 
--   Alternative method: microarrays, some of the following concepts still apply but distribution of expression measures is not counts, but more related to continuous normal distribution [@lee2002power]
+-   Alternative method: microarrays, some of the following concepts still apply but distribution of expression measures is not count-based, but more related to continuous normal distribution [@lee2002power]
 
 ## RNA-seq data generation {.smaller}
 
 NGS or massively parallel sequencing: sample preparation, mRNA fragmentation, reverse transcription to complementary DNA, map cDNA to reference genome
 
-[![](Journal.pcbi.1004393.g002.png){fig-alt="\"RNA-seq data generation. A typical RNA-seq experimental workflow involves the isolation of RNA from samples of interest, generation of sequencing libraries, use of a high-throughput sequencer to produce hundreds of millions of short paired-end reads, alignment of reads against a reference genome or transcriptome, and downstream analysis for expression estimation, differential expression, transcript isoform discovery, and other applications. Refer to S1 Table, S3 Table, and S7 Table for more details on the concepts depicted in this figure.\" Image taken from Figure 2 in Griffith, Malachi; Walker, Jason R.; Spies, Nicholas C.; Ainscough, Benjamin J.; Griffith, Obi L. (2015). \"Informatics for RNA Sequencing: A Web Resource for Analysis on the Cloud\". PLOS Computational Biology. 11 (8): e1004393. doi:10.1371/journal.pcbi.1004393. ISSN 1553-7358." width="1100"}](https://commons.wikimedia.org/wiki/File:Journal.pcbi.1004393.g002.png)
+::: columns
+::: {.column width="50%"}
+![](Journal.pcbi.1004393.g002.png){fig-alt="\"RNA-seq data generation. A typical RNA-seq experimental workflow involves the isolation of RNA from samples of interest, generation of sequencing libraries, use of a high-throughput sequencer to produce hundreds of millions of short paired-end reads, alignment of reads against a reference genome or transcriptome, and downstream analysis for expression estimation, differential expression, transcript isoform discovery, and other applications. Refer to S1 Table, S3 Table, and S7 Table for more details on the concepts depicted in this figure.\" Image taken from Figure 2 in Griffith, Malachi; Walker, Jason R.; Spies, Nicholas C.; Ainscough, Benjamin J.; Griffith, Obi L. (2015). \"Informatics for RNA Sequencing: A Web Resource for Analysis on the Cloud\". PLOS Computational Biology. 11 (8): e1004393. doi:10.1371/journal.pcbi.1004393. ISSN 1553-7358." width="1100"}
 
 [@griffith2015informatics]
+:::
+
+::: {.column width="50%"}
+[![](normalization_methods_depth.png)](https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/02_DGE_count_normalization.md)
+
+[@meeta_mistry_2021_4783481]
+:::
+:::
 
 ## What does the data look like?
 
@@ -303,20 +313,12 @@ Adapted from `ssizeRNA` [vignette](https://cran.r-project.org/web/packages/ssize
 Arguments for `ssize_single()` function, assuming all genes have the same characteristics:
 
 -   Total number of genes: `G = 10000`
-
 -   Proportion of non-DE "null" genes: `pi0 = 0.8`
-
 -   FDR level to control: `fdr = 0.05`
-
 -   Desired average power to achieve: `power = 0.8`
-
 -   Average read count for each gene in control group: `mu = 10`
-
 -   Dispersion parameter for each gene: `disp = 0.1`
-
 -   Fold change for each gene: `fc = 2`
-
-    ![](power1.png)
 
 ```{r}
 ## Install ssizeRNA package if needed
@@ -353,7 +355,16 @@ size_out$power
 
 -   [RnaSeqSampleSize](https://www.bioconductor.org/packages/release/bioc/html/RnaSeqSampleSize.html) Bioconductor/R package and [web/Shiny app](https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/)
 
-![](webapp.png)
+::: columns
+::: {.column width="50%"}
+![](webapp1.png)
+:::
+
+::: {.column width="50%"}
+
+![](webapp2.png)
+:::
+:::
 
 ## Pilot data or public data
 
@@ -452,7 +463,7 @@ Even more complex to calculate power with simulations and many assumptions
 
 ## Conclusions
 
-### Important Factors
+### Important Factors (bulk RNA-seq DEG)
 
 -   Distributions: average (or distribution of) read counts, as well as average (or distribution of, or maximum) dispersion
 

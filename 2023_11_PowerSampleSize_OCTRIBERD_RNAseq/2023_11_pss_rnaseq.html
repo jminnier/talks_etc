@@ -453,14 +453,25 @@ Jessica Minnier
 <li><p>Typically, transcriptomics: gene expression profiling of samples, using next-generation sequencing methods, reference genome</p></li>
 <li><p>RNA-seq can also examine alternative gene spliced transcripts, mutations, levels of other RNA besides messenger RNA, etc, but common aim is to evaluate gene expression measured by mRNA observed in sample tissue</p></li>
 <li><p>“Bulk RNA-seq” to distinguish from single cell RNA-seq, large populations of cells, mixed cell types</p></li>
-<li><p>Alternative method: microarrays, some of the following concepts still apply but distribution of expression measures is not counts, but more related to continuous normal distribution <span class="citation" data-cites="lee2002power">(<a href="#/thank-you" role="doc-biblioref" onclick="">Lee and Whitmore 2002</a>)</span></p></li>
+<li><p>Alternative method: microarrays, some of the following concepts still apply but distribution of expression measures is not count-based, but more related to continuous normal distribution <span class="citation" data-cites="lee2002power">(<a href="#/thank-you" role="doc-biblioref" onclick="">Lee and Whitmore 2002</a>)</span></p></li>
 </ul>
 </section>
 <section id="rna-seq-data-generation" class="slide level2 smaller">
 <h2>RNA-seq data generation</h2>
 <p>NGS or massively parallel sequencing: sample preparation, mRNA fragmentation, reverse transcription to complementary DNA, map cDNA to reference genome</p>
-
-<img data-src="Journal.pcbi.1004393.g002.png" alt="&quot;RNA-seq data generation. A typical RNA-seq experimental workflow involves the isolation of RNA from samples of interest, generation of sequencing libraries, use of a high-throughput sequencer to produce hundreds of millions of short paired-end reads, alignment of reads against a reference genome or transcriptome, and downstream analysis for expression estimation, differential expression, transcript isoform discovery, and other applications. Refer to S1 Table, S3 Table, and S7 Table for more details on the concepts depicted in this figure.&quot; Image taken from Figure 2 in Griffith, Malachi; Walker, Jason R.; Spies, Nicholas C.; Ainscough, Benjamin J.; Griffith, Obi L. (2015). &quot;Informatics for RNA Sequencing: A Web Resource for Analysis on the Cloud&quot;. PLOS Computational Biology. 11 (8): e1004393. doi:10.1371/journal.pcbi.1004393. ISSN 1553-7358." width="1100" class="r-stretch quarto-figure-center"><p><span class="citation" data-cites="griffith2015informatics">(<a href="#/thank-you" role="doc-biblioref" onclick="">Griffith et al. 2015</a>)</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="Journal.pcbi.1004393.g002.png" alt="&quot;RNA-seq data generation. A typical RNA-seq experimental workflow involves the isolation of RNA from samples of interest, generation of sequencing libraries, use of a high-throughput sequencer to produce hundreds of millions of short paired-end reads, alignment of reads against a reference genome or transcriptome, and downstream analysis for expression estimation, differential expression, transcript isoform discovery, and other applications. Refer to S1 Table, S3 Table, and S7 Table for more details on the concepts depicted in this figure.&quot; Image taken from Figure 2 in Griffith, Malachi; Walker, Jason R.; Spies, Nicholas C.; Ainscough, Benjamin J.; Griffith, Obi L. (2015). &quot;Informatics for RNA Sequencing: A Web Resource for Analysis on the Cloud&quot;. PLOS Computational Biology. 11 (8): e1004393. doi:10.1371/journal.pcbi.1004393. ISSN 1553-7358." width="1100"></p>
+<p><span class="citation" data-cites="griffith2015informatics">(<a href="#/thank-you" role="doc-biblioref" onclick="">Griffith et al. 2015</a>)</span></p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/02_DGE_count_normalization.md"><img data-src="normalization_methods_depth.png"></a></p>
+</figure>
+</div>
+<p><span class="citation" data-cites="meeta_mistry_2021_4783481">(<a href="#/thank-you" role="doc-biblioref" onclick="">Mistry et al. 2021</a>)</span></p>
+</div>
+</div>
 </section>
 <section id="what-does-the-data-look-like" class="slide level2">
 <h2>What does the data look like?</h2>
@@ -698,14 +709,13 @@ Jessica Minnier
 <p>Adapted from <code>ssizeRNA</code> <a href="https://cran.r-project.org/web/packages/ssizeRNA/vignettes/ssizeRNA.pdf">vignette</a> and Suppl Material S1 <span class="citation" data-cites="jeon2023statistical">Jeon et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2023</a>)</span></p>
 <p>Arguments for <code>ssize_single()</code> function, assuming all genes have the same characteristics:</p>
 <ul>
-<li><p>Total number of genes: <code>G = 10000</code></p></li>
-<li><p>Proportion of non-DE “null” genes: <code>pi0 = 0.8</code></p></li>
-<li><p>FDR level to control: <code>fdr = 0.05</code></p></li>
-<li><p>Desired average power to achieve: <code>power = 0.8</code></p></li>
-<li><p>Average read count for each gene in control group: <code>mu = 10</code></p></li>
-<li><p>Dispersion parameter for each gene: <code>disp = 0.1</code></p></li>
-<li><p>Fold change for each gene: <code>fc = 2</code></p>
-<p><img data-src="power1.png"></p></li>
+<li>Total number of genes: <code>G = 10000</code></li>
+<li>Proportion of non-DE “null” genes: <code>pi0 = 0.8</code></li>
+<li>FDR level to control: <code>fdr = 0.05</code></li>
+<li>Desired average power to achieve: <code>power = 0.8</code></li>
+<li>Average read count for each gene in control group: <code>mu = 10</code></li>
+<li>Dispersion parameter for each gene: <code>disp = 0.1</code></li>
+<li>Fold change for each gene: <code>fc = 2</code></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="do">## Install ssizeRNA package if needed</span></span>
@@ -721,15 +731,13 @@ Jessica Minnier
 <span id="cb1-11"><a href="#cb1-11"></a>                      <span class="at">mu =</span> <span class="dv">10</span>,</span>
 <span id="cb1-12"><a href="#cb1-12"></a>                      <span class="at">disp =</span> <span class="fl">0.1</span>,</span>
 <span id="cb1-13"><a href="#cb1-13"></a>                      <span class="at">fc =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
-</div>
+
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Output variables:</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co"># ssize: sample sizes (for each treatment) at which desired power is first reached. size$ssize</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     pi0 ssize     power
-[1,] 0.8    14 0.8409646</code></pre>
+<pre><code>     pi0 ssize   power
+[1,] 0.8    14 0.84172</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -737,40 +745,40 @@ Jessica Minnier
 <pre><code>       n       0.8
  [1,]  3 0.0000000
  [2,]  4 0.0000000
- [3,]  5 0.0068929
- [4,]  6 0.1018165
- [5,]  7 0.2427458
- [6,]  8 0.3804685
- [7,]  9 0.5003935
- [8,] 10 0.6001694
- [9,] 11 0.6814440
-[10,] 12 0.7468835
-[11,] 13 0.7992500
-[12,] 14 0.8409646
-[13,] 15 0.8741228
-[14,] 16 0.9004324
-[15,] 17 0.9212803
-[16,] 18 0.9377883
-[17,] 19 0.9508470
-[18,] 20 0.9611679
-[19,] 21 0.9693260
-[20,] 22 0.9757712
-[21,] 23 0.9808592
-[22,] 24 0.9848778
-[23,] 25 0.9880495
-[24,] 26 0.9905527
-[25,] 27 0.9925288
-[26,] 28 0.9940891
-[27,] 29 0.9953209
-[28,] 30 0.9962937
-[29,] 31 0.9970626
-[30,] 32 0.9976701
-[31,] 33 0.9981504
-[32,] 34 0.9985306
-[33,] 35 0.9988314</code></pre>
+ [3,]  5 0.0067881
+ [4,]  6 0.1014734
+ [5,]  7 0.2424768
+ [6,]  8 0.3804081
+ [7,]  9 0.5005572
+ [8,] 10 0.6005469
+ [9,] 11 0.6819760
+[10,] 12 0.7475309
+[11,] 13 0.7999683
+[12,] 14 0.8417200
+[13,] 15 0.8748821
+[14,] 16 0.9011759
+[15,] 17 0.9219926
+[16,] 18 0.9384537
+[17,] 19 0.9514649
+[18,] 20 0.9617326
+[19,] 21 0.9698364
+[20,] 22 0.9762288
+[21,] 23 0.9812645
+[22,] 24 0.9852362
+[23,] 25 0.9883635
+[24,] 26 0.9908269
+[25,] 27 0.9927668
+[26,] 28 0.9942947
+[27,] 29 0.9954979
+[28,] 30 0.9964456
+[29,] 31 0.9971925
+[30,] 32 0.9977808
+[31,] 33 0.9982447
+[32,] 34 0.9986107
+[33,] 35 0.9988993</code></pre>
 </div>
 </div>
-</section>
+<img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
 <section id="typical-inputs" class="slide level2">
 <h2>Typical inputs</h2>
 <ul>
@@ -786,8 +794,14 @@ Jessica Minnier
 <ul>
 <li><a href="https://www.bioconductor.org/packages/release/bioc/html/RnaSeqSampleSize.html">RnaSeqSampleSize</a> Bioconductor/R package and <a href="https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/">web/Shiny app</a></li>
 </ul>
-
-<img data-src="webapp.png" class="r-stretch"></section>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="webapp1.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="webapp2.png"></p>
+</div>
+</div>
+</section>
 <section id="pilot-data-or-public-data" class="slide level2">
 <h2>Pilot data or public data</h2>
 <ul>
@@ -850,46 +864,46 @@ Jessica Minnier
 <span id="cb13-2"><a href="#cb13-2"></a><span class="co"># ssize: sample sizes (for each treatment) at which desired power is first reached. size$ssize</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     pi0 ssize    power
-[1,] 0.8     8 0.818919</code></pre>
+<pre><code>     pi0 ssize     power
+[1,] 0.8     8 0.8058418</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       n       0.8
  [1,]  3 0.0000000
- [2,]  4 0.1678090
- [3,]  5 0.4561294
- [4,]  6 0.6357722
- [5,]  7 0.7471394
- [6,]  8 0.8189190
- [7,]  9 0.8669100
- [8,] 10 0.9000134
- [9,] 11 0.9234437
-[10,] 12 0.9404081
-[11,] 13 0.9529280
-[12,] 14 0.9623281
-[13,] 15 0.9694955
-[14,] 16 0.9750324
-[15,] 17 0.9793642
-[16,] 18 0.9827908
-[17,] 19 0.9855306
-[18,] 20 0.9877406
-[19,] 21 0.9895391
-[20,] 22 0.9910152
-[21,] 23 0.9922360
-[22,] 24 0.9932519
-[23,] 25 0.9941036
-[24,] 26 0.9948219
-[25,] 27 0.9954312
-[26,] 28 0.9959506
-[27,] 29 0.9963957
-[28,] 30 0.9967794
-[29,] 31 0.9971113
-[30,] 32 0.9973998
-[31,] 33 0.9976516
-[32,] 34 0.9978720
-[33,] 35 0.9980660</code></pre>
+ [2,]  4 0.1586487
+ [3,]  5 0.4418509
+ [4,]  6 0.6207092
+ [5,]  7 0.7328030
+ [6,]  8 0.8058418
+ [7,]  9 0.8552138
+ [8,] 10 0.8896437
+ [9,] 11 0.9142904
+[10,] 12 0.9323309
+[11,] 13 0.9457984
+[12,] 14 0.9560237
+[13,] 15 0.9639039
+[14,] 16 0.9700609
+[15,] 17 0.9749302
+[16,] 18 0.9788252
+[17,] 19 0.9819704
+[18,] 20 0.9845356
+[19,] 21 0.9866451
+[20,] 22 0.9883933
+[21,] 23 0.9898532
+[22,] 24 0.9910815
+[23,] 25 0.9921199
+[24,] 26 0.9930043
+[25,] 27 0.9937613
+[26,] 28 0.9944132
+[27,] 29 0.9949764
+[28,] 30 0.9954665
+[29,] 31 0.9958938
+[30,] 32 0.9962684
+[31,] 33 0.9965981
+[32,] 34 0.9968894
+[33,] 35 0.9971476</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
@@ -925,7 +939,7 @@ Jessica Minnier
 </section>
 <section id="conclusions" class="slide level2">
 <h2>Conclusions</h2>
-<h3 id="important-factors">Important Factors</h3>
+<h3 id="important-factors-bulk-rna-seq-deg">Important Factors (bulk RNA-seq DEG)</h3>
 <ul>
 <li><p>Distributions: average (or distribution of) read counts, as well as average (or distribution of, or maximum) dispersion</p></li>
 <li><p>Proportion of differentially expressed genes</p></li>
