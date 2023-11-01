@@ -2,38 +2,487 @@
 title: "Power and Sample Size for RNA-seq Experiments"
 subtitle: "OCTRI BERD Research Forum"
 author: "Jessica Minnier"
-date: 11/01/2023
+date: "November 1, 2023"
+bibliography: refs.bib
 format: 
   revealjs:
     #css: [custom.css, hex.css, timeline.css]
-    progress: false
-    menu: false
+    # css: custom.css
+    progress: true
+    menu: true
+    smaller: true
     slide-number: true
     width: 1280
     height: 720
     preview-links: true
     standalone: true
     scrollable: true
-    theme: serif
+    theme: serif_update.scss
     footer: <https://bit.ly/berd_pss_rnaseq>
+    echo: true
 highlight-style: a11y
 ---
 
-## Quarto
+## Goals
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+-   Review power and sample size statistical definitions
 
-## Bullets
+    -   Power, sample size, effect size, type I error, type II error
 
-When you click the **Render** button a document will be generated that includes:
+-   Overview of RNA-seq data generation
 
--   Content authored with markdown
--   Output from executable code
+-   Required components for power calculation
 
-## Code
+-   Overview of tools available
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+-   Examples of power calculations
+
+-   Brief overview of more complex designs and scRNA-seq issues
+
+## Prerequisites
+
+-   Some knowledge of basic power and sample size calculations and concepts
+
+    -   [PSS 101 from BERD](https://www.ohsu.edu/octri/octri-research-forum-your-monthly-clinical-and-translational-research-event), worth reviewing and watching!
+
+-   Familiarity with RNA-seq experiments; good overview: [@conesa2016survey]
+
+-   Familiarity with statistical models and concepts such as regression, p-values, probability distributions (some review in context of RNA-seq: [Harvard Chan Bioinformatics Core (HBC) training](https://github.com/hbctraining)'s [DGE](https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/01c_RNAseq_count_distribution.html) and [hypothesis testing](https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/05a_hypothesis_testing.md) lessons)
+
+-   Preferred: some experience with R/Bioconductor
+
+## RNA-seq
+
+-   Typically, transcriptomics: gene expression profiling of samples, using next-generation sequencing methods, reference genome
+
+-   RNA-seq can also examine alternative gene spliced transcripts, mutations, levels of other RNA besides messenger RNA, etc, but common aim is to evaluate gene expression measured by mRNA observed in sample tissue
+
+-   "Bulk RNA-seq" to distinguish from single cell RNA-seq, large populations of cells, mixed cell types
+
+-   Alternative method: microarrays, some of the following concepts still apply but distribution of expression measures is not counts, but more related to continuous normal distribution [@lee2002power]
+
+## RNA-seq data generation {.smaller}
+
+NGS or massively parallel sequencing: sample preparation, mRNA fragmentation, reverse transcription to complementary DNA, map cDNA to reference genome
+
+[![](Journal.pcbi.1004393.g002.png){fig-alt="\"RNA-seq data generation. A typical RNA-seq experimental workflow involves the isolation of RNA from samples of interest, generation of sequencing libraries, use of a high-throughput sequencer to produce hundreds of millions of short paired-end reads, alignment of reads against a reference genome or transcriptome, and downstream analysis for expression estimation, differential expression, transcript isoform discovery, and other applications. Refer to S1 Table, S3 Table, and S7 Table for more details on the concepts depicted in this figure.\" Image taken from Figure 2 in Griffith, Malachi; Walker, Jason R.; Spies, Nicholas C.; Ainscough, Benjamin J.; Griffith, Obi L. (2015). \"Informatics for RNA Sequencing: A Web Resource for Analysis on the Cloud\". PLOS Computational Biology. 11 (8): e1004393. doi:10.1371/journal.pcbi.1004393. ISSN 1553-7358." width="1100"}](https://commons.wikimedia.org/wiki/File:Journal.pcbi.1004393.g002.png)
+
+[@griffith2015informatics]
+
+## What does the data look like?
+
+**Raw read sequencing data (large, fastq files)** $\to$ **Count data (gene ID x sample, matrix in .csv)**
+
+From a downstream statistical analysis standpoint:
+
+-   Level of measurement is the gene (or transcript) or "feature"
+
+-   Measurement/outcome is "gene count": how many reads aligned to that gene's RNA sequence after alignment to a reference genome? $\to$ count matrix
+
+-   Need a statistical model for **count data** that models the variability appropriately
+
+![[hbctraining](https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/01c_RNAseq_count_distribution.html) @meeta_mistry_2021_4783481](countdata.png)
+
+## Simplest Study: Two groups
+
+Suppose we are studying two treatment groups (treatment vs. control), and we want to know which genes are deferentially expressed between these two groups.
+
+**Two groups**: Two experimental groups, multiple *biological* replicates within each group. The two groups contain different samples (i.e., not paired, not the same samples over time).
+
+**Differentially expressed genes (DEGs)**: A gene is "differentially expressed" between the treatment vs. control if there is a difference observed in read counts or expression levels.
+
+**Question of interest:** How many samples (biological replicates) in each group to we need to "detect a difference"?
+
+-   ... with some level of confidence (power), restricting false positives (type I error, FDR)?
+
+## Simplest Study: Two groups
+
+**Question of interest:** How many samples to we need to "detect a difference"?
+
+**(Some) Information we need:**
+
+-   Definition of "how different" (i.e. effect size, fold change)
+
+-   Desired level of power and type I error/p-value expectations ("significance level")
+
+-   Information about sequencing depth, average read count
+
+-   Gene expression info: expected variability/dispersion of gene expression levels in each group, number of genes we expect to measure/observe
+
+-   Statistical model and test, method for multiple comparison adjustment
+
+-   "How much signal?" % genes differentially expressed above some fold change
+
+## Reminder: Statistical Power Concepts {.center}
+
+## Sample Size
+
+::: columns
+::: {.column width="50%"}
+More biological replicates leads to:
+
+-   better estimates of variation (gene, biological, sample-to-sample)
+
+-   identify outliers or possible sources of technical variation (batch effects)
+
+-   improve precision of estimates
+
+-   observe low abundance genes
+:::
+
+::: {.column width="50%"}
+![](techrep.jpg)
+:::
+:::
+
+@klaus2015statistical and @meeta_mistry_2021_4783481
+
+## Components of Sample Size
+
+In general, need to know 3 of the 4 to determine the 4th:
+
+| Do We Know? | Measure                           | Definition                                                                                                                           |
+|------------------------|------------------------|------------------------|
+| ??          | Effect Size                       | Magnitude of difference or fold change                                                                                               |
+| ??          | Sample Size                       | N total, n per group                                                                                                                 |
+| 0.05, 0.01  | Type I Error / Significance level | $\alpha$ = probability of rejecting null hypothesis when it is true *need to adjust for multiple comparisons!*                       |
+| 0.9, 0.8    | Power                             | 1 - $\beta$ = 1 - Type II error = probability of rejecting null hypothesis when it is false *need to consider multiple comparisons!* |
+
+## Effect size = Mean Expression Ratio (FC)
+
+In a two group comparison, effect size is usually ***fold change*** (or logFC) for an individual gene:
+
+**FC~gene X~ = (mean expression of gene X in trt) / (mean expression of gene X in control)**
+
+-   May observe a large range of fold changes, or fold changes may be close to 1 for all genes
+
+-   FC measures the average size of the difference between groups, not variability
+
+-   Alternative effect size: biological coefficient of variation (BCV)
+
+    [![Volcano plot (hbctraining)](volcano_plot_2_salmon.png)](https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/06_DGE_visualizing_results.md)
+
+    [@meeta_mistry_2021_4783481]
+
+## Type I error (with multiple comparisons)
+
+"The worst error" Truth = No difference, Test conclusion = there is a difference
+
+-   Typical power calculations are for one test, we could have tens of thousands of tests for each gene
+
+-   Multiple comparisons/multiple testing problem: If we use p-value \< 0.05, for one test there is a 5% change we have a false positive, if we test 20,000 genes and use p\<0.05, we would expect to detect 1000 false positives by chance; if we found 3000 DEGs total, one third are false positives
+
+-   Use "False Discovery Rate" = FDR as "adjusted" p-values
+
+    -   FDR = proportion of expected false positives in our set of DEGs, often controlled at 5% or 10%
+
+    -   Benjamini-Hochberg method common, alternative Storey/Q-value method, see [@meeta_mistry_2021_4783481] for summary
+
+## Power (with multiple comparisons)
+
+-   With one test, power = 1 - type II error for a given effect size
+
+    -   Power = probability that our test is "significant" when the truth is that there is a difference
+
+-   With multiple tests/genes, could have many definitions
+
+    -   Probability we detect at least X% of genes that are truly different (at least some FC)
+
+    -   Probability that we detect *all* genes that are truly different (at least some FC)
+
+    -   **Probability that we detect *one specific gene* that is truly different by some minimum FC**
+
+-   Define "significant" as FDR \< cutoff
+
+## Gene Expression/Abundance Distributions
+
+::: columns
+::: {.column width="50%"}
+-   Count data = discrete data (0, 1, 2...)
+
+-   Need **probability distribution** to match the type of data, such as: Poisson distribution, Negative Binomial distribution, Poisson-gamma mixture distribution
+
+-   Poisson model for count data assumes mean = variance, but RNA-seq has other **sources of variation** than the counting process $\to$ NB with dispersion parameter, other models
+
+-   Lower count genes can be harder to detect/measure/test
+
+-   Sequencing depth (total number of reads, i.e. 5-200 million) influences **average gene count**
+:::
+
+::: {.column width="50%"}
+![](deseq_nb.png)
+
+[@meeta_mistry_2021_4783481]
+:::
+:::
+
+## Variability
+
+::: columns
+::: {.column width="50%"}
+![](meanvar.png)
+:::
+
+::: {.column width="50%"}
+![](de_variation.png)
+:::
+:::
+
+[@meeta_mistry_2021_4783481]
+
+## Factors affecting gene expression + power
+
+-   ***Biological differences and variation***
+
+-   Sequencing depth/coverage
+
+-   Gene length
+
+-   Total sample RNA output, variation between samples within biological groups
+
+-   Variance/dispersion of gene abundance distributions
+
+    -   dispersion: parameter that defines how far we expect observed count will deviate from mean value (estimate from a model)
+
+## Sequencing depth vs. N
+
+::: columns
+::: {.column width="50%"}
+-   In the past with older NGS technology, limited budget might have restricted sequencing depth (fewer total read counts, more samples per lane) if more biological replicates were desired
+
+-   Sequencing depth is now "cheaper" so less of an issue, but still keep in mind abundance levels of genes you want to measure/detect
+
+-   Low abundance genes are difficult to test/detect since counting variability may be larger than biological variability/differences, may be filtered out when performing QC/low count filtering
+
+-   See discussion in @liu2014rna and guidelines in @meeta_mistry_2021_4783481 [Experimental Planning Considerations](https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/experimental_planning_considerations.md) lesson
+:::
+
+::: {.column width="50%"}
+-   Paired-end reads are standard now with 100bp length
+
+-   $>$ 30 million reads recommended and standard, $>$ 60m for low abundance or novel isoforms
+
+[![](de_replicates_img2.png)](https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/01c_RNAseq_count_distribution.md)
+
+\[@liu2014rna\]
+:::
+:::
+
+## Typical analysis
+
+-   Common tools: `DESeq2`, `edgeR`, `baySeq`, and `limma`/`voom` packages in R/Bioconductor
+
+-   Normalization for gene length, sequencing depth (TMM, RPKM)
+
+-   `DESeq2`, `edgeR`, `baySeq` use generalized linear models (GLMs) with negative binomial (NB) distribution to fit the data:
+
+    [![](glm.png)](https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/05a_hypothesis_testing.md)
+
+-   `Voom` models mean-variance relationships to use normal based models in `limma` (linear model with Empirical Bayes variance smoothing)
+
+-   Hypothesis test options: Wald Test, Likelihood Ratio Test, and similar
+
+## Power calculation software/tools
+
+-   See review in @jeon2023statistical and comparisons in @poplawski2018feasibility
+
+-   [RNASeqPower](https://bioconductor.org/packages/release/bioc/html/RNASeqPower.html) Bioconductor/R package
+
+-   [RnaSeqSampleSize](https://www.bioconductor.org/packages/release/bioc/html/RnaSeqSampleSize.html) Bioconductor/R package and [web/Shiny app](https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/)
+
+-   [ssizeRNA](https://cran.r-project.org/web/packages/ssizeRNA/index.html) R package (based on voom/limma)
+
+-   [PROPER](https://bioconductor.org/packages/devel/bioc/vignettes/PROPER/inst/doc/PROPER.pdf) simulation based tool
+
+Based on above reviews, ssizeRNA and PROPER were most recommended
+
+## Example R code, ssizeRNA
+
+Adapted from `ssizeRNA` [vignette](https://cran.r-project.org/web/packages/ssizeRNA/vignettes/ssizeRNA.pdf) and Suppl Material S1 @jeon2023statistical
+
+Arguments for `ssize_single()` function, assuming all genes have the same characteristics:
+
+-   Total number of genes: `G = 10000`
+
+-   Proportion of non-DE "null" genes: `pi0 = 0.8`
+
+-   FDR level to control: `fdr = 0.05`
+
+-   Desired average power to achieve: `power = 0.8`
+
+-   Average read count for each gene in control group: `mu = 10`
+
+-   Dispersion parameter for each gene: `disp = 0.1`
+
+-   Fold change for each gene: `fc = 2`
+
+    ![](power1.png)
 
 ```{r}
-1 + 1
+## Install ssizeRNA package if needed
+# install.packages("ssizeRNA")
+
+## Load package
+library(ssizeRNA)
+
+size_out <- ssizeRNA_single(nGenes = 10000, 
+                      pi0 = 0.8,
+                      fdr = 0.05,
+                      power = 0.8,
+                      mu = 10,
+                      disp = 0.1,
+                      fc = 2)
+
+# Output variables:
+# ssize: sample sizes (for each treatment) at which desired power is first reached. size$ssize
+size_out$ssize
+
+# power: power calculations with corresponding sample sizes.
+size_out$power
 ```
+
+## Typical inputs
+
+-   Dispersion often depends on animal model, might be 0.1 for mouse data, 0.2-0.5 for human data
+-   Read count depends on sequencing depth and distribution of abundance, if using average can be low, typically 5-30, but in reality will vary widely by gene
+-   Proportion of non-DEG, varies greatly based on experiment/biological difference expectations
+-   Fold change, the magic number :) 1.5, 2, 2.5...
+-   Power 0.9 and FDR 0.05, more "relaxed" adjust power 0.8-0.85 and/or FDR 0.1
+
+## Interactive web app
+
+-   [RnaSeqSampleSize](https://www.bioconductor.org/packages/release/bioc/html/RnaSeqSampleSize.html) Bioconductor/R package and [web/Shiny app](https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/)
+
+![](webapp.png)
+
+## Pilot data or public data
+
+-   Ideally, pilot data specific to the experiment would be used to determine expected variability/dispersion and effect sizes
+-   `ssizeRNA` gives examples on using existing data to estimate `mu` and `disp` across all the genes, then use `ssizeRNA_vary()` function, and see below from Suppl Material S1 @jeon2023statistical for R code
+-   `RnaSeqSampleSize` has TCGA data examples, see [vignette](https://www.bioconductor.org/packages/devel/bioc/vignettes/RnaSeqSampleSize/inst/doc/RnaSeqSampleSize.pdf), and also [web app](https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/)
+
+```{r}
+## Install other packages if needed.
+# install.packages("BiocManager")
+# BiocManager::install("edgeR") # cf. https://bioconductor.org/packages/release/bioc/html/edge R.html
+# BiocManager::install("Biobase") # cf. https://bioconductor.org/packages/release/bioc/html/Biob ase.html
+
+library(edgeR)
+library(Biobase)
+library(ssizeRNA)
+
+## Example data saved in ssizeRNA package:
+## Step 2-1. load hammer dataset (Hammer, P. et al., 2010)
+## two group rat data
+data(hammer.eset)
+counts <- exprs(hammer.eset)[,phenoData(hammer.eset)$Time=="2 weeks"]
+counts <- counts[rowSums(counts) > 0, ]
+dim(counts)
+trt <- hammer.eset$protocol[which(hammer.eset$Time=="2 weeks")]
+
+## After generating count data with column names of control and treatment, you may estimate the parameters of mu and disp using the following script.
+## mu: average read count in the control group
+## The following apply function averages the count values for each gene in the control group.
+mu <- apply(counts[, trt == "control"], 1, mean)
+summary(mu)
+
+## disp: dispersion parameters estimates using the edgeR package with count data.
+d <- DGEList(counts)
+d <- calcNormFactors(d)
+d <- estimateCommonDisp(d) 
+d <- estimateTagwiseDisp(d) 
+disp <- d$tagwise.dispersion
+summary(disp)
+
+size_out <- ssizeRNA_vary(nGenes = 10000, 
+                         mu = mu, # estimated above
+                         disp = disp, # estimated above
+                         fc = 2,
+                         up = 0.5,
+                         fdr = 0.05,
+                         power = 0.8,
+                         maxN = 35)
+
+# Output variables:
+# ssize: sample sizes (for each treatment) at which desired power is first reached. size$ssize
+size_out$ssize
+# power: power calculations with corresponding sample sizes.
+size_out$power
+```
+
+## More complex studies
+
+What are the additional experimental factors?
+
+-   Multiple groups, multiple treatment combinations
+
+-   Interaction effects
+
+-   Continuous predictor rather than groups
+
+-   Time or repeated measure component
+
+-   Technical replicates
+
+-   Batch effects or technical variation
+
+$\to$ Likely need to use **simulation based methods** for power/sample size
+
+### Pathway analyses?
+
+Even more complex to calculate power with simulations and many assumptions
+
+## Single-cell RNA-seq or spatial transcriptomics
+
+![](scrnacomparison.png)
+
+[@jeon2023statistical]
+
+## scRNA-seq
+
+-   scRNA-seq have more 0 counts than bulk which affects dispersions/variation, require "zero-inflated" model
+
+-   Power analysis for DEG (1) between biological groups/experimental conditions for a specific cell type *or* (2) between cell types or sub-populations within a sample
+
+-   Power analyses for identifying cell sub-populations, either within a single tissue, or proportional differences across experimental conditions
+
+    ![](scrna_powertools.png)
+
+    [@jeon2023statistical]
+
+## Conclusions
+
+### Important Factors
+
+-   Distributions: average (or distribution of) read counts, as well as average (or distribution of, or maximum) dispersion
+
+-   Proportion of differentially expressed genes
+
+-   Fold change effect size
+
+-   False discovery rate and power
+
+-   Experimental design complexity (beyond two groups, consult statistician)
+
+### Primary resources
+
+-   @jeon2023statistical and @meeta_mistry_2021_4783481 [tutorial](https://github.com/hbctraining/DGE_workshop_salmon_online/tree/master/lessons)
+
+## Thank you
+
+-   Recording will be available at [OCTRI BERD Research Forum Website](https://www.ohsu.edu/octri/octri-research-forum-your-monthly-clinical-and-translational-research-event)
+
+-   email: minnier \[at\] ohsu.edu
+
+-   Thanks for consultation/tips from ONPRC BBC Director Suzi Fei and all I've learned from IGL/MPSSR Directors Bob Searles and Chris Harrington
+
+-   Please fill out the survey that Amy Laird will send you!
+
+-   More "omics" PSS series to come
+
+-   Need stats help? Contact [BDP](https://www.ohsu.edu/research-cores/biostatistics-design-program) or [Knight BSR](https://www.ohsu.edu/knight-cancer-institute/biostatistics-shared-resource)
+
+### References
+
+::: {#refs}
+:::

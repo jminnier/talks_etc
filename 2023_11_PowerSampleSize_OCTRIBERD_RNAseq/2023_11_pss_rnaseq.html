@@ -28,6 +28,89 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #767676;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #767676;  padding-left: 4px; }
+    div.sourceCode
+      { color: #545454; background-color: #fefefe; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #545454; } /* Normal */
+    code span.al { color: #7928a1; } /* Alert */
+    code span.an { color: #696969; } /* Annotation */
+    code span.at { color: #a55a00; } /* Attribute */
+    code span.bn { color: #7928a1; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #d91e18; } /* ControlFlow */
+    code span.ch { color: #008000; } /* Char */
+    code span.cn { color: #d91e18; } /* Constant */
+    code span.co { color: #696969; } /* Comment */
+    code span.cv { color: #696969; font-style: italic; } /* CommentVar */
+    code span.do { color: #696969; font-style: italic; } /* Documentation */
+    code span.dt { color: #7928a1; } /* DataType */
+    code span.dv { color: #7928a1; } /* DecVal */
+    code span.er { color: #7928a1; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #a55a00; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #696969; } /* Information */
+    code span.kw { color: #d91e18; } /* Keyword */
+    code span.op { color: #00769e; } /* Operator */
+    code span.ot { color: #d91e18; } /* Other */
+    code span.pp { color: #7928a1; } /* Preprocessor */
+    code span.sc { color: #00769e; } /* SpecialChar */
+    code span.ss { color: #008000; } /* SpecialString */
+    code span.st { color: #008000; } /* String */
+    code span.va { color: #a55a00; } /* Variable */
+    code span.vs { color: #008000; } /* VerbatimString */
+    code span.wa { color: #696969; font-style: italic; } /* Warning */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
   </style>
   <link rel="stylesheet" href="2023_11_pss_rnaseq_files/libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="2023_11_pss_rnaseq_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -338,24 +421,558 @@ Jessica Minnier
 
   <p class="date">11/1/23</p>
 </section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
-</section>
-<section id="bullets" class="slide level2">
-<h2>Bullets</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<section id="goals" class="slide level2">
+<h2>Goals</h2>
 <ul>
-<li>Content authored with markdown</li>
-<li>Output from executable code</li>
+<li><p>Review power and sample size statistical definitions</p>
+<ul>
+<li>Power, sample size, effect size, type I error, type II error</li>
+</ul></li>
+<li><p>Overview of RNA-seq data generation</p></li>
+<li><p>Required components for power calculation</p></li>
+<li><p>Overview of tools available</p></li>
+<li><p>Examples of power calculations</p></li>
+<li><p>Brief overview of more complex designs and scRNA-seq issues</p></li>
 </ul>
 </section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<p>When you click the <strong>Render</strong> button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="prerequisites" class="slide level2">
+<h2>Prerequisites</h2>
+<ul>
+<li><p>Some knowledge of basic power and sample size calculations and concepts</p>
+<ul>
+<li><a href="https://www.ohsu.edu/octri/octri-research-forum-your-monthly-clinical-and-translational-research-event">PSS 101 from BERD</a>, worth reviewing and watching!</li>
+</ul></li>
+<li><p>Familiarity with RNA-seq experiments; good overview: <span class="citation" data-cites="conesa2016survey">(<a href="#/thank-you" role="doc-biblioref" onclick="">Conesa et al. 2016</a>)</span></p></li>
+<li><p>Familiarity with statistical models and concepts such as regression, p-values, probability distributions (some review in context of RNA-seq: <a href="https://github.com/hbctraining">Harvard Chan Bioinformatics Core (HBC) training</a>’s <a href="https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/01c_RNAseq_count_distribution.html">DGE</a> and <a href="https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/05a_hypothesis_testing.md">hypothesis testing</a> lessons)</p></li>
+<li><p>Preferred: some experience with R/Bioconductor</p></li>
+</ul>
+</section>
+<section id="rna-seq" class="slide level2">
+<h2>RNA-seq</h2>
+<ul>
+<li><p>Typically, transcriptomics: gene expression profiling of samples, using next-generation sequencing methods, reference genome</p></li>
+<li><p>RNA-seq can also examine alternative gene spliced transcripts, mutations, levels of other RNA besides messenger RNA, etc, but common aim is to evaluate gene expression measured by mRNA observed in sample tissue</p></li>
+<li><p>“Bulk RNA-seq” to distinguish from single cell RNA-seq, large populations of cells, mixed cell types</p></li>
+<li><p>Alternative method: microarrays, some of the following concepts still apply but distribution of expression measures is not counts, but more related to continuous normal distribution <span class="citation" data-cites="lee2002power">(<a href="#/thank-you" role="doc-biblioref" onclick="">Lee and Whitmore 2002</a>)</span></p></li>
+</ul>
+</section>
+<section id="rna-seq-data-generation" class="slide level2 smaller">
+<h2>RNA-seq data generation</h2>
+<p>NGS or massively parallel sequencing: sample preparation, mRNA fragmentation, reverse transcription to complementary DNA, map cDNA to reference genome</p>
+
+<img data-src="Journal.pcbi.1004393.g002.png" alt="&quot;RNA-seq data generation. A typical RNA-seq experimental workflow involves the isolation of RNA from samples of interest, generation of sequencing libraries, use of a high-throughput sequencer to produce hundreds of millions of short paired-end reads, alignment of reads against a reference genome or transcriptome, and downstream analysis for expression estimation, differential expression, transcript isoform discovery, and other applications. Refer to S1 Table, S3 Table, and S7 Table for more details on the concepts depicted in this figure.&quot; Image taken from Figure 2 in Griffith, Malachi; Walker, Jason R.; Spies, Nicholas C.; Ainscough, Benjamin J.; Griffith, Obi L. (2015). &quot;Informatics for RNA Sequencing: A Web Resource for Analysis on the Cloud&quot;. PLOS Computational Biology. 11 (8): e1004393. doi:10.1371/journal.pcbi.1004393. ISSN 1553-7358." width="1100" class="r-stretch quarto-figure-center"><p><span class="citation" data-cites="griffith2015informatics">(<a href="#/thank-you" role="doc-biblioref" onclick="">Griffith et al. 2015</a>)</span></p>
+</section>
+<section id="what-does-the-data-look-like" class="slide level2">
+<h2>What does the data look like?</h2>
+<p><strong>Raw read sequencing data (large, fastq files)</strong> <span class="math inline">\(\to\)</span> <strong>Count data (gene ID x sample, matrix in .csv)</strong></p>
+<p>From a downstream statistical analysis standpoint:</p>
+<ul>
+<li><p>Level of measurement is the gene (or transcript) or “feature”</p></li>
+<li><p>Measurement/outcome is “gene count”: how many reads aligned to that gene’s RNA sequence after alignment to a reference genome? <span class="math inline">\(\to\)</span> count matrix</p></li>
+<li><p>Need a statistical model for <strong>count data</strong> that models the variability appropriately</p></li>
+</ul>
+
+<img data-src="countdata.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/01c_RNAseq_count_distribution.html">hbctraining</a> <span class="citation" data-cites="meeta_mistry_2021_4783481">Mistry et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2021</a>)</span></p></section>
+<section id="simplest-study-two-groups" class="slide level2">
+<h2>Simplest Study: Two groups</h2>
+<p>Suppose we are studying two treatment groups (treatment vs.&nbsp;control), and we want to know which genes are deferentially expressed between these two groups.</p>
+<p><strong>Two groups</strong>: Two experimental groups, multiple <em>biological</em> replicates within each group. The two groups contain different samples (i.e., not paired, not the same samples over time).</p>
+<p><strong>Differentially expressed genes (DEGs)</strong>: A gene is “differentially expressed” between the treatment vs.&nbsp;control if there is a difference observed in read counts or expression levels.</p>
+<p><strong>Question of interest:</strong> How many samples (biological replicates) in each group to we need to “detect a difference”?</p>
+<ul>
+<li>… with some level of confidence (power), restricting false positives (type I error, FDR)?</li>
+</ul>
+</section>
+<section id="simplest-study-two-groups-1" class="slide level2">
+<h2>Simplest Study: Two groups</h2>
+<p><strong>Question of interest:</strong> How many samples to we need to “detect a difference”?</p>
+<p><strong>(Some) Information we need:</strong></p>
+<ul>
+<li><p>Definition of “how different” (i.e.&nbsp;effect size, fold change)</p></li>
+<li><p>Desired level of power and type I error/p-value expectations (“significance level”)</p></li>
+<li><p>Information about sequencing depth, average read count</p></li>
+<li><p>Gene expression info: expected variability/dispersion of gene expression levels in each group, number of genes we expect to measure/observe</p></li>
+<li><p>Statistical model and test, method for multiple comparison adjustment</p></li>
+<li><p>“How much signal?” % genes differentially expressed above some fold change</p></li>
+</ul>
+</section>
+<section id="reminder-statistical-power-concepts" class="slide level2 center">
+<h2>Reminder: Statistical Power Concepts</h2>
+</section>
+<section id="sample-size" class="slide level2">
+<h2>Sample Size</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>More biological replicates leads to:</p>
+<ul>
+<li><p>better estimates of variation (gene, biological, sample-to-sample)</p></li>
+<li><p>identify outliers or possible sources of technical variation (batch effects)</p></li>
+<li><p>improve precision of estimates</p></li>
+<li><p>observe low abundance genes</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="techrep.jpg"></p>
+</div>
+</div>
+<p><span class="citation" data-cites="klaus2015statistical">Klaus (<a href="#/thank-you" role="doc-biblioref" onclick="">2015</a>)</span> and <span class="citation" data-cites="meeta_mistry_2021_4783481">Mistry et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2021</a>)</span></p>
+</section>
+<section id="components-of-sample-size" class="slide level2">
+<h2>Components of Sample Size</h2>
+<p>In general, need to know 3 of the 4 to determine the 4th:</p>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Do We Know?</th>
+<th>Measure</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>??</td>
+<td>Effect Size</td>
+<td>Magnitude of difference or fold change</td>
+</tr>
+<tr class="even">
+<td>??</td>
+<td>Sample Size</td>
+<td>N total, n per group</td>
+</tr>
+<tr class="odd">
+<td>0.05, 0.01</td>
+<td>Type I Error / Significance level</td>
+<td><span class="math inline">\(\alpha\)</span> = probability of rejecting null hypothesis when it is true <em>need to adjust for multiple comparisons!</em></td>
+</tr>
+<tr class="even">
+<td>0.9, 0.8</td>
+<td>Power</td>
+<td>1 - <span class="math inline">\(\beta\)</span> = 1 - Type II error = probability of rejecting null hypothesis when it is false <em>need to consider multiple comparisons!</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="effect-size-mean-expression-ratio-fc" class="slide level2">
+<h2>Effect size = Mean Expression Ratio (FC)</h2>
+<p>In a two group comparison, effect size is usually <strong><em>fold change</em></strong> (or logFC) for an individual gene:</p>
+<p><strong>FC<sub>gene&nbsp;X</sub> = (mean expression of gene X in trt) / (mean expression of gene X in control)</strong></p>
+<ul>
+<li><p>May observe a large range of fold changes, or fold changes may be close to 1 for all genes</p></li>
+<li><p>FC measures the average size of the difference between groups, not variability</p></li>
+<li><p>Alternative effect size: biological coefficient of variation (BCV)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/06_DGE_visualizing_results.md"><img data-src="volcano_plot_2_salmon.png"></a></p>
+<p></p><figcaption>Volcano plot (hbctraining)</figcaption><p></p>
+</figure>
+</div>
+<p><span class="citation" data-cites="meeta_mistry_2021_4783481">(<a href="#/thank-you" role="doc-biblioref" onclick="">Mistry et al. 2021</a>)</span></p></li>
+</ul>
+</section>
+<section id="type-i-error-with-multiple-comparisons" class="slide level2">
+<h2>Type I error (with multiple comparisons)</h2>
+<p>“The worst error” Truth = No difference, Test conclusion = there is a difference</p>
+<ul>
+<li><p>Typical power calculations are for one test, we could have tens of thousands of tests for each gene</p></li>
+<li><p>Multiple comparisons/multiple testing problem: If we use p-value &lt; 0.05, for one test there is a 5% change we have a false positive, if we test 20,000 genes and use p&lt;0.05, we would expect to detect 1000 false positives by chance; if we found 3000 DEGs total, one third are false positives</p></li>
+<li><p>Use “False Discovery Rate” = FDR as “adjusted” p-values</p>
+<ul>
+<li><p>FDR = proportion of expected false positives in our set of DEGs, often controlled at 5% or 10%</p></li>
+<li><p>Benjamini-Hochberg method common, alternative Storey/Q-value method, see <span class="citation" data-cites="meeta_mistry_2021_4783481">(<a href="#/thank-you" role="doc-biblioref" onclick="">Mistry et al. 2021</a>)</span> for summary</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="power-with-multiple-comparisons" class="slide level2">
+<h2>Power (with multiple comparisons)</h2>
+<ul>
+<li><p>With one test, power = 1 - type II error for a given effect size</p>
+<ul>
+<li>Power = probability that our test is “significant” when the truth is that there is a difference</li>
+</ul></li>
+<li><p>With multiple tests/genes, could have many definitions</p>
+<ul>
+<li><p>Probability we detect at least X% of genes that are truly different (at least some FC)</p></li>
+<li><p>Probability that we detect <em>all</em> genes that are truly different (at least some FC)</p></li>
+<li><p><strong>Probability that we detect <em>one specific gene</em> that is truly different by some minimum FC</strong></p></li>
+</ul></li>
+<li><p>Define “significant” as FDR &lt; cutoff</p></li>
+</ul>
+</section>
+<section id="gene-expressionabundance-distributions" class="slide level2">
+<h2>Gene Expression/Abundance Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Count data = discrete data (0, 1, 2…)</p></li>
+<li><p>Need <strong>probability distribution</strong> to match the type of data, such as: Poisson distribution, Negative Binomial distribution, Poisson-gamma mixture distribution</p></li>
+<li><p>Poisson model for count data assumes mean = variance, but RNA-seq has other <strong>sources of variation</strong> than the counting process <span class="math inline">\(\to\)</span> NB with dispersion parameter, other models</p></li>
+<li><p>Lower count genes can be harder to detect/measure/test</p></li>
+<li><p>Sequencing depth (total number of reads, i.e.&nbsp;5-200 million) influences <strong>average gene count</strong></p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="deseq_nb.png"></p>
+<p><span class="citation" data-cites="meeta_mistry_2021_4783481">(<a href="#/thank-you" role="doc-biblioref" onclick="">Mistry et al. 2021</a>)</span></p>
+</div>
+</div>
+</section>
+<section id="variability" class="slide level2">
+<h2>Variability</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="meanvar.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="de_variation.png"></p>
+</div>
+</div>
+<p><span class="citation" data-cites="meeta_mistry_2021_4783481">(<a href="#/thank-you" role="doc-biblioref" onclick="">Mistry et al. 2021</a>)</span></p>
+</section>
+<section id="factors-affecting-gene-expression-power" class="slide level2">
+<h2>Factors affecting gene expression + power</h2>
+<ul>
+<li><p><strong><em>Biological differences and variation</em></strong></p></li>
+<li><p>Sequencing depth/coverage</p></li>
+<li><p>Gene length</p></li>
+<li><p>Total sample RNA output, variation between samples within biological groups</p></li>
+<li><p>Variance/dispersion of gene abundance distributions</p>
+<ul>
+<li>dispersion: parameter that defines how far we expect observed count will deviate from mean value (estimate from a model)</li>
+</ul></li>
+</ul>
+</section>
+<section id="sequencing-depth-vs.-n" class="slide level2">
+<h2>Sequencing depth vs.&nbsp;N</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>In the past with older NGS technology, limited budget might have restricted sequencing depth (fewer total read counts, more samples per lane) if more biological replicates were desired</p></li>
+<li><p>Sequencing depth is now “cheaper” so less of an issue, but still keep in mind abundance levels of genes you want to measure/detect</p></li>
+<li><p>Low abundance genes are difficult to test/detect since counting variability may be larger than biological variability/differences, may be filtered out when performing QC/low count filtering</p></li>
+<li><p>See discussion in <span class="citation" data-cites="liu2014rna">Liu, Zhou, and White (<a href="#/thank-you" role="doc-biblioref" onclick="">2014</a>)</span> and guidelines in <span class="citation" data-cites="meeta_mistry_2021_4783481">Mistry et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2021</a>)</span> <a href="https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/experimental_planning_considerations.md">Experimental Planning Considerations</a> lesson</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>Paired-end reads are standard now with 100bp length</p></li>
+<li><p><span class="math inline">\(&gt;\)</span> 30 million reads recommended and standard, <span class="math inline">\(&gt;\)</span> 60m for low abundance or novel isoforms</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/01c_RNAseq_count_distribution.md"><img data-src="de_replicates_img2.png"></a></p>
+</figure>
+</div>
+<p>[<span class="citation" data-cites="liu2014rna">Liu, Zhou, and White (<a href="#/thank-you" role="doc-biblioref" onclick="">2014</a>)</span>]</p>
+</div>
+</div>
+</section>
+<section id="typical-analysis" class="slide level2">
+<h2>Typical analysis</h2>
+<ul>
+<li><p>Common tools: <code>DESeq2</code>, <code>edgeR</code>, <code>baySeq</code>, and <code>limma</code>/<code>voom</code> packages in R/Bioconductor</p></li>
+<li><p>Normalization for gene length, sequencing depth (TMM, RPKM)</p></li>
+<li><p><code>DESeq2</code>, <code>edgeR</code>, <code>baySeq</code> use generalized linear models (GLMs) with negative binomial (NB) distribution to fit the data:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://github.com/hbctraining/DGE_workshop_salmon_online/blob/master/lessons/05a_hypothesis_testing.md"><img data-src="glm.png"></a></p>
+</figure>
+</div></li>
+<li><p><code>Voom</code> models mean-variance relationships to use normal based models in <code>limma</code> (linear model with Empirical Bayes variance smoothing)</p></li>
+<li><p>Hypothesis test options: Wald Test, Likelihood Ratio Test, and similar</p></li>
+</ul>
+</section>
+<section id="power-calculation-softwaretools" class="slide level2">
+<h2>Power calculation software/tools</h2>
+<ul>
+<li><p>See review in <span class="citation" data-cites="jeon2023statistical">Jeon et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2023</a>)</span> and comparisons in <span class="citation" data-cites="poplawski2018feasibility">Poplawski and Binder (<a href="#/thank-you" role="doc-biblioref" onclick="">2018</a>)</span></p></li>
+<li><p><a href="https://bioconductor.org/packages/release/bioc/html/RNASeqPower.html">RNASeqPower</a> Bioconductor/R package</p></li>
+<li><p><a href="https://www.bioconductor.org/packages/release/bioc/html/RnaSeqSampleSize.html">RnaSeqSampleSize</a> Bioconductor/R package and <a href="https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/">web/Shiny app</a></p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/ssizeRNA/index.html">ssizeRNA</a> R package (based on voom/limma)</p></li>
+<li><p><a href="https://bioconductor.org/packages/devel/bioc/vignettes/PROPER/inst/doc/PROPER.pdf">PROPER</a> simulation based tool</p></li>
+</ul>
+<p>Based on above reviews, ssizeRNA and PROPER were most recommended</p>
+</section>
+<section id="example-r-code-ssizerna" class="slide level2">
+<h2>Example R code, ssizeRNA</h2>
+<p>Adapted from <code>ssizeRNA</code> <a href="https://cran.r-project.org/web/packages/ssizeRNA/vignettes/ssizeRNA.pdf">vignette</a> and Suppl Material S1 <span class="citation" data-cites="jeon2023statistical">Jeon et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2023</a>)</span></p>
+<p>Arguments for <code>ssize_single()</code> function, assuming all genes have the same characteristics:</p>
+<ul>
+<li><p>Total number of genes: <code>G = 10000</code></p></li>
+<li><p>Proportion of non-DE “null” genes: <code>pi0 = 0.8</code></p></li>
+<li><p>FDR level to control: <code>fdr = 0.05</code></p></li>
+<li><p>Desired average power to achieve: <code>power = 0.8</code></p></li>
+<li><p>Average read count for each gene in control group: <code>mu = 10</code></p></li>
+<li><p>Dispersion parameter for each gene: <code>disp = 0.1</code></p></li>
+<li><p>Fold change for each gene: <code>fc = 2</code></p>
+<p><img data-src="power1.png"></p></li>
+</ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="do">## Install ssizeRNA package if needed</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># install.packages("ssizeRNA")</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="do">## Load package</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(ssizeRNA)</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a>size_out <span class="ot">&lt;-</span> <span class="fu">ssizeRNA_single</span>(<span class="at">nGenes =</span> <span class="dv">10000</span>, </span>
+<span id="cb1-8"><a href="#cb1-8"></a>                      <span class="at">pi0 =</span> <span class="fl">0.8</span>,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>                      <span class="at">fdr =</span> <span class="fl">0.05</span>,</span>
+<span id="cb1-10"><a href="#cb1-10"></a>                      <span class="at">power =</span> <span class="fl">0.8</span>,</span>
+<span id="cb1-11"><a href="#cb1-11"></a>                      <span class="at">mu =</span> <span class="dv">10</span>,</span>
+<span id="cb1-12"><a href="#cb1-12"></a>                      <span class="at">disp =</span> <span class="fl">0.1</span>,</span>
+<span id="cb1-13"><a href="#cb1-13"></a>                      <span class="at">fc =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Output variables:</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># ssize: sample sizes (for each treatment) at which desired power is first reached. size$ssize</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>     pi0 ssize     power
+[1,] 0.8    14 0.8409646</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       n       0.8
+ [1,]  3 0.0000000
+ [2,]  4 0.0000000
+ [3,]  5 0.0068929
+ [4,]  6 0.1018165
+ [5,]  7 0.2427458
+ [6,]  8 0.3804685
+ [7,]  9 0.5003935
+ [8,] 10 0.6001694
+ [9,] 11 0.6814440
+[10,] 12 0.7468835
+[11,] 13 0.7992500
+[12,] 14 0.8409646
+[13,] 15 0.8741228
+[14,] 16 0.9004324
+[15,] 17 0.9212803
+[16,] 18 0.9377883
+[17,] 19 0.9508470
+[18,] 20 0.9611679
+[19,] 21 0.9693260
+[20,] 22 0.9757712
+[21,] 23 0.9808592
+[22,] 24 0.9848778
+[23,] 25 0.9880495
+[24,] 26 0.9905527
+[25,] 27 0.9925288
+[26,] 28 0.9940891
+[27,] 29 0.9953209
+[28,] 30 0.9962937
+[29,] 31 0.9970626
+[30,] 32 0.9976701
+[31,] 33 0.9981504
+[32,] 34 0.9985306
+[33,] 35 0.9988314</code></pre>
+</div>
+</div>
+</section>
+<section id="typical-inputs" class="slide level2">
+<h2>Typical inputs</h2>
+<ul>
+<li>Dispersion often depends on animal model, might be 0.1 for mouse data, 0.2-0.5 for human data</li>
+<li>Read count depends on sequencing depth and distribution of abundance, if using average can be low, typically 5-30, but in reality will vary widely by gene</li>
+<li>Proportion of non-DEG, varies greatly based on experiment/biological difference expectations</li>
+<li>Fold change, the magic number :) 1.5, 2, 2.5…</li>
+<li>Power 0.9 and FDR 0.05, more “relaxed” adjust power 0.8-0.85 and/or FDR 0.1</li>
+</ul>
+</section>
+<section id="interactive-web-app" class="slide level2">
+<h2>Interactive web app</h2>
+<ul>
+<li><a href="https://www.bioconductor.org/packages/release/bioc/html/RnaSeqSampleSize.html">RnaSeqSampleSize</a> Bioconductor/R package and <a href="https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/">web/Shiny app</a></li>
+</ul>
+
+<img data-src="webapp.png" class="r-stretch"></section>
+<section id="pilot-data-or-public-data" class="slide level2">
+<h2>Pilot data or public data</h2>
+<ul>
+<li>Ideally, pilot data specific to the experiment would be used to determine expected variability/dispersion and effect sizes</li>
+<li><code>ssizeRNA</code> gives examples on using existing data to estimate <code>mu</code> and <code>disp</code> across all the genes, then use <code>ssizeRNA_vary()</code> function, and see below from Suppl Material S1 <span class="citation" data-cites="jeon2023statistical">Jeon et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2023</a>)</span> for R code</li>
+<li><code>RnaSeqSampleSize</code> has TCGA data examples, see <a href="https://www.bioconductor.org/packages/devel/bioc/vignettes/RnaSeqSampleSize/inst/doc/RnaSeqSampleSize.pdf">vignette</a>, and also <a href="https://cqs-vumc.shinyapps.io/rnaseqsamplesizeweb/">web app</a></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="do">## Install other packages if needed.</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># install.packages("BiocManager")</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># BiocManager::install("edgeR") # cf. https://bioconductor.org/packages/release/bioc/html/edge R.html</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># BiocManager::install("Biobase") # cf. https://bioconductor.org/packages/release/bioc/html/Biob ase.html</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="fu">library</span>(edgeR)</span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="fu">library</span>(Biobase)</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">library</span>(ssizeRNA)</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="do">## Example data saved in ssizeRNA package:</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="do">## Step 2-1. load hammer dataset (Hammer, P. et al., 2010)</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="do">## two group rat data</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="fu">data</span>(hammer.eset)</span>
+<span id="cb6-14"><a href="#cb6-14"></a>counts <span class="ot">&lt;-</span> <span class="fu">exprs</span>(hammer.eset)[,<span class="fu">phenoData</span>(hammer.eset)<span class="sc">$</span>Time<span class="sc">==</span><span class="st">"2 weeks"</span>]</span>
+<span id="cb6-15"><a href="#cb6-15"></a>counts <span class="ot">&lt;-</span> counts[<span class="fu">rowSums</span>(counts) <span class="sc">&gt;</span> <span class="dv">0</span>, ]</span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="fu">dim</span>(counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18463     4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>trt <span class="ot">&lt;-</span> hammer.eset<span class="sc">$</span>protocol[<span class="fu">which</span>(hammer.eset<span class="sc">$</span>Time<span class="sc">==</span><span class="st">"2 weeks"</span>)]</span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="do">## After generating count data with column names of control and treatment, you may estimate the parameters of mu and disp using the following script.</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="do">## mu: average read count in the control group</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="do">## The following apply function averages the count values for each gene in the control group.</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>mu <span class="ot">&lt;-</span> <span class="fu">apply</span>(counts[, trt <span class="sc">==</span> <span class="st">"control"</span>], <span class="dv">1</span>, mean)</span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="fu">summary</span>(mu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+     0.0      9.5    146.5    952.0    662.5 386345.0 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="do">## disp: dispersion parameters estimates using the edgeR package with count data.</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>d <span class="ot">&lt;-</span> <span class="fu">DGEList</span>(counts)</span>
+<span id="cb10-3"><a href="#cb10-3"></a>d <span class="ot">&lt;-</span> <span class="fu">calcNormFactors</span>(d)</span>
+<span id="cb10-4"><a href="#cb10-4"></a>d <span class="ot">&lt;-</span> <span class="fu">estimateCommonDisp</span>(d) </span>
+<span id="cb10-5"><a href="#cb10-5"></a>d <span class="ot">&lt;-</span> <span class="fu">estimateTagwiseDisp</span>(d) </span>
+<span id="cb10-6"><a href="#cb10-6"></a>disp <span class="ot">&lt;-</span> d<span class="sc">$</span>tagwise.dispersion</span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="fu">summary</span>(disp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.05566 0.06991 0.11093 0.13949 0.18397 1.01143 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>size_out <span class="ot">&lt;-</span> <span class="fu">ssizeRNA_vary</span>(<span class="at">nGenes =</span> <span class="dv">10000</span>, </span>
+<span id="cb12-2"><a href="#cb12-2"></a>                         <span class="at">mu =</span> mu, <span class="co"># estimated above</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>                         <span class="at">disp =</span> disp, <span class="co"># estimated above</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>                         <span class="at">fc =</span> <span class="dv">2</span>,</span>
+<span id="cb12-5"><a href="#cb12-5"></a>                         <span class="at">up =</span> <span class="fl">0.5</span>,</span>
+<span id="cb12-6"><a href="#cb12-6"></a>                         <span class="at">fdr =</span> <span class="fl">0.05</span>,</span>
+<span id="cb12-7"><a href="#cb12-7"></a>                         <span class="at">power =</span> <span class="fl">0.8</span>,</span>
+<span id="cb12-8"><a href="#cb12-8"></a>                         <span class="at">maxN =</span> <span class="dv">35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Output variables:</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co"># ssize: sample sizes (for each treatment) at which desired power is first reached. size$ssize</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     pi0 ssize    power
+[1,] 0.8     8 0.818919</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       n       0.8
+ [1,]  3 0.0000000
+ [2,]  4 0.1678090
+ [3,]  5 0.4561294
+ [4,]  6 0.6357722
+ [5,]  7 0.7471394
+ [6,]  8 0.8189190
+ [7,]  9 0.8669100
+ [8,] 10 0.9000134
+ [9,] 11 0.9234437
+[10,] 12 0.9404081
+[11,] 13 0.9529280
+[12,] 14 0.9623281
+[13,] 15 0.9694955
+[14,] 16 0.9750324
+[15,] 17 0.9793642
+[16,] 18 0.9827908
+[17,] 19 0.9855306
+[18,] 20 0.9877406
+[19,] 21 0.9895391
+[20,] 22 0.9910152
+[21,] 23 0.9922360
+[22,] 24 0.9932519
+[23,] 25 0.9941036
+[24,] 26 0.9948219
+[25,] 27 0.9954312
+[26,] 28 0.9959506
+[27,] 29 0.9963957
+[28,] 30 0.9967794
+[29,] 31 0.9971113
+[30,] 32 0.9973998
+[31,] 33 0.9976516
+[32,] 34 0.9978720
+[33,] 35 0.9980660</code></pre>
+</div>
+</div>
+<img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="more-complex-studies" class="slide level2">
+<h2>More complex studies</h2>
+<p>What are the additional experimental factors?</p>
+<ul>
+<li><p>Multiple groups, multiple treatment combinations</p></li>
+<li><p>Interaction effects</p></li>
+<li><p>Continuous predictor rather than groups</p></li>
+<li><p>Time or repeated measure component</p></li>
+<li><p>Technical replicates</p></li>
+<li><p>Batch effects or technical variation</p></li>
+</ul>
+<p><span class="math inline">\(\to\)</span> Likely need to use <strong>simulation based methods</strong> for power/sample size</p>
+<h3 id="pathway-analyses">Pathway analyses?</h3>
+<p>Even more complex to calculate power with simulations and many assumptions</p>
+</section>
+<section id="single-cell-rna-seq-or-spatial-transcriptomics" class="slide level2">
+<h2>Single-cell RNA-seq or spatial transcriptomics</h2>
+
+<img data-src="scrnacomparison.png" class="r-stretch"><p><span class="citation" data-cites="jeon2023statistical">(<a href="#/thank-you" role="doc-biblioref" onclick="">Jeon et al. 2023</a>)</span></p>
+</section>
+<section id="scrna-seq" class="slide level2">
+<h2>scRNA-seq</h2>
+<ul>
+<li><p>scRNA-seq have more 0 counts than bulk which affects dispersions/variation, require “zero-inflated” model</p></li>
+<li><p>Power analysis for DEG (1) between biological groups/experimental conditions for a specific cell type <em>or</em> (2) between cell types or sub-populations within a sample</p></li>
+<li><p>Power analyses for identifying cell sub-populations, either within a single tissue, or proportional differences across experimental conditions</p>
+<p><img data-src="scrna_powertools.png"></p>
+<p><span class="citation" data-cites="jeon2023statistical">(<a href="#/thank-you" role="doc-biblioref" onclick="">Jeon et al. 2023</a>)</span></p></li>
+</ul>
+</section>
+<section id="conclusions" class="slide level2">
+<h2>Conclusions</h2>
+<h3 id="important-factors">Important Factors</h3>
+<ul>
+<li><p>Distributions: average (or distribution of) read counts, as well as average (or distribution of, or maximum) dispersion</p></li>
+<li><p>Proportion of differentially expressed genes</p></li>
+<li><p>Fold change effect size</p></li>
+<li><p>False discovery rate and power</p></li>
+<li><p>Experimental design complexity (beyond two groups, consult statistician)</p></li>
+</ul>
+<h3 id="primary-resources">Primary resources</h3>
+<ul>
+<li><span class="citation" data-cites="jeon2023statistical">Jeon et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2023</a>)</span> and <span class="citation" data-cites="meeta_mistry_2021_4783481">Mistry et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2021</a>)</span> <a href="https://github.com/hbctraining/DGE_workshop_salmon_online/tree/master/lessons">tutorial</a></li>
+</ul>
+</section>
+<section id="thank-you" class="slide level2 smaller scrollable">
+<h2>Thank you</h2>
+<ul>
+<li><p>Recording will be available at <a href="https://www.ohsu.edu/octri/octri-research-forum-your-monthly-clinical-and-translational-research-event">OCTRI BERD Research Forum Website</a></p></li>
+<li><p>email: minnier [at] ohsu.edu</p></li>
+<li><p>Thanks for consultation/tips from ONPRC BBC Director Suzi Fei and all I’ve learned from IGL/MPSSR Directors Bob Searles and Chris Harrington</p></li>
+<li><p>Please fill out the survey that Amy Laird will send you!</p></li>
+<li><p>More “omics” PSS series to come</p></li>
+<li><p>Need stats help? Contact <a href="https://www.ohsu.edu/research-cores/biostatistics-design-program">BDP</a> or <a href="https://www.ohsu.edu/knight-cancer-institute/biostatistics-shared-resource">Knight BSR</a></p></li>
+</ul>
+<h3 id="references">References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-conesa2016survey" class="csl-entry" role="doc-biblioentry">
+Conesa, Ana, Pedro Madrigal, Sonia Tarazona, David Gomez-Cabrero, Alejandra Cervera, Andrew McPherson, Michał Wojciech Szcześniak, et al. 2016. <span>“A Survey of Best Practices for RNA-Seq Data Analysis.”</span> <em>Genome Biology</em> 17 (1): 1–19.
+</div>
+<div id="ref-griffith2015informatics" class="csl-entry" role="doc-biblioentry">
+Griffith, Malachi, Jason R Walker, Nicholas C Spies, Benjamin J Ainscough, and Obi L Griffith. 2015. <span>“Informatics for RNA Sequencing: A Web Resource for Analysis on the Cloud.”</span> <em>PLoS Computational Biology</em> 11 (8): e1004393.
+</div>
+<div id="ref-jeon2023statistical" class="csl-entry" role="doc-biblioentry">
+Jeon, Hyeongseon, Juan Xie, Yeseul Jeon, Kyeong Joo Jung, Arkobrato Gupta, Won Chang, and Dongjun Chung. 2023. <span>“Statistical Power Analysis for Designing Bulk, Single-Cell, and Spatial Transcriptomics Experiments: Review, Tutorial, and Perspectives.”</span> <em>Biomolecules</em> 13 (2): 221.
+</div>
+<div id="ref-klaus2015statistical" class="csl-entry" role="doc-biblioentry">
+Klaus, Bernd. 2015. <span>“Statistical Relevance—Relevant Statistics, Part i.”</span> <em>The EMBO Journal</em> 34 (22): 2727–30.
+</div>
+<div id="ref-lee2002power" class="csl-entry" role="doc-biblioentry">
+Lee, Mei-Ling Ting, and George Alex Whitmore. 2002. <span>“Power and Sample Size for DNA Microarray Studies.”</span> <em>Statistics in Medicine</em> 21 (23): 3543–70.
+</div>
+<div id="ref-liu2014rna" class="csl-entry" role="doc-biblioentry">
+Liu, Yuwen, Jie Zhou, and Kevin P White. 2014. <span>“RNA-Seq Differential Expression Studies: More Sequence or More Replication?”</span> <em>Bioinformatics</em> 30 (3): 301–4.
+</div>
+<div id="ref-meeta_mistry_2021_4783481" class="csl-entry" role="doc-biblioentry">
+Mistry, Meeta, Mary Piper, Jihe Liu, and Radhika Khetani. 2021. <span>“<span class="nocase">hbctraining/DGE_workshop_salmon_online: Differential Gene Expression Workshop Lessons from HCBC (first release)</span>.”</span> Zenodo.
+</div>
+<div id="ref-poplawski2018feasibility" class="csl-entry" role="doc-biblioentry">
+Poplawski, Alicia, and Harald Binder. 2018. <span>“Feasibility of Sample Size Calculation for RNA-Seq Studies.”</span> <em>Briefings in Bioinformatics</em> 19 (4): 713–20.
 </div>
 </div>
 <div class="footer footer-default">
@@ -388,13 +1005,13 @@ Jessica Minnier
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
+'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
-'smaller': false,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
@@ -411,7 +1028,7 @@ Jessica Minnier
         controlsBackArrows: 'faded',
 
         // Display a presentation progress bar
-        progress: false,
+        progress: true,
 
         // Display the page number of the current slide
         slideNumber: 'c/t',
