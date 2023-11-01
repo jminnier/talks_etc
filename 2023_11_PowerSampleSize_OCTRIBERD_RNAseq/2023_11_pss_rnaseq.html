@@ -453,10 +453,10 @@ Jessica Minnier
 <section id="rna-seq" class="slide level2">
 <h2>RNA-seq</h2>
 <ul>
-<li><p>Typically, transcriptomics: gene expression profiling of samples, using next-generation sequencing methods, reference genome</p></li>
-<li><p>RNA-seq can also examine alternative gene spliced transcripts, mutations, levels of other RNA besides messenger RNA, etc, but common aim is to evaluate gene expression measured by mRNA observed in sample tissue</p></li>
-<li><p>“Bulk RNA-seq” to distinguish from single cell RNA-seq, large populations of cells, mixed cell types</p></li>
-<li><p>Alternative method: microarrays, some of the following concepts still apply but distribution of expression measures is not count-based, but more related to continuous normal distribution <span class="citation" data-cites="lee2002power">(<a href="#/thank-you" role="doc-biblioref" onclick="">Lee and Whitmore 2002</a>)</span></p></li>
+<li><p>Typically, transcriptomics: <strong>gene expression profiling</strong> of samples, using next-generation sequencing methods, reference genome</p></li>
+<li><p>RNA-seq can also examine alternative <strong>gene spliced transcripts, mutations, levels of other RNA besides messenger RNA, etc</strong>, but common aim is to evaluate gene expression measured by mRNA observed in sample tissue</p></li>
+<li><p><strong>“Bulk RNA-seq”</strong> to distinguish from single cell RNA-seq, large populations of cells, mixed cell types</p></li>
+<li><p><strong>Alternative method: microarrays</strong>, some of the following concepts still apply but distribution of expression measures is not count-based, but more related to continuous normal distribution <span class="citation" data-cites="lee2002power">(<a href="#/thank-you" role="doc-biblioref" onclick="">Lee and Whitmore 2002</a>)</span></p></li>
 </ul>
 </section>
 <section id="rna-seq-data-generation" class="slide level2 smaller">
@@ -740,7 +740,7 @@ Jessica Minnier
 <span id="cb2-3"><a href="#cb2-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pi0 ssize     power
-[1,] 0.8    14 0.8350485</code></pre>
+[1,] 0.8    14 0.8407246</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -748,37 +748,37 @@ Jessica Minnier
 <pre><code>       n       0.8
  [1,]  3 0.0000000
  [2,]  4 0.0000000
- [3,]  5 0.0057175
- [4,]  6 0.0958597
- [5,]  7 0.2340043
- [6,]  8 0.3706496
- [7,]  9 0.4905124
- [8,] 10 0.5907874
- [9,] 11 0.6728339
-[10,] 12 0.7391692
-[11,] 13 0.7924457
-[12,] 14 0.8350485
-[13,] 15 0.8690162
-[14,] 16 0.8960624
-[15,] 17 0.9175672
-[16,] 18 0.9346450
-[17,] 19 0.9481990
-[18,] 20 0.9589505
-[19,] 21 0.9674735
-[20,] 22 0.9742286
-[21,] 23 0.9795777
-[22,] 24 0.9838154
-[23,] 25 0.9871712
-[24,] 26 0.9898288
-[25,] 27 0.9919326
-[26,] 28 0.9935985
-[27,] 29 0.9949182
-[28,] 30 0.9959629
-[29,] 31 0.9967914
-[30,] 32 0.9974480
-[31,] 33 0.9979685
-[32,] 34 0.9983818
-[33,] 35 0.9987097</code></pre>
+ [3,]  5 0.0066638
+ [4,]  6 0.1008077
+ [5,]  7 0.2414440
+ [6,]  8 0.3791711
+ [7,]  9 0.4992278
+ [8,] 10 0.5992249
+ [9,] 11 0.6807064
+[10,] 12 0.7463414
+[11,] 13 0.7988696
+[12,] 14 0.8407246
+[13,] 15 0.8739927
+[14,] 16 0.9003838
+[15,] 17 0.9212977
+[16,] 18 0.9378446
+[17,] 19 0.9509310
+[18,] 20 0.9612750
+[19,] 21 0.9694410
+[20,] 22 0.9758892
+[21,] 23 0.9809756
+[22,] 24 0.9849896
+[23,] 25 0.9881545
+[24,] 26 0.9906497
+[25,] 27 0.9926173
+[26,] 28 0.9941688
+[27,] 29 0.9953921
+[28,] 30 0.9963568
+[29,] 31 0.9971181
+[30,] 32 0.9977187
+[31,] 33 0.9981928
+[32,] 34 0.9985673
+[33,] 35 0.9988632</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
@@ -868,45 +868,45 @@ Jessica Minnier
 <span id="cb13-3"><a href="#cb13-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pi0 ssize     power
-[1,] 0.8     8 0.8000595</code></pre>
+[1,] 0.8     9 0.8490149</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       n       0.8
  [1,]  3 0.0000000
- [2,]  4 0.1553767
- [3,]  5 0.4359284
- [4,]  6 0.6141894
- [5,]  7 0.7264896
- [6,]  8 0.8000595
- [7,]  9 0.8500351
- [8,] 10 0.8850676
- [9,] 11 0.9102654
-[10,] 12 0.9288012
-[11,] 13 0.9426962
-[12,] 14 0.9532987
-[13,] 15 0.9615025
-[14,] 16 0.9679387
-[15,] 17 0.9730498
-[16,] 18 0.9771512
-[17,] 19 0.9804777
-[18,] 20 0.9831988
-[19,] 21 0.9854453
-[20,] 22 0.9873123
-[21,] 23 0.9888760
-[22,] 24 0.9901953
-[23,] 25 0.9913150
-[24,] 26 0.9922702
-[25,] 27 0.9930901
-[26,] 28 0.9937979
-[27,] 29 0.9944113
-[28,] 30 0.9949457
-[29,] 31 0.9954128
-[30,] 32 0.9958234
-[31,] 33 0.9961853
-[32,] 34 0.9965058
-[33,] 35 0.9967902</code></pre>
+ [2,]  4 0.1545945
+ [3,]  5 0.4350254
+ [4,]  6 0.6132421
+ [5,]  7 0.7255009
+ [6,]  8 0.7990424
+ [7,]  9 0.8490149
+ [8,] 10 0.8840596
+ [9,] 11 0.9092821
+[10,] 12 0.9278497
+[11,] 13 0.9417900
+[12,] 14 0.9524310
+[13,] 15 0.9606823
+[14,] 16 0.9671624
+[15,] 17 0.9723155
+[16,] 18 0.9764605
+[17,] 19 0.9798263
+[18,] 20 0.9825853
+[19,] 21 0.9848669
+[20,] 22 0.9867673
+[21,] 23 0.9883619
+[22,] 24 0.9897103
+[23,] 25 0.9908561
+[24,] 26 0.9918371
+[25,] 27 0.9926804
+[26,] 28 0.9934098
+[27,] 29 0.9940432
+[28,] 30 0.9945966
+[29,] 31 0.9950812
+[30,] 32 0.9955081
+[31,] 33 0.9958852
+[32,] 34 0.9962199
+[33,] 35 0.9965175</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>

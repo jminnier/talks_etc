@@ -54,13 +54,13 @@ highlight-style: a11y
 
 ## RNA-seq
 
--   Typically, transcriptomics: gene expression profiling of samples, using next-generation sequencing methods, reference genome
+-   Typically, transcriptomics: **gene expression profiling** of samples, using next-generation sequencing methods, reference genome
 
--   RNA-seq can also examine alternative gene spliced transcripts, mutations, levels of other RNA besides messenger RNA, etc, but common aim is to evaluate gene expression measured by mRNA observed in sample tissue
+-   RNA-seq can also examine alternative **gene spliced transcripts, mutations, levels of other RNA besides messenger RNA, etc**, but common aim is to evaluate gene expression measured by mRNA observed in sample tissue
 
--   "Bulk RNA-seq" to distinguish from single cell RNA-seq, large populations of cells, mixed cell types
+-   **"Bulk RNA-seq"** to distinguish from single cell RNA-seq, large populations of cells, mixed cell types
 
--   Alternative method: microarrays, some of the following concepts still apply but distribution of expression measures is not count-based, but more related to continuous normal distribution [@lee2002power]
+-   **Alternative method: microarrays**, some of the following concepts still apply but distribution of expression measures is not count-based, but more related to continuous normal distribution [@lee2002power]
 
 ## RNA-seq data generation {.smaller}
 
