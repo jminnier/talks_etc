@@ -486,7 +486,7 @@ Even more complex to calculate power with simulations and many assumptions
 
 -   email: minnier \[at\] ohsu.edu
 
--   Thanks for consultation/tips from ONPRC BBC Director Suzi Fei and all I've learned from IGL/MPSSR Directors Bob Searles and Chris Harrington
+-   Thanks for consultation/tips from ONPRC [BBC](https://www.ohsu.edu/onprc/bioinformatics-biostatistics-core) Director Suzi Fei and all I've learned from [IGL](https://www.ohsu.edu/integrated-genomics-laboratory)/[MPSSR](https://www.ohsu.edu/research-cores/massively-parallel-sequencing-shared-resource-mpssr) Directors Bob Searles and Chris Harrington
 
 -   Please fill out the survey that Amy Laird will send you!
 

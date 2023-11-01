@@ -739,8 +739,8 @@ Jessica Minnier
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co"># ssize: sample sizes (for each treatment) at which desired power is first reached. size$ssize</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     pi0 ssize    power
-[1,] 0.8    14 0.840499</code></pre>
+<pre><code>     pi0 ssize     power
+[1,] 0.8    14 0.8350485</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -748,37 +748,37 @@ Jessica Minnier
 <pre><code>       n       0.8
  [1,]  3 0.0000000
  [2,]  4 0.0000000
- [3,]  5 0.0065169
- [4,]  6 0.1001484
- [5,]  7 0.2405554
- [6,]  8 0.3782711
- [7,]  9 0.4984273
- [8,] 10 0.5985494
- [9,] 11 0.6801520
-[10,] 12 0.7459187
-[11,] 13 0.7985458
-[12,] 14 0.8404990
-[13,] 15 0.8738396
-[14,] 16 0.9002887
-[15,] 17 0.9212481
-[16,] 18 0.9378310
-[17,] 19 0.9509405
-[18,] 20 0.9613011
-[19,] 21 0.9694784
-[20,] 22 0.9759332
-[21,] 23 0.9810230
-[22,] 24 0.9850373
-[23,] 25 0.9882012
-[24,] 26 0.9906942
-[25,] 27 0.9926587
-[26,] 28 0.9942068
-[27,] 29 0.9954266
-[28,] 30 0.9963877
-[29,] 31 0.9971456
-[30,] 32 0.9977429
-[31,] 33 0.9982141
-[32,] 34 0.9985859
-[33,] 35 0.9988793</code></pre>
+ [3,]  5 0.0057175
+ [4,]  6 0.0958597
+ [5,]  7 0.2340043
+ [6,]  8 0.3706496
+ [7,]  9 0.4905124
+ [8,] 10 0.5907874
+ [9,] 11 0.6728339
+[10,] 12 0.7391692
+[11,] 13 0.7924457
+[12,] 14 0.8350485
+[13,] 15 0.8690162
+[14,] 16 0.8960624
+[15,] 17 0.9175672
+[16,] 18 0.9346450
+[17,] 19 0.9481990
+[18,] 20 0.9589505
+[19,] 21 0.9674735
+[20,] 22 0.9742286
+[21,] 23 0.9795777
+[22,] 24 0.9838154
+[23,] 25 0.9871712
+[24,] 26 0.9898288
+[25,] 27 0.9919326
+[26,] 28 0.9935985
+[27,] 29 0.9949182
+[28,] 30 0.9959629
+[29,] 31 0.9967914
+[30,] 32 0.9974480
+[31,] 33 0.9979685
+[32,] 34 0.9983818
+[33,] 35 0.9987097</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
@@ -868,45 +868,45 @@ Jessica Minnier
 <span id="cb13-3"><a href="#cb13-3"></a>size_out<span class="sc">$</span>ssize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pi0 ssize     power
-[1,] 0.8     8 0.8148689</code></pre>
+[1,] 0.8     8 0.8000595</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># power: power calculations with corresponding sample sizes.</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>size_out<span class="sc">$</span>power</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       n       0.8
  [1,]  3 0.0000000
- [2,]  4 0.1667266
- [3,]  5 0.4531508
- [4,]  6 0.6319245
- [5,]  7 0.7430296
- [6,]  8 0.8148689
- [7,]  9 0.8630853
- [8,] 10 0.8964735
- [9,] 11 0.9202121
-[10,] 12 0.9374733
-[11,] 13 0.9502780
-[12,] 14 0.9599351
-[13,] 15 0.9673338
-[14,] 16 0.9730819
-[15,] 17 0.9775998
-[16,] 18 0.9811929
-[17,] 19 0.9840799
-[18,] 20 0.9864216
-[19,] 21 0.9883375
-[20,] 22 0.9899180
-[21,] 23 0.9912311
-[22,] 24 0.9923306
-[23,] 25 0.9932561
-[24,] 26 0.9940407
-[25,] 27 0.9947097
-[26,] 28 0.9952829
-[27,] 29 0.9957764
-[28,] 30 0.9962040
-[29,] 31 0.9965755
-[30,] 32 0.9969000
-[31,] 33 0.9971845
-[32,] 34 0.9974350
-[33,] 35 0.9976562</code></pre>
+ [2,]  4 0.1553767
+ [3,]  5 0.4359284
+ [4,]  6 0.6141894
+ [5,]  7 0.7264896
+ [6,]  8 0.8000595
+ [7,]  9 0.8500351
+ [8,] 10 0.8850676
+ [9,] 11 0.9102654
+[10,] 12 0.9288012
+[11,] 13 0.9426962
+[12,] 14 0.9532987
+[13,] 15 0.9615025
+[14,] 16 0.9679387
+[15,] 17 0.9730498
+[16,] 18 0.9771512
+[17,] 19 0.9804777
+[18,] 20 0.9831988
+[19,] 21 0.9854453
+[20,] 22 0.9873123
+[21,] 23 0.9888760
+[22,] 24 0.9901953
+[23,] 25 0.9913150
+[24,] 26 0.9922702
+[25,] 27 0.9930901
+[26,] 28 0.9937979
+[27,] 29 0.9944113
+[28,] 30 0.9949457
+[29,] 31 0.9954128
+[30,] 32 0.9958234
+[31,] 33 0.9961853
+[32,] 34 0.9965058
+[33,] 35 0.9967902</code></pre>
 </div>
 </div>
 <img data-src="2023_11_pss_rnaseq_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
@@ -960,7 +960,7 @@ Jessica Minnier
 <ul>
 <li><p>Recording will be available at <a href="https://www.ohsu.edu/octri/octri-research-forum-your-monthly-clinical-and-translational-research-event">OCTRI BERD Research Forum Website</a></p></li>
 <li><p>email: minnier [at] ohsu.edu</p></li>
-<li><p>Thanks for consultation/tips from ONPRC BBC Director Suzi Fei and all I’ve learned from IGL/MPSSR Directors Bob Searles and Chris Harrington</p></li>
+<li><p>Thanks for consultation/tips from ONPRC <a href="https://www.ohsu.edu/onprc/bioinformatics-biostatistics-core">BBC</a> Director Suzi Fei and all I’ve learned from <a href="https://www.ohsu.edu/integrated-genomics-laboratory">IGL</a>/<a href="https://www.ohsu.edu/research-cores/massively-parallel-sequencing-shared-resource-mpssr">MPSSR</a> Directors Bob Searles and Chris Harrington</p></li>
 <li><p>Please fill out the survey that Amy Laird will send you!</p></li>
 <li><p>More “omics” PSS series to come</p></li>
 <li><p>Need stats help? Contact <a href="https://www.ohsu.edu/research-cores/biostatistics-design-program">BDP</a> or <a href="https://www.ohsu.edu/knight-cancer-institute/biostatistics-shared-resource">Knight BSR</a></p></li>
