@@ -18,6 +18,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [link to this page https://bit.ly/narch_install](https://bit.ly/narch_install)
 
+# Sign up for data usage agreement
+
+- Create an account at the HRS data website: https://hrsdata.isr.umich.edu/user/register
+- By registering, this will allow you to view the data in the workshop. The full data can be found here: https://hrsdata.isr.umich.edu/data-products/
+
 # Install R and Rstudio and relevant packages on your own computer
 
 ## Pre-course installation
@@ -88,3 +93,5 @@ Download [this file](https://drive.google.com/file/d/1hXjogasVkIVjYzuT6eu0lb4Vf-
 Oregon Health & Science University
 
 Slides and code for BERD workshop materials: [jminnier/berd_r_courses](https://github.com/jminnier/berd_r_courses)
+
+
