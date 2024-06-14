@@ -1,0 +1,90 @@
+---
+title: "NARCH Data Wrangling 2024 Workshop"
+author: "Pre-workshop Installation Instructions"
+date: "Updated: `r Sys.Date()`"
+output: 
+  html_document: 
+    theme: spacelab
+    toc: yes
+    toc_float: yes
+    number_sections: yes
+  pdf_document: default
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+[link to this page https://bit.ly/narch_install](https://bit.ly/narch_install)
+
+# Install R and Rstudio and relevant packages on your own computer
+
+## Pre-course installation
+
+- R and Rstudio are two separate programs. You must install R first. Then install Rstudio desktop. 
+- For help, try [watching this video](https://www.youtube.com/watch?v=kOQDdJZ7Hl4&feature=youtu.be)
+- Even if you have R installed already, we highly recommend installing the latest version if it has been a while since you installed it. Just follow the instructions as below to update everything.
+- **YOU NEED TO DO THIS YOURSELF BEFORE THE WORKSHOP** The workshop will begin assuming you have R/Rstudio set up. There will be an installation help session the 30 minutes before the workshop begins on Wednesday if you have tried it on your own and have trouble.
+
+### Install R and Rstudio on your computer
+
+#### Install **R** (first)
+
+- Windows: Download from https://cran.rstudio.com/bin/windows/base/ from the link "Download R 4.4.0. for Windows"
+- Mac OS X: Download the latest .pkg file (top link, currently R-4.4.0.pkg) from https://cran.rstudio.com/bin/macosx/
+    * For some packages and uses, [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) and [XQuartz](https://www.xquartz.org/) may be required, but no need to install these until you find you need them (Xcode takes a very long time to install)
+    
+#### Install **RStudio Desktop** Open Source License (second)
+
+- Go to https://posit.co/download/rstudio-desktop/#download
+- Click the blue box which contains the download file corresponding to your operating system, it should say something like "DOWNLOAD RSTUDIO DESKTOP FOR MACOS 12+" (or windows)
+- Follow download instructions on your computer
+
+<!-- <a href="https://posit.co/download/rstudio-desktop/#download"><img src="img/install_rstudio.png" width="40%" height="40%"></a> -->
+
+### Open Rstudio
+
+After installation, open Rstudio by clicking on the Rstudio icon, a round blue ball with R in it, that should look something like this:
+
+![](img/rstudiologo.png)
+
+Do not open the regular R software, it is just working in the background when you use Rstudio.
+
+### Install useful packages
+
+Download [this file](https://drive.google.com/file/d/1hXjogasVkIVjYzuT6eu0lb4Vf-JAzQsW/view?usp=sharing) to your computer, open in Rstudio, and click "source" to run the entire document, or run each line of code. See instructions in top comments.
+
+
+
+# Prepare for the course
+
+## *Highly recommended*
+
+- Get acquainted with Posit Cloud or Rstudio Desktop (and R) prior to the workshop. You will get much more out of the workshop if you have opened the software and explored the interface first.
+
+## *Recommended*
+
+- Try out the [Basics](https://posit.cloud/learn/recipes) interactive lessons from Rstudio.
+- Look over [slides from a previous version of this workshop](https://jminnier-berd-r-courses.netlify.app/01-getting-started-v2/01_getting_started_slides.html)
+
+## Still want more preparation?
+
+- **Very Useful**: [more Rstudio interactive lessons](https://posit.cloud/learn/recipes)
+- View previous OHSU OCTRI BERD workshops that have been recorded, including an earlier version of "Getting Started with R and Rstudio"
+    + Slides at [github.com/jminnier/berd_r_courses](https://github.com/jminnier/berd_r_courses)
+    + [Recordings are on echo](https://echo360.org/section/92a2f8fb-2467-48ab-bc03-d983f7945137/public) Search for BERD.
+- [R Programming for OHSU-PSU School of Public Health](https://sph-r-programming-2022.netlify.app/) 11 week course, all videos and materials are available
+- Long list of other resources [here](https://github.com/jminnier/awesome-rstats/blob/master/learn-r.md)
+- [Rstudio IDE cheatsheet](https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf)
+- [Modern Dive textbook chapter getting started](https://moderndive.com/1-getting-started.html)
+- [R bootcamp - interactive tutorial](https://r-bootcamp.netlify.com/) Ted Laderas & Jessica Minnier
+- [Introduction to module and RStudio by Emma Rand](http://www-users.york.ac.uk/~er13/17C%20-%202018/pracs/01IntroductionToModuleAndRStudio.html)
+- [Basic Basics opinionated tour of Rstudio](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-0/)
+
+# Instructor Info
+
+[Jessica Minnier, PhD](http://jessicaminnier.com/) & [Emile Latour, M.S.](https://www.ohsu.edu/knight-cancer-institute/biostatistics-shared-resource), with materials co-developed with [Meike Niederhausen, PhD](https://ohsu-psu-sph.org/faculty-2/faculty-directory/?cn-s=niederhausen&cn-cat=), 
+Oregon Health & Science University
+
+Slides and code for BERD workshop materials: [jminnier/berd_r_courses](https://github.com/jminnier/berd_r_courses)
