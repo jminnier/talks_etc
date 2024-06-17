@@ -67,7 +67,7 @@ Download [this file](https://drive.google.com/file/d/1hXjogasVkIVjYzuT6eu0lb4Vf-
 
 ## *Highly recommended*
 
-- Get acquainted with Posit Cloud or Rstudio Desktop (and R) prior to the workshop. You will get much more out of the workshop if you have opened the software and explored the interface first.
+- Get acquainted with Rstudio Desktop (and R) prior to the workshop. You will get much more out of the workshop if you have opened the software and explored the interface first.
 
 ## *Recommended*
 
@@ -90,7 +90,7 @@ Download [this file](https://drive.google.com/file/d/1hXjogasVkIVjYzuT6eu0lb4Vf-
 
 # Instructor Info
 
-[Jessica Minnier, PhD](http://jessicaminnier.com/) & [Emile Latour, M.S.](https://www.ohsu.edu/knight-cancer-institute/biostatistics-shared-resource), with materials co-developed with [Meike Niederhausen, PhD](https://ohsu-psu-sph.org/faculty-2/faculty-directory/?cn-s=niederhausen&cn-cat=), 
+[Jessica Minnier, PhD](http://jessicaminnier.com/) & [Meike Niederhausen, PhD](https://ohsu-psu-sph.org/faculty-2/faculty-directory/?cn-s=niederhausen&cn-cat=), 
 Oregon Health & Science University
 
 Slides and code for BERD workshop materials: [jminnier/berd_r_courses](https://github.com/jminnier/berd_r_courses)
