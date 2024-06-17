@@ -18,13 +18,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [link to this page https://bit.ly/narch_install](https://bit.ly/narch_install)
 
-# Sign up for data usage agreement
+# Step 1: Sign up for data usage agreement
 
 - Create an account at the HRS data website: https://hrsdata.isr.umich.edu/user/register
-- By registering, this will allow you to view the data in the workshop. 
+- By registering, this will allow you to view the data in the workshop. You are agreeing to the dat usage agreement and conditions of use, which you can read here: https://hrsdata.isr.umich.edu/data-products/conditions-of-use
     + No need to download data yourself, but if interested later you can view the full data here: https://hrsdata.isr.umich.edu/data-products/
 
-# Install R and Rstudio and relevant packages on your own computer
+# Step 2: Install R and Rstudio and relevant packages on your own computer
 
 ## Pre-course installation
 
