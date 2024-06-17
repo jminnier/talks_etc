@@ -21,7 +21,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # Sign up for data usage agreement
 
 - Create an account at the HRS data website: https://hrsdata.isr.umich.edu/user/register
-- By registering, this will allow you to view the data in the workshop. The full data can be found here: https://hrsdata.isr.umich.edu/data-products/
+- By registering, this will allow you to view the data in the workshop. 
+    + No need to download data yourself, but if interested later you can view the full data can be found here: https://hrsdata.isr.umich.edu/data-products/
 
 # Install R and Rstudio and relevant packages on your own computer
 
