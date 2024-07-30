@@ -217,7 +217,7 @@ Journals should aim to facilitate the interpretation and repetition of experimen
 
 Checklists can be useful for computational research in general.
 
-An excellent example: [ROpenSci's Reproducibility Checklist](http://ropensci.github.io/reproducibility-guide/sections/checklist/)
+An excellent example: [ROpenSci's Reproducibility Checklist](http://ropensci-archive.github.io/reproducibility-guide/sections/checklist/)
 
 ## Reporting Guidelines
 
@@ -248,7 +248,6 @@ An excellent example: [ROpenSci's Reproducibility Checklist](http://ropensci.git
 :::
 
 ::: {.column width="50%"}
-<br>
 
 <center><img src="survey_nature.png" width="100%" height="100%"/><a href="https://media.nature.com/original/magazine-assets/d41586-018-04590-7/15675426"><br>Nature Survey 2017 results, n=480 authors</a></center>
 :::
@@ -262,7 +261,11 @@ An excellent example: [ROpenSci's Reproducibility Checklist](http://ropensci.git
 
 `r Cite(bib=myBib,key="hejblum2018",textual=TRUE, .opts=list(cite.style="authoryear"))`\
 
-Resources: - [DMPonline](https://dmponline.dcc.ac.uk/) by the Digital Curation Centre for writing data management plans - [FAQs for Enabling FAIR Data](http://www.copdess.org/enabling-fair-data-project/enabling-fair-data-faqs/) - LabKey, open-source specimen and data management platform
+Resources: 
+
+- [DMPonline](https://dmponline.dcc.ac.uk/) by the Digital Curation Centre for writing data management plans 
+- [FAQs for Enabling FAIR Data](http://www.copdess.org/enabling-fair-data-project/enabling-fair-data-faqs/) 
+- LabKey, open-source specimen and data management platform
 
 ## Software, workflow, and dependency management
 
@@ -281,7 +284,7 @@ Solutions for Dependency:
 
 -   **Preservation** of the environment (code, data, software) with virtualisation, i.e. Docker, VMware, VirtualBox, packrat for R package management
 
-[ROpenSci Reproducibility Guide](http://ropensci.github.io/reproducibility-guide/sections/introduction/)
+[ROpenSci Reproducibility Guide](http://ropensci-archive.github.io/reproducibility-guide/sections/introduction/)
 
 ## Archiving and citability
 
@@ -290,7 +293,7 @@ Solutions for Dependency:
 -   Popular repositories for code: GitHub, bitbucket, Bioconductor, CRAN PyPI
 -   Citability: Digital Object Identifier (DOI) for code and data
 
-<center><img src="kunzmann_table_repos.png" width="65%" height="100%"/><br>[Hejblum et al  "Realistic and Robust Reproducible Research for Biostatistics"](https://www.preprints.org/manuscript/202006.0002/v1)</center>
+<center><img src="kunzmann_table_repos.png" width="80%" height="100%"/><br>[Hejblum et al  "Realistic and Robust Reproducible Research for Biostatistics"](https://www.preprints.org/manuscript/202006.0002/v1)</center>
 
 
 ## Literate Programming
@@ -317,7 +320,7 @@ title("Kaplan-Meier Curves\nfor AML Maintenance Study")
 :::
 :::
 
-## Why Use Version Control?
+## Version Control
 
 ::: columns
 ::: {.column width="60%"}
@@ -339,7 +342,12 @@ title("Kaplan-Meier Curves\nfor AML Maintenance Study")
 -   online git repositories include: GitHub, bitbucket, GitLab
 -   more sophisticated/lightweight than track changes in Word/google docs
 
-Resources: - [Software Carpentry "Version Control w/Git"](https://swcarpentry.github.io/git-novice/) - [Github tutorials](https://try.github.io/) - [Happy Git and GitHub for the useR - Jenny Bryan, Jim Hester](https://happygitwithr.com/)
+Resources: 
+
+- [Software Carpentry "Version Control w/Git"](https://swcarpentry.github.io/git-novice/) 
+- [Github tutorials](https://try.github.io/) 
+- [Happy Git and GitHub for the useR - Jenny Bryan, Jim Hester](https://happygitwithr.com/)
+
 :::
 
 ::: {.column width="50%"}
@@ -387,7 +395,7 @@ Resources: - [Software Carpentry "Version Control w/Git"](https://swcarpentry.gi
 ## Example ideals for a computational group
 
 -   Literate programming (use R Markdown)
--   Agree on best practices for writing code (i.e. [ROpenSci's Reproducibility & Writing Code Guide](http://ropensci.github.io/reproducibility-guide/sections/writingCode/) and "Best Practices for Scientific Computing" `r Cite(bib=myBib,key="wilson2014best",textual=TRUE, .opts=list(cite.style="authoryear"))`
+-   Agree on best practices for writing code (i.e. [ROpenSci's Reproducibility & Writing Code Guide](http://ropensci-archive.github.io/reproducibility-guide/sections/writingCode/) and "Best Practices for Scientific Computing" `r Cite(bib=myBib,key="wilson2014best",textual=TRUE, .opts=list(cite.style="authoryear"))`
 -   Agree on folder structure, naming conventions
 -   Use html web-based output
     -   [see Matthew Shotwell's slides](http://biostatmatt.com/uploads/shotwell-interface-2011.pdf)
