@@ -13,6 +13,7 @@ format:
       height: 825  #default 700
       slide-number: true
       html-math-method: mathjax
+      footer: '[bit.ly/repro_ds_2024](https://bit.ly/repro_ds_2024)'
   # html:
   #   link-external-newwindow: true
   #   toc: true
@@ -122,23 +123,17 @@ Victoria Stodden, a prominent scholar on this topic, has identified some useful 
 
 # Current Issues and Discussion
 
-## Issues that affect scientific rigor and reproducibility
-
-<center><img src="open_sci_training_handbook_issues.png" width="60%" height="60%"/><a href="https://open-science-training-handbook.github.io/Open-Science-Training-Handbook_EN/02OpenScienceBasics/04ReproducibleResearchAndDataAnalysis.html"><br>Open Science Training Handbook</a></center>
-
 ## Nature series "Challenges in Irreproducible Research"
 
 May 25, 2016 Editorial ["Reality check on reproducibility"](http://www.nature.com/news/reality-check-on-reproducibility-1.19961)
 
-::: columns
-::: {.column width="40%"}
-![](reproducibility-graphic-online1.jpg)
-:::
 
-::: {.column width="60%"}
-> One-third of survey respondents report that they have taken the initiative to improve reproducibility. The simple presence of another person ready to **question** whether a data point or a sample should really be excluded from analysis can help to cut down on cherry-picking, conscious or not. A couple of senior scientists have set up **workflows** that avoid having a single researcher in charge of preparing images or collecting results. Dozens of respondents reported steps to make **better use of statistics, randomization or blinding**. One described an institution-level initiative to **teach scientists computer tools so they could share and analyse data collaboratively**. Key to success was making sure that their **data-management system also saved time**.
-:::
-:::
+![](reproducibility-graphic-online1.jpg)
+
+
+## Issues that affect scientific rigor and reproducibility
+
+<center><img src="open_sci_training_handbook_issues.png" width="60%" height="60%"/><a href="https://open-science-training-handbook.github.io/Open-Science-Training-Handbook_EN/02OpenScienceBasics/04ReproducibleResearchAndDataAnalysis.html"><br>Open Science Training Handbook</a></center>
 
 ## Code availability in peer-reviewed journals
 
