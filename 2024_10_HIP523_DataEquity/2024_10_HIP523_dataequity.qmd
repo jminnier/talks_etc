@@ -137,6 +137,12 @@ Refs:
     -   Many examples of unethical and harmful medical research on African Americans, leading to mistrust of medical research in the Black communities, leading to underpresentation in studies
     -   Tuskegee syphilis study is just one example `r Cite(key = "katz2006tuskegee", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
 
+# Sex and Gender Considerations
+
+![NIH Sex and Gender](img/nih_sex_gender.png)
+
+[NIH Sex and Gender](https://orwh.od.nih.gov/sex-gender)
+
 ## Sex and Gender in Statistical Models
 
 ### Best Practices
@@ -149,6 +155,7 @@ Refs:
 ### Common Pitfalls
 
 -   Conflating sex and gender
+-   Systemic lack of female representation (as well as omissions of transgender and intersex populations or persons with variations in sex characteristics)
 -   Assuming homogeneity within groups
 -   Overlooking interaction effects
 -   Missing intersectional perspectives
@@ -169,7 +176,7 @@ Refs:
 -  Report sex-disaggregated results
 -  Consider sex-based biological mechanisms
 
-[National Institutes of Health (NIH) SABV Policy](https://orwh.od.nih.gov/sex-gender/orwh-mission-area-sex-gender-in-research/nih-policy-on-sex-as-biological-variable)
+[National Institutes of Health (NIH) SABV Policy (2016)](https://orwh.od.nih.gov/sex-gender/orwh-mission-area-sex-gender-in-research/nih-policy-on-sex-as-biological-variable)
 
 ## Sex as a Biological Variable (SABV)
 
