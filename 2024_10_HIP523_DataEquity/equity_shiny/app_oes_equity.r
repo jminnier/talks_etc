@@ -202,10 +202,11 @@ nav_panel(
   title = "Summary",
   
   p("From OES: When you are interested in the question of whether a demographic group receives access to a program at different rates compared to other demographic groups, irrespective of the reason, then a bivariate model will answer that question. However, if you are interested in whether otherwise similarly situated individuals of different demographics access a benefit at the same rate, then including pre-treatment controls that are correlated with the demographic characteristic and the outcome is typically appropriate, depending on the functional form of
-the model.", class = "text-center mb-4"),
+the model."),
+  p(""),
   p("Note: The Equity Evaluation Memo Series is intended to guide OES’ commitment to equity in our evaluation process and efforts toward understanding and reducing barriers to equitable access to federal programs. This series is intended to be an internal guidance document for OES team members.")
 ),
-p("Developed for OHSU HIP523 October 2024 by Jessica Minnier.", class = "text-center mb-4"),
+p("Developed for OHSU HIP523 October 2024 by Jessica Minnier. Most coding performed by Claude.AI (3.5 Sonnet).", class = "text-center mb-4"),
   )
 )
 

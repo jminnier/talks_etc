@@ -48,7 +48,7 @@ myBib <- ReadBib(here::here("2024_10_HIP523_DataEquity","minnier_bibliography.bi
 -   Understand key considerations when including sex and race in multivariable models
 -   Examine best practices for incorporating sex as a biological variable (SABV)
 -   Explore the complexities of race and ethnicity in research through examples
--   Analyze the role of social determinants of health (SDOH) in research design
+-   Discuss the role of social determinants of health (SDOH) in research
 
 # What is Data Equity?
 
@@ -63,6 +63,9 @@ myBib <- ReadBib(here::here("2024_10_HIP523_DataEquity","minnier_bibliography.bi
 -   Recognition that data is not neutral - it reflects existing social structures and biases
 
 -   Allow community participation in the research process, ensure trust and accessibility, with the goal of data sovereignty
+
+
+Refs: 
 
 -   [Community Commons "An Introduction to Data Equity"](https://www.communitycommons.org/collections/An-Introduction-to-Data-Equity)
 
@@ -115,7 +118,7 @@ myBib <- ReadBib(here::here("2024_10_HIP523_DataEquity","minnier_bibliography.bi
 -   Inappropriate aggregation of diverse groups
 
     -   Ex: collapsing Asian American subgroups can mask disparities, [Haelle 2022, Association of Health Care Journalists](https://healthjournalism.org/blog/2022/08/how-improper-aggregation-of-racial-ethnic-groups-in-research-can-mask-health-disparities/)
-    -   Ex: prevalence of asthma vaaries across US-born vs non-US-born Latinos `r Cite(key="marino2023disaggregating", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+    -   Ex: prevalence of asthma varies across US-born vs non-US-born Latinos `r Cite(key="marino2023disaggregating", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
 
 ## Common Data Equity Challenges
 
@@ -161,10 +164,10 @@ myBib <- ReadBib(here::here("2024_10_HIP523_DataEquity","minnier_bibliography.bi
 
 ### Implementation Strategies
 
-1.  Include adequate sample sizes for all sexes
-2.  Test for sex-specific effects
-3.  Report sex-disaggregated results
-4.  Consider sex-based biological mechanisms
+-  Include adequate sample sizes for all sexes
+-  Test for sex-specific effects
+-  Report sex-disaggregated results
+-  Consider sex-based biological mechanisms
 
 [National Institutes of Health (NIH) SABV Policy](https://orwh.od.nih.gov/sex-gender/orwh-mission-area-sex-gender-in-research/nih-policy-on-sex-as-biological-variable)
 
@@ -273,6 +276,7 @@ What does controlling for race (or sex, or gender, or SDOH) mean?
 ### Using Regression to Detect Discrimination
 
 -   Cannot definitively prove discrimination
+-   Cannot definitively prove lack of discrimination
 -   Unmeasured variables may explain disparities
 -   Need robust research design for causal claims
 
