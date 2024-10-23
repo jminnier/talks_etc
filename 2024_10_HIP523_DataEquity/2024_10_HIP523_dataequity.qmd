@@ -8,7 +8,7 @@ format:
       incremental: false
       scrollable: true
       chalkboard: true
-      #theme: [css/sky_modified_smaller_font.scss]
+      theme: [css/sky_modified_smaller_font.scss]
       width:  1100 #default 1050
       height: 825  #default 700
       slide-number: true
@@ -200,7 +200,7 @@ myBib <- ReadBib(here::here("2024_10_HIP523_DataEquity","minnier_bibliography.bi
 
 `r Cite(key = "swilley2023we", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
 
-# Social Determinants of Health (SDOH)
+# Social Determinants of Health
 
 ![](img/Healthy%20People%202030%20SDOH%20Graphic%20Domain%20Labels.png)
 
