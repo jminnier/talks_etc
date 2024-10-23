@@ -1,0 +1,13 @@
+name: equity_regression
+title: equity_regression
+username: ohsu-berd
+account: ohsu-berd
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13112124
+bundleId: 9261182
+url: https://ohsu-berd.shinyapps.io/equity_regression/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: app_equity_nomodelupdate.r|app1.r|app2.r|app3broken.r

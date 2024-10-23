@@ -1,0 +1,186 @@
+---
+title: "Choosing Controls in Regression Analyses Involving Equity"
+format: 
+  revealjs:
+    theme: simple
+    code-fold: false
+    footer: "Based on OES Equity Evaluation Series"
+engine: knitr
+filters:
+  - webr
+---
+
+## Setup {.smaller}
+
+```{webr-r}
+# Install and load required packages
+webr::install("tidyverse")
+webr::install("gtsummary")
+
+library(tidyverse)
+library(gtsummary)
+```
+
+## Example 1: Post-attribute Bias
+
+::: {.panel-tabset}
+
+### Data
+
+```{webr-r}
+# Create example dataset
+data1 <- tibble(
+  business_id = 1:6,
+  women_owned = c(0, 0, 0, 1, 1, 1),
+  earnings = c(50, 50, 50, 10, 10, 50),
+  funded = c(1, 1, 1, 0, 0, 1)
+)
+
+# View the data
+data1
+```
+
+### Analysis {.smaller}
+
+```{webr-r}
+# Full model with earnings control
+full_model1 <- lm(funded ~ women_owned + earnings, data = data1)
+tbl_regression(full_model1)
+
+# Bivariate model without controls
+bivariate_model1 <- lm(funded ~ women_owned, data = data1)
+tbl_regression(bivariate_model1)
+```
+
+:::
+
+## Key Points: Post-attribute Bias
+
+- Post-attribute bias occurs when we control for variables that may be affected by the attribute we're studying
+- In this example:
+  - Women-owned status might affect earnings
+  - Controlling for earnings could mask real disparities
+  - The bivariate model may be more appropriate
+
+## Example 2: Omitted Variable Bias
+
+::: {.panel-tabset}
+
+### Data
+
+```{webr-r}
+# Create example dataset
+data2 <- tibble(
+  business_id = 1:8,
+  black_owned = c(0, 0, 0, 0, 1, 1, 1, 1),
+  sole_prop = c(0, 0, 1, 1, 0, 1, 1, 1),
+  funded = c(0, 0, 1, 1, 0, 1, 0, 1)
+)
+
+# View the data
+data2
+```
+
+### Analysis {.smaller}
+
+```{webr-r}
+# Full model with sole proprietorship control
+full_model2 <- lm(funded ~ black_owned + sole_prop, data = data2)
+tbl_regression(full_model2)
+
+# Bivariate model without controls
+bivariate_model2 <- lm(funded ~ black_owned, data = data2)
+tbl_regression(bivariate_model2)
+```
+
+:::
+
+## Key Points: Omitted Variable Bias
+
+- Omitting relevant variables can lead to biased estimates
+- In this example:
+  - Business structure (sole proprietorship) affects funding
+  - Including this control helps isolate the relationship between ownership and funding
+  - The full model provides a more complete picture
+
+## Example 3: Uncorrelated Variables
+
+::: {.panel-tabset}
+
+### Data
+
+```{webr-r}
+# Create example dataset
+data3 <- tibble(
+  business_id = 1:8,
+  black_owned = c(0, 0, 0, 0, 1, 1, 1, 1),
+  sole_prop = c(0, 0, 1, 1, 0, 1, 1, 1),
+  priority_zone = c(1, 0, 1, 0, 1, 0, 1, 0),
+  funded = c(0, 0, 1, 1, 0, 1, 0, 1)
+)
+
+# View the data
+data3
+```
+
+### Analysis {.smaller}
+
+```{webr-r}
+# Model with uncorrelated variable
+model_uncorrelated <- lm(funded ~ black_owned + priority_zone, data = data3)
+tbl_regression(model_uncorrelated)
+
+# Model with all variables
+model_all <- lm(funded ~ black_owned + sole_prop + priority_zone, data = data3)
+tbl_regression(model_all)
+```
+
+:::
+
+## Key Points: Uncorrelated Variables
+
+- Including uncorrelated controls:
+  - Doesn't necessarily bias estimates
+  - May affect precision of estimates
+  - Should be theoretically justified
+- Focus on variables that are:
+  1. Related to the outcome
+  2. Not affected by the attribute of interest
+  3. Theoretically relevant
+
+## Best Practices for Equity Analysis
+
+1. **Carefully consider control variables**
+   - Avoid post-attribute bias
+   - Include relevant confounders
+   - Be theoretical justified
+
+2. **Document decisions**
+   - Explain variable selection
+   - Consider sensitivity analyses
+   - Be transparent about limitations
+
+3. **Consider multiple models**
+   - Compare results with/without controls
+   - Examine robustness of findings
+   - Report key specifications
+
+## Try It Yourself!
+
+Modify any of the previous examples to:
+
+1. Add new variables
+2. Change the relationships
+3. Test different model specifications
+
+Use the interactive R console to explore how different choices affect the results.
+
+```{webr-r}
+# Your code here!
+```
+
+## References
+
+- OES Equity Evaluation Series
+- "Choosing Controls in Regression Analyses Involving Equity"
+- [OES Website](https://oes.gsa.gov/assets/files/choosing-controls-in-regression-analyses-involving-equity.pdf)

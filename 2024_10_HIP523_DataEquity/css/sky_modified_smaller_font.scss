@@ -1,0 +1,79 @@
+/*-- scss:defaults --*/
+
+$theme-orange: #f47c3c;
+$theme-yellow: #ffc107;
+$theme-green: #40ab16;
+$theme-blue: #1e339c;
+$theme-purple: #a518d9;
+
+
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+
+// fonts
+$font-family-sans-serif: "Open Sans", sans-serif !default;
+$presentation-font-size-root: 27px;
+
+// colors
+$body-bg: #f7fbfc !default;
+$body-color: #333 !default;
+$link-color: #3b759e !default;
+$selection-bg: #134674 !default;
+
+// headings
+$presentation-heading-font: "Quicksand", sans-serif !default;
+$presentation-heading-font-weight: normal !default;
+$presentation-heading-letter-spacing: -0.04em;
+
+/*-- removed from headings: --*/
+/*-- $presentation-heading-text-transform: uppercase !default;--*/
+
+// code blocks
+$code-block-border-color: lighten($link-color, 30%) !default;
+$code-block-bg: transparent !default;
+
+/*-- scss:mixins --*/
+
+// Background generator
+@mixin bodyBackground() {
+  @include radial-gradient(#add9e4, #f7fbfc);
+}
+
+/*-- scss:rules --*/
+
+// Fix links so they are not cut off
+.reveal a {
+  line-height: 1.3em;
+}
+
+
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+
+
+.orange {
+  color: $theme-orange;
+  font-weight: bold;
+}
+
+.yellow {
+  color: $theme-yellow;
+  font-weight: bold;
+}
+
+.green {
+  color: $theme-green;
+  font-weight: bold;
+}
+
+.blue {
+  color: $theme-blue;
+  font-weight: bold;
+}
+
+.purple {
+  color: $theme-purple;
+  font-weight: bold;
+}
