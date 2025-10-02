@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="2025_10_APOM_GR_dataequity_files/libs/clipboard/clipboard.min.js"></script>
+<script src="2025_10_APOM_GR_dataequity_files/libs/quarto-html/tabby.min.js"></script>
+<script src="2025_10_APOM_GR_dataequity_files/libs/quarto-html/popper.min.js"></script>
+<script src="2025_10_APOM_GR_dataequity_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="2025_10_APOM_GR_dataequity_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="2025_10_APOM_GR_dataequity_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="2025_10_APOM_GR_dataequity_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
+
+  <meta name="author" content="Jessica Minnier, PhD Associate Professor of Biostatistics OHSU-PSU School of Public Health Knight Cancer Institute Biostatistics Shared Resource Oregon Health &amp; Science University bit.ly/hip_data_eq">
+  <meta name="dcterms.date" content="2025-10-06">
+  <title>Beyond ‘Adjusting for Race’: Data Equity in Clinical Research</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="2025_10_APOM_GR_dataequity_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="2025_10_APOM_GR_dataequity_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="2025_10_APOM_GR_dataequity_files/libs/revealjs/dist/theme/quarto-d5756874d1541f06f0eae082cc5cc929.css">
+  <link href="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Beyond ‘Adjusting for Race’: Data Equity in Clinical Research</h1>
+  <p class="subtitle">APOM Grand Rounds</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Biostatistics<br>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health &amp; Science University</span><br><br><a href="https://bit.ly/apom_data_eq">bit.ly/hip_data_eq</a> 
+</div>
+</div>
+</div>
+
+  <p class="date">2025-10-06</p>
+</section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Define data equity and its importance in statistical analysis</li>
+<li>Understand key considerations when including sex and race in multivariable models</li>
+<li>Examine best practices for incorporating sex as a biological variable (SABV)</li>
+<li>Explore the complexities of race and ethnicity in research through examples</li>
+<li>Discuss the role of social determinants of health (SDOH) in research</li>
+</ul>
+<p>At the conclusion of this activity, participants will be able to:</p>
+<ul>
+<li>Describe key concepts of data equity</li>
+<li>Describe common sources of bias in clinical research</li>
+<li>Identify appropriate biostatistical strategies to evaluate and address data inequities</li>
+</ul>
+</section>
+<section>
+<section id="what-is-data-equity" class="title-slide slide level1 center">
+<h1>What is Data Equity?</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://lib.guides.umd.edu/ResearchEquity/DataEquity"><img data-src="img/legos_umd_lib.png" alt="Pieces of yellow lego does not equal diverse lego people"></a></p>
+<figcaption>UMD Library Guide</figcaption>
+</figure>
+</div>
+</section>
+<section id="what-is-data-equity-1" class="slide level2">
+<h2>What is Data Equity?</h2>
+<ul>
+<li><p>The consideration of issues of power, bias, and discrimination in how data is collected, analyzed, interpreted, and used</p></li>
+<li><p>Ensuring research benefits all populations equitably, especially those historically marginalized or underrepresented</p></li>
+<li><p>Recognition that data is not neutral - it reflects existing social structures and biases</p></li>
+<li><p>Allow community and patient participation in the research process, ensure trust and accessibility, with the goal of data sovereignty</p></li>
+<li><p>Ultimately, data equity seeks to achieve just, unbiased, and actionable insights that enhance care quality and reduce disparities across diverse patient populations</p></li>
+</ul>
+<div style="font-size: 70%;">
+<p>References:</p>
+<ul>
+<li><a href="https://www.communitycommons.org/collections/An-Introduction-to-Data-Equity">Community Commons “An Introduction to Data Equity”</a></li>
+<li><a href="https://www.cdcfoundation.org/HealthEquity/data-equity-principles">CDC Foundation “Data Equity Principles”</a></li>
+<li><a href="https://lib.guides.umd.edu/ResearchEquity/DataEquity">UMD Library Guide: Research Equity, Data Equity</a></li>
+<li><a href="https://data.org/resources/what-is-data-equity-and-why-does-it-matter/">Data.org</a></li>
+</ul>
+</div>
+</section>
+<section id="data-equity-principles" class="slide level2">
+<h2>Data Equity Principles</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://www.cdcfoundation.org/data-equity-principles?inline"><img data-src="img/cdc-foundation-data-equity-principles-life-cycle.png" alt="CDC Foundation Data Equity Principles"></a></p>
+<figcaption>CDC Foundation Data Equity Principles</figcaption>
+</figure>
+</div>
+</section></section>
+<section>
+<section id="equity-minded-research" class="title-slide slide level1 center">
+<h1>Equity-minded Research</h1>
+<ul>
+<li>Recognize and define systemic factors</li>
+<li>Inclusive data collection</li>
+<li><a href="https://www.nature.com/articles/s41591-023-02665-1">Representative sampling</a></li>
+<li>Contextual analysis
+<ul>
+<li>Researchers must understand and reflect on their own biases and assumptions, as well as identity and experiences relative to others (<a href="https://www.urban.org/research/publication/exploring-individual-and-institutional-positionality">positionality</a>)</li>
+</ul></li>
+<li>Equitable interpretation</li>
+<li>Responsible reporting</li>
+</ul>
+<div style="font-size: 70%;">
+<p>References:</p>
+<ul>
+<li><a name="cite-venkateswaran2023bringing" href=""></a><a href="#/bib-venkateswaran2023bringing">Venkateswaran, Feldman, Hawkins, Lewis, Armstrong-Brown, Comfort, Lowe, and Pineda (2023)</a></li>
+<li><a name="cite-retzer2023toolkit" href=""></a><a href="#/bib-retzer2023toolkit">Retzer, Ciytak, Khatsuria, El-Awaisi, Harris, Chapman, Kelly, Richards, Lam, Newsome, and others (2023)</a></li>
+</ul>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example:</h2>
+<h3 id="unrepresentative-or-skewed-sampling-can-impact-patient-safety-and-outcome-prediction">Unrepresentative or skewed sampling can impact patient safety and outcome prediction</h3>
+<ul>
+<li>A clinical risk assessment tool can misclassify risk for underrepresented groups</li>
+<li>Rates of adverse events can be over- or under-estimated in certain groups</li>
+</ul>
+</section>
+<section id="common-data-equity-challenges" class="slide level2">
+<h2>Common Data Equity Challenges</h2>
+<ul>
+<li><p>Selection bias in sampling</p>
+<ul>
+<li>Ex: research in large academic medical centers may exclude rural populations or those with limited access to care</li>
+</ul></li>
+<li><p>Missing or incomplete data for certain populations</p>
+<ul>
+<li>Ex: language barriers may lead to incomplete data</li>
+</ul></li>
+<li><p>Inappropriate aggregation of diverse groups</p>
+<ul>
+<li>Ex: collapsing Asian American subgroups can mask disparities, <a href="https://healthjournalism.org/blog/2022/08/how-improper-aggregation-of-racial-ethnic-groups-in-research-can-mask-health-disparities/">Haelle 2022, Association of Health Care Journalists</a></li>
+<li>Ex: prevalence of asthma varies across US-born vs non-US-born Latinos <a name="cite-marino2023disaggregating" href=""></a><a href="#/bib-marino2023disaggregating">Marino, Fankhauser, Minnier, Lucas, Giebultowicz, Kaufmann, Hwang, Bailey, Crookes, Bazemore, and others (2023)</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="common-data-equity-challenges-1" class="slide level2">
+<h2>Common Data Equity Challenges</h2>
+<ul>
+<li><p>Lack of contextual variables</p>
+<ul>
+<li>Ex: a study on asthma prevalence may fail to account for air quality or housing conditions, focusing on individual-level factors but missing community-level determinants of health</li>
+</ul></li>
+<li><p>Limited access to data collection resources</p>
+<ul>
+<li>Ex: rural areas often lack infrastructure for comprehensive health data collection, resulting in urban-centric health policies</li>
+<li>Ex: limited availability of trained medical interpreters for patients who speak less common languages, resulting in incomplete information for these populations</li>
+</ul></li>
+</ul>
+</section>
+<section id="common-data-equity-challenges-2" class="slide level2">
+<h2>Common Data Equity Challenges</h2>
+<ul>
+<li><p>Historical unethical studies and misuse of demographic data</p>
+<ul>
+<li>Many examples of unethical and harmful medical research on African Americans, leading to mistrust of medical research in the Black communities, leading to underpresentation in studies</li>
+<li>Tuskegee syphilis study is just one example <a name="cite-katz2006tuskegee" href=""></a><a href="#/bib-katz2006tuskegee">Katz, Kegeles, Kressin, Green, Wang, James, Russell, and Claudio (2006)</a></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="sex-and-gender-considerations" class="title-slide slide level1 center">
+<h1>Sex and Gender Considerations</h1>
+
+<img data-src="img/nih_sex_gender.png" class="r-stretch quarto-figure-center"><p class="caption">NIH Sex and Gender</p><p><a href="https://orwh.od.nih.gov/sex-gender">NIH Sex and Gender</a></p>
+</section>
+<section id="sex-and-gender-in-statistical-models" class="slide level2">
+<h2>Sex and Gender in Statistical Models</h2>
+<h3 id="best-practices">Best Practices</h3>
+<ul>
+<li>Distinguish between sex and gender variables</li>
+<li>Consider both biological and social factors</li>
+<li>Avoid binary assumptions</li>
+<li>Document missing data patterns</li>
+</ul>
+<h3 id="common-pitfalls">Common Pitfalls</h3>
+<ul>
+<li>Conflating sex and gender</li>
+<li>Systemic lack of female representation (as well as omissions of transgender and intersex populations or persons with variations in sex characteristics)</li>
+<li>Assuming homogeneity within groups</li>
+<li>Overlooking interaction effects</li>
+<li>Missing intersectional perspectives</li>
+</ul>
+</section>
+<section id="sex-as-a-biological-variable-sabv" class="slide level2">
+<h2>Sex as a Biological Variable (SABV)</h2>
+<h3 id="key-considerations">Key Considerations</h3>
+<ul>
+<li>Hormonal influences</li>
+<li>Genetic differences</li>
+<li>Physiological variations</li>
+<li>Life-cycle changes</li>
+</ul>
+<h3 id="implementation-strategies">Implementation Strategies</h3>
+<ul>
+<li>Include adequate sample sizes for all sexes</li>
+<li>Test for sex-specific effects</li>
+<li>Report sex-disaggregated results</li>
+<li>Consider sex-based biological mechanisms</li>
+</ul>
+<p><a href="https://orwh.od.nih.gov/sex-gender/orwh-mission-area-sex-gender-in-research/nih-policy-on-sex-as-biological-variable">National Institutes of Health (NIH) SABV Policy (2016)</a></p>
+</section>
+<section id="sex-as-a-biological-variable-sabv-1" class="slide level2">
+<h2>Sex as a Biological Variable (SABV)</h2>
+
+<img data-src="img/nih_sabv.png" alt="NIH 4 Cs of Studying SABV" class="r-stretch quarto-figure-center"><p class="caption">NIH 4 Cs of Studying SABV</p></section></section>
+<section>
+<section id="race-and-ethnicity-in-research" class="title-slide slide level1 center">
+<h1>Race and Ethnicity in Research</h1>
+<blockquote>
+<p>Race is a social construct, commonly used in epidemiologic research to adjust for confounding. However, adjustment of race may mask racial disparities, thereby perpetuating structural racism.</p>
+</blockquote>
+<p>“We adjusted for race”: now what? A systematic review… <a name="cite-swilley2023we" href=""></a><a href="#/bib-swilley2023we">Swilley-Martinez, Coles, Miller, Alam, Fitch, Cruz, Hohl, Murray, and Ranapurwala (2023)</a></p>
+</section>
+<section id="race-and-ethnicity-critical-considerations" class="slide level2">
+<h2>Race and Ethnicity: Critical Considerations</h2>
+<ul>
+<li>Race is a social construct, not biological</li>
+<li>Substantial within-group variation</li>
+<li>Historical context of racial categories</li>
+<li>Context of discriminatory, sociocultural, or biological effects associated with race or SDOH variable used</li>
+<li>Intersectionality with other variables</li>
+</ul>
+</section>
+<section id="race-and-ethnicity-recommendations" class="slide level2">
+<h2>Race and Ethnicity: Recommendations</h2>
+<ul>
+<li>Use clearly defined categories, standard and not collapsed categories when possible
+<ul>
+<li>Avoid collapsing categories of race with disparate health outcomes</li>
+<li>Avoid label “other”, use descriptive terms for collapsed categories</li>
+<li>Include ethnicity and ancestry information</li>
+</ul></li>
+<li>Clearly document data collection and classification methods</li>
+<li>If using race as a confounder, covariate, or adjustment variable, examine effect modification</li>
+<li>Acknowledge limitations</li>
+</ul>
+<p><a href="https://www.urban.org/research/publication/using-race-and-ethnicity-data-advance-health-equity">Urban Institute: Using Race and Ethnicity Data to Advance Health Equity</a></p>
+<p><a href="#/bib-swilley2023we">Swilley-Martinez, Coles, Miller et al.&nbsp;(2023)</a></p>
+</section></section>
+<section>
+<section id="social-determinants-of-health" class="title-slide slide level1 center">
+<h1>Social Determinants of Health</h1>
+
+<img data-src="img/Healthy%20People%202030%20SDOH%20Graphic%20Domain%20Labels.png" class="r-stretch"><p><a href="https://odphp.health.gov/healthypeople/priority-areas/social-determinants-health">US Dept of Health &amp; Human Services: Healthy People 2030</a></p>
+</section>
+<section id="social-determinants-of-health-sdoh" class="slide level2">
+<h2>Social Determinants of Health (SDOH)</h2>
+<h3 id="design-considerations">Design considerations</h3>
+<ul>
+<li>Equitable sampling</li>
+<li>Missing data issues</li>
+<li>Granular data collection</li>
+<li>Standardization of variable definitions</li>
+</ul>
+<h3 id="integration-strategies">Integration Strategies</h3>
+<ul>
+<li>Including SDOH variables in models can be complex</li>
+<li>Consider mediating effects or effect modification</li>
+<li>Document contextual factors</li>
+<li>Consider correlation/collinearity</li>
+<li>Address missing data</li>
+</ul>
+<p><a name="cite-braveman2023social" href=""></a><a href="#/bib-braveman2023social">Braveman (2023)</a></p>
+</section></section>
+<section>
+<section id="statistical-analysis-considerations" class="title-slide slide level1 center">
+<h1>Statistical Analysis Considerations</h1>
+<p>We adjusted for ….</p>
+</section>
+<section id="statistical-analysis-adjustment" class="slide level2">
+<h2>Statistical Analysis, Adjustment</h2>
+<p>What does controlling for race (or sex, or gender, or SDOH) mean?</p>
+<ul>
+<li><p>Adjustment, matching, stratification, etc. estimates effects over all strata to present an overall effect between exposure and outcome</p></li>
+<li><p>When adjusting for the social construct of race, the adjusted effect estimate can be interpreted as the exposure-outcome relationship if racism did not affect the exposure</p></li>
+<li><p>Pooled effects are weighted toward the larger group</p></li>
+<li><p>Effect measure modification allows for different effects within groups (race, gender, sex, etc)</p></li>
+</ul>
+<p><a href="#/bib-swilley2023we">Swilley-Martinez, Coles, Miller et al.&nbsp;(2023)</a></p>
+</section>
+<section id="statistical-analysis-considerations-1" class="slide level2">
+<h2>Statistical Analysis Considerations</h2>
+<h3 id="model-development">Model Development</h3>
+<ul>
+<li>Variable selection and coding</li>
+<li>Interaction testing</li>
+<li>Missing data patterns</li>
+<li>Model assumptions</li>
+</ul>
+<h3 id="interpretation">Interpretation</h3>
+<ul>
+<li>Effect modification</li>
+<li>Confounding</li>
+<li>Mediation</li>
+<li>Population-specific effects</li>
+</ul>
+</section>
+<section id="modeling-decisions" class="slide level2">
+<h2>Modeling Decisions</h2>
+<ul>
+<li><strong>Bivariate Model</strong>: Use when asking “Does a demographic group receive access at different rates?”</li>
+<li><strong>Multiple Regression</strong>: Use when asking “Do similarly situated individuals access benefits at the same rate?”</li>
+</ul>
+</section></section>
+<section>
+<section id="modeling-examples" class="title-slide slide level1 center">
+<h1>Modeling Examples</h1>
+
+</section>
+<section id="example-1-postoperative-opioid-prescribing" class="slide level2">
+<h2>Example 1: Postoperative Opioid Prescribing</h2>
+<ul>
+<li><strong>Research Question:</strong> Are there racial disparities in the amount of opioids prescribed to patients at discharge after a total knee arthroplasty?</li>
+<li><strong>Outcome (Y):</strong> Total morphine milligram equivalents (MME) prescribed.</li>
+<li><strong>Attribute of Interest (X):</strong> Patient race (e.g., Black vs.&nbsp;White).</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><em>Bivariate Regression Model:</em></strong></p>
+<p><code>lm(MME ~ patient_race, data = surgical_data)</code></p>
+<p><strong>Interpretation:</strong> “On average, do Black patients receive different MME prescriptions at discharge compared to White patients?”</p>
+</div><div class="column" style="width:50%;">
+<p><strong><em>Multiple Regression Model:</em></strong></p>
+<p><code>lm(MME ~ patient_race + preoperative_pain_score + procedure_time, data = surgical_data)</code></p>
+<p><strong>Interpretation:</strong> “Among patients with similar pre-op pain and procedure times, is there still a difference in MME prescriptions between Black and White patients?”</p>
+</div></div>
+</section>
+<section id="discussion-post-attribute-bias" class="slide level2">
+<h2>Discussion: Post-attribute Bias</h2>
+<p>Be cautious controlling for in-hospital patient-reported pain.</p>
+<ul>
+<li>If provider bias (related to race) leads to under-treatment of pain, the Black patient might report higher pain scores.</li>
+<li>Controlling for this pain score could incorrectly make a lower MME prescription seem medically justified, thereby masking the original bias.</li>
+<li>The bivariate model may be more appropriate.</li>
+</ul>
+<p><strong>Post-attribute bias</strong> occurs when we control for variables that may be affected by the attribute we’re studying (aka post-treatment bias, intermediate variable bias, mediating variable bias)</p>
+</section>
+<section id="example-2-use-of-regional-anesthesia" class="slide level2">
+<h2>Example 2: Use of Regional Anesthesia</h2>
+<ul>
+<li><strong>Research Question:</strong> Does insurance type influence whether a patient receives regional anesthesia (e.g., a nerve block) for shoulder surgery, which can reduce postoperative pain and opioid use?</li>
+<li><strong>Outcome</strong>: Receipt of nerve block (Yes/No, a binary outcome).</li>
+<li><strong>Attribute of Interest:</strong> Insurance type (e.g., Private vs.&nbsp;Medicaid).</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><em>Bivariate Regression Model:</em></strong></p>
+<p><code>glm(nerve_block ~ insurance_type, family = "binomial", data = ortho_data)</code></p>
+<p><strong>Interpretation:</strong> “On average, are patients with Medicaid less likely to receive a nerve block than patients with private insurance?”</p>
+</div><div class="column" style="width:50%;">
+<p><strong><em>Multiple Regression Model:</em></strong></p>
+<p><code>glm(nerve_block ~ insurance_type + patient_asa_score + hospital_type, family = "binomial", data = ortho_data)</code></p>
+<p><strong>Interpretation:</strong> “Controlling for patient health status (ASA score) and the type of hospital (e.g., teaching vs.&nbsp;non-teaching), are Medicaid patients still less likely to receive a nerve block?”</p>
+</div></div>
+</section>
+<section id="discussion-omitted-variable-bias" class="slide level2">
+<h2>Discussion: Omitted Variable Bias</h2>
+<ul>
+<li>Failing to control for patient health status (a key confounder) could lead to incorrect conclusions if, for instance, Medicaid patients in your sample have more comorbidities that contraindicate a nerve block.</li>
+<li>Insurance is associated with ASA score</li>
+<li>Hospital type may also be related to use of nerve block or insurance type rates</li>
+<li>The full model provides a more complete picture.</li>
+</ul>
+</section>
+<section id="example-3-30-day-hospital-readmission" class="slide level2">
+<h2>Example 3: 30-Day Hospital Readmission</h2>
+<ul>
+<li><strong>Research Question:</strong> Are patients with Limited English Proficiency (LEP) at higher risk for readmission after major abdominal surgery?</li>
+<li><strong>Outcome</strong>: Readmitted within 30 days (Yes/No).</li>
+<li><strong>Attribute of Interest:</strong> LEP status (e.g., needs interpreter vs.&nbsp;English proficient).</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><em>Bivariate Regression Model:</em></strong></p>
+<p><code>glm(readmitted ~ lep_status, family = "binomial", data = surgery_discharge_data)</code></p>
+<p><strong>Interpretation:</strong> “Do patients with LEP have a higher 30-day readmission rate?”</p>
+</div><div class="column" style="width:50%;">
+<p><strong><em>Multiple Regression Model:</em></strong></p>
+<p><code>glm(readmitted ~ lep_status + surgical_complexity + length_of_stay, family = "binomial", data = surgery_discharge_data)</code></p>
+<p><strong>Interpretation:</strong> “After accounting for how sick the patient was (surgical complexity, length of stay), does LEP status remain a predictor of readmission?”</p>
+</div></div>
+</section>
+<section id="discussion-disparities" class="slide level2">
+<h2>Discussion: Disparities</h2>
+<ul>
+<li>This highlights the difference between asking “are there disparities?” (bivariate) versus “what are the mechanisms?” (multivariable). The first question is often the most important for identifying a problem that needs fixing.</li>
+<li>The disparity in readmission may be caused by inadequate discharge communication, which is part of the mechanism of inequity for LEP patients.</li>
+</ul>
+</section>
+<section id="using-regression-to-detect-discrimination" class="slide level2">
+<h2>Using Regression to Detect Discrimination</h2>
+<ul>
+<li>Cannot definitively prove discrimination</li>
+<li>Cannot definitively prove lack of discrimination</li>
+<li>Unmeasured variables may explain disparities</li>
+<li>Need robust research design for causal claims</li>
+</ul>
+</section>
+<section id="best-practices-for-reporting" class="slide level2">
+<h2>Best Practices for Reporting</h2>
+<ul>
+<li>Sex and Gender Equity in Research (SAGER) Guidelines <a name="cite-heidari2016sex" href=""></a><a href="#/bib-heidari2016sex">Heidari, Babor, De Castro, Tort, and Curno (2016)</a></li>
+<li>Race, ethnicity guidelines often journal or study design specific <a name="cite-flanagin2021updated" href=""></a><a href="#/bib-flanagin2021updated">Flanagin, Frey, Christiansen, of Style Committee, and others (2021)</a></li>
+</ul>
+<h3 id="updated-guidelines">Updated Guidelines</h3>
+<ul>
+<li><a href="https://methods.cochrane.org/equity/projects/strobe-equity">STROBE-Equity Statement (2023)</a></li>
+<li><a href="https://www.equator-network.org/reporting-guidelines/consort-equity/">CONSORT-Equity Guidelines (2017)</a></li>
+<li><a href="https://www.prisma-statement.org/equity">PRISMA-Equity Extension (2012)</a></li>
+</ul>
+</section>
+<section id="perspective" class="slide level2">
+<h2>Perspective</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="img/do_no_harm_addtional.png" alt="Urban Institute's Do No Harm Guide Cover"></p>
+</div><div class="column" style="width:50%;">
+<blockquote>
+<p>Data and data projects can only be made more equitable if work teams are diverse, reflect a variety of experiences, and trained to foreground empathy and equity in their work.</p>
+</blockquote>
+<p><a href="https://www.urban.org/research/publication/do-no-harm-guide-additional-perspectives-data-equity">Urban Institute’s Do No Harm Guide: Additional Perspectives on Data Equity</a></p>
+</div></div>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<p><a name="bib-braveman2023social" href=""></a><a href="#/cite-braveman2023social">Braveman, P.</a> (2023). <em>The social determinants of health and health disparities</em>. Oxford University Press.</p>
+<p><a name="bib-flanagin2021updated" href=""></a><a href="#/cite-flanagin2021updated">Flanagin, A., T. Frey, S. L. Christiansen, et al.</a> (2021). “Updated guidance on the reporting of race and ethnicity in medical and science journals”. In: <em>Jama</em> 326.7, pp.&nbsp;621-627.</p>
+<p><a name="bib-heidari2016sex" href=""></a><a href="#/cite-heidari2016sex">Heidari, S., T. F. Babor, P. De Castro, et al.</a> (2016). “Sex and gender equity in research: rationale for the SAGER guidelines and recommended use”. In: <em>Research integrity and peer review</em> 1, pp.&nbsp;1-9.</p>
+<p><a name="bib-katz2006tuskegee" href=""></a><a href="#/cite-katz2006tuskegee">Katz, R. V., S. S. Kegeles, N. R. Kressin, et al.</a> (2006). “The Tuskegee Legacy Project: willingness of minorities to participate in biomedical research”. In: <em>Journal of health care for the poor and underserved</em> 17.4, pp.&nbsp;698-715.</p>
+<p><a name="bib-marino2023disaggregating" href=""></a><a href="#/cite-marino2023disaggregating">Marino, M., K. Fankhauser, J. Minnier, et al.</a> (2023). “Disaggregating Latino nativity in equity research using electronic health records”. In: <em>Health Services Research</em> 58.5, pp.&nbsp;1119-1130.</p>
+<p><a name="bib-retzer2023toolkit" href=""></a><a href="#/cite-retzer2023toolkit">Retzer, A., B. Ciytak, F. Khatsuria, et al.</a> (2023). “A toolkit for capturing a representative and equitable sample in health research”. In: <em>Nature Medicine</em> 29.12, pp.&nbsp;3259-3267.</p>
+<p><a name="bib-swilley2023we" href=""></a><a href="#/cite-swilley2023we">Swilley-Martinez, M. E., S. A. Coles, V. E. Miller, et al.</a> (2023). ““We adjusted for race”: now what? A systematic review of utilization and reporting of race in American Journal of Epidemiology and Epidemiology, 2020-2021”. In: <em>Epidemiologic reviews</em> 45.1, pp.&nbsp;15-31.</p>
+<p><a name="bib-venkateswaran2023bringing" href=""></a><a href="#/cite-venkateswaran2023bringing">Venkateswaran, N., J. Feldman, S. Hawkins, et al.</a> (2023). “Bringing an equity-centered framework to research: Transforming the researcher, research content, and practice of research”.</p>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank you!</h2>
+<h3 id="contact-info">Contact info:</h3>
+<ul>
+<li>Jessica Minnier: <em>minnier@ohsu.edu</em></li>
+</ul>
+<h3 id="this-talk-info">This talk info:</h3>
+<ul>
+<li>Code for these slides are on github, with links to other talks and course materials: <a href="https://github.com/jminnier/talks_etc">jminnier/talks_etc</a></li>
+</ul>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 825,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

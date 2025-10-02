@@ -1,0 +1,431 @@
+---
+title: "Beyond 'Adjusting for Race': Data Equity in Clinical Research"
+subtitle: "APOM Grand Rounds"
+author: "Jessica Minnier, PhD<br><span style = 'font-size: 80%;'>Associate Professor of Biostatistics<br>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span><br><br>[bit.ly/hip_data_eq](https://bit.ly/apom_data_eq)"
+date: "October 6, 2025"
+format: 
+  revealjs:
+      incremental: false
+      scrollable: true
+      chalkboard: true
+      theme: [css/sky_modified_smaller_font.scss]
+      width:  1200 #1100 #default 1050
+      height: 825 #825  #default 700
+      slide-number: true
+      html-math-method: mathjax
+      #footer: '[bit.ly/repro_ds_2024](https://bit.ly/repro_ds_2024)'
+  # html:
+  #   link-external-newwindow: true
+  #   toc: true
+execute:
+  echo: false
+  freeze: auto  # re-render only when source changes
+# editor: visual
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+#| label: "setup" 
+#| include: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(RefManageR)
+BibOptions(check.entries = FALSE,
+           bib.style = "authoryear",
+           cite.style = "alphabetic",
+           style = "markdown",
+           hyperlink = TRUE,
+           dashed = FALSE)
+myBib <- ReadBib(here::here("2025_10_DataEquityAPOM_GR","minnier_bibliography.bib"), check = FALSE)
+```
+
+## Learning Objectives
+
+-   Define data equity and its importance in statistical analysis
+-   Understand key considerations when including sex and race in multivariable models
+-   Examine best practices for incorporating sex as a biological variable (SABV)
+-   Explore the complexities of race and ethnicity in research through examples
+-   Discuss the role of social determinants of health (SDOH) in research
+
+At the conclusion of this activity, participants will be able to:
+
+-   Describe key concepts of data equity
+-   Describe common sources of bias in clinical research
+-   Identify appropriate biostatistical strategies to evaluate and address data inequities
+
+# What is Data Equity?
+
+[![UMD Library Guide](img/legos_umd_lib.png){fig-alt="Pieces of yellow lego does not equal diverse lego people"}](https://lib.guides.umd.edu/ResearchEquity/DataEquity)
+
+## What is Data Equity?
+
+-   The consideration of issues of power, bias, and discrimination in how data is collected, analyzed, interpreted, and used
+
+-   Ensuring research benefits all populations equitably, especially those historically marginalized or underrepresented
+
+-   Recognition that data is not neutral - it reflects existing social structures and biases
+
+-   Allow community and patient participation in the research process, ensure trust and accessibility, with the goal of data sovereignty
+
+-   Ultimately, data equity seeks to achieve just, unbiased, and actionable insights that enhance care quality and reduce disparities across diverse patient populations
+
+::: {style="font-size: 70%;"}
+References:
+
+-   [Community Commons "An Introduction to Data Equity"](https://www.communitycommons.org/collections/An-Introduction-to-Data-Equity)
+-   [CDC Foundation "Data Equity Principles"](https://www.cdcfoundation.org/HealthEquity/data-equity-principles)
+-   [UMD Library Guide: Research Equity, Data Equity](https://lib.guides.umd.edu/ResearchEquity/DataEquity)
+-   [Data.org](https://data.org/resources/what-is-data-equity-and-why-does-it-matter/)
+:::
+
+## Data Equity Principles
+
+[![CDC Foundation Data Equity Principles](img/cdc-foundation-data-equity-principles-life-cycle.png){fig-alt="CDC Foundation Data Equity Principles"}](https://www.cdcfoundation.org/data-equity-principles?inline)
+
+# Equity-minded Research
+
+-   Recognize and define systemic factors
+-   Inclusive data collection
+-   [Representative sampling](https://www.nature.com/articles/s41591-023-02665-1)
+-   Contextual analysis
+    -   Researchers must understand and reflect on their own biases and assumptions, as well as identity and experiences relative to others ([positionality](https://www.urban.org/research/publication/exploring-individual-and-institutional-positionality))
+-   Equitable interpretation
+-   Responsible reporting
+
+::: {style="font-size: 70%;"}
+References:
+
+-   `r Cite(key="venkateswaran2023bringing", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+-   `r Cite(key="retzer2023toolkit", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+:::
+
+## Example:
+
+### Unrepresentative or skewed sampling can impact patient safety and outcome prediction
+
+-   A clinical risk assessment tool can misclassify risk for underrepresented groups
+-   Rates of adverse events can be over- or under-estimated in certain groups
+
+## Common Data Equity Challenges
+
+-   Selection bias in sampling
+
+    -   Ex: research in large academic medical centers may exclude rural populations or those with limited access to care
+
+-   Missing or incomplete data for certain populations
+
+    -   Ex: language barriers may lead to incomplete data
+
+-   Inappropriate aggregation of diverse groups
+
+    -   Ex: collapsing Asian American subgroups can mask disparities, [Haelle 2022, Association of Health Care Journalists](https://healthjournalism.org/blog/2022/08/how-improper-aggregation-of-racial-ethnic-groups-in-research-can-mask-health-disparities/)
+    -   Ex: prevalence of asthma varies across US-born vs non-US-born Latinos `r Cite(key="marino2023disaggregating", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+
+## Common Data Equity Challenges
+
+-   Lack of contextual variables
+
+    -   Ex: a study on asthma prevalence may fail to account for air quality or housing conditions, focusing on individual-level factors but missing community-level determinants of health
+
+-   Limited access to data collection resources
+
+    -   Ex: rural areas often lack infrastructure for comprehensive health data collection, resulting in urban-centric health policies
+    -   Ex: limited availability of trained medical interpreters for patients who speak less common languages, resulting in incomplete information for these populations
+
+## Common Data Equity Challenges
+
+-   Historical unethical studies and misuse of demographic data
+
+    -   Many examples of unethical and harmful medical research on African Americans, leading to mistrust of medical research in the Black communities, leading to underpresentation in studies
+    -   Tuskegee syphilis study is just one example `r Cite(key = "katz2006tuskegee", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+
+# Sex and Gender Considerations
+
+![NIH Sex and Gender](img/nih_sex_gender.png)
+
+[NIH Sex and Gender](https://orwh.od.nih.gov/sex-gender)
+
+## Sex and Gender in Statistical Models
+
+### Best Practices
+
+-   Distinguish between sex and gender variables
+-   Consider both biological and social factors
+-   Avoid binary assumptions
+-   Document missing data patterns
+
+### Common Pitfalls
+
+-   Conflating sex and gender
+-   Systemic lack of female representation (as well as omissions of transgender and intersex populations or persons with variations in sex characteristics)
+-   Assuming homogeneity within groups
+-   Overlooking interaction effects
+-   Missing intersectional perspectives
+
+## Sex as a Biological Variable (SABV)
+
+### Key Considerations
+
+-   Hormonal influences
+-   Genetic differences
+-   Physiological variations
+-   Life-cycle changes
+
+### Implementation Strategies
+
+-   Include adequate sample sizes for all sexes
+-   Test for sex-specific effects
+-   Report sex-disaggregated results
+-   Consider sex-based biological mechanisms
+
+[National Institutes of Health (NIH) SABV Policy (2016)](https://orwh.od.nih.gov/sex-gender/orwh-mission-area-sex-gender-in-research/nih-policy-on-sex-as-biological-variable)
+
+## Sex as a Biological Variable (SABV)
+
+![NIH 4 Cs of Studying SABV](img/nih_sabv.png){fig-alt="NIH 4 Cs of Studying SABV"}
+
+# Race and Ethnicity in Research
+
+> Race is a social construct, commonly used in epidemiologic research to adjust for confounding. However, adjustment of race may mask racial disparities, thereby perpetuating structural racism.
+
+"We adjusted for race": now what? A systematic review... `r Cite(key = "swilley2023we", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+
+## Race and Ethnicity: Critical Considerations
+
+-   Race is a social construct, not biological
+-   Substantial within-group variation
+-   Historical context of racial categories
+-   Context of discriminatory, sociocultural, or biological effects associated with race or SDOH variable used
+-   Intersectionality with other variables
+
+## Race and Ethnicity: Recommendations
+
+-   Use clearly defined categories, standard and not collapsed categories when possible
+    -   Avoid collapsing categories of race with disparate health outcomes
+    -   Avoid label "other", use descriptive terms for collapsed categories
+    -   Include ethnicity and ancestry information
+-   Clearly document data collection and classification methods
+-   If using race as a confounder, covariate, or adjustment variable, examine effect modification
+-   Acknowledge limitations
+
+[Urban Institute: Using Race and Ethnicity Data to Advance Health Equity](https://www.urban.org/research/publication/using-race-and-ethnicity-data-advance-health-equity)
+
+`r Cite(key = "swilley2023we", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+
+# Social Determinants of Health
+
+![](img/Healthy%20People%202030%20SDOH%20Graphic%20Domain%20Labels.png)
+
+[US Dept of Health & Human Services: Healthy People 2030](https://odphp.health.gov/healthypeople/priority-areas/social-determinants-health)
+
+## Social Determinants of Health (SDOH)
+
+### Design considerations
+
+-   Equitable sampling
+-   Missing data issues
+-   Granular data collection
+-   Standardization of variable definitions
+
+### Integration Strategies
+
+-   Including SDOH variables in models can be complex
+-   Consider mediating effects or effect modification
+-   Document contextual factors
+-   Consider correlation/collinearity
+-   Address missing data
+
+`r Cite(key = "braveman2023social", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+
+# Statistical Analysis Considerations
+
+We adjusted for ....
+
+## Statistical Analysis, Adjustment
+
+What does controlling for race (or sex, or gender, or SDOH) mean?
+
+-   Adjustment, matching, stratification, etc. estimates effects over all strata to present an overall effect between exposure and outcome
+
+-   When adjusting for the social construct of race, the adjusted effect estimate can be interpreted as the exposure-outcome relationship if racism did not affect the exposure
+
+-   Pooled effects are weighted toward the larger group
+
+-   Effect measure modification allows for different effects within groups (race, gender, sex, etc)
+
+`r Cite(key = "swilley2023we", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+
+## Statistical Analysis Considerations
+
+### Model Development
+
+-   Variable selection and coding
+-   Interaction testing
+-   Missing data patterns
+-   Model assumptions
+
+### Interpretation
+
+-   Effect modification
+-   Confounding
+-   Mediation
+-   Population-specific effects
+
+## Modeling Decisions
+
+-   **Bivariate Model**: Use when asking "Does a demographic group receive access at different rates?"
+-   **Multiple Regression**: Use when asking "Do similarly situated individuals access benefits at the same rate?"
+
+# Modeling Examples
+
+## Example 1: Postoperative Opioid Prescribing
+
+-   **Research Question:** Are there racial disparities in the amount of opioids prescribed to patients at discharge after a total knee arthroplasty?
+-   **Outcome (Y):** Total morphine milligram equivalents (MME) prescribed.
+-   **Attribute of Interest (X):** Patient race (e.g., Black vs. White).
+
+::::: columns
+::: {.column width="50%"}
+***Bivariate Regression Model:***
+
+
+`lm(MME ~ patient_race, data = surgical_data)`
+
+**Interpretation:** "On average, do Black patients receive different MME prescriptions at discharge compared to White patients?"
+:::
+
+::: {.column width="50%"}
+
+***Multiple Regression Model:***
+
+`lm(MME ~ patient_race + preoperative_pain_score + procedure_time, data = surgical_data)`
+
+**Interpretation:** "Among patients with similar pre-op pain and procedure times, is there still a difference in MME prescriptions between Black and White patients?"
+:::
+:::::
+
+## Discussion: Post-attribute Bias
+
+Be cautious controlling for in-hospital patient-reported pain. 
+
+- If provider bias (related to race) leads to under-treatment of pain, the Black patient might report higher pain scores. 
+- Controlling for this pain score could incorrectly make a lower MME prescription seem medically justified, thereby masking the original bias. 
+- The bivariate model may be more appropriate.
+
+**Post-attribute bias** occurs when we control for variables that may be affected by the attribute we’re studying (aka post-treatment bias, intermediate variable bias, mediating variable bias)
+
+## Example 2: Use of Regional Anesthesia
+
+- **Research Question:** Does insurance type influence whether a patient receives regional anesthesia (e.g., a nerve block) for shoulder surgery, which can reduce postoperative pain and opioid use?
+- **Outcome**: Receipt of nerve block (Yes/No, a binary outcome).
+- **Attribute of Interest:** Insurance type (e.g., Private vs. Medicaid).
+
+::::: columns
+::: {.column width="50%"}
+***Bivariate Regression Model:***
+
+
+`glm(nerve_block ~ insurance_type, family = "binomial", data = ortho_data)`
+
+**Interpretation:** "On average, are patients with Medicaid less likely to receive a nerve block than patients with private insurance?"
+:::
+
+::: {.column width="50%"}
+
+***Multiple Regression Model:***
+
+`glm(nerve_block ~ insurance_type + patient_asa_score + hospital_type, family = "binomial", data = ortho_data)`
+
+**Interpretation:** "Controlling for patient health status (ASA score) and the type of hospital (e.g., teaching vs. non-teaching), are Medicaid patients still less likely to receive a nerve block?"
+:::
+:::::
+
+## Discussion: Omitted Variable Bias
+
+- Failing to control for patient health status (a key confounder) could lead to incorrect conclusions if, for instance, Medicaid patients in your sample have more comorbidities that contraindicate a nerve block.
+- Insurance is associated with ASA score
+- Hospital type may also be related to use of nerve block or insurance type rates
+- The full model provides a more complete picture.
+
+## Example 3: 30-Day Hospital Readmission
+
+- **Research Question:** Are patients with Limited English Proficiency (LEP) at higher risk for readmission after major abdominal surgery?
+- **Outcome**: Readmitted within 30 days (Yes/No).
+- **Attribute of Interest:** LEP status (e.g., needs interpreter vs. English proficient).
+
+::::: columns
+::: {.column width="50%"}
+***Bivariate Regression Model:***
+
+
+`glm(readmitted ~ lep_status, family = "binomial", data = surgery_discharge_data)`
+
+**Interpretation:** "Do patients with LEP have a higher 30-day readmission rate?"
+:::
+
+::: {.column width="50%"}
+
+***Multiple Regression Model:***
+
+`glm(readmitted ~ lep_status + surgical_complexity + length_of_stay, family = "binomial", data = surgery_discharge_data)`
+
+**Interpretation:** "After accounting for how sick the patient was (surgical complexity, length of stay), does LEP status remain a predictor of readmission?"
+:::
+:::::
+
+## Discussion: Disparities
+
+- This highlights the difference between asking "are there disparities?" (bivariate) versus "what are the mechanisms?" (multivariable). The first question is often the most important for identifying a problem that needs fixing. 
+- The disparity in readmission may be caused by inadequate discharge communication, which is part of the mechanism of inequity for LEP patients.
+
+## Using Regression to Detect Discrimination
+
+-   Cannot definitively prove discrimination
+-   Cannot definitively prove lack of discrimination
+-   Unmeasured variables may explain disparities
+-   Need robust research design for causal claims
+
+## Best Practices for Reporting
+
+-   Sex and Gender Equity in Research (SAGER) Guidelines `r Cite(key = "heidari2016sex", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+-   Race, ethnicity guidelines often journal or study design specific `r Cite(key = "flanagin2021updated", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+
+### Updated Guidelines
+
+-   [STROBE-Equity Statement (2023)](https://methods.cochrane.org/equity/projects/strobe-equity)
+-   [CONSORT-Equity Guidelines (2017)](https://www.equator-network.org/reporting-guidelines/consort-equity/)
+-   [PRISMA-Equity Extension (2012)](https://www.prisma-statement.org/equity)
+
+## Perspective
+
+::::: columns
+::: {.column width="50%"}
+![](img/do_no_harm_addtional.png){fig-alt="Urban Institute's Do No Harm Guide Cover"}
+:::
+
+::: {.column width="50%"}
+> Data and data projects can only be made more equitable if work teams are diverse, reflect a variety of experiences, and trained to foreground empathy and equity in their work.
+
+[Urban Institute's Do No Harm Guide: Additional Perspectives on Data Equity](https://www.urban.org/research/publication/do-no-harm-guide-additional-perspectives-data-equity)
+:::
+:::::
+
+## References
+
+```{r}
+#| results: "asis"
+PrintBibliography(myBib)
+```
+
+## Thank you!
+
+### Contact info:
+
+-   Jessica Minnier: *minnier\@ohsu.edu*
+
+### This talk info:
+
+-   Code for these slides are on github, with links to other talks and course materials: [jminnier/talks_etc](https://github.com/jminnier/talks_etc)
