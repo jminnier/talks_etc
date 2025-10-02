@@ -102,38 +102,47 @@ References:
 -   `r Cite(key="retzer2023toolkit", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
 :::
 
-## Example:
+## Example: Sampling
 
 ### Unrepresentative or skewed sampling can impact patient safety and outcome prediction
 
--   A clinical risk assessment tool can misclassify risk for underrepresented groups
+-   A clinical risk assessment tool trained on a homogeneous population can mis-classify risk for underrepresented groups
 -   Rates of adverse events can be over- or under-estimated in certain groups
+
+![](img/auc_ex_fig.png){fig-align="center"}
 
 ## Common Data Equity Challenges
 
+::::: columns
+::: {.column width="50%"}
 -   Selection bias in sampling
-
-    -   Ex: research in large academic medical centers may exclude rural populations or those with limited access to care
+    - Ex: research in large academic medical centers may exclude rural populations or those with limited access to care
 
 -   Missing or incomplete data for certain populations
+    - Ex: language barriers may lead to incomplete data
 
-    -   Ex: language barriers may lead to incomplete data
+
+:::
+
+::: {.column width="50%"}
+![](img/urban_rural.png)
+:::
+:::::
+
+-   Limited access to data collection resources
+    - Ex: rural areas often lack infrastructure for comprehensive health data collection, resulting in urban-centric health policies
+    - Ex: limited availability of trained medical interpreters for patients who speak less common languages, resulting in incomplete information for these populations
+    
+## Common Data Equity Challenges
 
 -   Inappropriate aggregation of diverse groups
 
     -   Ex: collapsing Asian American subgroups can mask disparities, [Haelle 2022, Association of Health Care Journalists](https://healthjournalism.org/blog/2022/08/how-improper-aggregation-of-racial-ethnic-groups-in-research-can-mask-health-disparities/)
     -   Ex: prevalence of asthma varies across US-born vs non-US-born Latinos `r Cite(key="marino2023disaggregating", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
 
-## Common Data Equity Challenges
-
 -   Lack of contextual variables
 
     -   Ex: a study on asthma prevalence may fail to account for air quality or housing conditions, focusing on individual-level factors but missing community-level determinants of health
-
--   Limited access to data collection resources
-
-    -   Ex: rural areas often lack infrastructure for comprehensive health data collection, resulting in urban-centric health policies
-    -   Ex: limited availability of trained medical interpreters for patients who speak less common languages, resulting in incomplete information for these populations
 
 ## Common Data Equity Challenges
 
@@ -291,14 +300,12 @@ What does controlling for race (or sex, or gender, or SDOH) mean?
 ::: {.column width="50%"}
 ***Bivariate Regression Model:***
 
-
 `lm(MME ~ patient_race, data = surgical_data)`
 
 **Interpretation:** "On average, do Black patients receive different MME prescriptions at discharge compared to White patients?"
 :::
 
 ::: {.column width="50%"}
-
 ***Multiple Regression Model:***
 
 `lm(MME ~ patient_race + preoperative_pain_score + procedure_time, data = surgical_data)`
@@ -309,24 +316,23 @@ What does controlling for race (or sex, or gender, or SDOH) mean?
 
 ## Discussion: Post-attribute Bias
 
-Be cautious controlling for in-hospital patient-reported pain. 
+Be cautious controlling for in-hospital patient-reported pain.
 
-- If provider bias (related to race) leads to under-treatment of pain, the Black patient might report higher pain scores. 
-- Controlling for this pain score could incorrectly make a lower MME prescription seem medically justified, thereby masking the original bias. 
-- The bivariate model may be more appropriate.
+-   If provider bias (related to race) leads to under-treatment of pain, the Black patient might report higher pain scores.
+-   Controlling for this pain score could incorrectly make a lower MME prescription seem medically justified, thereby masking the original bias.
+-   The bivariate model may be more appropriate.
 
 **Post-attribute bias** occurs when we control for variables that may be affected by the attribute we’re studying (aka post-treatment bias, intermediate variable bias, mediating variable bias)
 
 ## Example 2: Use of Regional Anesthesia
 
-- **Research Question:** Does insurance type influence whether a patient receives regional anesthesia (e.g., a nerve block) for shoulder surgery, which can reduce postoperative pain and opioid use?
-- **Outcome**: Receipt of nerve block (Yes/No, a binary outcome).
-- **Attribute of Interest:** Insurance type (e.g., Private vs. Medicaid).
+-   **Research Question:** Does insurance type influence whether a patient receives regional anesthesia (e.g., a nerve block) for shoulder surgery, which can reduce postoperative pain and opioid use?
+-   **Outcome**: Receipt of nerve block (Yes/No, a binary outcome).
+-   **Attribute of Interest:** Insurance type (e.g., Private vs. Medicaid).
 
 ::::: columns
 ::: {.column width="50%"}
 ***Bivariate Regression Model:***
-
 
 `glm(nerve_block ~ insurance_type, family = "binomial", data = ortho_data)`
 
@@ -334,7 +340,6 @@ Be cautious controlling for in-hospital patient-reported pain.
 :::
 
 ::: {.column width="50%"}
-
 ***Multiple Regression Model:***
 
 `glm(nerve_block ~ insurance_type + patient_asa_score + hospital_type, family = "binomial", data = ortho_data)`
@@ -345,21 +350,20 @@ Be cautious controlling for in-hospital patient-reported pain.
 
 ## Discussion: Omitted Variable Bias
 
-- Failing to control for patient health status (a key confounder) could lead to incorrect conclusions if, for instance, Medicaid patients in your sample have more comorbidities that contraindicate a nerve block.
-- Insurance is associated with ASA score
-- Hospital type may also be related to use of nerve block or insurance type rates
-- The full model provides a more complete picture.
+-   Failing to control for patient health status (a key confounder) could lead to incorrect conclusions if, for instance, Medicaid patients in your sample have more comorbidities that contraindicate a nerve block.
+-   Insurance is associated with ASA score
+-   Hospital type may also be related to use of nerve block or insurance type rates
+-   The full model provides a more complete picture.
 
 ## Example 3: 30-Day Hospital Readmission
 
-- **Research Question:** Are patients with Limited English Proficiency (LEP) at higher risk for readmission after major abdominal surgery?
-- **Outcome**: Readmitted within 30 days (Yes/No).
-- **Attribute of Interest:** LEP status (e.g., needs interpreter vs. English proficient).
+-   **Research Question:** Are patients with Limited English Proficiency (LEP) at higher risk for readmission after major abdominal surgery?
+-   **Outcome**: Readmitted within 30 days (Yes/No).
+-   **Attribute of Interest:** LEP status (e.g., needs interpreter vs. English proficient).
 
 ::::: columns
 ::: {.column width="50%"}
 ***Bivariate Regression Model:***
-
 
 `glm(readmitted ~ lep_status, family = "binomial", data = surgery_discharge_data)`
 
@@ -367,7 +371,6 @@ Be cautious controlling for in-hospital patient-reported pain.
 :::
 
 ::: {.column width="50%"}
-
 ***Multiple Regression Model:***
 
 `glm(readmitted ~ lep_status + surgical_complexity + length_of_stay, family = "binomial", data = surgery_discharge_data)`
@@ -378,8 +381,8 @@ Be cautious controlling for in-hospital patient-reported pain.
 
 ## Discussion: Disparities
 
-- This highlights the difference between asking "are there disparities?" (bivariate) versus "what are the mechanisms?" (multivariable). The first question is often the most important for identifying a problem that needs fixing. 
-- The disparity in readmission may be caused by inadequate discharge communication, which is part of the mechanism of inequity for LEP patients.
+-   This highlights the difference between asking "are there disparities?" (bivariate) versus "what are the mechanisms?" (multivariable). The first question is often the most important for identifying a problem that needs fixing.
+-   The disparity in readmission may be caused by inadequate discharge communication, which is part of the mechanism of inequity for LEP patients.
 
 ## Using Regression to Detect Discrimination
 
