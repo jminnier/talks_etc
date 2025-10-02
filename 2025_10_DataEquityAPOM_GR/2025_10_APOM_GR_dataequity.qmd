@@ -1,7 +1,7 @@
 ---
 title: "Beyond 'Adjusting for Race': Data Equity in Clinical Research"
 subtitle: "APOM Grand Rounds"
-author: "Jessica Minnier, PhD<br><span style = 'font-size: 80%;'>Associate Professor of Biostatistics<br>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span><br><br>[bit.ly/hip_data_eq](https://bit.ly/apom_data_eq)"
+author: "Jessica Minnier, PhD<br><span style = 'font-size: 80%;'>Associate Professor of Biostatistics<br>OHSU-PSU School of Public Health<br>Knight Cancer Institute Biostatistics Shared Resource<br>Oregon Health & Science University</span><br><br>[bit.ly/apom_data_eq](https://bit.ly/apom_data_eq)"
 date: "October 6, 2025"
 format: 
   revealjs:
