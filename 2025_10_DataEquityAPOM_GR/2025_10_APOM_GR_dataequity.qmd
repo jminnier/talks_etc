@@ -10,9 +10,10 @@ format:
       chalkboard: true
       theme: [css/sky_modified_smaller_font.scss]
       width:  1200 #1100 #default 1050
-      height: 825 #825  #default 700
+      height: 850 #825  #default 700
       slide-number: true
       html-math-method: mathjax
+      #logo: img/ohsu_logo.jpg
       #footer: '[bit.ly/repro_ds_2024](https://bit.ly/repro_ds_2024)'
   # html:
   #   link-external-newwindow: true
@@ -44,24 +45,32 @@ myBib <- ReadBib(here::here("2025_10_DataEquityAPOM_GR","minnier_bibliography.bi
 
 ## Learning Objectives
 
+::: {.fragment}
 -   Define data equity and its importance in statistical analysis
 -   Understand key considerations when including sex and race in multivariable models
 -   Examine best practices for incorporating sex as a biological variable (SABV)
 -   Explore the complexities of race and ethnicity in research through examples
--   Discuss the role of social determinants of health (SDOH) in research
+-   Discuss the role of social determinants of health (SDOH) in research]
+:::
+
+::: {.fragment}
 
 At the conclusion of this activity, participants will be able to:
 
 -   Describe key concepts of data equity
 -   Describe common sources of bias in clinical research
 -   Identify appropriate biostatistical strategies to evaluate and address data inequities
+:::
 
 # What is Data Equity?
 
+::: {.fragment}
 [![UMD Library Guide](img/legos_umd_lib.png){fig-alt="Pieces of yellow lego does not equal diverse lego people"}](https://lib.guides.umd.edu/ResearchEquity/DataEquity)
+:::
 
 ## What is Data Equity?
 
+::: {.incremental .highlight-last}
 -   The consideration of issues of power, bias, and discrimination in how data is collected, analyzed, interpreted, and used
 
 -   Ensuring research benefits all populations equitably, especially those historically marginalized or underrepresented
@@ -71,6 +80,7 @@ At the conclusion of this activity, participants will be able to:
 -   Allow community and patient participation in the research process, ensure trust and accessibility, with the goal of data sovereignty
 
 -   Ultimately, data equity seeks to achieve just, unbiased, and actionable insights that enhance care quality and reduce disparities across diverse patient populations
+:::
 
 ::: {style="font-size: 70%;"}
 References:
@@ -85,8 +95,14 @@ References:
 
 [![CDC Foundation Data Equity Principles](img/cdc-foundation-data-equity-principles-life-cycle.png){fig-alt="CDC Foundation Data Equity Principles"}](https://www.cdcfoundation.org/data-equity-principles?inline)
 
-# Equity-minded Research
+# What is Equity-minded Research?
 
+![](img/data_pres_team)
+[Lummi.ai](https://www.lummi.ai/illustration/data-presentation-team-x1xh7)
+
+## Equity-minded Research
+
+::: {.incremental .highlight-last}
 -   Recognize and define systemic factors
 -   Inclusive data collection
 -   [Representative sampling](https://www.nature.com/articles/s41591-023-02665-1)
@@ -94,6 +110,7 @@ References:
     -   Researchers must understand and reflect on their own biases and assumptions, as well as identity and experiences relative to others ([positionality](https://www.urban.org/research/publication/exploring-individual-and-institutional-positionality))
 -   Equitable interpretation
 -   Responsible reporting
+:::
 
 ::: {style="font-size: 70%;"}
 References:
@@ -115,12 +132,13 @@ References:
 
 ::::: columns
 ::: {.column width="50%"}
+::: {.incremental .highlight-last}
 -   Selection bias in sampling
     - Ex: research in large academic medical centers may exclude rural populations or those with limited access to care
 
 -   Missing or incomplete data for certain populations
     - Ex: language barriers may lead to incomplete data
-
+:::
 
 :::
 
@@ -129,12 +147,15 @@ References:
 :::
 :::::
 
+::: {.incremental .highlight-last}
 -   Limited access to data collection resources
     - Ex: rural areas often lack infrastructure for comprehensive health data collection, resulting in urban-centric health policies
     - Ex: limited availability of trained medical interpreters for patients who speak less common languages, resulting in incomplete information for these populations
+:::
     
 ## Common Data Equity Challenges
 
+::: {.incremental .highlight-last}
 -   Inappropriate aggregation of diverse groups
 
     -   Ex: collapsing Asian American subgroups can mask disparities, [Haelle 2022, Association of Health Care Journalists](https://healthjournalism.org/blog/2022/08/how-improper-aggregation-of-racial-ethnic-groups-in-research-can-mask-health-disparities/)
@@ -142,14 +163,18 @@ References:
 
 -   Lack of contextual variables
 
+    -   Ex: a study on post-op complications that focuses only on patient-level factors such as age, comorbidities, and procedure type but fails to include hospital-level factors like nurse-to-patient ratios, availability of specialized perioperative care units, etc.
     -   Ex: a study on asthma prevalence may fail to account for air quality or housing conditions, focusing on individual-level factors but missing community-level determinants of health
+:::
 
 ## Common Data Equity Challenges
 
+::: {.incremental .highlight-last}
 -   Historical unethical studies and misuse of demographic data
 
     -   Many examples of unethical and harmful medical research on African Americans, leading to mistrust of medical research in the Black communities, leading to underpresentation in studies
     -   Tuskegee syphilis study is just one example `r Cite(key = "katz2006tuskegee", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+:::
 
 # Sex and Gender Considerations
 
@@ -161,34 +186,46 @@ References:
 
 ### Best Practices
 
+::: {.incremental .highlight-last}
 -   Distinguish between sex and gender variables
 -   Consider both biological and social factors
 -   Avoid binary assumptions
 -   Document missing data patterns
+:::
 
 ### Common Pitfalls
 
+::: {.incremental .highlight-last}
 -   Conflating sex and gender
 -   Systemic lack of female representation (as well as omissions of transgender and intersex populations or persons with variations in sex characteristics)
 -   Assuming homogeneity within groups
 -   Overlooking interaction effects
 -   Missing intersectional perspectives
+:::
 
 ## Sex as a Biological Variable (SABV)
 
+
 ### Key Considerations
 
+::: {.incremental .highlight-last}
 -   Hormonal influences
 -   Genetic differences
 -   Physiological variations
 -   Life-cycle changes
+:::
+
+
 
 ### Implementation Strategies
 
+::: {.incremental .highlight-last}
 -   Include adequate sample sizes for all sexes
 -   Test for sex-specific effects
 -   Report sex-disaggregated results
 -   Consider sex-based biological mechanisms
+:::
+
 
 [National Institutes of Health (NIH) SABV Policy (2016)](https://orwh.od.nih.gov/sex-gender/orwh-mission-area-sex-gender-in-research/nih-policy-on-sex-as-biological-variable)
 
@@ -204,14 +241,17 @@ References:
 
 ## Race and Ethnicity: Critical Considerations
 
+::: {.incremental .highlight-last}
 -   Race is a social construct, not biological
 -   Substantial within-group variation
 -   Historical context of racial categories
 -   Context of discriminatory, sociocultural, or biological effects associated with race or SDOH variable used
 -   Intersectionality with other variables
+:::
 
 ## Race and Ethnicity: Recommendations
 
+::: {.incremental .highlight-last}
 -   Use clearly defined categories, standard and not collapsed categories when possible
     -   Avoid collapsing categories of race with disparate health outcomes
     -   Avoid label "other", use descriptive terms for collapsed categories
@@ -219,35 +259,53 @@ References:
 -   Clearly document data collection and classification methods
 -   If using race as a confounder, covariate, or adjustment variable, examine effect modification
 -   Acknowledge limitations
+:::
 
 [Urban Institute: Using Race and Ethnicity Data to Advance Health Equity](https://www.urban.org/research/publication/using-race-and-ethnicity-data-advance-health-equity)
 
 `r Cite(key = "swilley2023we", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
 
-# Social Determinants of Health
+# Social Determinants of Health  (SDOH)
 
 ![](img/Healthy%20People%202030%20SDOH%20Graphic%20Domain%20Labels.png)
 
 [US Dept of Health & Human Services: Healthy People 2030](https://odphp.health.gov/healthypeople/priority-areas/social-determinants-health)
 
-## Social Determinants of Health (SDOH)
+## Social Determinants of Health
 
-### Design considerations
 
+::::: columns
+::: {.column width="50%"}
+
+### Design and data considerations
+
+::: {.incremental .highlight-last}
 -   Equitable sampling
 -   Missing data issues
 -   Granular data collection
 -   Standardization of variable definitions
+-   Document contextual factors
+:::
 
-### Integration Strategies
+::: {.fragment}
+### Analysis strategies
 
+::: {.incremental .highlight-last}
 -   Including SDOH variables in models can be complex
 -   Consider mediating effects or effect modification
--   Document contextual factors
 -   Consider correlation/collinearity
 -   Address missing data
+:::
 
 `r Cite(key = "braveman2023social", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+:::
+:::
+
+::: {.column width="50%"}
+
+![](img/hillside.png)
+:::
+::::
 
 # Statistical Analysis Considerations
 
@@ -255,8 +313,10 @@ We adjusted for ....
 
 ## Statistical Analysis, Adjustment
 
+
 What does controlling for race (or sex, or gender, or SDOH) mean?
 
+::: {.incremental .highlight-last}
 -   Adjustment, matching, stratification, etc. estimates effects over all strata to present an overall effect between exposure and outcome
 
 -   When adjusting for the social construct of race, the adjusted effect estimate can be interpreted as the exposure-outcome relationship if racism did not affect the exposure
@@ -264,33 +324,67 @@ What does controlling for race (or sex, or gender, or SDOH) mean?
 -   Pooled effects are weighted toward the larger group
 
 -   Effect measure modification allows for different effects within groups (race, gender, sex, etc)
+:::
 
 `r Cite(key = "swilley2023we", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
 
-## Statistical Analysis Considerations
+## Model and Interpretation Considerations
 
+::::: columns
+::: {.column width="50%"}
 ### Model Development
 
+::: {.incremental .highlight-last}
 -   Variable selection and coding
 -   Interaction testing
 -   Missing data patterns
 -   Model assumptions
+:::
+
+::: {.fragment}
 
 ### Interpretation
 
+::: {.incremental .highlight-last}
 -   Effect modification
 -   Confounding
 -   Mediation
 -   Population-specific effects
+:::
+
+:::
+
+:::
+::: {.column width="50%"}
+![](img/team_meet.png)
+
+:::
+::::
 
 ## Modeling Decisions
 
--   **Bivariate Model**: Use when asking "Does a demographic group receive access at different rates?"
--   **Multiple Regression**: Use when asking "Do similarly situated individuals access benefits at the same rate?"
+::: {.fragment}
+
+**Bivariate Model: Y~X**
+
+::: {.incremental .highlight-last}
+- Use when asking "Does a demographic group receive access at different rates?"
+:::
+:::
+
+::: {.fragment}
+
+**Multiple Regression Y~X+Z**
+
+::: {.incremental .highlight-last}
+- Use when asking "Do similarly situated individuals access benefits at the same rate?"
+:::
+:::
 
 # Modeling Examples
 
 ## Example 1: Postoperative Opioid Prescribing
+
 
 -   **Research Question:** Are there racial disparities in the amount of opioids prescribed to patients at discharge after a total knee arthroplasty?
 -   **Outcome (Y):** Total morphine milligram equivalents (MME) prescribed.
@@ -320,9 +414,10 @@ Be cautious controlling for in-hospital patient-reported pain.
 
 -   If provider bias (related to race) leads to under-treatment of pain, the Black patient might report higher pain scores.
 -   Controlling for this pain score could incorrectly make a lower MME prescription seem medically justified, thereby masking the original bias.
--   The bivariate model may be more appropriate.
+-   The bivariate model may be more appropriate. 
+-   In this case the "race" effect could be the effect of systemic racism.
 
-**Post-attribute bias** occurs when we control for variables that may be affected by the attribute we’re studying (aka post-treatment bias, intermediate variable bias, mediating variable bias)
+**Post-attribute bias** occurs when we control for variables that may be affected by the attribute we’re studying (a.k.a. post-treatment bias, intermediate variable bias, mediating variable bias)
 
 ## Example 2: Use of Regional Anesthesia
 
@@ -432,3 +527,4 @@ PrintBibliography(myBib)
 ### This talk info:
 
 -   Code for these slides are on github, with links to other talks and course materials: [jminnier/talks_etc](https://github.com/jminnier/talks_etc)
+-   Uncited art from [lummi.ai](https://www.lummi.ai/s/illustration/)

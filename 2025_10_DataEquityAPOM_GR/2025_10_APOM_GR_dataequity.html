@@ -30,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="2025_10_APOM_GR_dataequity_files/libs/revealjs/dist/theme/quarto-d5756874d1541f06f0eae082cc5cc929.css">
+  <link rel="stylesheet" href="2025_10_APOM_GR_dataequity_files/libs/revealjs/dist/theme/quarto-da45e113b563bc9f111fcd2c1fc225f5.css">
   <link href="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="2025_10_APOM_GR_dataequity_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -146,39 +146,47 @@ Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Bio
 </section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
+<div class="fragment">
 <ul>
 <li>Define data equity and its importance in statistical analysis</li>
 <li>Understand key considerations when including sex and race in multivariable models</li>
 <li>Examine best practices for incorporating sex as a biological variable (SABV)</li>
 <li>Explore the complexities of race and ethnicity in research through examples</li>
-<li>Discuss the role of social determinants of health (SDOH) in research</li>
+<li>Discuss the role of social determinants of health (SDOH) in research]</li>
 </ul>
+</div>
+<div class="fragment">
 <p>At the conclusion of this activity, participants will be able to:</p>
 <ul>
 <li>Describe key concepts of data equity</li>
 <li>Describe common sources of bias in clinical research</li>
 <li>Identify appropriate biostatistical strategies to evaluate and address data inequities</li>
 </ul>
+</div>
 </section>
 <section>
 <section id="what-is-data-equity" class="title-slide slide level1 center">
 <h1>What is Data Equity?</h1>
+<div class="fragment">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="https://lib.guides.umd.edu/ResearchEquity/DataEquity"><img data-src="img/legos_umd_lib.png" alt="Pieces of yellow lego does not equal diverse lego people"></a></p>
 <figcaption>UMD Library Guide</figcaption>
 </figure>
 </div>
+</div>
 </section>
 <section id="what-is-data-equity-1" class="slide level2">
 <h2>What is Data Equity?</h2>
+<div class="highlight-last">
 <ul>
-<li><p>The consideration of issues of power, bias, and discrimination in how data is collected, analyzed, interpreted, and used</p></li>
-<li><p>Ensuring research benefits all populations equitably, especially those historically marginalized or underrepresented</p></li>
-<li><p>Recognition that data is not neutral - it reflects existing social structures and biases</p></li>
-<li><p>Allow community and patient participation in the research process, ensure trust and accessibility, with the goal of data sovereignty</p></li>
-<li><p>Ultimately, data equity seeks to achieve just, unbiased, and actionable insights that enhance care quality and reduce disparities across diverse patient populations</p></li>
+<li class="fragment"><p>The consideration of issues of power, bias, and discrimination in how data is collected, analyzed, interpreted, and used</p></li>
+<li class="fragment"><p>Ensuring research benefits all populations equitably, especially those historically marginalized or underrepresented</p></li>
+<li class="fragment"><p>Recognition that data is not neutral - it reflects existing social structures and biases</p></li>
+<li class="fragment"><p>Allow community and patient participation in the research process, ensure trust and accessibility, with the goal of data sovereignty</p></li>
+<li class="fragment"><p>Ultimately, data equity seeks to achieve just, unbiased, and actionable insights that enhance care quality and reduce disparities across diverse patient populations</p></li>
 </ul>
+</div>
 <div style="font-size: 70%;">
 <p>References:</p>
 <ul>
@@ -199,19 +207,25 @@ Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Bio
 </div>
 </section></section>
 <section>
-<section id="equity-minded-research" class="title-slide slide level1 center">
-<h1>Equity-minded Research</h1>
+<section id="what-is-equity-minded-research" class="title-slide slide level1 center">
+<h1>What is Equity-minded Research?</h1>
+<p><img data-src="img/data_pres_team.png"> <a href="https://www.lummi.ai/illustration/data-presentation-team-x1xh7">Lummi.ai</a></p>
+</section>
+<section id="equity-minded-research" class="slide level2">
+<h2>Equity-minded Research</h2>
+<div class="highlight-last">
 <ul>
-<li>Recognize and define systemic factors</li>
-<li>Inclusive data collection</li>
-<li><a href="https://www.nature.com/articles/s41591-023-02665-1">Representative sampling</a></li>
-<li>Contextual analysis
+<li class="fragment">Recognize and define systemic factors</li>
+<li class="fragment">Inclusive data collection</li>
+<li class="fragment"><a href="https://www.nature.com/articles/s41591-023-02665-1">Representative sampling</a></li>
+<li class="fragment">Contextual analysis
 <ul>
-<li>Researchers must understand and reflect on their own biases and assumptions, as well as identity and experiences relative to others (<a href="https://www.urban.org/research/publication/exploring-individual-and-institutional-positionality">positionality</a>)</li>
+<li class="fragment">Researchers must understand and reflect on their own biases and assumptions, as well as identity and experiences relative to others (<a href="https://www.urban.org/research/publication/exploring-individual-and-institutional-positionality">positionality</a>)</li>
 </ul></li>
-<li>Equitable interpretation</li>
-<li>Responsible reporting</li>
+<li class="fragment">Equitable interpretation</li>
+<li class="fragment">Responsible reporting</li>
 </ul>
+</div>
 <div style="font-size: 70%;">
 <p>References:</p>
 <ul>
@@ -233,50 +247,59 @@ Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Bio
 <h2>Common Data Equity Challenges</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="highlight-last">
 <ul>
-<li>Selection bias in sampling
+<li class="fragment">Selection bias in sampling
 <ul>
-<li>Ex: research in large academic medical centers may exclude rural populations or those with limited access to care</li>
+<li class="fragment">Ex: research in large academic medical centers may exclude rural populations or those with limited access to care</li>
 </ul></li>
-<li>Missing or incomplete data for certain populations
+<li class="fragment">Missing or incomplete data for certain populations
 <ul>
-<li>Ex: language barriers may lead to incomplete data</li>
+<li class="fragment">Ex: language barriers may lead to incomplete data</li>
 </ul></li>
 </ul>
+</div>
 </div><div class="column" style="width:50%;">
 <p><img data-src="img/urban_rural.png"></p>
 </div></div>
+<div class="highlight-last">
 <ul>
-<li>Limited access to data collection resources
+<li class="fragment">Limited access to data collection resources
 <ul>
-<li>Ex: rural areas often lack infrastructure for comprehensive health data collection, resulting in urban-centric health policies</li>
-<li>Ex: limited availability of trained medical interpreters for patients who speak less common languages, resulting in incomplete information for these populations</li>
+<li class="fragment">Ex: rural areas often lack infrastructure for comprehensive health data collection, resulting in urban-centric health policies</li>
+<li class="fragment">Ex: limited availability of trained medical interpreters for patients who speak less common languages, resulting in incomplete information for these populations</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="common-data-equity-challenges-1" class="slide level2">
 <h2>Common Data Equity Challenges</h2>
+<div class="highlight-last">
 <ul>
-<li><p>Inappropriate aggregation of diverse groups</p>
+<li class="fragment"><p>Inappropriate aggregation of diverse groups</p>
 <ul>
-<li>Ex: collapsing Asian American subgroups can mask disparities, <a href="https://healthjournalism.org/blog/2022/08/how-improper-aggregation-of-racial-ethnic-groups-in-research-can-mask-health-disparities/">Haelle 2022, Association of Health Care Journalists</a></li>
-<li>Ex: prevalence of asthma varies across US-born vs non-US-born Latinos <a name="cite-marino2023disaggregating" href=""></a><a href="#/bib-marino2023disaggregating">Marino, Fankhauser, Minnier, Lucas, Giebultowicz, Kaufmann, Hwang, Bailey, Crookes, Bazemore, and others (2023)</a></li>
+<li class="fragment">Ex: collapsing Asian American subgroups can mask disparities, <a href="https://healthjournalism.org/blog/2022/08/how-improper-aggregation-of-racial-ethnic-groups-in-research-can-mask-health-disparities/">Haelle 2022, Association of Health Care Journalists</a></li>
+<li class="fragment">Ex: prevalence of asthma varies across US-born vs non-US-born Latinos <a name="cite-marino2023disaggregating" href=""></a><a href="#/bib-marino2023disaggregating">Marino, Fankhauser, Minnier, Lucas, Giebultowicz, Kaufmann, Hwang, Bailey, Crookes, Bazemore, and others (2023)</a></li>
 </ul></li>
-<li><p>Lack of contextual variables</p>
+<li class="fragment"><p>Lack of contextual variables</p>
 <ul>
-<li>Ex: a study on asthma prevalence may fail to account for air quality or housing conditions, focusing on individual-level factors but missing community-level determinants of health</li>
+<li class="fragment">Ex: a study on post-op complications that focuses only on patient-level factors such as age, comorbidities, and procedure type but fails to include hospital-level factors like nurse-to-patient ratios, availability of specialized perioperative care units, etc.</li>
+<li class="fragment">Ex: a study on asthma prevalence may fail to account for air quality or housing conditions, focusing on individual-level factors but missing community-level determinants of health</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="common-data-equity-challenges-2" class="slide level2">
 <h2>Common Data Equity Challenges</h2>
+<div class="highlight-last">
 <ul>
-<li><p>Historical unethical studies and misuse of demographic data</p>
+<li class="fragment"><p>Historical unethical studies and misuse of demographic data</p>
 <ul>
-<li>Many examples of unethical and harmful medical research on African Americans, leading to mistrust of medical research in the Black communities, leading to underpresentation in studies</li>
-<li>Tuskegee syphilis study is just one example <a name="cite-katz2006tuskegee" href=""></a><a href="#/bib-katz2006tuskegee">Katz, Kegeles, Kressin, Green, Wang, James, Russell, and Claudio (2006)</a></li>
+<li class="fragment">Many examples of unethical and harmful medical research on African Americans, leading to mistrust of medical research in the Black communities, leading to underpresentation in studies</li>
+<li class="fragment">Tuskegee syphilis study is just one example <a name="cite-katz2006tuskegee" href=""></a><a href="#/bib-katz2006tuskegee">Katz, Kegeles, Kressin, Green, Wang, James, Russell, and Claudio (2006)</a></li>
 </ul></li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="sex-and-gender-considerations" class="title-slide slide level1 center">
@@ -287,37 +310,45 @@ Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Bio
 <section id="sex-and-gender-in-statistical-models" class="slide level2">
 <h2>Sex and Gender in Statistical Models</h2>
 <h3 id="best-practices">Best Practices</h3>
+<div class="highlight-last">
 <ul>
-<li>Distinguish between sex and gender variables</li>
-<li>Consider both biological and social factors</li>
-<li>Avoid binary assumptions</li>
-<li>Document missing data patterns</li>
+<li class="fragment">Distinguish between sex and gender variables</li>
+<li class="fragment">Consider both biological and social factors</li>
+<li class="fragment">Avoid binary assumptions</li>
+<li class="fragment">Document missing data patterns</li>
 </ul>
+</div>
 <h3 id="common-pitfalls">Common Pitfalls</h3>
+<div class="highlight-last">
 <ul>
-<li>Conflating sex and gender</li>
-<li>Systemic lack of female representation (as well as omissions of transgender and intersex populations or persons with variations in sex characteristics)</li>
-<li>Assuming homogeneity within groups</li>
-<li>Overlooking interaction effects</li>
-<li>Missing intersectional perspectives</li>
+<li class="fragment">Conflating sex and gender</li>
+<li class="fragment">Systemic lack of female representation (as well as omissions of transgender and intersex populations or persons with variations in sex characteristics)</li>
+<li class="fragment">Assuming homogeneity within groups</li>
+<li class="fragment">Overlooking interaction effects</li>
+<li class="fragment">Missing intersectional perspectives</li>
 </ul>
+</div>
 </section>
 <section id="sex-as-a-biological-variable-sabv" class="slide level2">
 <h2>Sex as a Biological Variable (SABV)</h2>
 <h3 id="key-considerations">Key Considerations</h3>
+<div class="highlight-last">
 <ul>
-<li>Hormonal influences</li>
-<li>Genetic differences</li>
-<li>Physiological variations</li>
-<li>Life-cycle changes</li>
+<li class="fragment">Hormonal influences</li>
+<li class="fragment">Genetic differences</li>
+<li class="fragment">Physiological variations</li>
+<li class="fragment">Life-cycle changes</li>
 </ul>
+</div>
 <h3 id="implementation-strategies">Implementation Strategies</h3>
+<div class="highlight-last">
 <ul>
-<li>Include adequate sample sizes for all sexes</li>
-<li>Test for sex-specific effects</li>
-<li>Report sex-disaggregated results</li>
-<li>Consider sex-based biological mechanisms</li>
+<li class="fragment">Include adequate sample sizes for all sexes</li>
+<li class="fragment">Test for sex-specific effects</li>
+<li class="fragment">Report sex-disaggregated results</li>
+<li class="fragment">Consider sex-based biological mechanisms</li>
 </ul>
+</div>
 <p><a href="https://orwh.od.nih.gov/sex-gender/orwh-mission-area-sex-gender-in-research/nih-policy-on-sex-as-biological-variable">National Institutes of Health (NIH) SABV Policy (2016)</a></p>
 </section>
 <section id="sex-as-a-biological-variable-sabv-1" class="slide level2">
@@ -334,54 +365,69 @@ Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Bio
 </section>
 <section id="race-and-ethnicity-critical-considerations" class="slide level2">
 <h2>Race and Ethnicity: Critical Considerations</h2>
+<div class="highlight-last">
 <ul>
-<li>Race is a social construct, not biological</li>
-<li>Substantial within-group variation</li>
-<li>Historical context of racial categories</li>
-<li>Context of discriminatory, sociocultural, or biological effects associated with race or SDOH variable used</li>
-<li>Intersectionality with other variables</li>
+<li class="fragment">Race is a social construct, not biological</li>
+<li class="fragment">Substantial within-group variation</li>
+<li class="fragment">Historical context of racial categories</li>
+<li class="fragment">Context of discriminatory, sociocultural, or biological effects associated with race or SDOH variable used</li>
+<li class="fragment">Intersectionality with other variables</li>
 </ul>
+</div>
 </section>
 <section id="race-and-ethnicity-recommendations" class="slide level2">
 <h2>Race and Ethnicity: Recommendations</h2>
+<div class="highlight-last">
 <ul>
-<li>Use clearly defined categories, standard and not collapsed categories when possible
+<li class="fragment">Use clearly defined categories, standard and not collapsed categories when possible
 <ul>
-<li>Avoid collapsing categories of race with disparate health outcomes</li>
-<li>Avoid label “other”, use descriptive terms for collapsed categories</li>
-<li>Include ethnicity and ancestry information</li>
+<li class="fragment">Avoid collapsing categories of race with disparate health outcomes</li>
+<li class="fragment">Avoid label “other”, use descriptive terms for collapsed categories</li>
+<li class="fragment">Include ethnicity and ancestry information</li>
 </ul></li>
-<li>Clearly document data collection and classification methods</li>
-<li>If using race as a confounder, covariate, or adjustment variable, examine effect modification</li>
-<li>Acknowledge limitations</li>
+<li class="fragment">Clearly document data collection and classification methods</li>
+<li class="fragment">If using race as a confounder, covariate, or adjustment variable, examine effect modification</li>
+<li class="fragment">Acknowledge limitations</li>
 </ul>
+</div>
 <p><a href="https://www.urban.org/research/publication/using-race-and-ethnicity-data-advance-health-equity">Urban Institute: Using Race and Ethnicity Data to Advance Health Equity</a></p>
 <p><a href="#/bib-swilley2023we">Swilley-Martinez, Coles, Miller et al.&nbsp;(2023)</a></p>
 </section></section>
 <section>
-<section id="social-determinants-of-health" class="title-slide slide level1 center">
-<h1>Social Determinants of Health</h1>
+<section id="social-determinants-of-health-sdoh" class="title-slide slide level1 center">
+<h1>Social Determinants of Health (SDOH)</h1>
 
 <img data-src="img/Healthy%20People%202030%20SDOH%20Graphic%20Domain%20Labels.png" class="r-stretch"><p><a href="https://odphp.health.gov/healthypeople/priority-areas/social-determinants-health">US Dept of Health &amp; Human Services: Healthy People 2030</a></p>
 </section>
-<section id="social-determinants-of-health-sdoh" class="slide level2">
-<h2>Social Determinants of Health (SDOH)</h2>
-<h3 id="design-considerations">Design considerations</h3>
+<section id="social-determinants-of-health" class="slide level2">
+<h2>Social Determinants of Health</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="design-and-data-considerations">Design and data considerations</h3>
+<div class="highlight-last">
 <ul>
-<li>Equitable sampling</li>
-<li>Missing data issues</li>
-<li>Granular data collection</li>
-<li>Standardization of variable definitions</li>
+<li class="fragment">Equitable sampling</li>
+<li class="fragment">Missing data issues</li>
+<li class="fragment">Granular data collection</li>
+<li class="fragment">Standardization of variable definitions</li>
+<li class="fragment">Document contextual factors</li>
 </ul>
-<h3 id="integration-strategies">Integration Strategies</h3>
+</div>
+<div class="fragment">
+<h3 id="analysis-strategies">Analysis strategies</h3>
+<div class="highlight-last">
 <ul>
-<li>Including SDOH variables in models can be complex</li>
-<li>Consider mediating effects or effect modification</li>
-<li>Document contextual factors</li>
-<li>Consider correlation/collinearity</li>
-<li>Address missing data</li>
+<li class="fragment">Including SDOH variables in models can be complex</li>
+<li class="fragment">Consider mediating effects or effect modification</li>
+<li class="fragment">Consider correlation/collinearity</li>
+<li class="fragment">Address missing data</li>
 </ul>
+</div>
 <p><a name="cite-braveman2023social" href=""></a><a href="#/bib-braveman2023social">Braveman (2023)</a></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/hillside.png"></p>
+</div></div>
 </section></section>
 <section>
 <section id="statistical-analysis-considerations" class="title-slide slide level1 center">
@@ -391,37 +437,62 @@ Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Bio
 <section id="statistical-analysis-adjustment" class="slide level2">
 <h2>Statistical Analysis, Adjustment</h2>
 <p>What does controlling for race (or sex, or gender, or SDOH) mean?</p>
+<div class="highlight-last">
 <ul>
-<li><p>Adjustment, matching, stratification, etc. estimates effects over all strata to present an overall effect between exposure and outcome</p></li>
-<li><p>When adjusting for the social construct of race, the adjusted effect estimate can be interpreted as the exposure-outcome relationship if racism did not affect the exposure</p></li>
-<li><p>Pooled effects are weighted toward the larger group</p></li>
-<li><p>Effect measure modification allows for different effects within groups (race, gender, sex, etc)</p></li>
+<li class="fragment"><p>Adjustment, matching, stratification, etc. estimates effects over all strata to present an overall effect between exposure and outcome</p></li>
+<li class="fragment"><p>When adjusting for the social construct of race, the adjusted effect estimate can be interpreted as the exposure-outcome relationship if racism did not affect the exposure</p></li>
+<li class="fragment"><p>Pooled effects are weighted toward the larger group</p></li>
+<li class="fragment"><p>Effect measure modification allows for different effects within groups (race, gender, sex, etc)</p></li>
 </ul>
+</div>
 <p><a href="#/bib-swilley2023we">Swilley-Martinez, Coles, Miller et al.&nbsp;(2023)</a></p>
 </section>
-<section id="statistical-analysis-considerations-1" class="slide level2">
-<h2>Statistical Analysis Considerations</h2>
+<section id="model-and-interpretation-considerations" class="slide level2">
+<h2>Model and Interpretation Considerations</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <h3 id="model-development">Model Development</h3>
+<div class="highlight-last">
 <ul>
-<li>Variable selection and coding</li>
-<li>Interaction testing</li>
-<li>Missing data patterns</li>
-<li>Model assumptions</li>
+<li class="fragment">Variable selection and coding</li>
+<li class="fragment">Interaction testing</li>
+<li class="fragment">Missing data patterns</li>
+<li class="fragment">Model assumptions</li>
 </ul>
+</div>
+<div class="fragment">
 <h3 id="interpretation">Interpretation</h3>
+<div class="highlight-last">
 <ul>
-<li>Effect modification</li>
-<li>Confounding</li>
-<li>Mediation</li>
-<li>Population-specific effects</li>
+<li class="fragment">Effect modification</li>
+<li class="fragment">Confounding</li>
+<li class="fragment">Mediation</li>
+<li class="fragment">Population-specific effects</li>
 </ul>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/team_meet.png"></p>
+</div></div>
 </section>
 <section id="modeling-decisions" class="slide level2">
 <h2>Modeling Decisions</h2>
+<div class="fragment">
+<p><strong>Bivariate Model: Y~X</strong></p>
+<div class="highlight-last">
 <ul>
-<li><strong>Bivariate Model</strong>: Use when asking “Does a demographic group receive access at different rates?”</li>
-<li><strong>Multiple Regression</strong>: Use when asking “Do similarly situated individuals access benefits at the same rate?”</li>
+<li class="fragment">Use when asking “Does a demographic group receive access at different rates?”</li>
 </ul>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Multiple Regression Y~X+Z</strong></p>
+<div class="highlight-last">
+<ul>
+<li class="fragment">Use when asking “Do similarly situated individuals access benefits at the same rate?”</li>
+</ul>
+</div>
+</div>
 </section></section>
 <section>
 <section id="modeling-examples" class="title-slide slide level1 center">
@@ -453,8 +524,9 @@ Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Bio
 <li>If provider bias (related to race) leads to under-treatment of pain, the Black patient might report higher pain scores.</li>
 <li>Controlling for this pain score could incorrectly make a lower MME prescription seem medically justified, thereby masking the original bias.</li>
 <li>The bivariate model may be more appropriate.</li>
+<li>In this case the “race” effect could be the effect of systemic racism.</li>
 </ul>
-<p><strong>Post-attribute bias</strong> occurs when we control for variables that may be affected by the attribute we’re studying (aka post-treatment bias, intermediate variable bias, mediating variable bias)</p>
+<p><strong>Post-attribute bias</strong> occurs when we control for variables that may be affected by the attribute we’re studying (a.k.a. post-treatment bias, intermediate variable bias, mediating variable bias)</p>
 </section>
 <section id="example-2-use-of-regional-anesthesia" class="slide level2">
 <h2>Example 2: Use of Regional Anesthesia</h2>
@@ -562,6 +634,7 @@ Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Bio
 <h3 id="this-talk-info">This talk info:</h3>
 <ul>
 <li>Code for these slides are on github, with links to other talks and course materials: <a href="https://github.com/jminnier/talks_etc">jminnier/talks_etc</a></li>
+<li>Uncited art from <a href="https://www.lummi.ai/s/illustration/">lummi.ai</a></li>
 </ul>
 
 </section></section>
@@ -750,7 +823,7 @@ Jessica Minnier, PhD<br><span style="font-size: 80%;">Associate Professor of Bio
         // specified using percentage units.
         width: 1200,
 
-        height: 825,
+        height: 850,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
