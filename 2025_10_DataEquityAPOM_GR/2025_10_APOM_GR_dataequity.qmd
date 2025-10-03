@@ -13,6 +13,10 @@ format:
       height: 850 #825  #default 700
       slide-number: true
       html-math-method: mathjax
+      title-slide-attributes:
+        data-background-image: img/ohsu_logo.jpg
+        data-background-size: 10%
+        data-background-position: 90% 60%
       #logo: img/ohsu_logo.jpg
       #footer: '[bit.ly/repro_ds_2024](https://bit.ly/repro_ds_2024)'
   # html:
