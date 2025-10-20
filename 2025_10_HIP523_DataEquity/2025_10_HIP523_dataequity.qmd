@@ -70,7 +70,7 @@ At the conclusion of this activity, participants will be able to:
 :::
 
 :::{.notes}
-Good morning, everyone. Thank you for being here. My name is Jessica Minnier, and I'm an Associate Professor of Biostatistics. I have been at OHSU for 12 years, but I have recently started serving as a Statistician for APOM, along with Shauna Rakshe. So this is kind my hello and introduction to you all, and I look forward to working with some you in the future. Today, I want to talk about a topic that is becoming increasingly critical and relevant in our field: which is Data Equity in Clinical Research. Data equity is a vague term that can mean many things so I will try to define that, and also talk more broadly about how we think about characteristics such as race, sex, gender, social determinants of health, etc, when we approach our research design and data analysis.
+Good morning, everyone. Thank you for being here. My name is Jessica Minnier, and I'm an Associate Professor of Biostatistics. Today, I want to talk about a topic that is becoming increasingly critical and relevant in our field: which is Data Equity in Clinical Research. Data equity is a vague term that can mean many things so I will try to define that, and also talk more broadly about how we think about characteristics such as race, sex, gender, social determinants of health, etc, when we approach our research design and data analysis.
 
 The goal of this talk is to give you, as clinicians and researchers, a practical framework for thinking about equity at every stage of your research—from study design to the final interpretation of your results.
 
@@ -740,7 +740,7 @@ PrintBibliography(myBib)
 
 ### This talk info:
 
--   Slides: [bit.ly/apom_data_eq](https://bit.ly/apom_data_eq)
+-   Slides: [bit.ly/hip25_data_eq](https://bit.ly/hip25_data_eq)
 -   Code for these slides are on github, with links to other talks and course materials: [jminnier/talks_etc](https://github.com/jminnier/talks_etc)
 -   Uncited art from [lummi.ai](https://www.lummi.ai/s/illustration/)
 
