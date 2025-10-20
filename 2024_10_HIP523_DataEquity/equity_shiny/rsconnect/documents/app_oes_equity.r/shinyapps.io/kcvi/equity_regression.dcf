@@ -1,0 +1,12 @@
+name: equity_regression
+title: equity_regression
+username: kcvi
+account: kcvi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13114711
+bundleId: 9261955
+url: https://kcvi.shinyapps.io/equity_regression/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
