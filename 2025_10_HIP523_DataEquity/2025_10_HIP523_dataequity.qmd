@@ -293,6 +293,7 @@ And finally, we cannot ignore the historical context. Unethical studies, like th
 -   Test for sex-specific effects
 -   Report sex-disaggregated results
 -   Consider sex-based biological mechanisms
+-   Consider hormone-based biological mechanisms
 :::
 
 
@@ -411,6 +412,26 @@ As defined by Healthy People 2030, SDOH are the conditions in the environments w
 :::{.notes}
 Incorporating SDOH into our models is a huge step forward, but it comes with its own challenges. It requires equitable sampling, granular data collection, and standardized definitions. Analytically, we have to consider that many SDOH variables are correlated. For example, income, education, and neighborhood are all linked. We need to think carefully about whether these variables are confounders, mediators, or effect modifiers in our causal pathway.
 :::
+
+# Characterizing Confounding
+
+
+::::: columns
+::: {.column width="50%"}
+
+1. **discriminatory** confounding: effects of the confounder on the exposure and the outcome are due to individual or systemic discrimination
+2. **sociocultural** confounding: effects are due to personal sociocultural practices
+3. **biological** confounding: effects are directly due to biological mechanisms
+
+"We adjusted for race": now what? A systematic review... `r Cite(key = "swilley2023we", bib=myBib, textual = TRUE, .opts=list(cite.style="authoryear"))`
+:::
+::: {.column width="50%"}
+
+![](img/age_confounder.jpeg)
+
+:::
+:::::
+
 
 # Statistical Analysis Considerations
 
@@ -664,6 +685,10 @@ The multiple regression model adjusts for surgical complexity and length of stay
 
 :::
 
+
+
+
+
 ## Discussion: Disparities
 
 -   This highlights the difference between asking "are there disparities?" (bivariate) versus "what are the mechanisms?" (multivariable). The first question is often the most important for identifying a problem that needs fixing.
@@ -687,6 +712,14 @@ For identifying a problem that needs fixing, the first question is often the mos
 :::{.notes}
 A word of caution. While these methods are powerful for identifying disparities, regression alone can never definitively prove discrimination, nor can it prove a lack of discrimination. There are always unmeasured variables. For strong causal claims, we need a robust research design that goes beyond standard regression.
 :::
+
+## Discussion: Break-out groups
+
+- Do you encounter issues of data equity in your own research or clinical area?
+    + How were these issues/ideas considered in the past. Would you change anything about this?
+- What is one major source of selection bias you've encountered? How do you think this bias might be affecting the conclusions of studies in your field?
+- We discussed 'positionality'—how our own experiences and biases shape our work. As clinicians and researchers, how might our positionality influence the research questions we choose to ask, or the variables we choose to collect, when studying health disparities?
+- If you read a study that states, "After adjusting for race, we found no significant difference in 30-day mortality between patient groups." What are we really adjusting for when we put "race" into a model? What important structural factors or SDOH might this adjustment be hiding?"
 
 ## Best Practices for Reporting
 

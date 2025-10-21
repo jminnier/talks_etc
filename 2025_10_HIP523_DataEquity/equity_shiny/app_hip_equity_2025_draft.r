@@ -43,10 +43,10 @@ ui <- page_fluid(
         card(
           card_header("Model Results"),
           tabsetPanel(
-            tabPanel("Bivariate Model (Unadjusted)", 
-                     gt::gt_output("model1_bivariate")),
             tabPanel("Full Model (Adjusted)", 
                      gt::gt_output("model1_full")),
+            tabPanel("Bivariate Model (Unadjusted)", 
+                     gt::gt_output("model1_bivariate")),
             tabPanel("Explanation",
                      value_box(
                        value = "",
@@ -79,7 +79,6 @@ full_model1 <- lm(MME ~ patient_race + in_hospital_pain, data = surgical_data)
         mode = "r",
         theme = "monokai"),
       actionButton("run1", "Run Code", class = "btn-primary mt-3"),
-      # --- ADDED CONSOLE OUTPUT ---
       verbatimTextOutput("code1_output")
       )
     ),
@@ -112,10 +111,10 @@ full_model1 <- lm(MME ~ patient_race + in_hospital_pain, data = surgical_data)
       card(
         card_header("Model Results"),
         tabsetPanel(
-          tabPanel("Bivariate Model (Unadjusted)", 
-                   gt::gt_output("model2_bivariate")),
           tabPanel("Full Model (Adjusted)", 
                    gt::gt_output("model2_full")),
+          tabPanel("Bivariate Model (Unadjusted)", 
+                   gt::gt_output("model2_bivariate")),
           tabPanel("Explanation",
                    p("The bivariate model shows a small, non-significant difference (OR near 1). It looks like there is no disparity."),
                    p("However, ASA score is a confounder: Medicaid patients are more likely to have a High ASA score, and High ASA patients are (in this example) *more* likely to get a block. This masks the true disparity."),
@@ -159,7 +158,6 @@ full_model2 <- glm(nerve_block ~ insurance_type + patient_asa_score, data = orth
                 mode = "r",
                 theme = "monokai"),
       actionButton("run2", "Run Code", class = "btn-primary mt-3"),
-      # --- ADDED CONSOLE OUTPUT ---
       verbatimTextOutput("code2_output")
     )
   ),
@@ -240,8 +238,90 @@ full_model3 <- glm(readmitted ~ lep_status + surgical_complexity + length_of_sta
                 mode = "r",
                 theme = "monokai"),
       actionButton("run3", "Run Code", class = "btn-primary mt-3"),
-      # --- ADDED CONSOLE OUTPUT ---
       verbatimTextOutput("code3_output")
+    )
+  ),
+  
+  # --- UPDATED EXAMPLE 4: EFFECT MODIFICATION (SDOH) ---
+  nav_panel(
+    title = "Effect Modification (SDOH)",
+    layout_columns(
+      fill = FALSE,
+      value_box(
+        title = "What is Effect Modification?",
+        value = "",
+        p("Occurs when the effect of an intervention (e.g., a new app) on an outcome is *different* at different levels of another variable (e.g., neighborhood SES)."),
+        showcase = bsicons::bs_icon("info-circle")
+      ),
+      value_box(
+        title = "Key Question",
+        value = "",
+        p("Does a new diabetes app work equally well for patients in high-SES vs. low-SES neighborhoods?"),
+        showcase = bsicons::bs_icon("question-circle")
+      )
+    ),
+    layout_columns(
+      col_widths = c(6, 6),
+      card(
+        card_header("Data Explorer (n=120)"),
+        tableOutput("data4_table"),
+        textOutput("error4")
+      ),
+      card(
+        card_header("Model Results"),
+        tabsetPanel(
+          tabPanel("Main Effects Model", 
+                   gt::gt_output("model4_main")),
+          tabPanel("Interaction Model", 
+                   gt::gt_output("model4_interaction")),
+          tabPanel("Explanation",
+                   p("The **Main Effects Model** provides an 'average' effect of the app, suggesting it works (lowers HbA1c by ~0.8). This is misleading!"),
+                   p(""),
+                   p("The **Interaction Model** is correct. The significant interaction term (neighborhood_sesHigh:interventionApp) shows the app's effect *depends on* SES. For Low-SES patients, the effect is small and non-significant. For High-SES patients, the app is highly effective. This suggests structural factors (like access to healthy food) are required for the app to work.")
+          )
+        )
+      )
+    ),
+    card(
+      card_header("Interactive Code"),
+      aceEditor("code4", 
+                value = '# Data: Change in HbA1c after diabetes app intervention (n=120)
+# Effect Modification by a structural factor (SDOH)
+set.seed(42)
+n_per_group <- 30
+diabetes_data <- bind_rows(
+  # Group 1: Low-SES, Standard Care
+  tibble(neighborhood_ses = "Low", intervention = "StandardCare", 
+         hba1c_change = rnorm(n_per_group, mean = -0.2, sd = 0.5)),
+  # Group 2: Low-SES, App (App is ineffective)
+  tibble(neighborhood_ses = "Low", intervention = "App", 
+         hba1c_change = rnorm(n_per_group, mean = -0.3, sd = 0.5)),
+  # Group 3: High-SES, Standard Care
+  tibble(neighborhood_ses = "High", intervention = "StandardCare", 
+         hba1c_change = rnorm(n_per_group, mean = -0.2, sd = 0.5)),
+  # Group 4: High-SES, App (App is very effective)
+  tibble(neighborhood_ses = "High", intervention = "App", 
+         hba1c_change = rnorm(n_per_group, mean = -1.5, sd = 0.5))
+) %>%
+  mutate(
+    patient_id = 1:n(),
+    neighborhood_ses = factor(neighborhood_ses, levels = c("Low", "High")),
+    intervention = factor(intervention, levels = c("StandardCare", "App"))
+  ) %>%
+  select(patient_id, neighborhood_ses, intervention, hba1c_change)
+
+
+# Main effects model (assumes app effect is the same for all)
+main_model4 <- lm(hba1c_change ~ neighborhood_ses + intervention, data = diabetes_data)
+
+# Interaction model (tests if app effect *depends on* neighborhood SES)
+interaction_model4 <- lm(hba1c_change ~ neighborhood_ses * intervention, data = diabetes_data)
+
+# Try adding: print(summary(interaction_model4))',
+                mode = "r",
+                theme = "monokai"),
+      actionButton("run4", "Run Code", class = "btn-primary mt-3"),
+      verbatimTextOutput("code4_output")
     )
   ), 
   
@@ -252,7 +332,9 @@ full_model3 <- glm(readmitted ~ lep_status + surgical_complexity + length_of_sta
     p(""),
     p("However, if you are interested in whether otherwise similarly situated individuals of different demographics access a benefit at the same rate, then including pre-treatment controls (confounders) that are correlated with the demographic characteristic and the outcome is typically appropriate."),
     p(""),
-    p("Be cautious about controlling for 'post-attribute' variables (mediators), as this can mask the very inequity you are trying to study.")
+    p("Be cautious about controlling for 'post-attribute' variables (mediators), as this can mask the very inequity you are trying to study."),
+    p(""),
+    p("Always consider **effect modification** (interaction). Instead of one 'average' effect for everyone, this approach allows you to estimate different effects for different groups, which is often more insightful.")
   ),
   p("Developed for OHSU HIP523 October 2024 by Jessica Minnier. Most coding performed by Claude.AI (3.5 Sonnet). App content updated by Gemini.", class = "text-center mb-4")
   )
@@ -281,22 +363,17 @@ server <- function(input, output, session) {
     )
   })
   example1_error <- reactiveVal(NULL)
-  # --- ADDED CONSOLE OUTPUT REACTIVEVAL ---
   example1_console_output <- reactiveVal(NULL)
   
   observeEvent(input$run1, {
-    # Clear previous outputs
     example1_error(NULL)
     example1_console_output(NULL)
-    
     tryCatch({
-      # Capture console output
       output_text <- capture.output({
         env <- new.env(parent = .GlobalEnv)
         eval(parse(text = input$code1), envir = env)
       }, type = c("output", "message"))
       
-      # Check for necessary objects
       if (!exists("surgical_data", envir = env)) {
         example1_error("Error: surgical_data object not found.")
         return()
@@ -305,20 +382,15 @@ server <- function(input, output, session) {
         example1_error("Error: model objects not found. Please create full_model1 and bivariate_model1.")
         return()
       }
-      
-      # Success: Update data and models
       example1_data(env$surgical_data)
       example1_error(NULL)
       
-      # Display console output
       if (length(output_text) > 0) {
         example1_console_output(paste(output_text, collapse = "\n"))
       } else {
         example1_console_output("Code ran successfully. (Add print() commands to see variable output).")
       }
-      
     }, error = function(e) {
-      # Display error in both error box and console
       err_msg <- paste("Error:", e$message)
       example1_error(err_msg)
       example1_console_output(err_msg)
@@ -353,22 +425,17 @@ server <- function(input, output, session) {
     )
   })
   example2_error <- reactiveVal(NULL)
-  # --- ADDED CONSOLE OUTPUT REACTIVEVAL ---
   example2_console_output <- reactiveVal(NULL)
   
   observeEvent(input$run2, {
-    # Clear previous outputs
     example2_error(NULL)
     example2_console_output(NULL)
-    
     tryCatch({
-      # Capture console output
       output_text <- capture.output({
         env <- new.env(parent = .GlobalEnv)
         eval(parse(text = input$code2), envir = env)
       }, type = c("output", "message"))
       
-      # Check for necessary objects
       if (!exists("ortho_data", envir = env)) {
         example2_error("Error: ortho_data object not found.")
         return()
@@ -377,20 +444,15 @@ server <- function(input, output, session) {
         example2_error("Error: model objects not found. Please create full_model2 and bivariate_model2.")
         return()
       }
-      
-      # Success: Update data and models
       example2_data(env$ortho_data)
       example2_error(NULL)
       
-      # Display console output
       if (length(output_text) > 0) {
         example2_console_output(paste(output_text, collapse = "\n"))
       } else {
         example2_console_output("Code ran successfully. (Add print() commands to see variable output).")
       }
-      
     }, error = function(e) {
-      # Display error in both error box and console
       err_msg <- paste("Error:", e$message)
       example2_error(err_msg)
       example2_console_output(err_msg)
@@ -424,22 +486,17 @@ server <- function(input, output, session) {
     )
   })
   example3_error <- reactiveVal(NULL)
-  # --- ADDED CONSOLE OUTPUT REACTIVEVAL ---
   example3_console_output <- reactiveVal(NULL)
   
   observeEvent(input$run3, {
-    # Clear previous outputs
     example3_error(NULL)
     example3_console_output(NULL)
-    
     tryCatch({
-      # Capture console output
       output_text <- capture.output({
         env <- new.env(parent = .GlobalEnv)
         eval(parse(text = input$code3), envir = env)
       }, type = c("output", "message"))
       
-      # Check for necessary objects
       if (!exists("surgery_discharge_data", envir = env)) {
         example3_error("Error: surgery_discharge_data object not found.")
         return()
@@ -448,25 +505,84 @@ server <- function(input, output, session) {
         example3_error("Error: model objects not found. Please create bivariate_model3 and full_model3.")
         return()
       }
-      
-      # Success: Update data and models
       example3_data(env$surgery_discharge_data)
       example3_error(NULL)
       
-      # Display console output
       if (length(output_text) > 0) {
         example3_console_output(paste(output_text, collapse = "\n"))
       } else {
         example3_console_output("Code ran successfully. (Add print() commands to see variable output).")
       }
-      
     }, error = function(e) {
-      # Display error in both error box and console
       err_msg <- paste("Error:", e$message)
       example3_error(err_msg)
       example3_console_output(err_msg)
     })
   })
+  
+  # --- UPDATED EXAMPLE 4 SERVER LOGIC ---
+  example4_default_data <- {
+    set.seed(42)
+    n_per_group <- 30
+    bind_rows(
+      tibble(neighborhood_ses = "Low", intervention = "StandardCare", hba1c_change = rnorm(n_per_group, mean = -0.2, sd = 0.5)),
+      tibble(neighborhood_ses = "Low", intervention = "App", hba1c_change = rnorm(n_per_group, mean = -0.3, sd = 0.5)),
+      tibble(neighborhood_ses = "High", intervention = "StandardCare", hba1c_change = rnorm(n_per_group, mean = -0.2, sd = 0.5)),
+      tibble(neighborhood_ses = "High", intervention = "App", hba1c_change = rnorm(n_per_group, mean = -1.5, sd = 0.5))
+    ) %>%
+      mutate(
+        patient_id = 1:n(),
+        neighborhood_ses = factor(neighborhood_ses, levels = c("Low", "High")),
+        intervention = factor(intervention, levels = c("StandardCare", "App"))
+      ) %>%
+      select(patient_id, neighborhood_ses, intervention, hba1c_change)
+  }
+  
+  example4_data <- reactiveVal(example4_default_data)
+  example4_models <- reactive({
+    if (!is.null(example4_error())) return(NULL)
+    env <- new.env(parent = .GlobalEnv)
+    eval(parse(text = input$code4), envir = env)
+    list(
+      main = env$main_model4,
+      interaction = env$interaction_model4
+    )
+  })
+  example4_error <- reactiveVal(NULL)
+  example4_console_output <- reactiveVal(NULL)
+  
+  observeEvent(input$run4, {
+    example4_error(NULL)
+    example4_console_output(NULL)
+    tryCatch({
+      output_text <- capture.output({
+        env <- new.env(parent = .GlobalEnv)
+        eval(parse(text = input$code4), envir = env)
+      }, type = c("output", "message"))
+      
+      if (!exists("diabetes_data", envir = env)) {
+        example4_error("Error: diabetes_data object not found.")
+        return()
+      }
+      if (!exists("main_model4", envir = env) || !exists("interaction_model4", envir = env)) {
+        example4_error("Error: model objects not found. Please create main_model4 and interaction_model4.")
+        return()
+      }
+      example4_data(env$diabetes_data)
+      example4_error(NULL)
+      
+      if (length(output_text) > 0) {
+        example4_console_output(paste(output_text, collapse = "\n"))
+      } else {
+        example4_console_output("Code ran successfully. (Add print() commands to see variable output).")
+      }
+    }, error = function(e) {
+      err_msg <- paste("Error:", e$message)
+      example4_error(err_msg)
+      example4_console_output(err_msg)
+    })
+  })
+  
   
   # --- Outputs for all examples ---
   
@@ -475,26 +591,21 @@ server <- function(input, output, session) {
     if (!is.null(example1_error())) return(NULL)
     example1_data()
   })
-  
   output$error1 <- renderText({
     example1_error()
   })
-  
   output$model1_full <- gt::render_gt({
     req(is.null(example1_error()))
     req(example1_models()$full)
     tbl_regression(example1_models()$full, exponentiate = FALSE) %>%
       as_gt()
   })
-  
   output$model1_bivariate <- gt::render_gt({
     req(is.null(example1_error()))
     req(example1_models()$bivariate)
     tbl_regression(example1_models()$bivariate, exponentiate = FALSE) %>%
       as_gt()
   })
-  
-  # --- ADDED CONSOLE OUTPUT RENDERER ---
   output$code1_output <- renderPrint({
     req(example1_console_output())
     cat(example1_console_output())
@@ -505,26 +616,21 @@ server <- function(input, output, session) {
     if (!is.null(example2_error())) return(NULL)
     example2_data()
   })
-  
   output$error2 <- renderText({
     example2_error()
   })
-  
   output$model2_full <- gt::render_gt({
     req(is.null(example2_error()))
     req(example2_models()$full)
     tbl_regression(example2_models()$full, exponentiate = TRUE) %>%
       as_gt()
   })
-  
   output$model2_bivariate <- gt::render_gt({
     req(is.null(example2_error()))
     req(example2_models()$bivariate)
     tbl_regression(example2_models()$bivariate, exponentiate = TRUE) %>%
       as_gt()
   })
-  
-  # --- ADDED CONSOLE OUTPUT RENDERER ---
   output$code2_output <- renderPrint({
     req(example2_console_output())
     cat(example2_console_output())
@@ -535,32 +641,51 @@ server <- function(input, output, session) {
     if (!is.null(example3_error())) return(NULL)
     example3_data()
   })
-  
   output$error3 <- renderText({
     example3_error()
   })
-  
   output$model3_bivariate <- gt::render_gt({
     req(is.null(example3_error()))
     req(example3_models()$bivariate)
     tbl_regression(example3_models()$bivariate, exponentiate = TRUE) %>%
       as_gt()
   })
-  
   output$model3_full <- gt::render_gt({
     req(is.null(example3_error()))
     req(example3_models()$full)
     tbl_regression(example3_models()$full, exponentiate = TRUE) %>%
       as_gt()
   })
-  
-  # --- ADDED CONSOLE OUTPUT RENDERER ---
   output$code3_output <- renderPrint({
     req(example3_console_output())
     cat(example3_console_output())
+  })
+  
+  # --- UPDATED EXAMPLE 4 OUTPUTS ---
+  output$data4_table <- renderTable({
+    if (!is.null(example4_error())) return(NULL)
+    example4_data()
+  })
+  output$error4 <- renderText({
+    example4_error()
+  })
+  output$model4_main <- gt::render_gt({
+    req(is.null(example4_error()))
+    req(example4_models()$main)
+    tbl_regression(example4_models()$main, exponentiate = FALSE) %>%
+      as_gt()
+  })
+  output$model4_interaction <- gt::render_gt({
+    req(is.null(example4_error()))
+    req(example4_models()$interaction)
+    tbl_regression(example4_models()$interaction, exponentiate = FALSE) %>%
+      as_gt()
+  })
+  output$code4_output <- renderPrint({
+    req(example4_console_output())
+    cat(example4_console_output())
   })
 }
 
 # Run the app
 shinyApp(ui = ui, server = server)
-
