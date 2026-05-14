@@ -7,13 +7,13 @@ format:
   revealjs:
       incremental: false
       scrollable: true
-      chalkboard: true
       theme: [css/sky_modified_smaller_font.scss]
       width:  1100 #default 1050
       height: 825  #default 700
       slide-number: true
       html-math-method: mathjax
       footer: '[bit.ly/repro_ds_2024](https://bit.ly/repro_ds_2024)'
+      embed-resources: true
   # html:
   #   link-external-newwindow: true
   #   toc: true
