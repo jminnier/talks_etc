@@ -1,0 +1,469 @@
+---
+title: "Validating AI Breast-Cancer Risk Prediction in a Diverse Veteran Population"
+subtitle: "Two image-only AI models in ~69,000 women Veterans"
+author:
+  - name: Jessica Minnier
+    affiliation: "Knight Cancer Institute, OHSU, Portland, OR"
+  - name: Lina Gao
+    affiliation: "Knight Cancer Institute, OHSU, Portland, OR"
+  - name: Shauna Rakshe
+    affiliation: "Knight Cancer Institute, OHSU, Portland, OR"
+  - name: Shiuh-Wen Luoh
+    affiliation: "Knight Cancer Institute, OHSU & VA Portland Health Care System, Portland, OR"
+date: "2026-08-05"
+date-format: "[JSM 2026 · ]MMMM D, YYYY"
+# -smart stops Pandoc inserting U+00A0 after abbreviations ("vs.", "et al."),
+# which some PDF viewers draw as a missing-glyph box.
+from: markdown-smart
+format:
+  clean-revealjs:
+    self-contained: true
+    width: 1280
+    height: 720
+    fig-align: center
+    df-print: kable
+    logo: images/logos_knight_mvp.svg
+    footer: "Image-only AI risk validation · VA women Veterans · JSM 2026"
+    include-in-header:
+      text: |
+        <style>
+        .reveal h1, .reveal h2, .reveal h3 { color:#0b3d5c; }
+        .reveal a { color:#b8002e; }
+        .reveal .alert { color:#b8002e; font-weight:600; }
+        .tag-done { color:#1a7f37; font-weight:600; }
+        .tag-prop { color:#b8002e; font-weight:600; }
+        .reveal table { font-size:0.68em; }
+        .reveal .small { font-size:0.82em; }
+        .reveal .vsmall { font-size:0.64em; }
+        .reveal .slide-logo { max-height:46px !important; max-width:200px !important; }
+        .pipeline { display:flex; align-items:stretch; justify-content:center;
+                    margin:0.4em auto 1.1em; width:96%; }
+        .pipeline .pbox { flex:1 1 0; display:flex; align-items:center; justify-content:center;
+                    text-align:center; border:1px solid #0b3d5c; background:#eef4f8; color:#0b3d5c;
+                    border-radius:4px; padding:0.7em 0.5em; font-size:0.5em; line-height:1.25;
+                    box-sizing:border-box; }
+        .pipeline .parrow { flex:0 0 26px; align-self:center; height:0; position:relative;
+                    border-top:2px solid #0b3d5c; margin:0 2px; }
+        .pipeline .parrow::after { content:""; position:absolute; right:-1px; top:-5px;
+                    border-left:8px solid #0b3d5c; border-top:5px solid transparent;
+                    border-bottom:5px solid transparent; }
+        </style>
+---
+
+## Image-only AI: risk from a *normal* mammogram {.small}
+
+::: {.incremental}
+- Estimates 5-year risk from a **negative** screening mammogram, using texture, asymmetry, and parenchymal pattern.
+- Mirai (open source; the commercial Clairity Breast is the first FDA-authorized image-only 5-year risk tool) 
+- Has not been validated in **U.S. Veterans**, a population approximately one-third Black with military exposures absent from clinical models.
+:::
+
+. . .
+
+| Model class | Median AUC | Range |
+|---|---|---|
+| Image-only AI | **0.72** | 0.62–0.90 |
+| Clinical (Gail, Tyrer-Cuzick) | 0.61 | 0.54–0.69 |
+| Image **+** clinical | **0.73** | 0.66–0.84 |
+
+::: {.vsmall}
+NCCN v1 (2026). Decision thresholds: **1.7%** 5-year (NCCN) · **3%** (USPSTF / ASCO).
+:::
+
+. . .
+
+[We ask four questions: does it generalize, is it calibrated, is it clinically useful, and is it equitable?]{.alert}
+
+::: {.notes}
+The mammogram reads normal; the question is what happens over the next five years. Two models here — Mirai, which is open source, and a second commercial image-only model I'll call AI-2. The third row of that table, image plus clinical at 0.73, is what motivates the multimodal aim at the end.
+:::
+
+## Scope
+
+:::: {.columns}
+::: {.column width="50%"}
+### <span class="tag-done">Completed</span>
+- Discrimination, race x device
+- Risk-quintile separation
+- **Second model (AI-2) scored**
+- Mirai vs. Tyrer-Cuzick
+- Genetic benchmark (MVP)
+:::
+::: {.column width="50%"}
+### <span class="tag-prop">Proposed</span>
+- CIs, calibration
+- Competing-risks absolute risk
+- Decision curves
+- Formal equity testing
+- Mediation; AI + PRS + clinical
+:::
+::::
+
+::: {.vsmall}
+Work in progress. *Grant applications pending.*
+:::
+
+## Cohort and pipeline {.small}
+
+```{=html}
+<div class="pipeline">
+  <div class="pbox">CDW:<br>CPT-identified<br>screening mammograms</div>
+  <div class="parrow"></div>
+  <div class="pbox">VistA<br>image pull</div>
+  <div class="parrow"></div>
+  <div class="pbox">DICOM QC:<br>device,<br>4 views</div>
+  <div class="parrow"></div>
+  <div class="pbox">ARCHES cloud:<br>Mirai + AI-2<br>scoring</div>
+  <div class="parrow"></div>
+  <div class="pbox">Link outcomes,<br>follow-up,<br>race</div>
+</div>
+```
+
+| Cohort | Window | Size | Role |
+|---|---|---|---|
+| **Validation** | 2012–2015, 1st exam | **~69K** | All Mirai AUC + KM |
+| Assembled | 2012–2019 | ~102K | 2,794 cancers; proposed |
+| T-C comparison | 2023–2025, 4 sites | ~2,786 | Mirai vs. Tyrer-Cuzick |
+
+
+::: {.notes}
+Images pulled from the national VistA repository and scored behind the VA firewall in the ARCHES VA Enterprise Cloud. DICOM QC on SOP class, manufacturer, series, laterality, view position. Extraction yield 86% — 118K of 138K — and over 99.9% of extracted exams were scoreable.
+:::
+
+## Validation cohort: 2012–2015, first exam {.small}
+
+| | Hologic | GE |
+|---|---|---|
+| Mirai-scored | **46,998** | **21,566** |
+| White or other / Black | 31,112 / 15,886 | 14,925 / 6,641 |
+| Invasive cancers, 5 y / 10 y | 533 / 1,185 | 225 / 459 |
+| Median follow-up | 11.28 y (IQR 10.0–12.6) | not computed |
+| Median age | 53 y (IQR 46–59) | — |
+
+. . .
+
+**68,564 device-specific cohorts.** 
+
+
+Race is **CDW self-report**, not genetic ancestry; genome-informed ancestry exists only in the ~21% MVP-linked subset. Outcome: invasive cancer, ICD + treatment CPT, chart-validated. Diagnoses within 3 months excluded.
+
+
+::: {.notes}
+Be precise if asked: no report gives the number of *unique* women, so ~69,000 is device-specific cohorts, not necessarily distinct people. Median follow-up 95% CI 11.26 to 11.31 — the only interval estimate in the completed work. GE follow-up was never computed; don't say "similar." Median screen-to-diagnosis is 34 days, IQR 20 to 52, which is what justifies the 3-month exclusion. Event counts read off the KM risk tables.
+:::
+
+# Results {background-color="#0b3d5c" style="color:white;"}
+
+## Score distributions and threshold behavior {.small}
+
+::: {layout-ncol=2}
+![Hologic](images/density_scores_Hologic_JessicaWNAR.png){height=250}
+
+![GE](images/density_scores_GE_JessicaWNAR.png){height=250}
+:::
+
+::: {.incremental}
+- Median 5-year risk is **the same across race within a device**, but **differs between devices**.
+- The NCCN **1.7%** threshold falls at the **40th–60th** percentile on Hologic and the **60th–80th** on GE.
+:::
+
+. . .
+
+[Roughly half of Hologic-screened Veterans would be flagged, compared with a quarter of those screened on GE, despite equal AUCs.]{.alert}
+
+::: {.vsmall}
+Legends use analytic coding: **non-AFR = White or other, AFR = Black**.
+:::
+
+::: {.notes}
+Medians: 1.58% Hologic for both race groups; 1.44% and 1.47% GE. Hard floor at 0.89% — Mirai never emits lower here.
+
+Hologic and GE are the two FFDM manufacturers in the VA; different detector hardware and image processing, so the same breast looks different between vendors. Mirai trained primarily on Hologic, so GE is an out-of-distribution check.
+
+This is the motivation for the calibration aim: a difference in flag rate of this size does not show up in any discrimination metric. Exact fractions require one mean(y5 > 0.017) per stratum. The grant independently reports 7% of Hologic versus 4% of GE studies above the 5% threshold, showing the same asymmetry.
+:::
+
+## Discrimination: race x device {.small}
+
+| Group | Device | 5-yr AUC | 10-yr AUC | N |
+|---|---|---|---|---|
+| White or other | Hologic | 0.696 | 0.680 | 31,112 |
+| Black | Hologic | 0.676 | 0.654 | 15,886 |
+| White or other | GE | 0.697 | 0.686 | 14,925 |
+| Black | GE | 0.676 | 0.661 | 6,641 |
+
+::: {.incremental}
+- Discrimination is comparable across race and device, and somewhat below published registry validations (0.71–0.76).
+- Censoring weights are marginal Kaplan-Meier rather than covariate-dependent.
+:::
+
+::: {.notes}
+Time-dependent AUC, timeROC with IPCW, invasive cancer excluding in situ. Covariate-dependent censoring weights are the natural sensitivity analysis, and I expect that question.
+
+If asked about confidence intervals: these are point estimates; bootstrap intervals are specified in the analysis plan and are in progress.
+
+The approximately 0.02 race difference is what we propose to test formally. Because the strata are self-reported race, it should not be read as a statement about ancestry-linked biology. Including in situ gives essentially the same values; the backup slide has the table. We do not yet know why the VA AUCs sit below the registry studies.
+:::
+
+## Breast-cancer-free survival by risk quintile {.small}
+
+::: {layout-ncol=4}
+![Hologic · White/other](images/Hologic_nonAFR_2026-04-13.png){height=220}
+
+![Hologic · Black](images/Hologic_AFR_2026-04-13.png){height=220}
+
+![GE · White/other](images/GE_nonAFR_2026-04-13.png){height=220}
+
+![GE · Black](images/GE_AFR_2026-04-13.png){height=220}
+:::
+
+| Stratum | Q1 | Q5 | Q5 : Q1 |
+|---|---|---|---|
+| Hologic, White/other | 0.39% | 2.57% | **6.5x** |
+| Hologic, Black | 0.45% | 2.52% | **5.6x** |
+| GE, White/other | 0.45% | 2.51% | **5.5x** |
+| GE, Black | 0.43% | 2.21% | **5.2x** |
+
+. . .
+
+[The risk gradient is of similar magnitude in both race groups.]{.alert}
+
+::: {.vsmall}
+5-year naive cumulative incidence. Log-rank p < 0.001 in all four panels. Quintiles cut **within stratum** — panels not directly comparable.
+:::
+
+## Two models, one cohort <span class="tag-done" style="font-size:0.5em;">preliminary</span> {.small}
+
+| 5-year AUC | White or other | Black |
+|---|---|---|
+| Mirai | 0.696 | 0.676 |
+| **AI-2** | **0.671** | **0.696** |
+
+::: {.incremental}
+- [The direction of the race difference reverses between the two models.]{.alert} It is therefore a property of a particular model rather than of image-only AI generally.
+- The two models place very different fractions of women above the same absolute-risk threshold, which is a calibration difference that AUC does not capture.
+- AI-2 scores **synthetic 2-D** images, which Mirai cannot: more than 80% of VA exams, now entirely DBT (tomosynthesis).
+:::
+
+. . .
+
+::: {.notes}
+AI-2 is a second commercial image-only model, scored on 26,882 Hologic 2-D FFDM women from the same 2012–2015 first-exam frame; 872 invasive cancers; median follow-up 11.72 years, 95% CI 11.68 to 11.76.
+
+Threshold fractions: AI-2 puts 1.1% above 5%; Mirai about 7% on Hologic.
+
+Power: 77,615 Hologic and 29,522 GE, inter-score correlation 0.7 to 0.8.
+
+Caveats. 14% of AI-2 predictions failed — 4,558 of 32,404 exams — and were dropped, which raises a non-random missingness question we have not addressed. 53 women in the White/other stratum had exam dates after their last follow-up date and were set to time zero, which inflates the early event mass and could partly explain the reversal. The overlap between the Mirai and AI-2 cohorts has not been computed. Death dates are uncorrected in that pipeline. These are the reasons the slide is labelled preliminary.
+:::
+
+## Agreement with the Tyrer-Cuzick model {.small}
+
+|  | Mirai high | Mirai low |
+|---|---|---|
+| **T-C high** | **19** | 123 |
+| **T-C low** | 442 | 2,202 |
+
+::: {.incremental}
+- Of the women Tyrer-Cuzick calls high risk, Mirai agrees on **13%**; of those Mirai calls high risk, Tyrer-Cuzick agrees on **4%**.
+- kappa = -0.016 and -0.003, with both intervals covering zero: [agreement is indistinguishable from chance]{.alert}.
+- 1-year AUC was **0.84** for Mirai and **0.49** for Tyrer-Cuzick, based on **8 events**.
+:::
+
+::: {.callout-warning .vsmall}
+The limiting factor here is the number of events rather than the length of follow-up. The 2-year AUC could not be estimated, and no formal comparison test was possible.
+:::
+
+::: {.notes}
+N = 2,786 with both scores at 4 VA sites, 2023–2025; the AUC uses 2,729 after prevalent-cancer exclusion. T-C high is greater than 20% lifetime — 142 women. Mirai high is greater than 3% five-year — 461 women. The second kappa is at the 5% cut. Kappa CIs: minus 0.044 to 0.012, and minus 0.038 to 0.032. Outcome here includes in situ, unlike the validation table. Median follow-up about 1.2 years.
+:::
+
+## Genetic benchmark (MVP) {.small}
+
+| Model | White or other | Black |
+|---|---|---|
+| BCRAT + PRS313 | 0.709 (0.685–0.733) | 0.654 (0.619–0.689) |
+| PRS-AABCG | — | 0.563 (0.521–0.605) |
+| PRS-AABCG + BCRAT | — | 0.641 (0.605–0.676) |
+
+. . .
+
+Genetic models show a comparable or larger performance gap, which motivates **combining imaging, genetic, and clinical signal** rather than selecting among them.
+
+::: {.small}
+53.5K women, 818 incident cancers, median follow-up 5.7 y.
+:::
+
+# From discrimination to a clinically useful tool {background-color="#0b3d5c" style="color:white;"}
+
+### the statistical agenda <span class="tag-prop" style="color:#ffd0d0;">(proposed — grants pending)</span>
+
+## Competing risks {.small}
+
+::: {.incremental}
+- With 10–12 years of follow-up in women aged 40–74, **death without breast cancer is not rare**.
+- Our current analyses censor death, which is valid for **ranking** but not for a claim about **absolute risk**.
+- Every decision threshold discussed here is an absolute-risk threshold.
+:::
+
+. . .
+
+**Plan:** cumulative incidence by **Aalen-Johansen**; **cause-specific Cox** as primary and **Fine-Gray** as secondary; **Gray's test** for descriptive strata only; the score kept **continuous** throughout; baseline hazards stratified by device and era.
+
+::: {.vsmall}
+`survival` · `cmprsk` · `timeROC` · `riskRegression` · `dcurves`
+:::
+
+::: {.notes}
+Risk-reducing mastectomy is added as a competing event in sensitivity analysis. The rare-event approximation linking cause-specific and subdistribution interpretations is justified at 1.1 to 1.6% five-year incidence.
+:::
+
+## Calibration and domain shift {.small}
+
+::: {.incremental}
+- Discrimination seems to be preserved across device type but calibration is not; the score distributions shown earlier are an example.
+- **O/E ratios**, **calibration slope and intercept**, and **ICI with E50/E90**, adapted to competing risks.
+- Estimated within **race x device x era** strata.
+:::
+
+. . .
+
+**Recalibration:** split the 102K cohort by even and odd terminal MRN digit; apply logistic recalibration where miscalibration is approximately linear and **restricted cubic spline** recalibration where it is not; evaluate at the **1.7%** threshold.
+
+. . .
+
+[We treat this as a **domain shift** problem across device (Hologic to GE) and era (FFDM to synthetic).]{.alert}
+
+::: {.vsmall}
+Calibration is assessed at 5 years only, since Mirai produces a 5-year risk and a 10-year assessment would require a prediction the model does not provide.
+:::
+
+## Rarity, utility, equity {.small}
+
+::: {.incremental}
+- At **1.1%** incidence, AUC can be misleading under class imbalance, so we add **AUPRC**, **IPA**, and the time-dependent **Brier score**.
+- Clinical utility by **decision-curve net benefit**, with a **rule-out and rule-in threshold bracketing an equivocal zone** in place of a single optimal cut-point.
+- Sensitivity, specificity, PPV, and NPV reported **by race and age**, since predictive values depend on prevalence.
+- Equity assessed by a race x score interaction with Benjamini-Hochberg control, extended to **Hispanic and Asian** groups.
+:::
+
+. . .
+
+[These strata are **self-reported race**, so any difference describes a population as recorded in the health system rather than a biological one.]{.alert}
+
+::: {.vsmall}
+All estimates and CIs by 10-fold CV with 1000 bootstrap resamples.
+:::
+
+## Causal mediation with genetic instruments {.small}
+
+**Does the AI score mediate the effect of known risk factors?** Establishing mediation would support the interpretability of the score.
+
+::: {.incremental}
+- **Estimands:** natural direct and indirect effects, proportion mediated, and the controlled direct effect.
+- **Estimator:** the regression-based approach of Valeri and VanderWeele (`CMAverse::cmest`), with a Cox outcome model including an exposure-mediator interaction and bootstrap intervals.
+- [**Identification:** the exposures are **genetically instrumented**, which addresses confounding of the exposure with both the outcome and the mediator.]{.alert}
+- **Remaining assumption:** the instruments do not address confounding between mediator and outcome. This is untestable, so we assess its plausibility with **E-values**.
+- **Collinearity:** breast density is itself a feature the model encodes, so we report the controlled direct effect alongside the natural effects.
+:::
+
+::: {.vsmall}
+Instruments: PRS-AAM, PRS-ANM, and polygenic scores for BMI and breast density. Simulation-based power: minimum detectable a-path of **0.03 SD** at 90%.
+:::
+
+::: {.notes}
+Exposure-induced confounding would break non-parametric identification of the natural direct and indirect effects altogether; we check whether adjusting for candidate intermediates moves the proportion mediated.
+
+Per-exposure power is 89% at a = 0.04 under Benjamini-Hochberg across six exposures.
+
+The same aim also covers germline enrichment: whether high AI scores identify pathogenic variant carriers. 172 carriers have been identified — ATM 52, BRCA1 42, BRCA2 78. The test is bidirectional: a one-sample exact binomial against a 3% baseline in one direction, and a Mann-Whitney test on the continuous score, pre-specified as primary, in the other, since it avoids choosing a threshold. Multimodal integration combines AI, PRS, and clinical predictors, compared by likelihood-ratio test, paired DeLong, and survival NRI and IDI, with external validation in the Kaiser Permanente Research Bank.
+:::
+
+## Limitations {.small}
+
+- Work in progress.
+- Results to date address discrimination; death is censored rather than modeled as a competing event.
+- Confidence intervals and calibration have not yet been computed.
+- The Tyrer-Cuzick comparison, small cohort, limited follow-up.
+- The AI-2 results are preliminary
+- Strata are self-reported race rather than genetic ancestry.
+
+## Conclusions {.small}
+
+::: {.incremental}
+- Mirai discriminates comparably across race and device, with a **5–6.5-fold risk gradient between the top and bottom quintile** that is similar in Black women.
+- A **second model reverses the direction of the race difference**, indicating that the difference is either not significant or clinically meaningful, or is specific to a model rather than to image-only AI.
+- Image-based and clinical risk identify **largely non-overlapping** groups of women: 13% and 4% agreement.
+:::
+
+. . .
+
+[Our contribution is the **evaluation framework**: calibration under domain shift, absolute risk under competing risks, net benefit, equity testing, and a mediation design that uses genetic instruments for identification.]{.alert}
+
+
+## Acknowledgments & references {.vsmall}
+
+**Team:** S. Rakshe (analysis), L. Gao, J. Minnier (biostatistics), S-W. Luoh (clinical); Million Veteran Program; VA ARCHES; VA National Radiology Program.
+
+1. Yala A, et al. Multi-institutional validation of a mammography-based risk model. *JCO* 2022.
+2. Arasu VA, et al. Mammography AI vs a clinical risk model for 5-year risk. *Radiology* 2023.
+3. Minnier J, et al. Polygenic breast-cancer risk in women Veterans (MVP). *JCO Precis Oncol* 2021.
+4. Jia G, et al. GWAS of breast cancer in women of African ancestry. *Nat Genet* 2024.
+5. Austin PC, Steyerberg EW. The Integrated Calibration Index. *Stat Med* 2019.
+6. Valeri L, VanderWeele TJ. Mediation analysis with survival outcomes. *Psychol Methods* 2013.
+7. Esserman LJ, et al. The WISDOM trial. *JAMA* 2026.
+
+# Backup {background-color="#0b3d5c" style="color:white;"}
+
+## Backup · AI-2 risk-quintile survival {.small}
+
+::: {layout-ncol=2}
+![AI-2 · Hologic · White/other (N = 17,655)](images/Hologic_nonAFR_2026-06-23.png){height=290}
+
+![AI-2 · Hologic · Black (N = 9,227)](images/Hologic_AFR_2026-06-23.png){height=290}
+:::
+
+::: {.vsmall}
+Log-rank p < 0.001 in both panels. The five-year risk ratio between the top and bottom quintile is 5.2 in White/other and 5.9 in Black women. In Black women, however, quintiles 1 through 4 are nearly flat (0.49% to 0.98%), and the separation comes almost entirely from the top quintile (2.86%).
+:::
+
+## Backup · quintile event counts, Mirai {.vsmall}
+
+Cumulative invasive cancers (N at risk at t = 0):
+
+| Quintile | Hologic White/other | Hologic Black | GE White/other | GE Black |
+|---|---|---|---|---|
+| Q1 | 25 (6,367) | 15 (3,307) | 14 (3,096) | 6 (1,403) |
+| Q2 | 31 (6,142) | 16 (3,064) | 13 (2,925) | 7 (1,254) |
+| Q3 | 56 (6,249) | 34 (3,164) | 25 (2,986) | 11 (1,336) |
+| Q4 | 83 (6,165) | 34 (3,174) | 32 (2,961) | 14 (1,331) |
+| Q5 | 159 (6,182) | 80 (3,173) | 74 (2,952) | 29 (1,314) |
+| **5-yr total** | **354** | **179** | **158** | **67** |
+| **10-yr total** | 764 | 421 | 320 | 139 |
+
+758 invasive cancers by 5 years across 68,564, a **1.1%** naive cumulative incidence.
+
+## Backup · sensitivity to including DCIS {.vsmall}
+
+| Stratum | 5-yr excl. | 5-yr incl. | Diff | 10-yr excl. | 10-yr incl. | Diff |
+|---|---|---|---|---|---|---|
+| Hologic, White/other | 0.696 | 0.694 | -0.002 | 0.680 | 0.681 | +0.001 |
+| Hologic, Black | 0.676 | 0.668 | **-0.008** | 0.654 | 0.649 | -0.005 |
+| GE, White/other | 0.697 | 0.690 | -0.007 | 0.686 | 0.681 | -0.005 |
+| GE, Black | 0.676 | 0.674 | -0.002 | 0.661 | 0.670 | **+0.010** |
+
+Including DCIS raises the GE-Black 10-year AUC by 0.010 and lowers the Hologic-Black 5-year AUC by 0.008. Because the effect is not uniform in direction, we retain invasive cancer as the primary outcome.
+
+## Backup · AI-2 attrition and methods {.vsmall}
+
+| Step | N |
+|---|---|
+| Exams returned | 32,404 |
+| After dropping failed predictions | 27,846 (**14.1% failure**) |
+| First exam per patient, joined to cohort | 27,764 |
+| Excluding cancer before / within 3 months of index | **26,882** |
+
+- AI-2 returns a single 5-year risk estimate, with no density, detection, or multi-horizon output. Code for the GE and synthetic-2-D arms exists but has not been run.
+- 53 women in the White/other stratum had exam dates after their last follow-up date; survival time was set to 0.
+- Death dates are uncorrected, so death censors at last visit rather than at the date of death.
+- Quintile cutpoints were computed within race stratum, as for Mirai.
