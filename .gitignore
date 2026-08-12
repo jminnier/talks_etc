@@ -4,3 +4,9 @@
 .Ruserdata
 *.DS_Store
 README.html
+
+# Claude Code session state / worktrees
+.claude/
+
+# Full-size screenshot originals kept locally; slides use the exported .jpg
+* - [0-9].png

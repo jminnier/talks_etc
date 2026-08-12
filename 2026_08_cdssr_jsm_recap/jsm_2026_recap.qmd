@@ -1,0 +1,126 @@
+---
+title: "JSM 2026 Recap"
+subtitle: "Notes and highlights from the Joint Statistical Meetings"
+author:
+  - name: Jessica Minnier
+    affiliation: "CDSSR, Knight Cancer Institute, OHSU, Portland, OR"
+date: "2026-08-12"
+date-format: "MMMM D, YYYY"
+# -smart stops Pandoc inserting U+00A0 after abbreviations ("vs.", "et al."),
+# which some PDF viewers draw as a missing-glyph box.
+from: markdown-smart
+format:
+  clean-revealjs:
+    self-contained: true
+    width: 1280
+    height: 720
+    fig-align: center
+    df-print: kable
+    logo: images/ohsu_logo_knight.jpg
+    footer: "JSM 2026 Recap · CDSSR"
+    include-in-header:
+      text: |
+        <style>
+        .reveal h1, .reveal h2, .reveal h3 { color:#0b3d5c; }
+        .reveal a { color:#b8002e; }
+        .reveal .alert { color:#b8002e; font-weight:600; }
+        .reveal table { font-size:0.68em; }
+        .reveal .small { font-size:0.82em; }
+        .reveal .vsmall { font-size:0.64em; }
+        .reveal .slide-logo { max-height:46px !important; max-width:200px !important; }
+        </style>
+---
+
+## JSM Award Session
+
+![Miguel Marino (OHSU Family Medicine; 2026 ASA Award Fellow) and Motomi Mori (St. Jude)](images/jsm_tomi.jpg){height=520 fig-align="center"}
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+## Staying Relevant in the Age of AI {.small}
+
+- Be a **useful human collaborator** (not just consultant) that brings problem solving skills, creativity, deep stats and data knowledge
+- **Identify and show when AI is wrong** but accept it is here to stay
+- Be **visible in the research community**, engage, ask questions, show up, teach workshops, establish trust ("Not on our to do list, but so important" -- Manisha Desai, Stanford)
+- Embrace the tools, grow and learn, and **don't be left behind**
+
+We have value! Make sure everyone knows it.
+
+:::: {.columns}
+::: {.column width="33%"}
+::: {style="min-height:120px; display:flex; align-items:flex-end;"}
+[![](images/statmed1.png){width=390}](https://doi.org/10.1002/sim.70271)
+:::
+
+::: {.vsmall}
+Zhu (2025). *Biostatisticians Meet AI: Navigating Shifts While Preserving Principles.* Stat Med 44:e70271. [doi:10.1002/sim.70271](https://doi.org/10.1002/sim.70271)
+:::
+:::
+::: {.column width="33%"}
+::: {style="min-height:120px; display:flex; align-items:flex-end;"}
+[![](images/statmed2.png){width=390}](https://doi.org/10.1002/sim.70263)
+:::
+
+::: {.vsmall}
+Dobler et al. (2025). *ChatGPT as a Tool for Biostatisticians: A Tutorial on Applications, Opportunities, and Limitations.* Stat Med 44:e70263. [doi:10.1002/sim.70263](https://doi.org/10.1002/sim.70263)
+:::
+:::
+::: {.column width="34%"}
+::: {style="min-height:120px; display:flex; align-items:flex-end;"}
+[![](images/llm_paper.png){width=390}](https://doi.org/10.1017/cts.2025.10064)
+:::
+
+::: {.vsmall}
+Grambow et al. (2025). *Integrating large language models in biostatistical workflows for clinical and translational research.* J Clin Transl Sci 9:e131. [doi:10.1017/cts.2025.10064](https://doi.org/10.1017/cts.2025.10064)
+:::
+:::
+::::
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+## Strong Statistical Voice {.small}
+
+:::: {.columns}
+::: {.column width="52%"}
+![](images/jsm_quants.jpg){height=360 fig-align="center"}
+:::
+::: {.column width="48%"}
+[![](images/strong_statistical_voice.png){height=225 fig-align="center"}](https://doi.org/10.1007/s42519-025-00522-7)
+
+::: {.vsmall}
+Pomann et al. (2026). *Enhancing Team Science by Training Collaborative Biostatisticians to have a Strong Statistical Voice.* J Stat Theory Pract 20:13. [doi:10.1007/s42519-025-00522-7](https://doi.org/10.1007/s42519-025-00522-7)
+:::
+:::
+::::
+
+::: {style="text-align:center; margin-top:0.3em;"}
+[![](images/quantslogo.png){height=125}](https://quantsprogram.com)
+
+[quantsprogram.com](https://quantsprogram.com)
+:::
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+## Engagement in the Knight
+
+- Retreat discussion topic
+- 2026–27 KCI/CDCB Faculty Research Exchange series
+- Knight Research Day
+- AI in Biology sessions
+- Knight Retreat
+- Knight Research Seminars (it's our job to learn the science, it's all relevant)
+
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+## Thank you {.small}
+
+*Slides made with the assistance of Claude Code*
