@@ -36,13 +36,14 @@ cd <talk dir> && python3 -m http.server 8777 --bind 127.0.0.1
 - **Keep `from: markdown-smart`** in clean-revealjs decks. Without it, Pandoc inserts U+00A0 after "vs." or "et al.", and some PDF viewers draw that as a missing-glyph box.
 - **Jessica edits the `.qmd` and drops new files into `images/` while you work.** Diff against her current file before writing back, and never overwrite her working copy wholesale. Re-list `images/` before you edit.
 - Screenshot originals named `* - 1.png` are gitignored and stay local. Slides reference the exported `.jpg`.
-- Commit the rendered `.html` together with the source, because Netlify serves the committed HTML. When you add a talk, add a row to the `README.md` table as well (the table currently stops at 2020).
+- Commit the rendered `.html` together with the source, because Netlify serves the committed HTML. When you add a talk, add a row to the `README.md` table as well, in date order.
 - One copy of each rendered deck per talk folder. Don't keep duplicate HTML across folders.
 
 ## Decisions log
 
 Record lasting decisions here (newest first), with the date and the reason.
 
+- 2026-11-10: Brought the README talk table up to date (2019–2026), including the SOM sample-size reruns in `2019_03_SampleSizeAACR/`. Talks without source in the repo are marked "rendered only".
 - 2026-11-10: Created this CLAUDE.md. Repo conventions belong here. Collaboration preferences belong in Claude's auto-memory.
 - 2026-08-12: Removed the duplicate `WNAR_VA_2026.html` from `2026_08_JSM_AI_BC/`. The canonical copy is in `2026_06_WNAR_AI_BC/`.
 - 2026-08-12: Added `.claude/` and `* - [0-9].png` screenshot originals to `.gitignore`.
