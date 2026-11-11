@@ -43,6 +43,7 @@ cd <talk dir> && python3 -m http.server 8777 --bind 127.0.0.1
 
 Record lasting decisions here (newest first), with the date and the reason.
 
+- 2026-11-10: HIP 523 2026 data-equity talk restyled to clean-revealjs. Its Shiny app was rewritten as `2026_11_HIP523_DataEquity/equity_app_2026/` and deploys under a new shinyapps.io name, `equity_regression_2026`, so the 2025 deck's app link keeps working. Speaker notes are written as bullets in the deck and pulled into a handout by `make_speaker_notes.R`.
 - 2026-11-10: Brought the README talk table up to date (2019–2026), including the SOM sample-size reruns in `2019_03_SampleSizeAACR/`. Talks without source in the repo are marked "rendered only".
 - 2026-11-10: Created this CLAUDE.md. Repo conventions belong here. Collaboration preferences belong in Claude's auto-memory.
 - 2026-08-12: Removed the duplicate `WNAR_VA_2026.html` from `2026_08_JSM_AI_BC/`. The canonical copy is in `2026_06_WNAR_AI_BC/`.
