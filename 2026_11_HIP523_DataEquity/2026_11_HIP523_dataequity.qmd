@@ -3,7 +3,9 @@ title: "Beyond 'Adjusting for Race': Data Equity in Clinical Research"
 subtitle: "HIP 523: Data Science for Clinical & Translational Research"
 author:
   - name: Jessica Minnier, PhD
-    affiliation: "CDSSR, Knight Cancer Institute, OHSU, Portland, OR"
+    affiliations:
+      - "Co-Director, Cancer Data Science Shared Resource (CDSSR), Knight Cancer Institute"
+      - "Associate Professor of Biostatistics, OHSU-PSU School of Public Health"
 date: "2026-11-11"
 date-format: "MMMM D, YYYY"
 # -smart stops Pandoc inserting U+00A0 after abbreviations ("vs.", "et al."),
