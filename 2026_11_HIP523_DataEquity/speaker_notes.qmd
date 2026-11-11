@@ -8,7 +8,7 @@ format:
     css: speaker_notes.css
 ---
 
-Generated from `2026_11_HIP523_dataequity.qmd`. Times are rough start times; total about 50 minutes.
+Generated from `2026_11_HIP523_dataequity.qmd`. Times are rough start times; total about 40 minutes.
 
 ### 2. Learning Objectives <span class='t'>0:00</span>
 
@@ -230,32 +230,31 @@ Generated from `2026_11_HIP523_dataequity.qmd`. Times are rough start times; tot
 - Report absolute differences. "9 fewer patients out of 100 got pain medication" is easier to act on than an odds ratio. The app shows both.
 - And check effect modification. Tab 4 of the app has an example where one average effect hides a group the program doesn't help.
 
-### 33. Discussion: Breakout Rooms (8 min) <span class='t'>36:30</span>
-
-- About 8 minutes in breakout rooms.
-- Pick one or two questions. Someone in each room report back one thing.
-- If breakouts aren't working, use the chat.
-- Back in the main room, ask one or two groups to share, especially on question 1, since everyone has seen some EHR data by now.
-
-### 34. Best Practices for Reporting <span class='t'>45:30</span>
+### 33. Best Practices for Reporting <span class='t'>36:30</span>
 
 - When you publish, there are good guidelines.
 - SAGER for sex and gender.
 - JAMA's guidance (Flanagin) for race and ethnicity.
 - STROBE-Equity came out in 2025 and covers most EHR work. CONSORT-Equity for trials, PRISMA-Equity for systematic reviews.
 
-### 35. Perspective <span class='t'>46:30</span>
+### 34. Perspective <span class='t'>37:30</span>
 
 - I'll leave you with this from the Urban Institute's Do No Harm Guide. Read it.
 - Methods matter, and so does who is on the team and what they bring.
 
-### 36. References <span class='t'>47:30</span>
-
-- References are all here.
-
-### 37. Thank you! <span class='t'>47:30</span>
+### 35. Thank you! <span class='t'>38:30</span>
 
 - To sum up: data equity is ongoing work. Question your assumptions, be intentional about what goes in the model, and be honest in the interpretation.
 - Move from "what's the average effect?" to "for whom does this work, and why?"
 - Thanks. Happy to take questions.
+
+### 36. Optional: Discussion Questions <span class='t'>40:30</span>
+
+- Not part of the 50 minutes. Only use these if there's time left after questions.
+- If there is time, pick one question and ask people to answer in the chat or unmute.
+- Question 1 usually works best, since everyone in the class has seen some EHR data by now.
+
+### 37. References <span class='t'>40:30</span>
+
+- References are all here.
 

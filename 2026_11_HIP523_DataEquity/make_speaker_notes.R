@@ -18,7 +18,7 @@ minutes <- c(
   "Discussion: Post-attribute Bias" = 1.5, "Discussion: Omitted Variable Bias" = 1.5,
   "Discussion: Disparities vs. Mechanisms" = 1.5,
   "Confounder or Mediator?" = 1.5, "Modeling Decisions" = 1.5,
-  "Discussion: Breakout Rooms (8 min)" = 9, "Thank you!" = 2, "References" = 0
+  "Optional: Discussion Questions" = 0, "Thank you!" = 2, "References" = 0
 )
 section_minutes <- 0.5   # level-1 section title slides
 
