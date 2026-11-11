@@ -59,9 +59,12 @@ myBib <- ReadBib(here::here("2026_11_HIP523_DataEquity", "minnier_bibliography.b
 # short in-text citations ("Sax et al. (2023)"); the reference list keeps full author lists
 cite <- function(key) {
   n_auth <- length(myBib[[key]]$author)
-  Cite(key = key, bib = myBib, textual = TRUE,
-       .opts = list(cite.style = "authoryear", max.names = if (n_auth <= 2) 2 else 1,
-                    longnamesfirst = FALSE))
+  txt <- Cite(key = key, bib = myBib, textual = TRUE,
+              .opts = list(cite.style = "authoryear", max.names = if (n_auth <= 2) 2 else 1,
+                           longnamesfirst = FALSE, hyperlink = FALSE))
+  # link the citation to the paper's DOI so it opens from the slide
+  doi <- myBib[[key]]$doi
+  if (is.null(doi)) txt else paste0("[", txt, "](https://doi.org/", doi, ")")
 }
 ```
 
@@ -114,11 +117,11 @@ Today I'll focus on the regression side: how we use models to **measure and expl
 -   Paying attention to power, bias, and discrimination in how data are collected, analyzed, interpreted, and used
 -   Making sure research benefits everyone, especially groups that have been left out
 -   Data aren't neutral. They reflect the systems and biases they came from
--   Communities and patients have a say in the research, and ideally ownership of their own data (data sovereignty; see the [CARE Principles](https://www.gida-global.org/care))
+-   Communities and patients have a say in the research, and ideally ownership of their own data (data sovereignty; see the [CARE Principles](https://doi.org/10.5334/dsj-2020-043))
 -   The goal: results that are fair, accurate, and useful for reducing disparities
 
 ::: {.vsmall}
-Sources: [Community Commons](https://www.communitycommons.org/collections/An-Introduction-to-Data-Equity), [CDC Foundation](https://www.cdcfoundation.org/HealthEquity/data-equity-principles), [UMD Library Guide](https://lib.guides.umd.edu/ResearchEquity/DataEquity), [Data.org](https://data.org/resources/what-is-data-equity-and-why-does-it-matter/), `r cite("carroll2020care")`
+Sources: [Community Commons](https://www.communitycommons.org/collections/An-Introduction-to-Data-Equity), [CDC Foundation](https://www.cdcfoundation.org/data-equity-principles?inline), [UMD Library Guide](https://lib.guides.umd.edu/ResearchEquity/DataEquity), [Data.org](https://data.org/resources/what-is-data-equity-and-why-does-it-matter/), `r cite("carroll2020care")`
 :::
 
 :::{.notes}
@@ -233,7 +236,7 @@ Sources: `r cite("venkateswaran2023bringing")`; `r cite("retzer2023toolkit")`
 
 ![NIH Sex and Gender](img/nih_sex_gender.png){height=420}
 
-[NIH Sex and Gender](https://orwh.od.nih.gov/sex-gender)
+Source: [NIH Office of Research on Women's Health](https://orwh.od.nih.gov/sex-as-biological-variable)
 
 :::{.notes}
 - Now a specific area: sex and gender.
@@ -298,7 +301,7 @@ Sources: `r cite("venkateswaran2023bringing")`; `r cite("retzer2023toolkit")`
     -   Avoid "Other"; describe what a collapsed category contains
     -   Include ethnicity and ancestry information
 -   Document how race and ethnicity were collected and classified
--   The 2024 federal standard (OMB SPD 15) combines race and ethnicity into one question and adds Middle Eastern or North African. EHR categories will change
+-   The 2024 federal standard ([OMB SPD 15](https://www.federalregister.gov/documents/2024/03/29/2024-06469/revisions-to-ombs-statistical-policy-directive-no-15-standards-for-maintaining-collecting-and-presenting)) combines race and ethnicity into one question and adds Middle Eastern or North African. EHR categories will change
 -   If race is in the model, check whether effects differ by race (effect modification)
 -   Acknowledge limitations
 
