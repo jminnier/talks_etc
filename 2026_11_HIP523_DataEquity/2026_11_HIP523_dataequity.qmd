@@ -469,7 +469,7 @@ The type changes how to interpret an adjusted estimate `r cite("swilley2023we")`
 
 # Modeling Examples
 
-[Interactive App: minnier.shinyapps.io/equity_regression_2026](https://minnier.shinyapps.io/equity_regression_2026/)
+[Interactive App: minnier.shinyapps.io/equity_regression](https://minnier.shinyapps.io/equity_regression/)
 
 ![](img/prof_business_memeting.png){height=380}
 
@@ -720,7 +720,7 @@ PrintBibliography(myBib)
 ### This talk info:
 
 -   Slides: [bit.ly/hip26_data_eq](https://bit.ly/hip26_data_eq)
--   Interactive app: [minnier.shinyapps.io/equity_regression_2026](https://minnier.shinyapps.io/equity_regression_2026/)
+-   Interactive app: [minnier.shinyapps.io/equity_regression](https://minnier.shinyapps.io/equity_regression/)
 -   Code for these slides is on GitHub, with links to other talks and course materials: [jminnier/talks_etc](https://github.com/jminnier/talks_etc)
 -   Uncited art from [lummi.ai](https://www.lummi.ai/s/illustration/)
 

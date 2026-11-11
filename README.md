@@ -30,7 +30,7 @@ Date | Conference | Title | Slide Code | Slides Rendered
 6/16/26 | WNAR 2026 | Risk Prediction for Police Stolen Vehicle Operations Data | rendered only: [2026_06_WNAR_PortlandPoliceBureau](2026_06_WNAR_PortlandPoliceBureau) | [slides](https://jminnier-talks.netlify.app/2026_06_WNAR_PortlandPoliceBureau/wnar_ppb2026.html)
 8/5/26 | Joint Statistical Meetings | Validating AI Breast-Cancer Risk Prediction in a Diverse Veteran Population | [2026_08_JSM_AI_BC](2026_08_JSM_AI_BC) | [slides](https://jminnier-talks.netlify.app/2026_08_JSM_AI_BC/JSM_VA_2026_08.html)
 8/12/26 | OHSU Knight CDSSR | JSM 2026 Recap | [2026_08_cdssr_jsm_recap](2026_08_cdssr_jsm_recap) | [slides](https://jminnier-talks.netlify.app/2026_08_cdssr_jsm_recap/jsm_2026_recap.html)
-11/11/26 | OHSU HIP 523 Data Science for Clinical & Translational Research, Guest Lecture | Beyond "Adjusting for Race": Data Equity in Clinical Research | [2026_11_HIP523_DataEquity](2026_11_HIP523_DataEquity) | [slides](https://jminnier-talks.netlify.app/2026_11_HIP523_DataEquity/2026_11_HIP523_dataequity.html), [app](https://minnier.shinyapps.io/equity_regression_2026/)
+11/11/26 | OHSU HIP 523 Data Science for Clinical & Translational Research, Guest Lecture | Beyond "Adjusting for Race": Data Equity in Clinical Research | [2026_11_HIP523_DataEquity](2026_11_HIP523_DataEquity) | [slides](https://jminnier-talks.netlify.app/2026_11_HIP523_DataEquity/2026_11_HIP523_dataequity.html), [app](https://minnier.shinyapps.io/equity_regression/)
 
 ## Workshops
 
