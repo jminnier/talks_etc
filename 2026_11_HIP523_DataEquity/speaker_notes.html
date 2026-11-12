@@ -2196,23 +2196,30 @@ ul { margin-bottom: .2rem; }
 </header>
 
 
-<p>Generated from <code>2026_11_HIP523_dataequity.qmd</code>. Times are rough start times; total about 40 minutes.</p>
-<section id="learning-objectives-000" class="level3">
-<h3 class="anchored" data-anchor-id="learning-objectives-000">2. Learning Objectives <span class="t">0:00</span></h3>
+<p>Times are rough start times. The talk runs about 46 minutes, which leaves about 4 for questions. The discussion questions are extra.</p>
+<section id="title-page-000" class="level3">
+<h3 class="anchored" data-anchor-id="title-page-000">1. Title page <span class="t">0:00</span></h3>
 <ul>
 <li>Hi everyone, thanks for having me for the last session of the course. I’m Jessica Minnier, a biostatistician at the Knight Cancer Institute.</li>
+</ul>
+</section>
+<section id="learning-objectives-001" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives-001">2. Learning Objectives <span class="t">0:01</span></h3>
+<ul>
 <li>Today: data equity in clinical research. It’s a vague term, so I’ll start by defining it.</li>
 <li>Then how we think about race, sex, gender, and SDOH (social determinants of health) when we design studies and analyze data.</li>
 <li>Most of the time goes to the last two objectives: what to put in the model, with examples and an app.</li>
+<li>Feel free to ask questions during this talk</li>
 </ul>
 </section>
 <section id="where-this-fits-in-hip-523-100" class="level3">
 <h3 class="anchored" data-anchor-id="where-this-fits-in-hip-523-100">3. Where This Fits in HIP 523 <span class="t">1:00</span></h3>
 <ul>
 <li>You’ve already seen a lot of the pieces of this.</li>
+<li>Based on your syllabus I know you have focused on EHR data.</li>
 <li>When you looked at EHR data quality, think about who the missing data belong to. It usually isn’t random.</li>
-<li>If you’ve pulled a cohort from TriNetX or Cosmos, the race and ethnicity categories were decided before you got there.</li>
-<li>Rumel covered prediction and fairness, so I’ll mostly stay on the inference side. The last tab of the app connects back to his talk.</li>
+<li>If you’ve pulled a cohort from TriNetX or Cosmos, the race and ethnicity categories were decided before you started your research.</li>
+<li>Rumel covered prediction and fairness, so I’ll mostly stay on the statistical inference side and talk about how we use models to <strong>measure and explain disparities</strong>, and how the choice of what to adjust for changes the inference or the results.</li>
 </ul>
 </section>
 <section id="what-is-data-equity-200" class="level3">
@@ -2237,8 +2244,8 @@ ul { margin-bottom: .2rem; }
 <h3 class="anchored" data-anchor-id="data-equity-principles-330">6. Data Equity Principles <span class="t">3:30</span></h3>
 <ul>
 <li>The CDC Foundation lays out a life cycle for data equity.</li>
-<li>Equity applies across the whole process: purpose, collection, analysis, and sharing and acting on findings.</li>
-<li>Same idea as the research data lifecycle you saw earlier in the course.</li>
+<li>Note that equity applies across the whole process: purpose, collection, analysis, and sharing and acting on findings.</li>
+<li>Same idea as the research data lifecycle but more of an equity lens</li>
 </ul>
 </section>
 <section id="what-is-equity-minded-research-430" class="level3">
@@ -2252,11 +2259,12 @@ ul { margin-bottom: .2rem; }
 <h3 class="anchored" data-anchor-id="equity-minded-research-500">8. Equity-minded Research <span class="t">5:00</span></h3>
 <ul>
 <li>Some concrete versions of equity-minded research.</li>
-<li>Start by naming the systemic factors that could affect your outcome.</li>
-<li>Collect data so people can actually be counted: interpreters, self-report, more than two options.</li>
+<li>First we start by naming the systemic factors that could affect your outcome.</li>
+<li>Collect data so people can actually be counted: for example by using language interpreters, or thinking about self-report race and gender we would use more than two options. Allow for write in responses, etc.</li>
+<li>Make sure we are sampling properly from the population to make sure we have the groups we care about represented in our sample, that’s probably an obvious one.</li>
 <li>Positionality: reflecting on our own biases, assumptions, and experiences, and how they shape what we study.</li>
 <li>When you see a difference by race, that’s the start of the question.</li>
-<li>Report by subgroup, and be upfront about what you couldn’t measure.</li>
+<li>Report by subgroup, and be upfront about what you couldn’t measure. (due to sample size or other restrictions)</li>
 </ul>
 </section>
 <section id="common-data-equity-challenges-in-ehr-data-600" class="level3">
@@ -2266,17 +2274,17 @@ ul { margin-bottom: .2rem; }
 <li>Selection bias. The EHR only has the patients who come in. People with good access have more visits and more data.</li>
 <li>Missing data. Race shows up as Unknown or Declined, or interpreter need isn’t documented.</li>
 <li>If we drop those patients (complete-case analysis), we’re dropping a non-random group.</li>
-<li>Imputing race isn’t a free fix either. Methods that guess race from surname and address work worse for some groups.</li>
-<li>Ask where a field came from. Self-report and a registrar’s guess are not the same variable.</li>
+<li>Imputing race isn’t often a useful fix either. Methods that guess race from surname and address work worse for some groups.</li>
+<li>Ask where a field came from. Self-reported race and an interviewer’s guess are not the same variable.</li>
 </ul>
 </section>
 <section id="aggregation-and-small-groups-700" class="level3">
 <h3 class="anchored" data-anchor-id="aggregation-and-small-groups-700">10. Aggregation and Small Groups <span class="t">7:00</span></h3>
 <ul>
 <li>Collapsing all Asian American subgroups can hide big differences, say between Vietnamese and Japanese patients.</li>
-<li>We saw something similar in our own work with asthma in US-born and non-US-born Latinos.</li>
+<li>In a project I worked we saw something similar with asthma in US-born and non-US-born Latinos. That disparity was hidden when collapsed into the larger Latino category.</li>
 <li>When groups get small, the instinct is to collapse them. Try reporting them with wide confidence intervals instead.</li>
-<li>Multilevel models can borrow strength across groups. One approach for intersectional groups is called MAIHDA (Evans and colleagues).</li>
+<li>Multilevel models can borrow strength across groups but still provide group-level estimates. One approach for intersectional groups is called MAIHDA (Evans and colleagues).</li>
 </ul>
 </section>
 <section id="missing-context-and-history-800" class="level3">
@@ -2284,7 +2292,7 @@ ul { margin-bottom: .2rem; }
 <ul>
 <li>Missing context. A post-op study that only has patient factors misses hospital factors like staffing.</li>
 <li>Or asthma without air quality or housing.</li>
-<li>History. Tuskegee and many other studies created a justified mistrust of research in Black communities, which shows up today as underrepresentation.</li>
+<li>History might influence study results. Tuskegee and many other studies created a justified mistrust of research in Black communities, which shows up today as underrepresentation.</li>
 <li>Acknowledging that history is part of rebuilding trust.</li>
 </ul>
 </section>
@@ -2299,6 +2307,7 @@ ul { margin-bottom: .2rem; }
 <ul>
 <li>Sex is biological, gender is social. They get used interchangeably, and that’s a common mistake.</li>
 <li>In EHR data, check what the field actually is. Many systems have one “sex” field that mixes sex assigned at birth, legal sex, and gender identity. Newer systems have separate sexual orientation and gender identity (SOGI) fields, but they’re often blank.</li>
+<li>Ways to improve this: Don’t assume a binary variable, document missing data</li>
 <li>In 2016 NIH started the SABV policy: account for sex in design, analysis, and reporting.</li>
 <li>In practice: enough people of each sex, test for sex-specific effects, report results by sex.</li>
 <li>NIH’s “4 Cs” on the right: Consider, Collect, Characterize, Communicate.</li>
@@ -2316,17 +2325,21 @@ ul { margin-bottom: .2rem; }
 <h3 class="anchored" data-anchor-id="race-and-ethnicity-critical-considerations-1100">15. Race and Ethnicity: Critical Considerations <span class="t">11:00</span></h3>
 <ul>
 <li>Race is a social construct. Genetic variation within groups is larger than between groups.</li>
+<li>Racial categories have a history and have changed over time.</li>
 <li>When we see health differences by race, we’re usually seeing the downstream effects of racism, poverty, and environment.</li>
-<li>So be clear about what the race variable stands for in your study. That decides how you should use it in a model.</li>
+<li>Race intersects with other variables to make the effects even more complex</li>
+<li>So be clear about what the race variable stands for in your study. That should decide how you should use it in a model.</li>
 </ul>
 </section>
 <section id="race-and-ethnicity-recommendations-1200" class="level3">
 <h3 class="anchored" data-anchor-id="race-and-ethnicity-recommendations-1200">16. Race and Ethnicity: Recommendations <span class="t">12:00</span></h3>
 <ul>
+<li>Recommendations to avoid ignoring these complex effects:</li>
 <li>Use clearly defined categories, and don’t collapse them when groups have different outcomes.</li>
-<li>“Other” is a problem label. Describe what’s in a collapsed group.</li>
+<li>avoid the label, “Other”, that can be problematic in what is being implied there. Describe what’s in a collapsed group.</li>
+<li>include ethnicity and ancestry information where possible</li>
 <li>Document how the data were collected.</li>
-<li>The federal standard changed in 2024. Race and ethnicity become one question, and there’s a new Middle Eastern or North African category. Agencies have until 2029 to switch, so a multi-year dataset may change categories partway through.</li>
+<li>Also note that the federal standard changed in 2024. Race and ethnicity become one question, and there’s a new Middle Eastern or North African category. Agencies have until 2029 to switch, so a multi-year dataset may change categories partway through.</li>
 <li>If you use race in a model, check for effect modification. Tab 4 of the app shows what that looks like.</li>
 <li>And always acknowledge the limits of the variables you have.</li>
 </ul>
@@ -2334,11 +2347,11 @@ ul { margin-bottom: .2rem; }
 <section id="race-in-clinical-algorithms-and-measurement-1300" class="level3">
 <h3 class="anchored" data-anchor-id="race-in-clinical-algorithms-and-measurement-1300">17. Race in Clinical Algorithms and Measurement <span class="t">13:00</span></h3>
 <ul>
-<li>Some bias is already in the numbers before we touch them.</li>
+<li>Some bias is already in the numbers before we analyze them. For example:</li>
 <li>eGFR used to have a race multiplier. Black patients looked like they had better kidney function than they did, and that delayed nephrology referral and transplant listing. The 2021 CKD-EPI equation dropped race.</li>
 <li>Pulse oximeters read high in patients with darker skin. Sjoding found occult hypoxemia was missed about three times as often in Black patients.</li>
 <li>Vyas and colleagues found race corrections in cardiology, obstetrics, urology, pulmonology, and more.</li>
-<li>If you build a prediction model on these values, the bias comes along. That’s what Rumel talked about, and the last tab of the app lets you play with it.</li>
+<li>If you build a prediction model on these values, the bias comes along. I believe that’s similar to what Rumel talked about in his algorithmic bias session, and the last tab of the app lets you play with it.</li>
 </ul>
 </section>
 <section id="social-determinants-of-health-sdoh-1400" class="level3">
@@ -2370,7 +2383,7 @@ ul { margin-bottom: .2rem; }
 <h3 class="anchored" data-anchor-id="statistical-analysis-what-does-adjusted-for-mean-1630">21. Statistical Analysis: What Does “Adjusted For” Mean? <span class="t">16:30</span></h3>
 <ul>
 <li>When we say we “adjusted for” something, what do we mean?</li>
-<li>Adjustment estimates the effect within groups and then averages. Example: compare statin rates by insurance within each age group, then combine.</li>
+<li>Adjustment estimates the effect within groups and then averages. Example: adjusting for age in this example means we compare statin rates by insurance within each age group, then combine.</li>
 <li>That average leans toward the bigger groups, which can hide a different effect in a smaller group.</li>
 <li>When we adjust for race, we’re comparing people within race groups. That doesn’t take racism out of the picture, and if the exposure itself is shaped by racism, adjusting can hide part of the effect.</li>
 <li>Effect modification lets us estimate effects separately by group, which is often more useful.</li>
@@ -2407,7 +2420,7 @@ ul { margin-bottom: .2rem; }
 <section id="modeling-examples-2130" class="level3">
 <h3 class="anchored" data-anchor-id="modeling-examples-2130">25. Modeling Examples <span class="t">21:30</span></h3>
 <ul>
-<li>Three examples, all EHR-style data. The data in the app are simulated, so we know the right answer.</li>
+<li>Three examples, all EHR-style data, plus a fourth on effect modification if there’s time. The data in the app are simulated, so we know the right answer.</li>
 <li>I’ll go back and forth between the slides and the app.</li>
 </ul>
 </section>
@@ -2420,12 +2433,24 @@ ul { margin-bottom: .2rem; }
 <li>Multiple regression adds triage acuity, the ESI level the triage nurse assigns. Among patients with the same acuity, is there still a gap?</li>
 <li>Switch to the app, tab 1.</li>
 </ul>
+<p><strong>Demo in tab 1:</strong></p>
+<ul>
+<li>Defaults: 43% of White patients and 22% of Black patients are triaged high acuity. True pain is the same in both groups.</li>
+<li>Unadjusted odds ratio 0.70, about 9 fewer patients out of 100 get analgesia. Adjusted for triage, 0.94, about 1 point.</li>
+<li>Then set triage bias to 0 and prescribing bias to 0.75. Now the adjusted odds ratio is about 0.53. When the bias is at the prescribing step, both models show it.</li>
+<li>Set triage bias back to 1.5 and prescribing bias to 0 before the discussion slide.</li>
+</ul>
+<p><strong>Lines you could say:</strong></p>
+<ul>
+<li>“The adjusted model says prescribing looks fair. For the prescribing step, that’s true. All the bias happened at triage, and adjusting for triage hid it.”</li>
+<li>“Same data, two answers. Which one is right depends on the question.”</li>
+</ul>
 </section>
 <section id="discussion-post-attribute-bias-2500" class="level3">
 <h3 class="anchored" data-anchor-id="discussion-post-attribute-bias-2500">27. Discussion: Post-attribute Bias <span class="t">25:00</span></h3>
 <ul>
 <li>Triage acuity looks like a reasonable thing to adjust for. Sicker patients should get more treatment.</li>
-<li>But acuity is assigned by a person, and there’s evidence it’s biased by race. Sax and colleagues looked at 5 million Kaiser ED visits and found Black patients had about 18% higher risk of being under-triaged. Joseph and colleagues found similar patterns for Black, Hispanic, and non-English-speaking patients.</li>
+<li>But acuity is assigned by a person, and there’s evidence it’s biased by race. These research studies looked at 5 million Kaiser ED visits and found Black patients had about 18% higher risk of being under-triaged. Other research found similar patterns for Black, Hispanic, and non-English-speaking patients.</li>
 <li>If bias lowers triage acuity for Black patients, and acuity drives treatment, adjusting for acuity takes that part of the disparity out of the estimate.</li>
 <li>In the app: with all the bias at triage, the adjusted odds ratio sits near 1. Prescribing looks fair, and patients still weren’t treated fairly.</li>
 <li>Here the bivariate model is the more honest answer.</li>
@@ -2439,6 +2464,18 @@ ul { margin-bottom: .2rem; }
 <li>Bivariate: are Medicaid patients less likely to get a statin?</li>
 <li>Adjusted for age: among people the same age, is there still a gap?</li>
 <li>App, tab 2.</li>
+</ul>
+<p><strong>Demo in tab 2:</strong></p>
+<ul>
+<li>Defaults: Medicaid patients are about 10 years younger (48 vs. 58 on average). The true odds ratio for Medicaid is 0.67.</li>
+<li>Unadjusted odds ratio 0.33. Adjusted for age, 0.60, close to the truth.</li>
+<li>Set the age gap to 0. Both models give about 0.7. With no confounding, adjusting barely changes anything.</li>
+<li>Set the age gap back to 10 and the true effect to 0. Unadjusted 0.49, adjusted 0.93. The whole “disparity” was age.</li>
+</ul>
+<p><strong>Lines you could say:</strong></p>
+<ul>
+<li>“Leave age out and Medicaid patients look a third as likely to get a statin. A lot of that is just age.”</li>
+<li>“Here adjusting gets us closer to the truth. Age comes before insurance, so it’s a confounder, and there’s a real gap left over.”</li>
 </ul>
 </section>
 <section id="discussion-omitted-variable-bias-2930" class="level3">
@@ -2456,8 +2493,30 @@ ul { margin-bottom: .2rem; }
 <ul>
 <li>Heart failure readmissions. Attribute: limited English proficiency, usually from the interpreter-needed field.</li>
 <li>Bivariate: do LEP patients get readmitted more?</li>
-<li>Adjusted for whether they made it to a 7-day follow-up visit.</li>
+<li>Adjusted: if LEP and English-proficient patients made it to a 7-day follow-up visit at the same rate, would readmission still differ?</li>
 <li>App, tab 3.</li>
+</ul>
+<p><strong>Lines you could say, in order:</strong></p>
+<ol type="1">
+<li>“This looks just like Example 1: LEP affects follow-up, and follow-up affects readmission. So why am I about to adjust for it?”</li>
+<li>Tell it as a story. “A patient goes home with discharge instructions in English they can’t read. They don’t make the 7-day visit, and they’re back in the hospital in three weeks.”</li>
+<li>Give the app’s numbers. At the default, 61% of English-proficient patients make the 7-day visit, against 23% of LEP patients.</li>
+<li>“The unadjusted model says LEP patients are readmitted more. That’s the disparity, and you should report it.”</li>
+<li>“The adjusted model asks: if LEP patients made it to follow-up as often as everyone else, would the gap close? Here it mostly does. That tells you where to spend money: interpreters at discharge, and help getting to that first visit.”</li>
+<li>“You report both, and you label them for what they answer. The adjusted result doesn’t mean LEP doesn’t matter. It means this pathway is where the gap comes from.”</li>
+</ol>
+<p><strong>Demo in tab 3:</strong></p>
+<ul>
+<li>Start at the defaults. Readmission is 22% for English-proficient patients and 28% for LEP.</li>
+<li>Unadjusted odds ratio about 1.4. Adjusted for follow-up, about 1.0.</li>
+<li>Then raise “other pathways” to 0.75. Unadjusted about 3.0, adjusted about 2.2. Now a gap remains after adjusting, meaning other pathways matter too, such as understanding medications or getting to a pharmacy.</li>
+<li>That shows the adjusted model is a tool for finding mechanisms, not a way to erase the disparity.</li>
+</ul>
+<p><strong>Caveat (one sentence is enough):</strong></p>
+<ul>
+<li>The adjusted estimate only describes the mechanism if nothing else affects both follow-up and readmission.</li>
+<li>For example, sicker patients or patients without transportation may miss the visit and also be readmitted more. If so, adjusting for follow-up can distort the result. This is called mediator-outcome confounding.</li>
+<li>Formal mediation analysis handles this; for this class, naming it is enough.</li>
 </ul>
 </section>
 <section id="discussion-disparities-vs.-mechanisms-3400" class="level3">
@@ -2468,10 +2527,54 @@ ul { margin-bottom: .2rem; }
 <li>The adjusted model asks “how much is left after follow-up?” In the app, almost nothing.</li>
 <li>LEP patients still have worse outcomes. What the adjusted model adds is where to intervene: interpreters at discharge, instructions in their language, help getting to that first visit.</li>
 <li>In example 1 we wanted the total disparity, so adjusting for the mediator was a problem. Here we want the mechanism, so we adjust on purpose.</li>
+<li>The table puts the two side by side. Same diagram. In Example 1 the mediator is a biased step and the question is whether treatment was fair, so the unadjusted model answers it. In Example 3 the mediator is a step we can fix and the question is where the gap comes from, so report both and label them.</li>
 </ul>
 </section>
-<section id="using-regression-to-detect-discrimination-3530" class="level3">
-<h3 class="anchored" data-anchor-id="using-regression-to-detect-discrimination-3530">32. Using Regression to Detect Discrimination <span class="t">35:30</span></h3>
+<section id="optional-example-4-effect-modification-3530" class="level3">
+<h3 class="anchored" data-anchor-id="optional-example-4-effect-modification-3530">32. Optional Example 4: Effect Modification <span class="t">35:30</span></h3>
+<ul>
+<li>Only if there’s time. App, tab 4.</li>
+<li>Here neighborhood isn’t the exposure. The program is the exposure, and neighborhood deprivation (ADI) changes how well it works. That’s effect modification.</li>
+<li>Main effects model: one average program effect. Interaction model: a separate effect for each type of neighborhood.</li>
+</ul>
+<p><strong>Demo in tab 4:</strong></p>
+<ul>
+<li>Defaults: the true effect is -8 mmHg in low-ADI neighborhoods and -2 in high-ADI. In the diagram, ADI points at the program’s arrow, not at BP.</li>
+<li>The main effects model gives about -5.6, close to the average of the two.</li>
+<li>The interaction model gives about -8.8 and -2.3. The interaction is 6.5 mmHg (95% CI 2.6 to 10.4).</li>
+<li>Then set the high-ADI effect to -4, so the true difference is 4 mmHg. At 100 patients per group the interaction CI is about -0.8 to 8.9 and includes 0. At 300 per group it’s about 1.4 to 6.9.</li>
+</ul>
+<p><strong>Lines you could say:</strong></p>
+<ul>
+<li>“If we only reported -5.6, we’d say the program works for everyone. It barely works in the neighborhoods where blood pressure control is usually worst.”</li>
+<li>“This is what ‘check effect modification’ means in practice. Fit the interaction and report the effect in each group.”</li>
+<li>“Interactions need a lot more data than main effects. A study sized for the average effect often can’t see a difference between groups, and a non-significant interaction doesn’t mean the effect is the same.”</li>
+</ul>
+</section>
+<section id="app-tab-5-prediction-model-fairness-no-slide-stay-in-the-app-3830" class="level3">
+<h3 class="anchored" data-anchor-id="app-tab-5-prediction-model-fairness-no-slide-stay-in-the-app-3830">App tab 5: Prediction Model Fairness (no slide, stay in the app) <span class="t">38:30</span></h3>
+<ul>
+<li>Only if there’s time. This ties back to Rumel’s session and the eGFR and pulse oximetry slide.</li>
+<li>A 30-day readmission risk model. Group B is 10% of the training data and has a higher baseline risk.</li>
+</ul>
+<p><strong>Demo in tab 5:</strong></p>
+<ul>
+<li>Defaults: AUC is 0.78 for group A and 0.76 for group B. Group B’s observed readmission is 38%, but the model predicts 28% on average.</li>
+<li>Check “Include group in the model”. Group B’s average prediction moves to 41%, close to the observed 38%, and B’s calibration curve moves back toward the diagonal.</li>
+<li>Uncheck it and raise group B’s share to 0.5. Now group A is over-predicted (35% predicted vs. 27% observed).</li>
+<li>Put B’s share back to 0.1 and raise measurement error to 1.5. Group B’s AUC drops to 0.67. Checking “include group” fixes the average prediction but not the AUC.</li>
+</ul>
+<p><strong>Lines you could say:</strong></p>
+<ul>
+<li>“AUC asks whether the model ranks patients well. Calibration asks whether a 20% prediction means about 20% of those patients get readmitted.”</li>
+<li>“The AUCs look almost the same, so you might call this model fair. But it under-predicts group B by 10 points, so those patients are less likely to get flagged for follow-up.”</li>
+<li>“More data from group B doesn’t fix it. It moves the error to group A. Accounting for the different baseline risk is what fixes it.”</li>
+<li>“Noisy measurement is different. No modeling choice fixes it. You need a better measurement, like pulse oximeters that work across skin tones.”</li>
+<li>“Whether race or group belongs in a clinical model is debated, and eGFR shows how it can go wrong. If you include it, have a reason. If you leave it out, check calibration by group.”</li>
+</ul>
+</section>
+<section id="using-regression-to-detect-discrimination-4100" class="level3">
+<h3 class="anchored" data-anchor-id="using-regression-to-detect-discrimination-4100">33. Using Regression to Detect Discrimination <span class="t">41:00</span></h3>
 <ul>
 <li>Regression alone can’t prove discrimination, and it can’t prove there isn’t any.</li>
 <li>There are always unmeasured variables. For causal claims you need a stronger design.</li>
@@ -2479,8 +2582,8 @@ ul { margin-bottom: .2rem; }
 <li>And check effect modification. Tab 4 of the app has an example where one average effect hides a group the program doesn’t help.</li>
 </ul>
 </section>
-<section id="best-practices-for-reporting-3630" class="level3">
-<h3 class="anchored" data-anchor-id="best-practices-for-reporting-3630">33. Best Practices for Reporting <span class="t">36:30</span></h3>
+<section id="best-practices-for-reporting-4200" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices-for-reporting-4200">34. Best Practices for Reporting <span class="t">42:00</span></h3>
 <ul>
 <li>When you publish, there are good guidelines.</li>
 <li>SAGER for sex and gender.</li>
@@ -2488,31 +2591,31 @@ ul { margin-bottom: .2rem; }
 <li>STROBE-Equity came out in 2025 and covers most EHR work. CONSORT-Equity for trials, PRISMA-Equity for systematic reviews.</li>
 </ul>
 </section>
-<section id="perspective-3730" class="level3">
-<h3 class="anchored" data-anchor-id="perspective-3730">34. Perspective <span class="t">37:30</span></h3>
+<section id="perspective-4300" class="level3">
+<h3 class="anchored" data-anchor-id="perspective-4300">35. Perspective <span class="t">43:00</span></h3>
 <ul>
 <li>I’ll leave you with this from the Urban Institute’s Do No Harm Guide. Read it.</li>
 <li>Methods matter, and so does who is on the team and what they bring.</li>
 </ul>
 </section>
-<section id="optional-discussion-questions-3830" class="level3">
-<h3 class="anchored" data-anchor-id="optional-discussion-questions-3830">35. Optional: Discussion Questions <span class="t">38:30</span></h3>
+<section id="optional-discussion-questions-4400" class="level3">
+<h3 class="anchored" data-anchor-id="optional-discussion-questions-4400">36. Optional: Discussion Questions <span class="t">44:00</span></h3>
 <ul>
 <li>Not part of the 50 minutes. Only use these if there’s time left after questions.</li>
 <li>If there is time, pick one question and ask people to answer in the chat or unmute.</li>
 <li>Question 1 usually works best, since everyone in the class has seen some EHR data by now.</li>
 </ul>
 </section>
-<section id="thank-you-3830" class="level3">
-<h3 class="anchored" data-anchor-id="thank-you-3830">36. Thank you! <span class="t">38:30</span></h3>
+<section id="thank-you-4400" class="level3">
+<h3 class="anchored" data-anchor-id="thank-you-4400">37. Thank you! <span class="t">44:00</span></h3>
 <ul>
 <li>To sum up: data equity is ongoing work. Question your assumptions, be intentional about what goes in the model, and be honest in the interpretation.</li>
 <li>Move from “what’s the average effect?” to “for whom does this work, and why?”</li>
 <li>Thanks. Happy to take questions.</li>
 </ul>
 </section>
-<section id="references-4030" class="level3">
-<h3 class="anchored" data-anchor-id="references-4030">37. References <span class="t">40:30</span></h3>
+<section id="references-4600" class="level3">
+<h3 class="anchored" data-anchor-id="references-4600">38. References <span class="t">46:00</span></h3>
 <ul>
 <li>References are all here.</li>
 </ul>

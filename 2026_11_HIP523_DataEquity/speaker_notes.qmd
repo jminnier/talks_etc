@@ -8,29 +8,34 @@ format:
     css: speaker_notes.css
 ---
 
-Generated from `2026_11_HIP523_dataequity.qmd`. Times are rough start times; total about 40 minutes.
+Times are rough start times. The talk runs about 46 minutes, which leaves about 4 for questions. The discussion questions are extra.
 
-### 2. Learning Objectives <span class='t'>0:00</span>
+### 1. Title page [0:00]{.t}
 
 - Hi everyone, thanks for having me for the last session of the course. I'm Jessica Minnier, a biostatistician at the Knight Cancer Institute.
+
+### 2. Learning Objectives [0:01]{.t}
+
 - Today: data equity in clinical research. It's a vague term, so I'll start by defining it.
 - Then how we think about race, sex, gender, and SDOH (social determinants of health) when we design studies and analyze data.
 - Most of the time goes to the last two objectives: what to put in the model, with examples and an app.
+- Feel free to ask questions during this talk
 
-### 3. Where This Fits in HIP 523 <span class='t'>1:00</span>
+### 3. Where This Fits in HIP 523 [1:00]{.t}
 
 - You've already seen a lot of the pieces of this.
+- Based on your syllabus I know you have focused on EHR data.
 - When you looked at EHR data quality, think about who the missing data belong to. It usually isn't random.
-- If you've pulled a cohort from TriNetX or Cosmos, the race and ethnicity categories were decided before you got there.
-- Rumel covered prediction and fairness, so I'll mostly stay on the inference side. The last tab of the app connects back to his talk.
+- If you've pulled a cohort from TriNetX or Cosmos, the race and ethnicity categories were decided before you started your research.
+- Rumel covered prediction and fairness, so I'll mostly stay on the statistical inference side and talk about how we use models to **measure and explain disparities**, and how the choice of what to adjust for changes the inference or the results.
 
-### 4. What is Data Equity? <span class='t'>2:00</span>
+### 4. What is Data Equity? [2:00]{.t}
 
 - Let's start with the basic question: what is data equity?
 - If anyone has an idea, put it in the chat.
 - One way to think about it: populations aren't homogeneous, and some subgroups have been historically marginalized and understudied in health research.
 
-### 5. What is Data Equity? <span class='t'>2:30</span>
+### 5. What is Data Equity? [2:30]{.t}
 
 - Data equity is paying attention to power, bias, and discrimination in how we collect, analyze, interpret, and use data.
 - Making sure research benefits everyone, especially groups who have been left out.
@@ -38,132 +43,138 @@ Generated from `2026_11_HIP523_dataequity.qmd`. Times are rough start times; tot
 - Community participation and trust, with the goal of data sovereignty, where communities own their own data. The CARE principles were written for Indigenous data. This ties back to the data sharing session.
 - In the end we want results that are sound, fair, and useful.
 
-### 6. Data Equity Principles <span class='t'>3:30</span>
+### 6. Data Equity Principles [3:30]{.t}
 
 - The CDC Foundation lays out a life cycle for data equity.
-- Equity applies across the whole process: purpose, collection, analysis, and sharing and acting on findings.
-- Same idea as the research data lifecycle you saw earlier in the course.
+- Note that equity applies across the whole process: purpose, collection, analysis, and sharing and acting on findings.
+- Same idea as the research data lifecycle but more of an equity lens
 
-### 7. What is Equity-minded Research? <span class='t'>4:30</span>
+### 7. What is Equity-minded Research? [4:30]{.t}
 
 - What does equity-minded research look like in practice?
 - If you have an example, put it in the chat.
 
-### 8. Equity-minded Research <span class='t'>5:00</span>
+### 8. Equity-minded Research [5:00]{.t}
 
 - Some concrete versions of equity-minded research.
-- Start by naming the systemic factors that could affect your outcome.
-- Collect data so people can actually be counted: interpreters, self-report, more than two options.
+- First we start by naming the systemic factors that could affect your outcome.
+- Collect data so people can actually be counted: for example by using language interpreters, or thinking about self-report race and gender we would use more than two options. Allow for write in responses, etc.
+- Make sure we are sampling properly from the population to make sure we have the groups we care about represented in our sample, that's probably an obvious one.
 - Positionality: reflecting on our own biases, assumptions, and experiences, and how they shape what we study.
 - When you see a difference by race, that's the start of the question.
-- Report by subgroup, and be upfront about what you couldn't measure.
+- Report by subgroup, and be upfront about what you couldn't measure. (due to sample size or other restrictions)
 
-### 9. Common Data Equity Challenges in EHR Data <span class='t'>6:00</span>
+### 9. Common Data Equity Challenges in EHR Data [6:00]{.t}
 
 - Some common hurdles, with EHR examples since that's what you've been working with.
 - Selection bias. The EHR only has the patients who come in. People with good access have more visits and more data.
 - Missing data. Race shows up as Unknown or Declined, or interpreter need isn't documented.
 - If we drop those patients (complete-case analysis), we're dropping a non-random group.
-- Imputing race isn't a free fix either. Methods that guess race from surname and address work worse for some groups.
-- Ask where a field came from. Self-report and a registrar's guess are not the same variable.
+- Imputing race isn't often a useful fix either. Methods that guess race from surname and address work worse for some groups.
+- Ask where a field came from. Self-reported race and an interviewer's guess are not the same variable.
 
-### 10. Aggregation and Small Groups <span class='t'>7:00</span>
+### 10. Aggregation and Small Groups [7:00]{.t}
 
 - Collapsing all Asian American subgroups can hide big differences, say between Vietnamese and Japanese patients.
-- We saw something similar in our own work with asthma in US-born and non-US-born Latinos.
+- In a project I worked we saw something similar with asthma in US-born and non-US-born Latinos. That disparity was hidden when collapsed into the larger Latino category.
 - When groups get small, the instinct is to collapse them. Try reporting them with wide confidence intervals instead.
-- Multilevel models can borrow strength across groups. One approach for intersectional groups is called MAIHDA (Evans and colleagues).
+- Multilevel models can borrow strength across groups but still provide group-level estimates. One approach for intersectional groups is called MAIHDA (Evans and colleagues).
 
-### 11. Missing Context and History <span class='t'>8:00</span>
+### 11. Missing Context and History [8:00]{.t}
 
 - Missing context. A post-op study that only has patient factors misses hospital factors like staffing.
 - Or asthma without air quality or housing.
-- History. Tuskegee and many other studies created a justified mistrust of research in Black communities, which shows up today as underrepresentation.
+- History might influence study results. Tuskegee and many other studies created a justified mistrust of research in Black communities, which shows up today as underrepresentation.
 - Acknowledging that history is part of rebuilding trust.
 
-### 12. Sex and Gender Considerations <span class='t'>9:00</span>
+### 12. Sex and Gender Considerations [9:00]{.t}
 
 - Now a specific area: sex and gender.
 
-### 13. Sex and Gender in Research <span class='t'>9:30</span>
+### 13. Sex and Gender in Research [9:30]{.t}
 
 - Sex is biological, gender is social. They get used interchangeably, and that's a common mistake.
 - In EHR data, check what the field actually is. Many systems have one "sex" field that mixes sex assigned at birth, legal sex, and gender identity. Newer systems have separate sexual orientation and gender identity (SOGI) fields, but they're often blank.
+- Ways to improve this: Don't assume a binary variable, document missing data
 - In 2016 NIH started the SABV policy: account for sex in design, analysis, and reporting.
 - In practice: enough people of each sex, test for sex-specific effects, report results by sex.
 - NIH's "4 Cs" on the right: Consider, Collect, Characterize, Communicate.
 - Historically, women were underrepresented, and transgender and intersex people were left out almost entirely.
 
-### 14. Race and Ethnicity in Research <span class='t'>10:30</span>
+### 14. Race and Ethnicity in Research [10:30]{.t}
 
 - One of the most complex topics today: race and ethnicity.
 - This quote from a recent systematic review sets it up well. Read it.
 
-### 15. Race and Ethnicity: Critical Considerations <span class='t'>11:00</span>
+### 15. Race and Ethnicity: Critical Considerations [11:00]{.t}
 
 - Race is a social construct. Genetic variation within groups is larger than between groups.
+- Racial categories have a history and have changed over time.
 - When we see health differences by race, we're usually seeing the downstream effects of racism, poverty, and environment.
-- So be clear about what the race variable stands for in your study. That decides how you should use it in a model.
+- Race intersects with other variables to make the effects even more complex
+- So be clear about what the race variable stands for in your study. That should decide how you should use it in a model.
 
-### 16. Race and Ethnicity: Recommendations <span class='t'>12:00</span>
+### 16. Race and Ethnicity: Recommendations [12:00]{.t}
 
+- Recommendations to avoid ignoring these complex effects:
 - Use clearly defined categories, and don't collapse them when groups have different outcomes.
-- "Other" is a problem label. Describe what's in a collapsed group.
+- avoid the label, "Other", that can be problematic in what is being implied there. Describe what's in a collapsed group.
+- include ethnicity and ancestry information where possible
 - Document how the data were collected.
-- The federal standard changed in 2024. Race and ethnicity become one question, and there's a new Middle Eastern or North African category. Agencies have until 2029 to switch, so a multi-year dataset may change categories partway through.
+- Also note that the federal standard changed in 2024. Race and ethnicity become one question, and there's a new Middle Eastern or North African category. Agencies have until 2029 to switch, so a multi-year dataset may change categories partway through.
 - If you use race in a model, check for effect modification. Tab 4 of the app shows what that looks like.
 - And always acknowledge the limits of the variables you have.
 
-### 17. Race in Clinical Algorithms and Measurement <span class='t'>13:00</span>
+### 17. Race in Clinical Algorithms and Measurement [13:00]{.t}
 
-- Some bias is already in the numbers before we touch them.
+- Some bias is already in the numbers before we analyze them. For example:
 - eGFR used to have a race multiplier. Black patients looked like they had better kidney function than they did, and that delayed nephrology referral and transplant listing. The 2021 CKD-EPI equation dropped race.
 - Pulse oximeters read high in patients with darker skin. Sjoding found occult hypoxemia was missed about three times as often in Black patients.
 - Vyas and colleagues found race corrections in cardiology, obstetrics, urology, pulmonology, and more.
-- If you build a prediction model on these values, the bias comes along. That's what Rumel talked about, and the last tab of the app lets you play with it.
+- If you build a prediction model on these values, the bias comes along. I believe that's similar to what Rumel talked about in his algorithmic bias session, and the last tab of the app lets you play with it.
 
-### 18. Social Determinants of Health (SDOH) <span class='t'>14:00</span>
+### 18. Social Determinants of Health (SDOH) [14:00]{.t}
 
 - Race as a social construct leads to SDOH.
 - Healthy People 2030 defines SDOH as the conditions where people are born, live, learn, work, and play that affect health.
 - Economic stability, education, healthcare access, neighborhood. These are often the real drivers of disparities we attribute to race.
 
-### 19. SDOH: Data Considerations <span class='t'>14:30</span>
+### 19. SDOH: Data Considerations [14:30]{.t}
 
 - SDOH in our data is hard to get.
 - There are ICD Z-codes for things like housing instability or food insecurity, but they're often not entered.
 - So we often link area-level measures like ADI or SVI by address. Useful, but they describe the neighborhood. Not everyone in a high-ADI neighborhood is low income. Assuming they are is the ecological fallacy.
 
-### 20. SDOH: Analysis Considerations <span class='t'>15:30</span>
+### 20. SDOH: Analysis Considerations [15:30]{.t}
 
 - Once SDOH is in the data, how do we use it?
 - The key question for each variable: is it a confounder, a mediator, or an effect modifier? We'll define those in a minute, and the examples are built around this question.
 - Many SDOH variables are correlated, so watch for collinearity.
 - And think about missing data before dropping people.
 
-### 21. Statistical Analysis: What Does "Adjusted For" Mean? <span class='t'>16:30</span>
+### 21. Statistical Analysis: What Does "Adjusted For" Mean? [16:30]{.t}
 
 - When we say we "adjusted for" something, what do we mean?
-- Adjustment estimates the effect within groups and then averages. Example: compare statin rates by insurance within each age group, then combine.
+- Adjustment estimates the effect within groups and then averages. Example: adjusting for age in this example means we compare statin rates by insurance within each age group, then combine.
 - That average leans toward the bigger groups, which can hide a different effect in a smaller group.
 - When we adjust for race, we're comparing people within race groups. That doesn't take racism out of the picture, and if the exposure itself is shaped by racism, adjusting can hide part of the effect.
 - Effect modification lets us estimate effects separately by group, which is often more useful.
 
-### 22. Confounder or Mediator? <span class='t'>17:30</span>
+### 22. Confounder or Mediator? [17:30]{.t}
 
 - Two words we'll use for the rest of the talk.
 - A confounder comes first. Age affects which insurance you have and whether you get a statin. Insurance doesn't change your age. So adjust for age.
 - A mediator comes after. If race affects how acutely you're triaged, and triage affects what pain medication you get, triage is a mediator. Adjust for it and you remove that part of the disparity.
 - "Attribute" is just the word for the thing we're comparing groups on.
 
-### 23. Modeling Decisions <span class='t'>19:00</span>
+### 23. Modeling Decisions [19:00]{.t}
 
 - Bivariate model, Y on X, where X is something like race: "does a disparity exist?" This is often the first and most important question. It's the total disparity.
 - Multiple regression, Y on X plus other variables Z: "do similar people still get different outcomes?" That's the residual disparity.
 - What goes into Z matters. Confounders are usually fine. Mediators can hide the disparity.
 - For those who want more, Jackson and VanderWeele frame this as a decomposition: how much of a disparity would remain if we fixed a mediator.
 
-### 24. Characterizing Confounding <span class='t'>20:30</span>
+### 24. Characterizing Confounding [20:30]{.t}
 
 - Swilley and colleagues describe three kinds of confounding when race is the confounder.
 - Discriminatory: race affects the exposure and outcome through discrimination.
@@ -171,12 +182,12 @@ Generated from `2026_11_HIP523_dataequity.qmd`. Times are rough start times; tot
 - Biological: directly through biology. This is rarer than it's assumed to be.
 - If the confounding is discriminatory, "adjusting for race" can adjust away the very thing you should be reporting.
 
-### 25. Modeling Examples <span class='t'>21:30</span>
+### 25. Modeling Examples [21:30]{.t}
 
-- Three examples, all EHR-style data. The data in the app are simulated, so we know the right answer.
+- Three examples, all EHR-style data, plus a fourth on effect modification if there's time. The data in the app are simulated, so we know the right answer.
 - I'll go back and forth between the slides and the app.
 
-### 26. Example 1: Opioid Analgesia in the ED <span class='t'>22:00</span>
+### 26. Example 1: Opioid Analgesia in the ED [22:00]{.t}
 
 - This is a real, well-documented disparity. A meta-analysis found Black patients had about 0.6 times the odds of getting analgesia for acute pain in the ED. The app's default lands near 0.7.
 - Outcome: did the patient get opioid analgesia. Attribute: race.
@@ -184,15 +195,27 @@ Generated from `2026_11_HIP523_dataequity.qmd`. Times are rough start times; tot
 - Multiple regression adds triage acuity, the ESI level the triage nurse assigns. Among patients with the same acuity, is there still a gap?
 - Switch to the app, tab 1.
 
-### 27. Discussion: Post-attribute Bias <span class='t'>25:00</span>
+**Demo in tab 1:**
+
+- Defaults: 43% of White patients and 22% of Black patients are triaged high acuity. True pain is the same in both groups.
+- Unadjusted odds ratio 0.70, about 9 fewer patients out of 100 get analgesia. Adjusted for triage, 0.94, about 1 point.
+- Then set triage bias to 0 and prescribing bias to 0.75. Now the adjusted odds ratio is about 0.53. When the bias is at the prescribing step, both models show it.
+- Set triage bias back to 1.5 and prescribing bias to 0 before the discussion slide.
+
+**Lines you could say:**
+
+- "The adjusted model says prescribing looks fair. For the prescribing step, that's true. All the bias happened at triage, and adjusting for triage hid it."
+- "Same data, two answers. Which one is right depends on the question."
+
+### 27. Discussion: Post-attribute Bias [25:00]{.t}
 
 - Triage acuity looks like a reasonable thing to adjust for. Sicker patients should get more treatment.
-- But acuity is assigned by a person, and there's evidence it's biased by race. Sax and colleagues looked at 5 million Kaiser ED visits and found Black patients had about 18% higher risk of being under-triaged. Joseph and colleagues found similar patterns for Black, Hispanic, and non-English-speaking patients.
+- But acuity is assigned by a person, and there's evidence it's biased by race. These research studies looked at 5 million Kaiser ED visits and found Black patients had about 18% higher risk of being under-triaged. Other research found similar patterns for Black, Hispanic, and non-English-speaking patients.
 - If bias lowers triage acuity for Black patients, and acuity drives treatment, adjusting for acuity takes that part of the disparity out of the estimate.
 - In the app: with all the bias at triage, the adjusted odds ratio sits near 1. Prescribing looks fair, and patients still weren't treated fairly.
 - Here the bivariate model is the more honest answer.
 
-### 28. Example 2: Statin Prescribing <span class='t'>26:30</span>
+### 28. Example 2: Statin Prescribing [26:30]{.t}
 
 - The kind of question you could pull from TriNetX or Cosmos.
 - Adults with diabetes. Outcome: statin prescribed. Attribute: Medicaid vs private insurance.
@@ -200,7 +223,19 @@ Generated from `2026_11_HIP523_dataequity.qmd`. Times are rough start times; tot
 - Adjusted for age: among people the same age, is there still a gap?
 - App, tab 2.
 
-### 29. Discussion: Omitted Variable Bias <span class='t'>29:30</span>
+**Demo in tab 2:**
+
+- Defaults: Medicaid patients are about 10 years younger (48 vs. 58 on average). The true odds ratio for Medicaid is 0.67.
+- Unadjusted odds ratio 0.33. Adjusted for age, 0.60, close to the truth.
+- Set the age gap to 0. Both models give about 0.7. With no confounding, adjusting barely changes anything.
+- Set the age gap back to 10 and the true effect to 0. Unadjusted 0.49, adjusted 0.93. The whole "disparity" was age.
+
+**Lines you could say:**
+
+- "Leave age out and Medicaid patients look a third as likely to get a statin. A lot of that is just age."
+- "Here adjusting gets us closer to the truth. Age comes before insurance, so it's a confounder, and there's a real gap left over."
+
+### 29. Discussion: Omitted Variable Bias [29:30]{.t}
 
 - This one goes the other way from example 1.
 - Age comes before insurance and affects both insurance and whether a statin is recommended. That's a confounder.
@@ -208,53 +243,114 @@ Generated from `2026_11_HIP523_dataequity.qmd`. Times are rough start times; tot
 - In the app, the adjusted gap shrinks, but it doesn't go away, and that remaining gap is the interesting part.
 - A data quality note: insurance in the EHR is often missing or out of date. Patients who switch or lose coverage are the ones most likely to drop out of a complete-case analysis.
 
-### 30. Example 3: Readmission After Heart Failure <span class='t'>31:00</span>
+### 30. Example 3: Readmission After Heart Failure [31:00]{.t}
 
 - Heart failure readmissions. Attribute: limited English proficiency, usually from the interpreter-needed field.
 - Bivariate: do LEP patients get readmitted more?
-- Adjusted for whether they made it to a 7-day follow-up visit.
+- Adjusted: if LEP and English-proficient patients made it to a 7-day follow-up visit at the same rate, would readmission still differ?
 - App, tab 3.
 
-### 31. Discussion: Disparities vs. Mechanisms <span class='t'>34:00</span>
+**Lines you could say, in order:**
+
+1. "This looks just like Example 1: LEP affects follow-up, and follow-up affects readmission. So why am I about to adjust for it?"
+2. Tell it as a story. "A patient goes home with discharge instructions in English they can't read. They don't make the 7-day visit, and they're back in the hospital in three weeks."
+3. Give the app's numbers. At the default, 61% of English-proficient patients make the 7-day visit, against 23% of LEP patients.
+4. "The unadjusted model says LEP patients are readmitted more. That's the disparity, and you should report it."
+5. "The adjusted model asks: if LEP patients made it to follow-up as often as everyone else, would the gap close? Here it mostly does. That tells you where to spend money: interpreters at discharge, and help getting to that first visit."
+6. "You report both, and you label them for what they answer. The adjusted result doesn't mean LEP doesn't matter. It means this pathway is where the gap comes from."
+
+**Demo in tab 3:**
+
+- Start at the defaults. Readmission is 22% for English-proficient patients and 28% for LEP.
+- Unadjusted odds ratio about 1.4. Adjusted for follow-up, about 1.0.
+- Then raise "other pathways" to 0.75. Unadjusted about 3.0, adjusted about 2.2. Now a gap remains after adjusting, meaning other pathways matter too, such as understanding medications or getting to a pharmacy.
+- That shows the adjusted model is a tool for finding mechanisms, not a way to erase the disparity.
+
+**Caveat (one sentence is enough):**
+
+- The adjusted estimate only describes the mechanism if nothing else affects both follow-up and readmission.
+- For example, sicker patients or patients without transportation may miss the visit and also be readmitted more. If so, adjusting for follow-up can distort the result. This is called mediator-outcome confounding.
+- Formal mediation analysis handles this; for this class, naming it is enough.
+
+### 31. Discussion: Disparities vs. Mechanisms [34:00]{.t}
 
 - Same structure as example 1, since follow-up is affected by LEP status. The difference is how we use it.
 - "Are there disparities?" is the bivariate question, and it's usually the one that tells you there's a problem to fix.
 - The adjusted model asks "how much is left after follow-up?" In the app, almost nothing.
 - LEP patients still have worse outcomes. What the adjusted model adds is where to intervene: interpreters at discharge, instructions in their language, help getting to that first visit.
 - In example 1 we wanted the total disparity, so adjusting for the mediator was a problem. Here we want the mechanism, so we adjust on purpose.
+- The table puts the two side by side. Same diagram. In Example 1 the mediator is a biased step and the question is whether treatment was fair, so the unadjusted model answers it. In Example 3 the mediator is a step we can fix and the question is where the gap comes from, so report both and label them.
 
-### 32. Using Regression to Detect Discrimination <span class='t'>35:30</span>
+### 32. Optional Example 4: Effect Modification [35:30]{.t}
+
+- Only if there's time. App, tab 4.
+- Here neighborhood isn't the exposure. The program is the exposure, and neighborhood deprivation (ADI) changes how well it works. That's effect modification.
+- Main effects model: one average program effect. Interaction model: a separate effect for each type of neighborhood.
+
+**Demo in tab 4:**
+
+- Defaults: the true effect is -8 mmHg in low-ADI neighborhoods and -2 in high-ADI. In the diagram, ADI points at the program's arrow, not at BP.
+- The main effects model gives about -5.6, close to the average of the two.
+- The interaction model gives about -8.8 and -2.3. The interaction is 6.5 mmHg (95% CI 2.6 to 10.4).
+- Then set the high-ADI effect to -4, so the true difference is 4 mmHg. At 100 patients per group the interaction CI is about -0.8 to 8.9 and includes 0. At 300 per group it's about 1.4 to 6.9.
+
+**Lines you could say:**
+
+- "If we only reported -5.6, we'd say the program works for everyone. It barely works in the neighborhoods where blood pressure control is usually worst."
+- "This is what 'check effect modification' means in practice. Fit the interaction and report the effect in each group."
+- "Interactions need a lot more data than main effects. A study sized for the average effect often can't see a difference between groups, and a non-significant interaction doesn't mean the effect is the same."
+
+### App tab 5: Prediction Model Fairness (no slide, stay in the app) [38:30]{.t}
+
+- Only if there's time. This ties back to Rumel's session and the eGFR and pulse oximetry slide.
+- A 30-day readmission risk model. Group B is 10% of the training data and has a higher baseline risk.
+
+**Demo in tab 5:**
+
+- Defaults: AUC is 0.78 for group A and 0.76 for group B. Group B's observed readmission is 38%, but the model predicts 28% on average.
+- Check "Include group in the model". Group B's average prediction moves to 41%, close to the observed 38%, and B's calibration curve moves back toward the diagonal.
+- Uncheck it and raise group B's share to 0.5. Now group A is over-predicted (35% predicted vs. 27% observed).
+- Put B's share back to 0.1 and raise measurement error to 1.5. Group B's AUC drops to 0.67. Checking "include group" fixes the average prediction but not the AUC.
+
+**Lines you could say:**
+
+- "AUC asks whether the model ranks patients well. Calibration asks whether a 20% prediction means about 20% of those patients get readmitted."
+- "The AUCs look almost the same, so you might call this model fair. But it under-predicts group B by 10 points, so those patients are less likely to get flagged for follow-up."
+- "More data from group B doesn't fix it. It moves the error to group A. Accounting for the different baseline risk is what fixes it."
+- "Noisy measurement is different. No modeling choice fixes it. You need a better measurement, like pulse oximeters that work across skin tones."
+- "Whether race or group belongs in a clinical model is debated, and eGFR shows how it can go wrong. If you include it, have a reason. If you leave it out, check calibration by group."
+
+### 33. Using Regression to Detect Discrimination [41:00]{.t}
 
 - Regression alone can't prove discrimination, and it can't prove there isn't any.
 - There are always unmeasured variables. For causal claims you need a stronger design.
 - Report absolute differences. "9 fewer patients out of 100 got pain medication" is easier to act on than an odds ratio. The app shows both.
 - And check effect modification. Tab 4 of the app has an example where one average effect hides a group the program doesn't help.
 
-### 33. Best Practices for Reporting <span class='t'>36:30</span>
+### 34. Best Practices for Reporting [42:00]{.t}
 
 - When you publish, there are good guidelines.
 - SAGER for sex and gender.
 - JAMA's guidance (Flanagin) for race and ethnicity.
 - STROBE-Equity came out in 2025 and covers most EHR work. CONSORT-Equity for trials, PRISMA-Equity for systematic reviews.
 
-### 34. Perspective <span class='t'>37:30</span>
+### 35. Perspective [43:00]{.t}
 
 - I'll leave you with this from the Urban Institute's Do No Harm Guide. Read it.
 - Methods matter, and so does who is on the team and what they bring.
 
-### 35. Optional: Discussion Questions <span class='t'>38:30</span>
+### 36. Optional: Discussion Questions [44:00]{.t}
 
 - Not part of the 50 minutes. Only use these if there's time left after questions.
 - If there is time, pick one question and ask people to answer in the chat or unmute.
 - Question 1 usually works best, since everyone in the class has seen some EHR data by now.
 
-### 36. Thank you! <span class='t'>38:30</span>
+### 37. Thank you! [44:00]{.t}
 
 - To sum up: data equity is ongoing work. Question your assumptions, be intentional about what goes in the model, and be honest in the interpretation.
 - Move from "what's the average effect?" to "for whom does this work, and why?"
 - Thanks. Happy to take questions.
 
-### 37. References <span class='t'>40:30</span>
+### 38. References [46:00]{.t}
 
 - References are all here.
-
