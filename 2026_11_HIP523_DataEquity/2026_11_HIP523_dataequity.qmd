@@ -607,7 +607,7 @@ Adjust for confounders. Age comes before insurance, so it belongs in the model.
 
 `glm(readmit_30d ~ lep_status + followup_7d, binomial, data = hf)`
 
-**Interpretation:** "Among patients who did (or didn't) make it to a follow-up visit within 7 days, does LEP status still predict readmission?"
+**Interpretation:** "If LEP and English-proficient patients made it to follow-up at the same rate, would readmission still differ?"
 :::
 ::::
 
@@ -626,8 +626,12 @@ Same diagram as Example 1, different question.
 
 -   Follow-up is a mediator, like triage acuity in Example 1
 -   "Is there a disparity?" Use the unadjusted model. LEP patients are readmitted more often
--   "Where does it come from?" Adjust for follow-up. In our simulated data the gap mostly disappears
--   So follow-up is where to intervene: interpreters at discharge, instructions in the patient's language
+-   "Where does it come from?" Adjust for follow-up. In our simulated data the gap mostly disappears, so follow-up is where to intervene: interpreters at discharge, instructions in the patient's language
+
+|      | Mediator                 | Question                      | Model             |
+|------|--------------------------|-------------------------------|-------------------|
+| Ex 1 | Triage (a biased step)   | Is treatment fair overall?    | Unadjusted        |
+| Ex 3 | Follow-up (a fixable step) | Where does the gap come from? | Both, labeled     |
 
 :::{.notes}
 - Same structure as example 1, since follow-up is affected by LEP status. The difference is how we use it.
@@ -635,6 +639,44 @@ Same diagram as Example 1, different question.
 - The adjusted model asks "how much is left after follow-up?" In the app, almost nothing.
 - LEP patients still have worse outcomes. What the adjusted model adds is where to intervene: interpreters at discharge, instructions in their language, help getting to that first visit.
 - In example 1 we wanted the total disparity, so adjusting for the mediator was a problem. Here we want the mechanism, so we adjust on purpose.
+:::
+
+## Optional Example 4: Effect Modification {.small}
+
+-   **Research Question:** Does a remote blood pressure monitoring program work as well for patients in high-deprivation neighborhoods?
+-   **Outcome:** Change in systolic BP at 6 months (mmHg)
+-   **Exposure:** Remote monitoring vs. usual care
+-   **Effect modifier:** Neighborhood Area Deprivation Index (ADI), high vs. low
+
+:::: columns
+::: {.column width="50%"}
+***Main Effects Model:***
+
+`lm(sbp_change ~ program + adi, data = bp)`
+
+**Interpretation:** "On average, how much does the program lower BP?"
+:::
+
+::: {.column width="50%"}
+***Interaction Model:***
+
+`lm(sbp_change ~ program * adi, data = bp)`
+
+**Interpretation:** "Does the program lower BP by the same amount in high- and low-ADI neighborhoods?"
+:::
+::::
+
+::: {.takeaway}
+One average effect can hide a group the program doesn't help. App, tab 4.
+:::
+
+:::{.notes}
+- Only if there's time. App, tab 4.
+- Here the attribute isn't the exposure. Neighborhood deprivation changes how well the program works.
+- In the app the true effect is -8 mmHg in low-ADI neighborhoods and -2 in high-ADI neighborhoods.
+- The main effects model gives one number in between, about -5. That sounds like the program works for everyone.
+- The interaction model shows the program barely helps in high-ADI neighborhoods, where BP control is usually worst.
+- Interactions need much bigger samples to detect than main effects. Lower the sample size in the app and watch the confidence interval for the interaction cross 0.
 :::
 
 ## Using Regression to Detect Discrimination

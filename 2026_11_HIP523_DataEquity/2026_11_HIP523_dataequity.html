@@ -1924,7 +1924,7 @@ display:block!important;
 </div><div class="column" style="width:50%;">
 <p><strong><em>Multiple Regression Model:</em></strong></p>
 <p><code>glm(readmit_30d ~ lep_status + followup_7d, binomial, data = hf)</code></p>
-<p><strong>Interpretation:</strong> &quot;Among patients who did (or didn&#39;t) make it to a follow-up visit within 7 days, does LEP status still predict readmission?&quot;</p>
+<p><strong>Interpretation:</strong> &quot;If LEP and English-proficient patients made it to follow-up at the same rate, would readmission still differ?&quot;</p>
 </div></div>
 <aside class="notes">
 <ul>
@@ -1953,9 +1953,38 @@ display:block!important;
 <ul>
 <li>Follow-up is a mediator, like triage acuity in Example 1</li>
 <li>&quot;Is there a disparity?&quot; Use the unadjusted model. LEP patients are readmitted more often</li>
-<li>&quot;Where does it come from?&quot; Adjust for follow-up. In our simulated data the gap mostly disappears</li>
-<li>So follow-up is where to intervene: interpreters at discharge, instructions in the patient&#39;s language</li>
+<li>&quot;Where does it come from?&quot; Adjust for follow-up. In our simulated data the gap mostly disappears, so follow-up is where to intervene: interpreters at discharge, instructions in the patient&#39;s language</li>
 </ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 31%">
+<col style="width: 37%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Mediator</th>
+<th>Question</th>
+<th>Model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ex 1</td>
+<td>Triage (a biased step)</td>
+<td>Is treatment fair overall?</td>
+<td>Unadjusted</td>
+</tr>
+<tr class="even">
+<td>Ex 3</td>
+<td>Follow-up (a fixable step)</td>
+<td>Where does the gap come from?</td>
+<td>Both, labeled</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
 <ul>
 <li>Same structure as example 1, since follow-up is affected by LEP status. The difference is how we use it.</li>
@@ -1963,6 +1992,48 @@ display:block!important;
 <li>The adjusted model asks &quot;how much is left after follow-up?&quot; In the app, almost nothing.</li>
 <li>LEP patients still have worse outcomes. What the adjusted model adds is where to intervene: interpreters at discharge, instructions in their language, help getting to that first visit.</li>
 <li>In example 1 we wanted the total disparity, so adjusting for the mediator was a problem. Here we want the mechanism, so we adjust on purpose.</li>
+</ul>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="optional-example-4-effect-modification" class="slide level2 small">
+<h2>Optional Example 4: Effect Modification</h2>
+<ul>
+<li><strong>Research Question:</strong> Does a remote blood pressure monitoring program work as well for patients in high-deprivation neighborhoods?</li>
+<li><strong>Outcome:</strong> Change in systolic BP at 6 months (mmHg)</li>
+<li><strong>Exposure:</strong> Remote monitoring vs. usual care</li>
+<li><strong>Effect modifier:</strong> Neighborhood Area Deprivation Index (ADI), high vs. low</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><em>Main Effects Model:</em></strong></p>
+<p><code>lm(sbp_change ~ program + adi, data = bp)</code></p>
+<p><strong>Interpretation:</strong> &quot;On average, how much does the program lower BP?&quot;</p>
+</div><div class="column" style="width:50%;">
+<p><strong><em>Interaction Model:</em></strong></p>
+<p><code>lm(sbp_change ~ program * adi, data = bp)</code></p>
+<p><strong>Interpretation:</strong> &quot;Does the program lower BP by the same amount in high- and low-ADI neighborhoods?&quot;</p>
+</div></div>
+<div class="takeaway">
+<p>One average effect can hide a group the program doesn&#39;t help. App, tab 4.</p>
+</div>
+<aside class="notes">
+<ul>
+<li>Only if there&#39;s time. App, tab 4.</li>
+<li>Here the attribute isn&#39;t the exposure. Neighborhood deprivation changes how well the program works.</li>
+<li>In the app the true effect is -8 mmHg in low-ADI neighborhoods and -2 in high-ADI neighborhoods.</li>
+<li>The main effects model gives one number in between, about -5. That sounds like the program works for everyone.</li>
+<li>The interaction model shows the program barely helps in high-ADI neighborhoods, where BP control is usually worst.</li>
+<li>Interactions need much bigger samples to detect than main effects. Lower the sample size in the app and watch the confidence interval for the interaction cross 0.</li>
 </ul>
 <style type="text/css">
 span.MJX_Assistive_MathML {
